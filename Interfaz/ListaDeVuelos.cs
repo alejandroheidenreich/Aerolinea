@@ -16,5 +16,12 @@ namespace Interfaz
         {
             InitializeComponent();
         }
+
+        private void btn_Salir_Click(object sender, EventArgs e)
+        {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            this.Hide();
+            menuPrincipal.ShowDialog();
+        }
     }
 }

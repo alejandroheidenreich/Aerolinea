@@ -34,5 +34,9 @@ namespace Entidades
             Acapulco_México,
             Miami_EEUU,
         }
+
+        private List<Usuario> usuarios = new List<Usuario>();
+        private List<Aeronave> listaDeAereonaves;
+        private int cantidadMaximaDeAereonaves;
     }
 }

@@ -80,18 +80,22 @@
             this.btn_Salir.TabIndex = 4;
             this.btn_Salir.Text = "Salir";
             this.btn_Salir.UseVisualStyleBackColor = true;
+            this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
             // 
             // ListaDeVuelos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 582);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_Salir);
             this.Controls.Add(this.btn_EliminarVuelo);
             this.Controls.Add(this.btn_ExaminarVuelo);
             this.Controls.Add(this.btn_AgregarVuelo);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ListaDeVuelos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListaDeVuelos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

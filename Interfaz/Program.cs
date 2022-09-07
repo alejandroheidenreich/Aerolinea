@@ -1,3 +1,4 @@
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Interfaz
         [STAThread]
         static void Main()
         {
+            Compania aerolinea = new Compania();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -39,6 +39,7 @@
             this.lbl_linea2 = new System.Windows.Forms.Label();
             this.lbl_recuperarContrasenia = new System.Windows.Forms.LinkLabel();
             this.lbl_mensajeDeError = new System.Windows.Forms.Label();
+            this.btn_BotonAutoCompletado = new System.Windows.Forms.Button();
             this.pnl_Divisor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -104,7 +105,7 @@
             // 
             // pnl_Divisor
             // 
-            this.pnl_Divisor.BackColor = System.Drawing.Color.LightSlateGray;
+            this.pnl_Divisor.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.pnl_Divisor.Controls.Add(this.pictureBox1);
             this.pnl_Divisor.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnl_Divisor.Location = new System.Drawing.Point(0, 0);
@@ -173,6 +174,24 @@
             this.lbl_mensajeDeError.Text = "     Mensaje de Error";
             this.lbl_mensajeDeError.Visible = false;
             // 
+            // btn_BotonAutoCompletado
+            // 
+            this.btn_BotonAutoCompletado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_BotonAutoCompletado.FlatAppearance.BorderSize = 0;
+            this.btn_BotonAutoCompletado.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.btn_BotonAutoCompletado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_BotonAutoCompletado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_BotonAutoCompletado.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_BotonAutoCompletado.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_BotonAutoCompletado.Location = new System.Drawing.Point(738, 12);
+            this.btn_BotonAutoCompletado.Name = "btn_BotonAutoCompletado";
+            this.btn_BotonAutoCompletado.Size = new System.Drawing.Size(30, 29);
+            this.btn_BotonAutoCompletado.TabIndex = 8;
+            this.btn_BotonAutoCompletado.Text = "©";
+            this.btn_BotonAutoCompletado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_BotonAutoCompletado.UseVisualStyleBackColor = false;
+            this.btn_BotonAutoCompletado.Click += new System.EventHandler(this.button1_Click);
+            // 
             // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -180,6 +199,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(780, 330);
+            this.Controls.Add(this.btn_BotonAutoCompletado);
             this.Controls.Add(this.lbl_mensajeDeError);
             this.Controls.Add(this.lbl_recuperarContrasenia);
             this.Controls.Add(this.lbl_linea2);
@@ -218,5 +238,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel lbl_recuperarContrasenia;
         private System.Windows.Forms.Label lbl_mensajeDeError;
+        private System.Windows.Forms.Button btn_BotonAutoCompletado;
     }
 }

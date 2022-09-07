@@ -77,7 +77,6 @@ namespace Interfaz
             mouseAccion = true;
             mousePosX = e.X;
             mousePosY = e.Y;
-
         }
 
         private void LogIn_MouseMove(object sender, MouseEventArgs e)
@@ -116,6 +115,12 @@ namespace Interfaz
         {
             lbl_mensajeDeError.Text = "     " + mensaje;
             lbl_mensajeDeError.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txt_usuario.Text = "HeidenreichAlejandro";
+            txt_contrasenia.Text = "contraseña123";
         }
     }
 }

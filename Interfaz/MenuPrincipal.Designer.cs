@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.pnl_barraInfo = new System.Windows.Forms.Panel();
             this.lbl_InfoUsuarioFecha = new System.Windows.Forms.Label();
@@ -45,9 +46,11 @@
             this.listaDeVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaDeVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnl_PanelDeFondo = new System.Windows.Forms.Panel();
             this.pic_ImagenDeFondo = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnl_barraInfo.SuspendLayout();
             this.mnu_menuPrincipal.SuspendLayout();
             this.pnl_PanelDeFondo.SuspendLayout();
@@ -68,9 +71,10 @@
             // lbl_InfoUsuarioFecha
             // 
             this.lbl_InfoUsuarioFecha.AutoSize = true;
+            this.lbl_InfoUsuarioFecha.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbl_InfoUsuarioFecha.Location = new System.Drawing.Point(11, 11);
             this.lbl_InfoUsuarioFecha.Name = "lbl_InfoUsuarioFecha";
-            this.lbl_InfoUsuarioFecha.Size = new System.Drawing.Size(90, 15);
+            this.lbl_InfoUsuarioFecha.Size = new System.Drawing.Size(91, 17);
             this.lbl_InfoUsuarioFecha.TabIndex = 5;
             this.lbl_InfoUsuarioFecha.Text = "Usuario y Fecha";
             // 
@@ -144,7 +148,8 @@
             this.clientesToolStripMenuItem1,
             this.vuelosToolStripMenuItem,
             this.cuentaToolStripMenuItem,
-            this.cerrarToolStripMenuItem});
+            this.cerrarToolStripMenuItem,
+            this.horaToolStripMenuItem});
             this.mnu_menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnu_menuPrincipal.Name = "mnu_menuPrincipal";
             this.mnu_menuPrincipal.Size = new System.Drawing.Size(891, 56);
@@ -215,6 +220,19 @@
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
+            // horaToolStripMenuItem
+            // 
+            this.horaToolStripMenuItem.Checked = true;
+            this.horaToolStripMenuItem.CheckOnClick = true;
+            this.horaToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.horaToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.horaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("horaToolStripMenuItem.Image")));
+            this.horaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.horaToolStripMenuItem.Name = "horaToolStripMenuItem";
+            this.horaToolStripMenuItem.Size = new System.Drawing.Size(119, 52);
+            this.horaToolStripMenuItem.Text = "Hora";
+            this.horaToolStripMenuItem.Click += new System.EventHandler(this.horaToolStripMenuItem_Click);
+            // 
             // pnl_PanelDeFondo
             // 
             this.pnl_PanelDeFondo.Controls.Add(this.pic_ImagenDeFondo);
@@ -235,6 +253,11 @@
             this.pic_ImagenDeFondo.TabIndex = 0;
             this.pic_ImagenDeFondo.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -253,6 +276,7 @@
             this.Name = "MenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
+            this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.pnl_barraInfo.ResumeLayout(false);
             this.pnl_barraInfo.PerformLayout();
             this.mnu_menuPrincipal.ResumeLayout(false);
@@ -284,5 +308,7 @@
         private System.Windows.Forms.ToolStripMenuItem listaDeVuelosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventaDeVuelosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horaToolStripMenuItem;
+        private System.Windows.Forms.Timer timer1;
     }
 }

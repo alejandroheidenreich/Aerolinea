@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,16 +13,33 @@ namespace Interfaz
 {
     public partial class ListaDeVuelos : Form
     {
-        public ListaDeVuelos()
+        private Usuario usuarioActual;
+        private bool darkTheme;
+        public ListaDeVuelos(Usuario usuarioActual, bool darkTheme)
         {
             InitializeComponent();
+            this.usuarioActual = usuarioActual;
+            this.darkTheme = darkTheme;
+            TemaActual();
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)
         {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            MenuPrincipal menuPrincipal = new MenuPrincipal(usuarioActual);
             this.Hide();
             menuPrincipal.ShowDialog();
+        }
+
+        private void TemaActual()
+        {
+            if (this.darkTheme)
+            {
+                this.BackColor = Color.Black;
+            }
+            else
+            {
+                this.BackColor = Color.WhiteSmoke;
+            }
         }
     }
 }

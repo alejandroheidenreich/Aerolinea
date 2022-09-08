@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,16 @@ namespace Interfaz
 {
     public partial class VentaDeVuelos : Form
     {
-        public VentaDeVuelos()
+        private Usuario usuarioActual;
+        public VentaDeVuelos(Usuario usuarioActual)
         {
             InitializeComponent();
+            this.usuarioActual = usuarioActual;
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)
         {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            MenuPrincipal menuPrincipal = new MenuPrincipal(usuarioActual);
             this.Hide();
             menuPrincipal.ShowDialog();
         }

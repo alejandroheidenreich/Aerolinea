@@ -39,15 +39,15 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(94, 105);
+            this.dataGridView1.Location = new System.Drawing.Point(151, 97);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(707, 428);
+            this.dataGridView1.Size = new System.Drawing.Size(595, 353);
             this.dataGridView1.TabIndex = 0;
             // 
             // btn_AgregarVuelo
             // 
-            this.btn_AgregarVuelo.Location = new System.Drawing.Point(51, 20);
+            this.btn_AgregarVuelo.Location = new System.Drawing.Point(151, 20);
             this.btn_AgregarVuelo.Name = "btn_AgregarVuelo";
             this.btn_AgregarVuelo.Size = new System.Drawing.Size(132, 59);
             this.btn_AgregarVuelo.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // btn_ExaminarVuelo
             // 
-            this.btn_ExaminarVuelo.Location = new System.Drawing.Point(210, 20);
+            this.btn_ExaminarVuelo.Location = new System.Drawing.Point(289, 20);
             this.btn_ExaminarVuelo.Name = "btn_ExaminarVuelo";
             this.btn_ExaminarVuelo.Size = new System.Drawing.Size(132, 59);
             this.btn_ExaminarVuelo.TabIndex = 2;
@@ -65,7 +65,7 @@
             // 
             // btn_EliminarVuelo
             // 
-            this.btn_EliminarVuelo.Location = new System.Drawing.Point(370, 20);
+            this.btn_EliminarVuelo.Location = new System.Drawing.Point(427, 20);
             this.btn_EliminarVuelo.Name = "btn_EliminarVuelo";
             this.btn_EliminarVuelo.Size = new System.Drawing.Size(132, 59);
             this.btn_EliminarVuelo.TabIndex = 3;
@@ -74,7 +74,7 @@
             // 
             // btn_Salir
             // 
-            this.btn_Salir.Location = new System.Drawing.Point(733, 20);
+            this.btn_Salir.Location = new System.Drawing.Point(614, 20);
             this.btn_Salir.Name = "btn_Salir";
             this.btn_Salir.Size = new System.Drawing.Size(132, 59);
             this.btn_Salir.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 582);
+            this.ClientSize = new System.Drawing.Size(900, 489);
             this.ControlBox = false;
             this.Controls.Add(this.btn_Salir);
             this.Controls.Add(this.btn_EliminarVuelo);
@@ -95,7 +95,7 @@
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ListaDeVuelos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ListaDeVuelos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

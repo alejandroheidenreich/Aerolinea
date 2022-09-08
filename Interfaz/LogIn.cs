@@ -52,10 +52,11 @@ namespace Interfaz
                 {
                     if (item == usuarioIngresado)
                     {
-                        MenuPrincipal menuPrincipal = new MenuPrincipal();
+                        MenuPrincipal menuPrincipal = new MenuPrincipal(usuarioIngresado);
+                        //menuPrincipal.UsuarioActual = usuarioIngresado;
                         this.Hide();
+                        
                         menuPrincipal.ShowDialog();
-                        menuPrincipal.UsuarioActual = usuarioIngresado;
                     }
                     else
                     {

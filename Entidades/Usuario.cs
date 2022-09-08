@@ -12,11 +12,13 @@ namespace Entidades
         private string nombreDeUsuario;
         private string contrasenia;
 
+
         public Usuario(string nombreDeUsuario, string contrasenia)
         {
             this.nombreDeUsuario = nombreDeUsuario;
             this.contrasenia = contrasenia;
         }
+        public string NombreDeUsuario { get => nombreDeUsuario; }
 
         public static bool operator ==(Usuario u1, Usuario u2)
         {

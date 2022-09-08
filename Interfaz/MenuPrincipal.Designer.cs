@@ -45,9 +45,8 @@
             this.vuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaDeVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_PanelDeFondo = new System.Windows.Forms.Panel();
             this.pic_ImagenDeFondo = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -148,8 +147,8 @@
             this.clientesToolStripMenuItem1,
             this.vuelosToolStripMenuItem,
             this.cuentaToolStripMenuItem,
-            this.cerrarToolStripMenuItem,
-            this.horaToolStripMenuItem});
+            this.horaToolStripMenuItem,
+            this.cerrarToolStripMenuItem});
             this.mnu_menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnu_menuPrincipal.Name = "mnu_menuPrincipal";
             this.mnu_menuPrincipal.Size = new System.Drawing.Size(891, 56);
@@ -210,16 +209,6 @@
             this.ventaDeVuelosToolStripMenuItem.Text = "Venta De Vuelos";
             this.ventaDeVuelosToolStripMenuItem.Click += new System.EventHandler(this.ventaDeVuelosToolStripMenuItem_Click_1);
             // 
-            // cerrarToolStripMenuItem
-            // 
-            this.cerrarToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cerrarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cerrarToolStripMenuItem.Image")));
-            this.cerrarToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(131, 52);
-            this.cerrarToolStripMenuItem.Text = "Cerrar";
-            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
-            // 
             // horaToolStripMenuItem
             // 
             this.horaToolStripMenuItem.Checked = true;
@@ -232,6 +221,17 @@
             this.horaToolStripMenuItem.Size = new System.Drawing.Size(119, 52);
             this.horaToolStripMenuItem.Text = "Hora";
             this.horaToolStripMenuItem.Click += new System.EventHandler(this.horaToolStripMenuItem_Click);
+            // 
+            // cerrarToolStripMenuItem
+            // 
+            this.cerrarToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.cerrarToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cerrarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cerrarToolStripMenuItem.Image")));
+            this.cerrarToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(131, 52);
+            this.cerrarToolStripMenuItem.Text = "Cerrar";
+            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
             // pnl_PanelDeFondo
             // 
@@ -295,7 +295,6 @@
         private System.Windows.Forms.ToolStripMenuItem configurarCuentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSecionToolStripMenuItem;
         private System.Windows.Forms.MenuStrip mnu_menuPrincipal;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label lbl_DarkTheme;
         private Controles.BotonToggle btn_ToggleTheme;
         private System.Windows.Forms.Panel pnl_PanelDeFondo;

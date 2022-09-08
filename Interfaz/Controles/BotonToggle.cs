@@ -11,16 +11,19 @@ using System.Security.Permissions;
 
 namespace Interfaz.Controles
 {
+    //BotonToggle hereda de CheckBox
     public class BotonToggle : CheckBox
     {
+        //atributos inciales de colores
         private Color encendidoSlideColor = Color.MediumSlateBlue;
         private Color encendidoCirculoColor = Color.WhiteSmoke;
         private Color apagadoSlideColor = Color.Gray;
         private Color apagadoCirculoColor = Color.Gainsboro;
 
-
+        // construtor
         public BotonToggle()
         {
+            //inicializa el tamaño minimo del boton
             this.MinimumSize = new Size(45,22);
         }
         public Color EncendidoSlideColor 
@@ -32,7 +35,7 @@ namespace Interfaz.Controles
             set 
             { 
                 encendidoSlideColor = value; 
-                this.Invalidate();
+                this.Invalidate();//Invalida toda la superficie del control y hace que se vuelva a dibujar el mismo
             }
         }
         public Color EncendidoCirculoColor 
@@ -63,9 +66,8 @@ namespace Interfaz.Controles
         }
 
         public override string Text 
-        { 
-            get => base.Text;
-            set { }
+        {
+            get { return base.Text; }
         }
         private GraphicsPath GetGraphicsPath()
         {

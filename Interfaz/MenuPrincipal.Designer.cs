@@ -33,7 +33,7 @@
             this.pnl_barraInfo = new System.Windows.Forms.Panel();
             this.lbl_InfoUsuarioFecha = new System.Windows.Forms.Label();
             this.lbl_DarkTheme = new System.Windows.Forms.Label();
-            this.btn_ToggleTheme = new Interfaz.Controles.BotonToggle();
+            this.btn_ToggleTema = new Interfaz.Controles.BotonToggle();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurarCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +45,7 @@
             this.vuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaDeVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estadisticasHistoricasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_PanelDeFondo = new System.Windows.Forms.Panel();
@@ -61,7 +62,7 @@
             this.pnl_barraInfo.BackColor = System.Drawing.Color.SkyBlue;
             this.pnl_barraInfo.Controls.Add(this.lbl_InfoUsuarioFecha);
             this.pnl_barraInfo.Controls.Add(this.lbl_DarkTheme);
-            this.pnl_barraInfo.Controls.Add(this.btn_ToggleTheme);
+            this.pnl_barraInfo.Controls.Add(this.btn_ToggleTema);
             this.pnl_barraInfo.Location = new System.Drawing.Point(0, 542);
             this.pnl_barraInfo.Name = "pnl_barraInfo";
             this.pnl_barraInfo.Size = new System.Drawing.Size(891, 40);
@@ -86,20 +87,20 @@
             this.lbl_DarkTheme.TabIndex = 4;
             this.lbl_DarkTheme.Text = "Dark Theme";
             // 
-            // btn_ToggleTheme
+            // btn_ToggleTema
             // 
-            this.btn_ToggleTheme.ApagadoCirculoColor = System.Drawing.Color.Ivory;
-            this.btn_ToggleTheme.ApagadoSlideColor = System.Drawing.Color.Gray;
-            this.btn_ToggleTheme.AutoSize = true;
-            this.btn_ToggleTheme.EncendidoCirculoColor = System.Drawing.Color.Chartreuse;
-            this.btn_ToggleTheme.EncendidoSlideColor = System.Drawing.Color.Gainsboro;
-            this.btn_ToggleTheme.Location = new System.Drawing.Point(835, 11);
-            this.btn_ToggleTheme.MinimumSize = new System.Drawing.Size(45, 22);
-            this.btn_ToggleTheme.Name = "btn_ToggleTheme";
-            this.btn_ToggleTheme.Size = new System.Drawing.Size(45, 22);
-            this.btn_ToggleTheme.TabIndex = 3;
-            this.btn_ToggleTheme.UseVisualStyleBackColor = true;
-            this.btn_ToggleTheme.CheckedChanged += new System.EventHandler(this.btn_ToggleTheme_CheckedChanged);
+            this.btn_ToggleTema.ApagadoCirculoColor = System.Drawing.Color.Ivory;
+            this.btn_ToggleTema.ApagadoSlideColor = System.Drawing.Color.Gray;
+            this.btn_ToggleTema.AutoSize = true;
+            this.btn_ToggleTema.EncendidoCirculoColor = System.Drawing.Color.Chartreuse;
+            this.btn_ToggleTema.EncendidoSlideColor = System.Drawing.Color.Gainsboro;
+            this.btn_ToggleTema.Location = new System.Drawing.Point(835, 11);
+            this.btn_ToggleTema.MinimumSize = new System.Drawing.Size(45, 22);
+            this.btn_ToggleTema.Name = "btn_ToggleTema";
+            this.btn_ToggleTema.Size = new System.Drawing.Size(45, 22);
+            this.btn_ToggleTema.TabIndex = 3;
+            this.btn_ToggleTema.UseVisualStyleBackColor = true;
+            this.btn_ToggleTema.CheckedChanged += new System.EventHandler(this.btn_ToggleCambioDeTema_Checked);
             // 
             // inicioToolStripMenuItem
             // 
@@ -109,7 +110,7 @@
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
             this.inicioToolStripMenuItem.Size = new System.Drawing.Size(122, 52);
             this.inicioToolStripMenuItem.Text = "Inicio";
-            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
+            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.InicioToolStripMenuItem_Click);
             // 
             // cuentaToolStripMenuItem
             // 
@@ -136,7 +137,7 @@
             this.cerrarSecionToolStripMenuItem.Name = "cerrarSecionToolStripMenuItem";
             this.cerrarSecionToolStripMenuItem.Size = new System.Drawing.Size(213, 32);
             this.cerrarSecionToolStripMenuItem.Text = "Cerrar Sesion";
-            this.cerrarSecionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSecionToolStripMenuItem_Click);
+            this.cerrarSecionToolStripMenuItem.Click += new System.EventHandler(this.CerrarSecionToolStripMenuItem_Click);
             // 
             // mnu_menuPrincipal
             // 
@@ -164,29 +165,30 @@
             this.clientesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("clientesToolStripMenuItem1.Image")));
             this.clientesToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(145, 52);
-            this.clientesToolStripMenuItem1.Text = "Clientes";
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(159, 52);
+            this.clientesToolStripMenuItem1.Text = "Pasajeros";
             // 
             // informacionToolStripMenuItem1
             // 
             this.informacionToolStripMenuItem1.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.informacionToolStripMenuItem1.Name = "informacionToolStripMenuItem1";
-            this.informacionToolStripMenuItem1.Size = new System.Drawing.Size(171, 32);
+            this.informacionToolStripMenuItem1.Size = new System.Drawing.Size(180, 32);
             this.informacionToolStripMenuItem1.Text = "Informacion";
-            this.informacionToolStripMenuItem1.Click += new System.EventHandler(this.informacionToolStripMenuItem1_Click);
+            this.informacionToolStripMenuItem1.Click += new System.EventHandler(this.InformacionToolStripMenuItem1_Click);
             // 
             // cancelacionToolStripMenuItem1
             // 
             this.cancelacionToolStripMenuItem1.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cancelacionToolStripMenuItem1.Name = "cancelacionToolStripMenuItem1";
-            this.cancelacionToolStripMenuItem1.Size = new System.Drawing.Size(171, 32);
+            this.cancelacionToolStripMenuItem1.Size = new System.Drawing.Size(180, 32);
             this.cancelacionToolStripMenuItem1.Text = "Cancelacion";
             // 
             // vuelosToolStripMenuItem
             // 
             this.vuelosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listaDeVuelosToolStripMenuItem,
-            this.ventaDeVuelosToolStripMenuItem});
+            this.ventaDeVuelosToolStripMenuItem,
+            this.estadisticasHistoricasToolStripMenuItem});
             this.vuelosToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.vuelosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("vuelosToolStripMenuItem.Image")));
             this.vuelosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -198,16 +200,23 @@
             // 
             this.listaDeVuelosToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.listaDeVuelosToolStripMenuItem.Name = "listaDeVuelosToolStripMenuItem";
-            this.listaDeVuelosToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.listaDeVuelosToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.listaDeVuelosToolStripMenuItem.Text = "Lista De Vuelos";
             // 
             // ventaDeVuelosToolStripMenuItem
             // 
             this.ventaDeVuelosToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ventaDeVuelosToolStripMenuItem.Name = "ventaDeVuelosToolStripMenuItem";
-            this.ventaDeVuelosToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.ventaDeVuelosToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.ventaDeVuelosToolStripMenuItem.Text = "Venta De Vuelos";
-            this.ventaDeVuelosToolStripMenuItem.Click += new System.EventHandler(this.ventaDeVuelosToolStripMenuItem_Click_1);
+            this.ventaDeVuelosToolStripMenuItem.Click += new System.EventHandler(this.VentaDeVuelosToolStripMenuItem_Click_1);
+            // 
+            // estadisticasHistoricasToolStripMenuItem
+            // 
+            this.estadisticasHistoricasToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.estadisticasHistoricasToolStripMenuItem.Name = "estadisticasHistoricasToolStripMenuItem";
+            this.estadisticasHistoricasToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
+            this.estadisticasHistoricasToolStripMenuItem.Text = "Estadisticas Historicas";
             // 
             // horaToolStripMenuItem
             // 
@@ -220,7 +229,7 @@
             this.horaToolStripMenuItem.Name = "horaToolStripMenuItem";
             this.horaToolStripMenuItem.Size = new System.Drawing.Size(119, 52);
             this.horaToolStripMenuItem.Text = "Hora";
-            this.horaToolStripMenuItem.Click += new System.EventHandler(this.horaToolStripMenuItem_Click);
+            this.horaToolStripMenuItem.Click += new System.EventHandler(this.HoraToolStripMenuItem_Click);
             // 
             // cerrarToolStripMenuItem
             // 
@@ -231,7 +240,7 @@
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
             this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(131, 52);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
-            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
+            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.CerrarToolStripMenuItem_Click);
             // 
             // pnl_PanelDeFondo
             // 
@@ -256,7 +265,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.Reloj_Tick);
             // 
             // MenuPrincipal
             // 
@@ -296,7 +305,7 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarSecionToolStripMenuItem;
         private System.Windows.Forms.MenuStrip mnu_menuPrincipal;
         private System.Windows.Forms.Label lbl_DarkTheme;
-        private Controles.BotonToggle btn_ToggleTheme;
+        private Controles.BotonToggle btn_ToggleTema;
         private System.Windows.Forms.Panel pnl_PanelDeFondo;
         private System.Windows.Forms.PictureBox pic_ImagenDeFondo;
         private System.Windows.Forms.Label lbl_InfoUsuarioFecha;
@@ -309,5 +318,6 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horaToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem estadisticasHistoricasToolStripMenuItem;
     }
 }

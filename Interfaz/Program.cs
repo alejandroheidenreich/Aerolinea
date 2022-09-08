@@ -15,7 +15,6 @@ namespace Interfaz
         [STAThread]
         static void Main()
         {
-            Compania aerolinea = new Compania();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

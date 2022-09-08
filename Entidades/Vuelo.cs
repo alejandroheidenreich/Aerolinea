@@ -12,7 +12,7 @@ namespace Entidades
         private const double PRECIOPORHORAINTERNACIONAL = 100;
         private int duracionDelVuelo;
         private Aeronave aeronave;
-        private bool internacional;
+        private bool esInternacional;
         private List<Pasajero> listaDePasajeros;
 
         public Vuelo(int duracionDelVuelo, Aeronave aeronave)
@@ -22,18 +22,45 @@ namespace Entidades
             this.listaDePasajeros = new List<Pasajero>();
         }
 
+        public bool VueloCompleto
+        {
+            get
+            {
+                return this.listaDePasajeros.Count == this.aeronave.CantidadDeAsientos;
+            }
+        }
+
         public int DuracionDelVuelo { get => duracionDelVuelo; }
         public Aeronave Aeronave { get => aeronave; }
-        public bool TipoDeVuelo { get => internacional; }
+        public bool TipoDeVuelo { get => esInternacional; }
         private double CostoDelPasaje
         {
             set 
             {
-                if (this.internacional)
+                if (this.esInternacional)
                 {
 
                 }
             }
+        }
+
+        public static bool operator ==(Vuelo v, Pasajero c)
+        {
+            bool pertenece = false; 
+            foreach (Pasajero item in v.listaDePasajeros)
+            {
+                if (item == c)
+                {
+                    pertenece = true;
+                    break;
+                }
+            }
+            return pertenece;
+        }
+
+        public static bool operator !=(Vuelo v, Pasajero c)
+        {
+            return !(v == c);
         }
     }
 }

@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using Application = System.Windows.Forms.Application;
 
 namespace Interfaz
 {
@@ -27,21 +30,22 @@ namespace Interfaz
         public LogIn()
         {
             InitializeComponent();
+            usuarioIngresado = new Usuario("0","0");
         }
 
         public Usuario Usuario
         {
             get { return usuarioIngresado; }
         }
-
+ 
         private void btn_Ingresar_Click(object sender, EventArgs e)
         {
             
-            if (txt_usuario.Text == "")
+            if (String.IsNullOrEmpty(txt_usuario.Text))
             {
                 MostrarMensajeDeError("Por favor, ingrese un usuario");
             }
-            else if (txt_contrasenia.Text == "")
+            else if (String.IsNullOrEmpty(txt_contrasenia.Text))
             {
                 MostrarMensajeDeError("Por favor, ingrese una contraseña");
             }
@@ -53,9 +57,7 @@ namespace Interfaz
                     if (item == usuarioIngresado)
                     {
                         MenuPrincipal menuPrincipal = new MenuPrincipal(usuarioIngresado);
-                        //menuPrincipal.UsuarioActual = usuarioIngresado;
                         this.Hide();
-                        
                         menuPrincipal.ShowDialog();
                     }
                     else
@@ -64,7 +66,6 @@ namespace Interfaz
                     }
                 }
             }
-
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)
@@ -92,14 +93,14 @@ namespace Interfaz
         {
             mouseAccion = false;
         }
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        private void pic_Logo_MouseDown(object sender, MouseEventArgs e)
         {
             mouseAccion = true;
             mousePosX = e.X;
             mousePosY = e.Y;
         }
 
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        private void pic_Logo_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseAccion)
             {
@@ -107,7 +108,7 @@ namespace Interfaz
             }
         }
 
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        private void pic_Logo_MouseUp(object sender, MouseEventArgs e)
         {
             mouseAccion = false;
         }
@@ -118,10 +119,15 @@ namespace Interfaz
             lbl_mensajeDeError.Visible = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_BotonAutoCompletado_Click(object sender, EventArgs e)
         {
             txt_usuario.Text = "HeidenreichAlejandro";
             txt_contrasenia.Text = "contraseña123";
+        }
+        private void lbl_recuperarContrasenia_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show($"Contactese con soporte{Environment.NewLine}Se cerrara la aplicacion", "Cerrando Aplicacion", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+             Application.Exit();
         }
     }
 }

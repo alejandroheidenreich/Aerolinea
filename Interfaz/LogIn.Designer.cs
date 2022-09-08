@@ -34,14 +34,14 @@
             this.btn_Ingresar = new System.Windows.Forms.Button();
             this.btn_Salir = new System.Windows.Forms.Button();
             this.pnl_Divisor = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pic_Logo = new System.Windows.Forms.PictureBox();
             this.lbl_linea1 = new System.Windows.Forms.Label();
             this.lbl_linea2 = new System.Windows.Forms.Label();
             this.lbl_recuperarContrasenia = new System.Windows.Forms.LinkLabel();
             this.lbl_mensajeDeError = new System.Windows.Forms.Label();
             this.btn_BotonAutoCompletado = new System.Windows.Forms.Button();
             this.pnl_Divisor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_usuario
@@ -49,7 +49,7 @@
             this.txt_usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.txt_usuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_usuario.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_usuario.ForeColor = System.Drawing.Color.SteelBlue;
             this.txt_usuario.Location = new System.Drawing.Point(312, 66);
             this.txt_usuario.Name = "txt_usuario";
             this.txt_usuario.PlaceholderText = "USUARIO";
@@ -61,7 +61,7 @@
             this.txt_contrasenia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.txt_contrasenia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_contrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_contrasenia.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_contrasenia.ForeColor = System.Drawing.Color.SteelBlue;
             this.txt_contrasenia.Location = new System.Drawing.Point(312, 136);
             this.txt_contrasenia.Name = "txt_contrasenia";
             this.txt_contrasenia.PasswordChar = '⚫';
@@ -77,7 +77,7 @@
             this.btn_Ingresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_Ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Ingresar.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_Ingresar.ForeColor = System.Drawing.Color.SteelBlue;
             this.btn_Ingresar.Location = new System.Drawing.Point(312, 216);
             this.btn_Ingresar.Name = "btn_Ingresar";
             this.btn_Ingresar.Size = new System.Drawing.Size(358, 40);
@@ -105,33 +105,32 @@
             // 
             // pnl_Divisor
             // 
-            this.pnl_Divisor.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.pnl_Divisor.Controls.Add(this.pictureBox1);
-            this.pnl_Divisor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_Divisor.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnl_Divisor.Controls.Add(this.pic_Logo);
             this.pnl_Divisor.Location = new System.Drawing.Point(0, 0);
             this.pnl_Divisor.Name = "pnl_Divisor";
             this.pnl_Divisor.Size = new System.Drawing.Size(250, 330);
             this.pnl_Divisor.TabIndex = 5;
             // 
-            // pictureBox1
+            // pic_Logo
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.SkyBlue;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 330);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            this.pic_Logo.BackColor = System.Drawing.Color.SteelBlue;
+            this.pic_Logo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pic_Logo.Image = ((System.Drawing.Image)(resources.GetObject("pic_Logo.Image")));
+            this.pic_Logo.Location = new System.Drawing.Point(0, 0);
+            this.pic_Logo.Name = "pic_Logo";
+            this.pic_Logo.Size = new System.Drawing.Size(250, 330);
+            this.pic_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic_Logo.TabIndex = 0;
+            this.pic_Logo.TabStop = false;
+            this.pic_Logo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pic_Logo_MouseDown);
+            this.pic_Logo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pic_Logo_MouseMove);
+            this.pic_Logo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pic_Logo_MouseUp);
             // 
             // lbl_linea1
             // 
             this.lbl_linea1.AutoSize = true;
-            this.lbl_linea1.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbl_linea1.ForeColor = System.Drawing.Color.SteelBlue;
             this.lbl_linea1.Location = new System.Drawing.Point(312, 88);
             this.lbl_linea1.Name = "lbl_linea1";
             this.lbl_linea1.Size = new System.Drawing.Size(352, 15);
@@ -141,7 +140,7 @@
             // lbl_linea2
             // 
             this.lbl_linea2.AutoSize = true;
-            this.lbl_linea2.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbl_linea2.ForeColor = System.Drawing.Color.SteelBlue;
             this.lbl_linea2.Location = new System.Drawing.Point(312, 158);
             this.lbl_linea2.Name = "lbl_linea2";
             this.lbl_linea2.Size = new System.Drawing.Size(352, 15);
@@ -150,7 +149,7 @@
             // 
             // lbl_recuperarContrasenia
             // 
-            this.lbl_recuperarContrasenia.ActiveLinkColor = System.Drawing.Color.LightSlateGray;
+            this.lbl_recuperarContrasenia.ActiveLinkColor = System.Drawing.Color.SteelBlue;
             this.lbl_recuperarContrasenia.AutoSize = true;
             this.lbl_recuperarContrasenia.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lbl_recuperarContrasenia.LinkColor = System.Drawing.Color.DimGray;
@@ -160,6 +159,7 @@
             this.lbl_recuperarContrasenia.TabIndex = 1;
             this.lbl_recuperarContrasenia.TabStop = true;
             this.lbl_recuperarContrasenia.Text = "¿Olvidaste tu contraseña?";
+            this.lbl_recuperarContrasenia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_recuperarContrasenia_LinkClicked);
             // 
             // lbl_mensajeDeError
             // 
@@ -191,7 +191,7 @@
             this.btn_BotonAutoCompletado.Text = "©";
             this.btn_BotonAutoCompletado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_BotonAutoCompletado.UseVisualStyleBackColor = false;
-            this.btn_BotonAutoCompletado.Click += new System.EventHandler(this.button1_Click);
+            this.btn_BotonAutoCompletado.Click += new System.EventHandler(this.btn_BotonAutoCompletado_Click);
             // 
             // LogIn
             // 
@@ -222,7 +222,7 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LogIn_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LogIn_MouseUp);
             this.pnl_Divisor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,7 +236,7 @@
         private System.Windows.Forms.Panel pnl_Divisor;
         private System.Windows.Forms.Label lbl_linea1;
         private System.Windows.Forms.Label lbl_linea2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pic_Logo;
         private System.Windows.Forms.LinkLabel lbl_recuperarContrasenia;
         private System.Windows.Forms.Label lbl_mensajeDeError;
         private System.Windows.Forms.Button btn_BotonAutoCompletado;

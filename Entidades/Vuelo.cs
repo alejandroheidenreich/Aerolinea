@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 
 namespace Entidades
@@ -18,7 +17,7 @@ namespace Entidades
 
     public class Vuelo
     {
-        
+
         private string destino;
         private int duracionDelVuelo;
         private Aeronave aeronave;
@@ -52,7 +51,7 @@ namespace Entidades
         }
         public string EstadoVueloActual
         {
-            get 
+            get
             {
                 if (this.listaDePasajeros.Count == this.aeronave.CantidadDeAsientosTotales)
                     return "COMPLETO";
@@ -106,7 +105,7 @@ namespace Entidades
             sb.Append($"Destino: {this.destino} - {this.Tipo}");
             sb.Append("Disponibilidad: ");
             sb.AppendLine(this.EstadoVueloActual);
-     
+
 
             return base.ToString();
         }

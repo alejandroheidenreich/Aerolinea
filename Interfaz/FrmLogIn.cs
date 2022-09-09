@@ -1,6 +1,5 @@
 ﻿using Entidades;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using Application = System.Windows.Forms.Application;
 
@@ -46,7 +45,7 @@ namespace Interfaz
                     MostrarMensajeDeError("Datos incorrectos");
                 }
             }
-        } 
+        }
 
         private void MostrarMensajeDeError(string mensaje)
         {

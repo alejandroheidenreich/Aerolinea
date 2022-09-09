@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entidades
+﻿namespace Entidades
 {
     public class Usuario
     {
@@ -18,7 +11,10 @@ namespace Entidades
             this.nombreDeUsuario = nombreDeUsuario;
             this.contrasenia = contrasenia;
         }
-        public string NombreDeUsuario { get => nombreDeUsuario; }
+        public string NombreDeUsuario
+        {
+            get => nombreDeUsuario;
+        }
 
         public static bool operator ==(Usuario u1, Usuario u2)
         {
@@ -33,7 +29,7 @@ namespace Entidades
         public override bool Equals(object obj)
         {
             Usuario usuario = obj as Usuario;
-            return usuario is not null &&  this == usuario;
+            return usuario is not null && this == usuario;
         }
     }
 }

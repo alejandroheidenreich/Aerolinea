@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Entidades
 {
@@ -15,7 +11,7 @@ namespace Entidades
         private int edad;
         private bool equipajeDeMano;
         private double equipajeDeBodega;
-      
+
         public Pasajero(string nombreCompleto, int dni, int edad)
         {
             this.nombreCompleto = nombreCompleto;

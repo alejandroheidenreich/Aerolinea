@@ -11,16 +11,13 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class ListaDeVuelos : Form
+    public partial class VentaDeVuelos : Form
     {
         private Usuario usuarioActual;
-        private bool darkTheme;
-        public ListaDeVuelos(Usuario usuarioActual, bool darkTheme)
+        public VentaDeVuelos(Usuario usuarioActual)
         {
             InitializeComponent();
             this.usuarioActual = usuarioActual;
-            this.darkTheme = darkTheme;
-            TemaActual();
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)
@@ -30,16 +27,5 @@ namespace Interfaz
             menuPrincipal.ShowDialog();
         }
 
-        private void TemaActual()
-        {
-            if (this.darkTheme)
-            {
-                this.BackColor = Color.Black;
-            }
-            else
-            {
-                this.BackColor = Color.WhiteSmoke;
-            }
-        }
     }
 }

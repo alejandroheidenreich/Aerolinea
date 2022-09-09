@@ -172,7 +172,7 @@
             // 
             this.informacionToolStripMenuItem1.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.informacionToolStripMenuItem1.Name = "informacionToolStripMenuItem1";
-            this.informacionToolStripMenuItem1.Size = new System.Drawing.Size(180, 32);
+            this.informacionToolStripMenuItem1.Size = new System.Drawing.Size(171, 32);
             this.informacionToolStripMenuItem1.Text = "Informacion";
             this.informacionToolStripMenuItem1.Click += new System.EventHandler(this.InformacionToolStripMenuItem1_Click);
             // 
@@ -180,7 +180,7 @@
             // 
             this.cancelacionToolStripMenuItem1.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cancelacionToolStripMenuItem1.Name = "cancelacionToolStripMenuItem1";
-            this.cancelacionToolStripMenuItem1.Size = new System.Drawing.Size(180, 32);
+            this.cancelacionToolStripMenuItem1.Size = new System.Drawing.Size(171, 32);
             this.cancelacionToolStripMenuItem1.Text = "Cancelacion";
             // 
             // vuelosToolStripMenuItem
@@ -201,7 +201,8 @@
             this.listaDeVuelosToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.listaDeVuelosToolStripMenuItem.Name = "listaDeVuelosToolStripMenuItem";
             this.listaDeVuelosToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
-            this.listaDeVuelosToolStripMenuItem.Text = "Lista De Vuelos";
+            this.listaDeVuelosToolStripMenuItem.Text = "Administrar Vuelos";
+            this.listaDeVuelosToolStripMenuItem.Click += new System.EventHandler(this.ListaDeVuelosToolStripMenuItem_Click);
             // 
             // ventaDeVuelosToolStripMenuItem
             // 

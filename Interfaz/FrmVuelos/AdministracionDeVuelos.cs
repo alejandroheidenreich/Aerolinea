@@ -11,13 +11,14 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class VentaDeVuelos : Form
+    public partial class AdministracionDeVuelos : Form
     {
         private Usuario usuarioActual;
-        public VentaDeVuelos(Usuario usuarioActual)
+        public AdministracionDeVuelos(Usuario usuarioActual)
         {
             InitializeComponent();
             this.usuarioActual = usuarioActual;
+            //TemaActual();
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)
@@ -25,6 +26,18 @@ namespace Interfaz
             MenuPrincipal menuPrincipal = new MenuPrincipal(usuarioActual);
             this.Hide();
             menuPrincipal.ShowDialog();
+        }
+
+        private void TemaActual()
+        {
+            //if (this.darkTheme)
+            //{
+            //    this.BackColor = Color.Black;
+            //}
+            //else
+            //{
+            //    this.BackColor = Color.WhiteSmoke;
+            //}
         }
     }
 }

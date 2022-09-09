@@ -43,7 +43,7 @@
             // cb_MenuDelDia
             // 
             this.cb_MenuDelDia.AutoSize = true;
-            this.cb_MenuDelDia.Location = new System.Drawing.Point(35, 25);
+            this.cb_MenuDelDia.Location = new System.Drawing.Point(25, 112);
             this.cb_MenuDelDia.Name = "cb_MenuDelDia";
             this.cb_MenuDelDia.Size = new System.Drawing.Size(96, 19);
             this.cb_MenuDelDia.TabIndex = 0;
@@ -53,7 +53,7 @@
             // cb_Wiifi
             // 
             this.cb_Wiifi.AutoSize = true;
-            this.cb_Wiifi.Location = new System.Drawing.Point(35, 50);
+            this.cb_Wiifi.Location = new System.Drawing.Point(25, 137);
             this.cb_Wiifi.Name = "cb_Wiifi";
             this.cb_Wiifi.Size = new System.Drawing.Size(50, 19);
             this.cb_Wiifi.TabIndex = 1;
@@ -63,7 +63,7 @@
             // cb_Disponibilidad
             // 
             this.cb_Disponibilidad.AutoSize = true;
-            this.cb_Disponibilidad.Location = new System.Drawing.Point(35, 75);
+            this.cb_Disponibilidad.Location = new System.Drawing.Point(25, 162);
             this.cb_Disponibilidad.Name = "cb_Disponibilidad";
             this.cb_Disponibilidad.Size = new System.Drawing.Size(102, 19);
             this.cb_Disponibilidad.TabIndex = 2;
@@ -73,7 +73,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(176, 25);
+            this.dataGridView1.Location = new System.Drawing.Point(176, 67);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(675, 414);
@@ -81,7 +81,7 @@
             // 
             // btn_Vender
             // 
-            this.btn_Vender.Location = new System.Drawing.Point(12, 248);
+            this.btn_Vender.Location = new System.Drawing.Point(15, 271);
             this.btn_Vender.Name = "btn_Vender";
             this.btn_Vender.Size = new System.Drawing.Size(127, 57);
             this.btn_Vender.TabIndex = 4;
@@ -90,7 +90,7 @@
             // 
             // btn_Salir
             // 
-            this.btn_Salir.Location = new System.Drawing.Point(12, 339);
+            this.btn_Salir.Location = new System.Drawing.Point(17, 357);
             this.btn_Salir.Name = "btn_Salir";
             this.btn_Salir.Size = new System.Drawing.Size(127, 57);
             this.btn_Salir.TabIndex = 5;
@@ -100,7 +100,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(119, 208);
+            this.numericUpDown1.Location = new System.Drawing.Point(133, 221);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(37, 23);
             this.numericUpDown1.TabIndex = 6;
@@ -108,7 +108,7 @@
             // lbl_cantidad
             // 
             this.lbl_cantidad.AutoSize = true;
-            this.lbl_cantidad.Location = new System.Drawing.Point(5, 211);
+            this.lbl_cantidad.Location = new System.Drawing.Point(15, 223);
             this.lbl_cantidad.Name = "lbl_cantidad";
             this.lbl_cantidad.Size = new System.Drawing.Size(112, 15);
             this.lbl_cantidad.TabIndex = 7;
@@ -118,7 +118,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 502);
+            this.ClientSize = new System.Drawing.Size(893, 561);
+            this.ControlBox = false;
             this.Controls.Add(this.lbl_cantidad);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.btn_Salir);
@@ -131,6 +132,7 @@
             this.Name = "VentaDeVuelos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "VentaDeVuelos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);

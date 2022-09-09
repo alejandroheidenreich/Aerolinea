@@ -14,16 +14,13 @@ namespace Interfaz
     public partial class MenuPrincipal : Form
     {
         private Usuario usuarioActual;
-        private VentaDeVuelos? ventaDeVuelos;
-        private DateTime hora;
+
         public MenuPrincipal(Usuario usuarioActual)
         {
             InitializeComponent();
             this.usuarioActual = usuarioActual;
             MensajeDeBarraDeInformacion(usuarioActual.NombreDeUsuario);
             IsMdiContainer = true;
-            hora = DateTime.Now;
-            
         }
         public Usuario UsuarioActual
         {
@@ -38,16 +35,7 @@ namespace Interfaz
         {
             this.horaToolStripMenuItem.Text = DateTime.Now.ToString("HH:mm:ss");
         }
-        private void VentaDeVuelosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ventaDeVuelos is null)
-            {
-                ventaDeVuelos = new VentaDeVuelos(usuarioActual);
-                ventaDeVuelos.MdiParent = this;
-            }
-            OcultarFondo();
-            ventaDeVuelos.Show();
-        }
+
         private void CerrarSecionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LogIn login = new LogIn();
@@ -57,35 +45,52 @@ namespace Interfaz
 
         private void InicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MostrarFondo();
-        }
+            Form hijos = this.ActiveMdiChild;
 
-        private void ListaDeVuelosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ListaDeVuelos listaDeVuelos = new ListaDeVuelos(usuarioActual, btn_ToggleTema.Checked);
-            listaDeVuelos.ShowDialog();
+            while (hijos is not null)
+            {
+                hijos.Hide();
+                hijos = this.ActiveMdiChild;
+            }
+
+            pnl_PanelDeFondo.Visible = true;
         }
 
         private void InformacionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (ventaDeVuelos is null)
+            
+
+        }
+        private void ListaDeVuelosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["AdministracionDeVuelos"] is not null)
             {
-                ventaDeVuelos = new VentaDeVuelos(usuarioActual);
-                ventaDeVuelos.MdiParent = this;
+                Application.OpenForms["AdministracionDeVuelos"].Activate();    
+                Application.OpenForms["AdministracionDeVuelos"].StartPosition = FormStartPosition.CenterParent;
             }
-            OcultarFondo();
-            ventaDeVuelos.Show();
+            else
+            {
+                AdministracionDeVuelos administracionDeVuelos = new AdministracionDeVuelos(usuarioActual);
+                administracionDeVuelos.MdiParent = this;
+                pnl_PanelDeFondo.Visible = false;
+                administracionDeVuelos.Show();
+            }
         }
 
         private void VentaDeVuelosToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            if (ventaDeVuelos is null)
+            if (Application.OpenForms["VentaDeVuelos"] is not null)
             {
-                ventaDeVuelos = new VentaDeVuelos(usuarioActual);
-                ventaDeVuelos.MdiParent = this;
+                Application.OpenForms["VentaDeVuelos"].Activate();
+                Application.OpenForms["VentaDeVuelos"].StartPosition = FormStartPosition.CenterParent;
             }
-            OcultarFondo();
-            ventaDeVuelos.Show();
+            else
+            {
+                VentaDeVuelos ventaDeVuelos = new VentaDeVuelos(usuarioActual);
+                ventaDeVuelos.MdiParent = this;
+                pnl_PanelDeFondo.Visible = false;
+                ventaDeVuelos.Show();
+            }
         }
         private void CerrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -140,15 +145,6 @@ namespace Interfaz
                 horaToolStripMenuItem.ForeColor = Color.Black;
                 cerrarSecionToolStripMenuItem.ForeColor = Color.Black;
             }
-        }
-        private void OcultarFondo()
-        {
-            pnl_PanelDeFondo.Visible = false;
-        }
-        private void MostrarFondo()
-        {
-            pnl_PanelDeFondo.Visible = true;
-        }
-
+        } 
     }
 }

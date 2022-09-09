@@ -1,12 +1,7 @@
 ﻿using Entidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -14,7 +9,7 @@ namespace Interfaz
     public partial class MenuPrincipal : Form
     {
         private Usuario usuarioActual;
-
+        private Form? formActivo;
         public MenuPrincipal(Usuario usuarioActual)
         {
             InitializeComponent();
@@ -24,8 +19,14 @@ namespace Interfaz
         }
         public Usuario UsuarioActual
         {
-            get { return usuarioActual; }
-            set { usuarioActual = value; }
+            get
+            {
+                return usuarioActual;
+            }
+            set
+            {
+                usuarioActual = value;
+            }
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
@@ -45,53 +46,43 @@ namespace Interfaz
 
         private void InicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form hijos = this.ActiveMdiChild;
-
-            while (hijos is not null)
-            {
-                hijos.Hide();
-                hijos = this.ActiveMdiChild;
-            }
-
+            OcultarForm();
             pnl_PanelDeFondo.Visible = true;
         }
 
         private void InformacionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
-
+            ActivarForm(new InformacionDeLosPasajeros(btn_ToggleTema.Checked));
         }
+
         private void ListaDeVuelosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms["AdministracionDeVuelos"] is not null)
-            {
-                Application.OpenForms["AdministracionDeVuelos"].Activate();    
-                Application.OpenForms["AdministracionDeVuelos"].StartPosition = FormStartPosition.CenterParent;
-            }
-            else
-            {
-                AdministracionDeVuelos administracionDeVuelos = new AdministracionDeVuelos(usuarioActual);
-                administracionDeVuelos.MdiParent = this;
-                pnl_PanelDeFondo.Visible = false;
-                administracionDeVuelos.Show();
-            }
+            ActivarForm(new AdministracionDeVuelos(btn_ToggleTema.Checked));
         }
 
         private void VentaDeVuelosToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            if (Application.OpenForms["VentaDeVuelos"] is not null)
+
+            ActivarForm(new VentaDeVuelos(btn_ToggleTema.Checked));
+        }
+
+        private void ActivarForm(Form form)
+        {
+            OcultarForm();
+            formActivo = form;
+            formActivo.MdiParent = this;
+            pnl_PanelDeFondo.Visible = false;
+            formActivo.Show();
+        }
+
+        private void OcultarForm()
+        {
+            if (formActivo is not null)
             {
-                Application.OpenForms["VentaDeVuelos"].Activate();
-                Application.OpenForms["VentaDeVuelos"].StartPosition = FormStartPosition.CenterParent;
-            }
-            else
-            {
-                VentaDeVuelos ventaDeVuelos = new VentaDeVuelos(usuarioActual);
-                ventaDeVuelos.MdiParent = this;
-                pnl_PanelDeFondo.Visible = false;
-                ventaDeVuelos.Show();
+                formActivo.Hide();
             }
         }
+        
         private void CerrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -101,12 +92,12 @@ namespace Interfaz
         {
             if (horaToolStripMenuItem.Checked)
             {
-                timer1.Enabled = true;
+                Reloj.Enabled = true;
                 this.horaToolStripMenuItem.Text = DateTime.Now.ToString("HH:mm:ss");
             }
             else
             {
-                timer1.Enabled = false;
+                Reloj.Enabled = false;
                 this.horaToolStripMenuItem.Text = String.Empty;
             }
         }
@@ -120,31 +111,48 @@ namespace Interfaz
         {
             if (btn_ToggleTema.Checked)
             {
-                this.BackColor = Color.Black;
-                pnl_barraInfo.BackColor = Color.SteelBlue;
-                mnu_menuPrincipal.BackColor = Color.SteelBlue;
-                lbl_InfoUsuarioFecha.ForeColor = Color.LightGray;
-                inicioToolStripMenuItem.ForeColor = Color.LightGray;
-                clientesToolStripMenuItem1.ForeColor = Color.LightGray;
-                vuelosToolStripMenuItem.ForeColor = Color.LightGray;
-                cuentaToolStripMenuItem.ForeColor = Color.LightGray;
-                cerrarToolStripMenuItem.ForeColor = Color.LightGray;
-                horaToolStripMenuItem.ForeColor = Color.LightGray;
+                ActivarDarkMode();
+                RecargarForm();
             }
             else
             {
-                this.BackColor = Color.WhiteSmoke;
-                pnl_barraInfo.BackColor = Color.SkyBlue;
-                mnu_menuPrincipal.BackColor = Color.SkyBlue;
-                lbl_InfoUsuarioFecha.ForeColor = Color.Black;
-                inicioToolStripMenuItem.ForeColor = Color.Black;
-                clientesToolStripMenuItem1.ForeColor = Color.Black;
-                vuelosToolStripMenuItem.ForeColor = Color.Black;
-                cuentaToolStripMenuItem.ForeColor= Color.Black;
-                cerrarToolStripMenuItem.ForeColor = Color.Black;
-                horaToolStripMenuItem.ForeColor = Color.Black;
-                cerrarSecionToolStripMenuItem.ForeColor = Color.Black;
+                ActivarLightMode();
+                RecargarForm();
             }
-        } 
+        }
+        private void RecargarForm()
+        {
+            if (this.formActivo is not null)
+            {
+                this.formActivo.Refresh();
+            }
+        }
+        private void ActivarDarkMode()
+        {
+            this.BackColor = Color.Black;
+            pnl_barraInfo.BackColor = Color.SteelBlue;
+            mnu_menuPrincipal.BackColor = Color.SteelBlue;
+            lbl_InfoUsuarioFecha.ForeColor = Color.LightGray;
+            inicioToolStripMenuItem.ForeColor = Color.LightGray;
+            clientesToolStripMenuItem1.ForeColor = Color.LightGray;
+            vuelosToolStripMenuItem.ForeColor = Color.LightGray;
+            cuentaToolStripMenuItem.ForeColor = Color.LightGray;
+            cerrarToolStripMenuItem.ForeColor = Color.LightGray;
+            horaToolStripMenuItem.ForeColor = Color.LightGray;
+        }
+        private void ActivarLightMode()
+        {
+            BackColor = Color.WhiteSmoke;
+            pnl_barraInfo.BackColor = Color.SkyBlue;
+            mnu_menuPrincipal.BackColor = Color.SkyBlue;
+            lbl_InfoUsuarioFecha.ForeColor = Color.Black;
+            inicioToolStripMenuItem.ForeColor = Color.Black;
+            clientesToolStripMenuItem1.ForeColor = Color.Black;
+            vuelosToolStripMenuItem.ForeColor = Color.Black;
+            cuentaToolStripMenuItem.ForeColor = Color.Black;
+            cerrarToolStripMenuItem.ForeColor = Color.Black;
+            horaToolStripMenuItem.ForeColor = Color.Black;
+            cerrarSecionToolStripMenuItem.ForeColor = Color.Black;
+        }
     }
 }

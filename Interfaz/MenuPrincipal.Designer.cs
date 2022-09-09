@@ -50,7 +50,7 @@
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_PanelDeFondo = new System.Windows.Forms.Panel();
             this.pic_ImagenDeFondo = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Reloj = new System.Windows.Forms.Timer(this.components);
             this.pnl_barraInfo.SuspendLayout();
             this.mnu_menuPrincipal.SuspendLayout();
             this.pnl_PanelDeFondo.SuspendLayout();
@@ -265,8 +265,8 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.Reloj_Tick);
+            this.Reloj.Enabled = true;
+            this.Reloj.Tick += new System.EventHandler(this.Reloj_Tick);
             // 
             // MenuPrincipal
             // 
@@ -318,7 +318,7 @@
         private System.Windows.Forms.ToolStripMenuItem ventaDeVuelosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horaToolStripMenuItem;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer Reloj;
         private System.Windows.Forms.ToolStripMenuItem estadisticasHistoricasToolStripMenuItem;
     }
 }

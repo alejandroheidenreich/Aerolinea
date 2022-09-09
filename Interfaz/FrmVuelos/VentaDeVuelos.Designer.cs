@@ -33,7 +33,6 @@
             this.cb_Disponibilidad = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btn_Vender = new System.Windows.Forms.Button();
-            this.btn_Salir = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lbl_cantidad = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -88,16 +87,6 @@
             this.btn_Vender.Text = "Vender Pasaje";
             this.btn_Vender.UseVisualStyleBackColor = true;
             // 
-            // btn_Salir
-            // 
-            this.btn_Salir.Location = new System.Drawing.Point(17, 357);
-            this.btn_Salir.Name = "btn_Salir";
-            this.btn_Salir.Size = new System.Drawing.Size(127, 57);
-            this.btn_Salir.TabIndex = 5;
-            this.btn_Salir.Text = "Salir";
-            this.btn_Salir.UseVisualStyleBackColor = true;
-            this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
-            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(133, 221);
@@ -122,7 +111,6 @@
             this.ControlBox = false;
             this.Controls.Add(this.lbl_cantidad);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.btn_Salir);
             this.Controls.Add(this.btn_Vender);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cb_Disponibilidad);
@@ -147,7 +135,6 @@
         private System.Windows.Forms.CheckBox cb_Disponibilidad;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_Vender;
-        private System.Windows.Forms.Button btn_Salir;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label lbl_cantidad;
     }

@@ -1,30 +1,27 @@
-﻿using Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz
 {
     public partial class VentaDeVuelos : Form
     {
-        private Usuario usuarioActual;
-        public VentaDeVuelos(Usuario usuarioActual)
+        public VentaDeVuelos(bool temaActual)
         {
             InitializeComponent();
-            this.usuarioActual = usuarioActual;
+            TemaActual(temaActual);
         }
 
-        private void btn_Salir_Click(object sender, EventArgs e)
+        private void TemaActual(bool temaActual)
         {
-            MenuPrincipal menuPrincipal = new MenuPrincipal(usuarioActual);
-            this.Hide();
-            menuPrincipal.ShowDialog();
+            if (temaActual)
+            {
+                this.BackColor = Color.Black;
+            }
+            else
+            {
+                this.BackColor = Color.WhiteSmoke;
+            }
         }
 
     }

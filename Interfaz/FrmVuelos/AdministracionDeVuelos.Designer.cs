@@ -33,7 +33,6 @@
             this.btn_AgregarVuelo = new System.Windows.Forms.Button();
             this.btn_ExaminarVuelo = new System.Windows.Forms.Button();
             this.btn_EliminarVuelo = new System.Windows.Forms.Button();
-            this.btn_Salir = new System.Windows.Forms.Button();
             this.pic_Lupa = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -76,16 +75,6 @@
             this.btn_EliminarVuelo.TabIndex = 3;
             this.btn_EliminarVuelo.UseVisualStyleBackColor = true;
             // 
-            // btn_Salir
-            // 
-            this.btn_Salir.Location = new System.Drawing.Point(47, 73);
-            this.btn_Salir.Name = "btn_Salir";
-            this.btn_Salir.Size = new System.Drawing.Size(103, 48);
-            this.btn_Salir.TabIndex = 4;
-            this.btn_Salir.Text = "Salir";
-            this.btn_Salir.UseVisualStyleBackColor = true;
-            this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
-            // 
             // pic_Lupa
             // 
             this.pic_Lupa.Image = ((System.Drawing.Image)(resources.GetObject("pic_Lupa.Image")));
@@ -113,7 +102,6 @@
             this.ControlBox = false;
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pic_Lupa);
-            this.Controls.Add(this.btn_Salir);
             this.Controls.Add(this.btn_EliminarVuelo);
             this.Controls.Add(this.btn_ExaminarVuelo);
             this.Controls.Add(this.btn_AgregarVuelo);
@@ -136,7 +124,6 @@
         private System.Windows.Forms.Button btn_AgregarVuelo;
         private System.Windows.Forms.Button btn_ExaminarVuelo;
         private System.Windows.Forms.Button btn_EliminarVuelo;
-        private System.Windows.Forms.Button btn_Salir;
         private System.Windows.Forms.PictureBox pic_Lupa;
         private System.Windows.Forms.TextBox textBox1;
     }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class EstadisitcasHistoricas : Form
+    public partial class FrmEstadisitcasHistoricas : Form
     {
-        public EstadisitcasHistoricas()
+        public FrmEstadisitcasHistoricas()
         {
             InitializeComponent();
         }

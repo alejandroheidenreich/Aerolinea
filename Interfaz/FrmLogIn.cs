@@ -6,22 +6,22 @@ using Application = System.Windows.Forms.Application;
 
 namespace Interfaz
 {
-    public partial class LogIn : Form
+    public partial class FrmLogIn : Form
     {
-        private List<Usuario> usuariosDisponibles;
+        //private List<Usuario> usuariosDisponibles;
         private bool mouseAccion;
         private int mousePosX;
         private int mousePosY;
 
-        public LogIn()
+        public FrmLogIn()
         {
             InitializeComponent();
-            usuariosDisponibles = new List<Usuario>()
-            {
-            new Usuario("HeidenreichAlejandro","contraseña123"),
-            new Usuario("Pepito","asd123"),
-            new Usuario("Roberto12","messipasion")
-            };
+            //usuariosDisponibles = new List<Usuario>()
+            //{
+            //new Usuario("HeidenreichAlejandro","contraseña123"),
+            //new Usuario("Pepito","asd123"),
+            //new Usuario("Roberto12","messipasion")
+            //};
         }
 
         private void btn_Ingresar_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace Interfaz
         }
         private bool ValidarUsuario(Usuario usuarioAValidar)
         {
-            foreach (Usuario item in usuariosDisponibles)
+            foreach (Usuario item in Data.usuarios)
             {
                 if (item == usuarioAValidar)
                 {
@@ -67,7 +67,7 @@ namespace Interfaz
 
         private void AccederAlMenuPrincipal(Usuario usuarioIngresado)
         {
-            MenuPrincipal menuPrincipal = new MenuPrincipal(usuarioIngresado);
+            FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal(usuarioIngresado);
             this.Hide();
             menuPrincipal.ShowDialog();
         }

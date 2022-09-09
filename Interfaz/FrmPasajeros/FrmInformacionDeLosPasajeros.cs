@@ -2,10 +2,10 @@
 
 namespace Interfaz
 {
-    public partial class InformacionDeLosPasajeros : Form
+    public partial class FrmInformacionDeLosPasajeros : Form
     {
         private bool temaActual;
-        public InformacionDeLosPasajeros(bool temaActual)
+        public FrmInformacionDeLosPasajeros(bool temaActual)
         {
             InitializeComponent();
             this.temaActual = temaActual;

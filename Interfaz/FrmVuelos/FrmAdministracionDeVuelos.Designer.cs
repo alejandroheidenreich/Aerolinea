@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class AdministracionDeVuelos
+    partial class FrmAdministracionDeVuelos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,25 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdministracionDeVuelos));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAdministracionDeVuelos));
+            this.dtg_Vuelos = new System.Windows.Forms.DataGridView();
             this.btn_AgregarVuelo = new System.Windows.Forms.Button();
             this.btn_ExaminarVuelo = new System.Windows.Forms.Button();
             this.btn_EliminarVuelo = new System.Windows.Forms.Button();
             this.pic_Lupa = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_Vuelos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Lupa)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dtg_Vuelos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(212, 90);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(595, 401);
-            this.dataGridView1.TabIndex = 0;
+            this.dtg_Vuelos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtg_Vuelos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtg_Vuelos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_Vuelos.Location = new System.Drawing.Point(212, 90);
+            this.dtg_Vuelos.Name = "dtg_Vuelos";
+            this.dtg_Vuelos.RowTemplate.Height = 25;
+            this.dtg_Vuelos.Size = new System.Drawing.Size(595, 401);
+            this.dtg_Vuelos.TabIndex = 0;
             // 
             // btn_AgregarVuelo
             // 
@@ -91,13 +93,14 @@
             this.textBox1.Location = new System.Drawing.Point(250, 58);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Buscar";
-            this.textBox1.Size = new System.Drawing.Size(327, 26);
+            this.textBox1.Size = new System.Drawing.Size(557, 26);
             this.textBox1.TabIndex = 7;
             // 
-            // AdministracionDeVuelos
+            // FrmAdministracionDeVuelos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(900, 555);
             this.ControlBox = false;
             this.Controls.Add(this.textBox1);
@@ -105,13 +108,13 @@
             this.Controls.Add(this.btn_EliminarVuelo);
             this.Controls.Add(this.btn_ExaminarVuelo);
             this.Controls.Add(this.btn_AgregarVuelo);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtg_Vuelos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AdministracionDeVuelos";
+            this.Name = "FrmAdministracionDeVuelos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ListaDeVuelos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_Vuelos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Lupa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -120,7 +123,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtg_Vuelos;
         private System.Windows.Forms.Button btn_AgregarVuelo;
         private System.Windows.Forms.Button btn_ExaminarVuelo;
         private System.Windows.Forms.Button btn_EliminarVuelo;

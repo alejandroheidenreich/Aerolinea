@@ -8,19 +8,29 @@ namespace Entidades
 {
     public class Pasajero
     {
+        private const double PRECIOPORHORANACIONAL = 50;
+        private const double PRECIOPORHORAINTERNACIONAL = 100;
         private string nombreCompleto;
         private int dni;
         private int edad;
-        public bool equipajeDeMano;
-        public double equipajeDeBodega;
-
-        public Pasajero(string nombreCompleto, int dni, int edad, bool equipajeDeMano, double equipajeDeBodega)
+        private bool equipajeDeMano;
+        private double equipajeDeBodega;
+      
+        public Pasajero(string nombreCompleto, int dni, int edad)
         {
             this.nombreCompleto = nombreCompleto;
             this.dni = dni;
             this.edad = edad;
-            this.equipajeDeMano = equipajeDeMano;
-            this.equipajeDeBodega = equipajeDeBodega;
+        }
+        public bool EquipajeDeMano
+        {
+            get => equipajeDeMano;
+            set => equipajeDeMano = value;
+        }
+        public double EquipajeDeBodega
+        {
+            get => equipajeDeBodega;
+            set => equipajeDeBodega = value;
         }
 
         public static bool operator ==(Pasajero c1, Pasajero c2)

@@ -32,7 +32,7 @@ namespace Entidades
             get => matricula;
             set => matricula = value;
         }
-        public int CantidadDeAsientos
+        public int CantidadDeAsientosTotales
         {
             get => cantidadDeAsientosTotales;
             set => cantidadDeAsientosTotales = value;
@@ -51,7 +51,6 @@ namespace Entidades
         {
             string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             char[] matriculaArray = new char[8];
-            string matricula;
             Random random = new Random();
 
             for (int i = 0; i < matriculaArray.Length; i++)
@@ -59,9 +58,7 @@ namespace Entidades
                 matriculaArray[i] = caracteres[random.Next(caracteres.Length)];
             }
 
-            matricula = new String(matriculaArray);
-
-            return matricula;
+            return new String(matriculaArray);
         }
 
         public override string ToString()

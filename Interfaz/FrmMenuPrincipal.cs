@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class MenuPrincipal : Form
+    public partial class FrmMenuPrincipal : Form
     {
         private Usuario usuarioActual;
         private Form? formActivo;
-        public MenuPrincipal(Usuario usuarioActual)
+        public FrmMenuPrincipal(Usuario usuarioActual)
         {
             InitializeComponent();
             this.usuarioActual = usuarioActual;
@@ -39,7 +39,7 @@ namespace Interfaz
 
         private void CerrarSecionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogIn login = new LogIn();
+            FrmLogIn login = new FrmLogIn();
             this.Hide();
             login.ShowDialog();
         }
@@ -52,18 +52,18 @@ namespace Interfaz
 
         private void InformacionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ActivarForm(new InformacionDeLosPasajeros(btn_ToggleTema.Checked));
+            ActivarForm(new FrmInformacionDeLosPasajeros(btn_ToggleTema.Checked));
         }
 
         private void ListaDeVuelosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ActivarForm(new AdministracionDeVuelos(btn_ToggleTema.Checked));
+            ActivarForm(new FrmAdministracionDeVuelos(btn_ToggleTema.Checked));
         }
 
         private void VentaDeVuelosToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
 
-            ActivarForm(new VentaDeVuelos(btn_ToggleTema.Checked));
+            ActivarForm(new FrmVentaDeVuelos(btn_ToggleTema.Checked));
         }
 
         private void ActivarForm(Form form)

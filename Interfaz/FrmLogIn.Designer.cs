@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class LogIn
+    partial class FrmLogIn
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogIn));
             this.txt_usuario = new System.Windows.Forms.TextBox();
             this.txt_contrasenia = new System.Windows.Forms.TextBox();
             this.btn_Ingresar = new System.Windows.Forms.Button();

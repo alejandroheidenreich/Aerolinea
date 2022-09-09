@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class MenuPrincipal
+    partial class FrmMenuPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenuPrincipal));
             this.pnl_barraInfo = new System.Windows.Forms.Panel();
             this.lbl_InfoUsuarioFecha = new System.Windows.Forms.Label();
             this.lbl_DarkTheme = new System.Windows.Forms.Label();

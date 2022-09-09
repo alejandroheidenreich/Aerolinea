@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class AdministracionDeVuelos : Form
+    public partial class FrmVentaDeVuelos : Form
     {
-        public AdministracionDeVuelos(bool temaActual)
+        public FrmVentaDeVuelos(bool temaActual)
         {
             InitializeComponent();
             TemaActual(temaActual);
@@ -14,7 +14,6 @@ namespace Interfaz
 
         private void TemaActual(bool temaActual)
         {
-            dataGridView1.DataSource = temaActual;
             if (temaActual)
             {
                 this.BackColor = Color.Black;
@@ -24,5 +23,6 @@ namespace Interfaz
                 this.BackColor = Color.WhiteSmoke;
             }
         }
+
     }
 }

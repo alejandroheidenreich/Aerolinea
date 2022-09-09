@@ -1,66 +1,114 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
+    public enum TipoDeVuelo
+    {
+        Nacional,
+        Internacional
+    }
+
+    public enum ClaseDePasajero
+    {
+        Tursita,
+        Premium
+    }
+
     public class Vuelo
     {
-        private const double PRECIOPORHORANACIONAL = 50;
-        private const double PRECIOPORHORAINTERNACIONAL = 100;
+        
+        private string destino;
         private int duracionDelVuelo;
         private Aeronave aeronave;
-        private bool esInternacional;
         private List<Pasajero> listaDePasajeros;
 
-        public Vuelo(int duracionDelVuelo, Aeronave aeronave)
+        public Vuelo(int duracionDelVuelo, Aeronave aeronave, string destino)
         {
             this.duracionDelVuelo = duracionDelVuelo;
             this.aeronave = aeronave;
             this.listaDePasajeros = new List<Pasajero>();
+            this.destino = destino;
         }
 
-        public bool VueloCompleto
+        public string Destino
+        {
+            get => destino;
+            set => destino = value;
+        }
+        public TipoDeVuelo Tipo
         {
             get
             {
-                return this.listaDePasajeros.Count == this.aeronave.CantidadDeAsientos;
+                return DestinoEsInternacional(this.destino);
             }
         }
 
-        public int DuracionDelVuelo { get => duracionDelVuelo; }
-        public Aeronave Aeronave { get => aeronave; }
-        public bool TipoDeVuelo { get => esInternacional; }
-        private double CostoDelPasaje
+        public int DuracionDelVuelo
         {
-            set 
+            get => duracionDelVuelo;
+            set => duracionDelVuelo = value;
+        }
+        public string EstadoVueloActual
+        {
+            get 
             {
-                if (this.esInternacional)
-                {
-
-                }
+                if (this.listaDePasajeros.Count == this.aeronave.CantidadDeAsientosTotales)
+                    return "COMPLETO";
+                return $"{this.listaDePasajeros.Count}/ {this.aeronave.CantidadDeAsientosTotales}";
             }
         }
-
-        public static bool operator ==(Vuelo v, Pasajero c)
+        public Aeronave Aeronave
         {
-            bool pertenece = false; 
+            get => aeronave;
+            set => aeronave = value;
+        }
+        public List<Pasajero> ListaDePasajeros
+        {
+            get => listaDePasajeros;
+            set => listaDePasajeros = value;
+        }
+
+        private static TipoDeVuelo DestinoEsInternacional(string destino)
+        {
+            if (destino == "Acapulco(México)" ||
+                        destino == "Miami(EEUU)" ||
+                        destino == "Recife(Brasil)" ||
+                        destino == "Roma(Italia)")
+            {
+                return TipoDeVuelo.Internacional;
+            }
+            return TipoDeVuelo.Nacional;
+        }
+
+        public static bool operator ==(Vuelo v, Pasajero p)
+        {
             foreach (Pasajero item in v.listaDePasajeros)
             {
-                if (item == c)
+                if (item == p)
                 {
-                    pertenece = true;
-                    break;
+                    return true;
                 }
             }
-            return pertenece;
+            return false;
         }
 
-        public static bool operator !=(Vuelo v, Pasajero c)
+        public static bool operator !=(Vuelo v, Pasajero p)
         {
-            return !(v == c);
+            return !(v == p);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"Destino: {this.destino} - {this.Tipo}");
+            sb.Append("Disponibilidad: ");
+            sb.AppendLine(this.EstadoVueloActual);
+     
+
+            return base.ToString();
         }
     }
 }

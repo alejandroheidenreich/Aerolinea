@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class VentaDeVuelos
+    partial class FrmVentaDeVuelos
     {
         /// <summary>
         /// Required designer variable.
@@ -71,6 +71,11 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(176, 67);
             this.dataGridView1.Name = "dataGridView1";
@@ -103,7 +108,7 @@
             this.lbl_cantidad.TabIndex = 7;
             this.lbl_cantidad.Text = "Cantidad de Pasajes";
             // 
-            // VentaDeVuelos
+            // FrmVentaDeVuelos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,7 +122,7 @@
             this.Controls.Add(this.cb_Wiifi);
             this.Controls.Add(this.cb_MenuDelDia);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "VentaDeVuelos";
+            this.Name = "FrmVentaDeVuelos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "VentaDeVuelos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

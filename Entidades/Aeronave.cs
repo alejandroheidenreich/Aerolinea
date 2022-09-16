@@ -26,6 +26,13 @@ namespace Entidades
                 return (int)(cantidadDeAsientosTotales * 0.20); 
             }
         }
+        public int CantidadDeAsientosTurista
+        {
+            get
+            {
+                return this.cantidadDeAsientosTotales-this.CantidadDeAsientosPremium;
+            }
+        }
 
         public string Matricula
         {

@@ -57,4 +57,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lbl_MensajeError.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw0AAAsNAe0HwCwAAAD8SURBVDhPpdI/S0JRHMZxJxeh
+        xcQtehctDc4ivgMd7AVIU9A7aElBcA/xz+bi4iQ4BNKQqxEk3AhaQgIXIY7fn5xz+d3buZk4fLzcx+c8
+        x8GUMeYo3vAQu49lIe1TxQuuVBbaN3CGBQxecY5IZ9/APeTwl322EOn8NXCBFR5RwhTfuETYSxrIoAO5
+        tWGzO/vex4nNEgeKkNvkwBByoGvf1ygjcSCLEaQsZshhorKxzbwDFWzgygGu8aayH9Twa+AUcqMrijlu
+        8aQy8Yx8fKCuCk4b8l1TZc5NfED/TOcDA7yrzAniAw+QA1J2PiH/B3nqXHq9yMAxvOH/mdQWLc0weGmy
+        TlcAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

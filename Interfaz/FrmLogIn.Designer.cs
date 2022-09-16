@@ -193,7 +193,7 @@
             this.btn_BotonAutoCompletado.UseVisualStyleBackColor = false;
             this.btn_BotonAutoCompletado.Click += new System.EventHandler(this.btn_BotonAutoCompletado_Click);
             // 
-            // LogIn
+            // FrmLogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -214,10 +214,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "LogIn";
+            this.Name = "FrmLogIn";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log In";
+            this.Load += new System.EventHandler(this.FrmLogIn_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LogIn_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LogIn_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LogIn_MouseUp);

@@ -130,6 +130,7 @@
             this.configurarCuentaToolStripMenuItem.Name = "configurarCuentaToolStripMenuItem";
             this.configurarCuentaToolStripMenuItem.Size = new System.Drawing.Size(213, 32);
             this.configurarCuentaToolStripMenuItem.Text = "Configurar Cuenta";
+            this.configurarCuentaToolStripMenuItem.Click += new System.EventHandler(this.configurarCuentaToolStripMenuItem_Click);
             // 
             // cerrarSecionToolStripMenuItem
             // 
@@ -263,12 +264,12 @@
             this.pic_ImagenDeFondo.TabIndex = 0;
             this.pic_ImagenDeFondo.TabStop = false;
             // 
-            // timer1
+            // Reloj
             // 
             this.Reloj.Enabled = true;
             this.Reloj.Tick += new System.EventHandler(this.Reloj_Tick);
             // 
-            // MenuPrincipal
+            // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -283,7 +284,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnu_menuPrincipal;
-            this.Name = "MenuPrincipal";
+            this.Name = "FrmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);

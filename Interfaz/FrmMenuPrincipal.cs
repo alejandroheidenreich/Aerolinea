@@ -1,7 +1,7 @@
 ﻿using Entidades;
+using Interfaz.FrmCuenta;
 using System;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -14,19 +14,8 @@ namespace Interfaz
         {
             InitializeComponent();
             this.usuarioActual = usuarioActual;
-            MensajeDeBarraDeInformacion(usuarioActual.NombreDeUsuario);
+            MensajeDeBarraDeInformacion(usuarioActual);
             IsMdiContainer = true;
-        }
-        public Usuario UsuarioActual
-        {
-            get
-            {
-                return usuarioActual;
-            }
-            set
-            {
-                usuarioActual = value;
-            }
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
@@ -48,6 +37,8 @@ namespace Interfaz
         {
             OcultarForm();
             pnl_PanelDeFondo.Visible = true;
+            this.btn_ToggleTema.Visible = true;
+            this.lbl_DarkTheme.Visible = true;
         }
 
         private void InformacionToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -65,13 +56,18 @@ namespace Interfaz
 
             ActivarForm(new FrmVentaDeVuelos(btn_ToggleTema.Checked));
         }
-
+        private void configurarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActivarForm(new FrmConfiguracionCuenta(this.usuarioActual,btn_ToggleTema.Checked));
+        }
         private void ActivarForm(Form form)
         {
             OcultarForm();
             formActivo = form;
             formActivo.MdiParent = this;
             pnl_PanelDeFondo.Visible = false;
+            this.btn_ToggleTema.Visible = false;
+            this.lbl_DarkTheme.Visible = false;
             formActivo.Show();
         }
 
@@ -82,7 +78,7 @@ namespace Interfaz
                 formActivo.Hide();
             }
         }
-        
+
         private void CerrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -101,10 +97,10 @@ namespace Interfaz
                 this.horaToolStripMenuItem.Text = String.Empty;
             }
         }
-        private void MensajeDeBarraDeInformacion(string usuario)
+        private void MensajeDeBarraDeInformacion(Usuario usuario)
         {
             DateTime fechaDeHoy = DateTime.Now;
-            lbl_InfoUsuarioFecha.Text = $"Usuario: {usuario} Fecha: {fechaDeHoy.ToString("dd/MM/yyyy")}";
+            lbl_InfoUsuarioFecha.Text = $"{usuario.Nombre} {usuario.Apellido} Fecha: {fechaDeHoy.ToString("dd/MM/yyyy")}";
         }
 
         private void btn_ToggleCambioDeTema_Checked(object sender, EventArgs e)
@@ -129,7 +125,7 @@ namespace Interfaz
         }
         private void ActivarDarkMode()
         {
-            this.BackColor = Color.Black;
+            this.BackColor = Color.DarkGray;
             pnl_barraInfo.BackColor = Color.SteelBlue;
             mnu_menuPrincipal.BackColor = Color.SteelBlue;
             lbl_InfoUsuarioFecha.ForeColor = Color.LightGray;
@@ -154,5 +150,7 @@ namespace Interfaz
             horaToolStripMenuItem.ForeColor = Color.Black;
             cerrarSecionToolStripMenuItem.ForeColor = Color.Black;
         }
+
+        
     }
 }

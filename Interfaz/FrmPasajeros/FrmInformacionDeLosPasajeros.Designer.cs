@@ -28,37 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInformacionDeLosPasajeros));
+            this.dtg_Pasajeros = new System.Windows.Forms.DataGridView();
+            this.txt_Buscar = new System.Windows.Forms.TextBox();
+            this.pic_Lupa = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_Pasajeros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Lupa)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dtg_Pasajeros
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(800, 450);
-            this.dataGridView1.TabIndex = 0;
+            this.dtg_Pasajeros.AllowUserToResizeColumns = false;
+            this.dtg_Pasajeros.AllowUserToResizeRows = false;
+            this.dtg_Pasajeros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtg_Pasajeros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtg_Pasajeros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtg_Pasajeros.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtg_Pasajeros.Location = new System.Drawing.Point(43, 88);
+            this.dtg_Pasajeros.Name = "dtg_Pasajeros";
+            this.dtg_Pasajeros.RowHeadersVisible = false;
+            this.dtg_Pasajeros.RowTemplate.Height = 25;
+            this.dtg_Pasajeros.Size = new System.Drawing.Size(840, 421);
+            this.dtg_Pasajeros.TabIndex = 0;
             // 
-            // InformacionDeLosPasajeros
+            // txt_Buscar
+            // 
+            this.txt_Buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Buscar.Location = new System.Drawing.Point(81, 56);
+            this.txt_Buscar.Name = "txt_Buscar";
+            this.txt_Buscar.PlaceholderText = "Buscar";
+            this.txt_Buscar.Size = new System.Drawing.Size(742, 26);
+            this.txt_Buscar.TabIndex = 1;
+            this.txt_Buscar.TextChanged += new System.EventHandler(this.txt_Buscar_TextChanged_1);
+            // 
+            // pic_Lupa
+            // 
+            this.pic_Lupa.Image = ((System.Drawing.Image)(resources.GetObject("pic_Lupa.Image")));
+            this.pic_Lupa.Location = new System.Drawing.Point(43, 50);
+            this.pic_Lupa.Name = "pic_Lupa";
+            this.pic_Lupa.Size = new System.Drawing.Size(32, 32);
+            this.pic_Lupa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pic_Lupa.TabIndex = 2;
+            this.pic_Lupa.TabStop = false;
+            // 
+            // FrmInformacionDeLosPasajeros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(907, 568);
+            this.ControlBox = false;
+            this.Controls.Add(this.pic_Lupa);
+            this.Controls.Add(this.txt_Buscar);
+            this.Controls.Add(this.dtg_Pasajeros);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "InformacionDeLosPasajeros";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Name = "FrmInformacionDeLosPasajeros";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InformacionDeLosPasajeros";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_Pasajeros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Lupa)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtg_Pasajeros;
+        private System.Windows.Forms.TextBox txt_Buscar;
+        private System.Windows.Forms.PictureBox pic_Lupa;
     }
 }

@@ -14,11 +14,13 @@ namespace Interfaz.FrmVuelos.FormAdministracion
     public partial class FrmAeronaves : Form
     {
         private Aeronave? aeronave;
+        private bool temaActual;
 
 
-        public FrmAeronaves()
+        public FrmAeronaves(bool temaActual)
         {
             InitializeComponent();
+            this.temaActual = temaActual;
         }
         public Aeronave Aeronave
         {
@@ -30,6 +32,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 
         private void FrmAeronaves_Load(object sender, EventArgs e)
         {
+            TemaActual(this.temaActual);
             this.dtg_Aeronaves.DataSource = Sistema.aeronaves;
         }
 
@@ -48,6 +51,36 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private Aeronave ObtenerVueloSeleccionado()
         {
             return (Aeronave)dtg_Aeronaves.CurrentRow.DataBoundItem;
+        }
+
+        private void TemaActual(bool temaActual)
+        {
+            if (temaActual)
+            {
+                ActivarDarkMode();
+            }
+            else
+            {
+                ActivarLightMode();
+            }
+        }
+        private void ActivarDarkMode()
+        {
+            this.BackColor = Color.SteelBlue;
+            this.dtg_Aeronaves.BackgroundColor = Color.DarkGray;
+            this.pnl_Fondo.BackColor = Color.DarkGray;
+            this.btn_Salir.BackColor = Color.LightGray;
+            this.btn_Seleccionar.BackColor = Color.LightGray;
+        }
+
+        private void ActivarLightMode()
+        {
+            this.BackColor = Color.SkyBlue;
+            this.dtg_Aeronaves.BackgroundColor = Color.LightGray;
+            this.pnl_Fondo.BackColor = Color.WhiteSmoke;
+            this.btn_Salir.BackColor = Color.WhiteSmoke;
+            this.btn_Seleccionar.BackColor = Color.WhiteSmoke;
+
         }
     }
 }

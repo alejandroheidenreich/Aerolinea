@@ -41,6 +41,8 @@
             this.lbl_MensajeError = new System.Windows.Forms.Label();
             this.dtp_Partida = new System.Windows.Forms.DateTimePicker();
             this.lbl_Partida = new System.Windows.Forms.Label();
+            this.pnl_FondoPrincipal = new System.Windows.Forms.Panel();
+            this.pnl_FondoPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmb_Origen
@@ -77,9 +79,9 @@
             // 
             this.btn_Salir.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Salir.ForeColor = System.Drawing.Color.Maroon;
-            this.btn_Salir.Location = new System.Drawing.Point(434, 288);
+            this.btn_Salir.Location = new System.Drawing.Point(440, 279);
             this.btn_Salir.Name = "btn_Salir";
-            this.btn_Salir.Size = new System.Drawing.Size(57, 47);
+            this.btn_Salir.Size = new System.Drawing.Size(48, 41);
             this.btn_Salir.TabIndex = 3;
             this.btn_Salir.Text = "X";
             this.btn_Salir.UseVisualStyleBackColor = true;
@@ -102,7 +104,7 @@
             this.btn_Agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Agregar.Location = new System.Drawing.Point(80, 246);
             this.btn_Agregar.Name = "btn_Agregar";
-            this.btn_Agregar.Size = new System.Drawing.Size(291, 39);
+            this.btn_Agregar.Size = new System.Drawing.Size(361, 39);
             this.btn_Agregar.TabIndex = 5;
             this.btn_Agregar.Text = "AGREGAR";
             this.btn_Agregar.UseVisualStyleBackColor = true;
@@ -173,10 +175,20 @@
             this.lbl_Partida.TabIndex = 14;
             this.lbl_Partida.Text = "PARTIDA:";
             // 
+            // pnl_FondoPrincipal
+            // 
+            this.pnl_FondoPrincipal.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnl_FondoPrincipal.Controls.Add(this.btn_Salir);
+            this.pnl_FondoPrincipal.Location = new System.Drawing.Point(12, 12);
+            this.pnl_FondoPrincipal.Name = "pnl_FondoPrincipal";
+            this.pnl_FondoPrincipal.Size = new System.Drawing.Size(491, 323);
+            this.pnl_FondoPrincipal.TabIndex = 15;
+            // 
             // FrmAltaVuelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(515, 347);
             this.ControlBox = false;
             this.Controls.Add(this.lbl_Partida);
@@ -187,15 +199,16 @@
             this.Controls.Add(this.lbl_Origen);
             this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.btn_MasInfoAeronave);
-            this.Controls.Add(this.btn_Salir);
             this.Controls.Add(this.cmb_Aeronave);
             this.Controls.Add(this.cmb_Destino);
             this.Controls.Add(this.cmb_Origen);
+            this.Controls.Add(this.pnl_FondoPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmAltaVuelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAltaVuelo";
             this.Load += new System.EventHandler(this.FrmAltaVuelo_Load);
+            this.pnl_FondoPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +228,6 @@
         private System.Windows.Forms.Label lbl_MensajeError;
         private System.Windows.Forms.DateTimePicker dtp_Partida;
         private System.Windows.Forms.Label lbl_Partida;
+        private System.Windows.Forms.Panel pnl_FondoPrincipal;
     }
 }

@@ -30,8 +30,8 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Duracion.Text = vuelo.Duracion;
             this.dtg_ListaDePasajeros.DataSource = vuelo.ListaDePasajeros;
             this.lbl_Matricula.Text = $"Matricula: {vuelo.Aeronave.Matricula}";
-            this.lbl_CantidadBanios.Text = $"Baños: {vuelo.Aeronave.CantidadDeBanios}";
-            this.lbl_CapacidadBodega.Text = $"Bodega: {vuelo.Aeronave.CapacidadDeBodega} KG.";
+            this.lbl_CantidadBanios.Text = $"Baños: {vuelo.Aeronave.Baños}";
+            this.lbl_CapacidadBodega.Text = $"Bodega: {vuelo.Aeronave.Bodega} KG.";
         }
 
         private void btn_Atras_Click(object sender, EventArgs e)

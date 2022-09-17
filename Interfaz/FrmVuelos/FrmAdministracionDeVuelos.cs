@@ -88,7 +88,7 @@ namespace Interfaz
 
         private void btn_AgregarVuelo_Click(object sender, EventArgs e)
         {
-            FrmAltaVuelo altaVuelo = new FrmAltaVuelo();
+            FrmAltaVuelo altaVuelo = new FrmAltaVuelo(this.temaActual);
             altaVuelo.ShowDialog();
             FormValidador.ActualizarDataGridVuelos(dtg_Vuelos, Sistema.vuelos);
             this.dtg_Vuelos.Columns["Aeronave"].Visible = false;

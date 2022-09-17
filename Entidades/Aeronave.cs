@@ -19,37 +19,39 @@ namespace Entidades
         }
 
         //20% asientos premium
-        public int CantidadDeAsientosPremium
-        {
-            get 
-            { 
-                return (int)(cantidadDeAsientosTotales * 0.20); 
-            }
-        }
-        public int CantidadDeAsientosTurista
-        {
-            get
-            {
-                return this.cantidadDeAsientosTotales-this.CantidadDeAsientosPremium;
-            }
-        }
 
         public string Matricula
         {
             get => matricula;
             set => matricula = value;
         }
-        public int CantidadDeAsientosTotales
+
+        public int Premium
+        {
+            get 
+            { 
+                return (int)(cantidadDeAsientosTotales * 0.20); 
+            }
+        }
+        public int Tursita
+        {
+            get
+            {
+                return this.cantidadDeAsientosTotales-this.Premium;
+            }
+        }
+
+        public int AsientosTotales
         {
             get => cantidadDeAsientosTotales;
             set => cantidadDeAsientosTotales = value;
         }
-        public int CantidadDeBanios
+        public int Baños
         {
             get => cantidadDeBanios;
             set => cantidadDeBanios = value;
         }
-        public double CapacidadDeBodega
+        public double Bodega
         {
             get => capacidadDeBodega;
             set => capacidadDeBodega = value;
@@ -74,7 +76,7 @@ namespace Entidades
 
             sb.AppendLine($"Matricula: {this.matricula}");
             sb.AppendLine($"Cantidad de Asientos Totales: {this.cantidadDeAsientosTotales}");
-            sb.AppendLine($"Cantidad de Asientos Premium: {this.CantidadDeAsientosPremium}");
+            sb.AppendLine($"Cantidad de Asientos Premium: {this.Premium}");
             sb.AppendLine($"Cantidad de Baños: {this.cantidadDeBanios}");
             sb.AppendLine($"Capacidad de Bodega: {this.capacidadDeBodega.ToString("0.##")} KG.");
 

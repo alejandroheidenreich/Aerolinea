@@ -14,15 +14,18 @@ namespace Interfaz.FrmVuelos.FormAdministracion
     public partial class FrmAltaVuelo : Form
     {
         private bool fechaCambio;
-        public FrmAltaVuelo()
+        private bool temaActual;
+        public FrmAltaVuelo(bool temaActual)
         {
             //TODO: DESARROLLAR VER DESTINO ENUM PARA UN SOLO ENUM
             InitializeComponent();
             this.fechaCambio = false;
-        }
+            this.temaActual = temaActual;
+    }
 
         private void FrmAltaVuelo_Load(object sender, EventArgs e)
         {
+            TemaActual(this.temaActual);
             lbl_MensajeError.Visible = false;
             foreach (string item in Sistema.localidades)
             {
@@ -42,7 +45,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 
         private void btn_MasInfoAeronave_Click(object sender, EventArgs e)
         {
-            FrmAeronaves dataAeronaves = new FrmAeronaves();
+            FrmAeronaves dataAeronaves = new FrmAeronaves(this.temaActual);
 
             DialogResult respuesta = dataAeronaves.ShowDialog();
 
@@ -59,7 +62,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 Aeronave aeronave = Sistema.BuscarAeronavePorMatricula(cmb_Aeronave.Text);
                 if (aeronave is not null)
                 {
-                    Sistema.AltaDeVuelo(new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text,dtp_Partida.Value));//TODO: ARREGLAR
+                    Sistema.AltaDeVuelo(new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text,dtp_Partida.Value));
                     this.Close();
                 }
             }
@@ -86,6 +89,43 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private void dtp_Partida_ValueChanged(object sender, EventArgs e)
         {
             this.fechaCambio = true;
+        }
+
+        private void TemaActual(bool temaActual)
+        {
+            if (temaActual)
+            {
+                ActivarDarkMode();
+            }
+            else
+            {
+                ActivarLightMode();
+            }
+        }
+        private void ActivarDarkMode()
+        {
+            this.BackColor = Color.SteelBlue;
+            this.pnl_FondoPrincipal.BackColor = Color.DarkGray;
+            this.lbl_Aeronave.BackColor = Color.DarkGray;
+            this.lbl_Origen.BackColor = Color.DarkGray;
+            this.lbl_Destino.BackColor = Color.DarkGray;
+            this.lbl_Partida.BackColor = Color.DarkGray;
+            this.btn_Salir.BackColor = Color.LightGray;
+            this.btn_MasInfoAeronave.BackColor = Color.LightGray;
+            this.btn_Agregar.BackColor = Color.LightGray;
+        }
+
+        private void ActivarLightMode()
+        {
+            this.BackColor = Color.SkyBlue;
+            this.pnl_FondoPrincipal.BackColor = Color.WhiteSmoke;
+            this.lbl_Aeronave.BackColor = Color.WhiteSmoke;
+            this.lbl_Origen.BackColor = Color.WhiteSmoke;
+            this.lbl_Destino.BackColor = Color.WhiteSmoke;
+            this.lbl_Partida.BackColor = Color.WhiteSmoke;
+            this.btn_Salir.BackColor = Color.WhiteSmoke;
+            this.btn_MasInfoAeronave.BackColor = Color.WhiteSmoke;
+            this.btn_Agregar.BackColor = Color.WhiteSmoke;
         }
     }
 }

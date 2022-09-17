@@ -66,9 +66,9 @@ namespace Entidades
         {
             get
             {
-                if (this.listaDePasajeros.Count == this.aeronave.CantidadDeAsientosTotales)
+                if (this.listaDePasajeros.Count == this.aeronave.AsientosTotales)
                     return "COMPLETO";
-                return $"{this.listaDePasajeros.Count}/ {this.aeronave.CantidadDeAsientosTotales}";
+                return $"{this.listaDePasajeros.Count}/ {this.aeronave.AsientosTotales}";
             }
         }
         public Aeronave Aeronave
@@ -153,7 +153,7 @@ namespace Entidades
         public static bool operator +(Vuelo v, Pasajero p)
         {
             //TODO: Implementar y posible refactorizacion
-            if (v.listaDePasajeros.Count < v.aeronave.CantidadDeAsientosTotales)
+            if (v.listaDePasajeros.Count < v.aeronave.AsientosTotales)
             {
                 foreach (Pasajero item in v.listaDePasajeros)
                 {

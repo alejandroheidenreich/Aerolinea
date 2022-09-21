@@ -34,18 +34,23 @@ namespace Interfaz
             }
             else
             {
-                //TODO: posible refactorizar en clase con exception
-                Usuario usuarioIngresado = Sistema.VerificarUsuarioContrasenia(txt_usuario.Text, txt_contrasenia.Text);
+                try
+                {
+                    Usuario usuarioIngresado = Sistema.VerificarUsuarioContrasenia(txt_usuario.Text, txt_contrasenia.Text);
+                    if (usuarioIngresado is not null)
+                    {
+                        AccederAlMenuPrincipal(usuarioIngresado);
+                    }
+                    else
+                    {
+                        MostrarMensajeDeError("Datos incorrectos");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"No es valido: {ex.Message}");
+                }
 
-                if (usuarioIngresado is not null)
-                {
-                    
-                    AccederAlMenuPrincipal(usuarioIngresado);
-                }
-                else
-                {
-                    MostrarMensajeDeError("Datos incorrectos");
-                }
             }
         }
 
@@ -60,6 +65,7 @@ namespace Interfaz
             FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal(usuarioIngresado);
             this.Hide();
             menuPrincipal.ShowDialog();
+
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)
@@ -70,7 +76,7 @@ namespace Interfaz
         private void btn_BotonAutoCompletado_Click(object sender, EventArgs e)
         {
             this.txt_usuario.Text = "HeidenreichAlejandro";
-            this.txt_contrasenia.Text = "contraseña123";
+            this.txt_contrasenia.Text = "Contraseña123#";
         }
         private void lbl_recuperarContrasenia_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

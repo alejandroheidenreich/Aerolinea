@@ -27,7 +27,7 @@ namespace Interfaz.FrmCuenta
             lbl_bienvenida.Text = $"¡Bienvenido {this.usuarioActual.Nombre}!";
             this.lbl_Nombre.Text = this.usuarioActual.Nombre;
             this.lbl_Apellido.Text = this.usuarioActual.Apellido;
-            this.lbl_Nacimiento.Text = this.usuarioActual.FechaDeNacimiento.ToString("dd/MM/yyyy");
+            this.lbl_Nacimiento.Text = this.usuarioActual.Nacimiento.ToString("dd/MM/yyyy");
             this.lbl_Email.Text = this.usuarioActual.Email;
         }
 
@@ -54,8 +54,20 @@ namespace Interfaz.FrmCuenta
 
         private void lbl_CambiarEmail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FrmVerificarContrasenia formContrasenia = new FrmVerificarContrasenia(this.usuarioActual,this.temaActual);
-            formContrasenia.ShowDialog();
+            //FrmVerificarContrasenia formContrasenia = new FrmVerificarContrasenia(this.usuarioActual,this.temaActual);
+            //formContrasenia.ShowDialog();
+
+            try
+            {
+                Usuario usuario = new Usuario("Jose", "Argento", new DateTime(1955, 10, 19), 11111111, "pepe@gmal.com", "pepe", "Pep3");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Se produjo el siguiente error: {ex.Message}");
+            }
         }
+
+
     }
 }

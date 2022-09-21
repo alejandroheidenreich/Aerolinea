@@ -15,11 +15,10 @@ namespace Interfaz
             InitializeComponent();
             this.usuarioActual = usuarioActual;
             MensajeDeBarraDeInformacion(usuarioActual);
-            IsMdiContainer = true;
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-
+            ActivarDarkMode();
         }
         private void Reloj_Tick(object sender, EventArgs e)
         {
@@ -28,9 +27,17 @@ namespace Interfaz
 
         private void CerrarSecionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmLogIn login = new FrmLogIn();
-            this.Hide();
-            login.ShowDialog();
+            try
+            {
+                FrmLogIn login = new FrmLogIn();
+                this.Hide();
+                login.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Se produjo el siguiente error: {ex.Message}");
+                Application.Exit();
+            }
         }
 
         private void InicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,7 +50,7 @@ namespace Interfaz
 
         private void InformacionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ActivarForm(new FrmInformacionDeLosPasajeros(btn_ToggleTema.Checked));
+            ActivarForm(new FrmInformacionDeLosClientes(btn_ToggleTema.Checked));
         }
 
         private void ListaDeVuelosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -51,11 +58,6 @@ namespace Interfaz
             ActivarForm(new FrmAdministracionDeVuelos(btn_ToggleTema.Checked));
         }
 
-        private void VentaDeVuelosToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-            ActivarForm(new FrmVentaDeVuelos(btn_ToggleTema.Checked));
-        }
         private void configurarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ActivarForm(new FrmConfiguracionCuenta(this.usuarioActual,btn_ToggleTema.Checked));
@@ -75,7 +77,7 @@ namespace Interfaz
         {
             if (formActivo is not null)
             {
-                formActivo.Hide();
+                formActivo.Close();
             }
         }
 
@@ -108,21 +110,13 @@ namespace Interfaz
             if (btn_ToggleTema.Checked)
             {
                 ActivarDarkMode();
-                RecargarForm();
             }
             else
             {
                 ActivarLightMode();
-                RecargarForm();
             }
         }
-        private void RecargarForm()
-        {
-            if (this.formActivo is not null)
-            {
-                this.formActivo.Refresh();
-            }
-        }
+
         private void ActivarDarkMode()
         {
             this.BackColor = Color.DarkGray;
@@ -149,8 +143,6 @@ namespace Interfaz
             cerrarToolStripMenuItem.ForeColor = Color.Black;
             horaToolStripMenuItem.ForeColor = Color.Black;
             cerrarSecionToolStripMenuItem.ForeColor = Color.Black;
-        }
-
-        
+        }        
     }
 }

@@ -44,7 +44,6 @@
             this.cancelacionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.vuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ventaDeVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasHistoricasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,9 +62,9 @@
             this.pnl_barraInfo.Controls.Add(this.lbl_InfoUsuarioFecha);
             this.pnl_barraInfo.Controls.Add(this.lbl_DarkTheme);
             this.pnl_barraInfo.Controls.Add(this.btn_ToggleTema);
-            this.pnl_barraInfo.Location = new System.Drawing.Point(0, 542);
+            this.pnl_barraInfo.Location = new System.Drawing.Point(0, 580);
             this.pnl_barraInfo.Name = "pnl_barraInfo";
-            this.pnl_barraInfo.Size = new System.Drawing.Size(891, 40);
+            this.pnl_barraInfo.Size = new System.Drawing.Size(1111, 40);
             this.pnl_barraInfo.TabIndex = 1;
             // 
             // lbl_InfoUsuarioFecha
@@ -81,7 +80,7 @@
             // lbl_DarkTheme
             // 
             this.lbl_DarkTheme.AutoSize = true;
-            this.lbl_DarkTheme.Location = new System.Drawing.Point(759, 15);
+            this.lbl_DarkTheme.Location = new System.Drawing.Point(978, 11);
             this.lbl_DarkTheme.Name = "lbl_DarkTheme";
             this.lbl_DarkTheme.Size = new System.Drawing.Size(70, 15);
             this.lbl_DarkTheme.TabIndex = 4;
@@ -92,9 +91,11 @@
             this.btn_ToggleTema.ApagadoCirculoColor = System.Drawing.Color.Ivory;
             this.btn_ToggleTema.ApagadoSlideColor = System.Drawing.Color.Gray;
             this.btn_ToggleTema.AutoSize = true;
+            this.btn_ToggleTema.Checked = true;
+            this.btn_ToggleTema.CheckState = System.Windows.Forms.CheckState.Checked;
             this.btn_ToggleTema.EncendidoCirculoColor = System.Drawing.Color.Chartreuse;
             this.btn_ToggleTema.EncendidoSlideColor = System.Drawing.Color.Gainsboro;
-            this.btn_ToggleTema.Location = new System.Drawing.Point(835, 11);
+            this.btn_ToggleTema.Location = new System.Drawing.Point(1054, 8);
             this.btn_ToggleTema.MinimumSize = new System.Drawing.Size(45, 22);
             this.btn_ToggleTema.Name = "btn_ToggleTema";
             this.btn_ToggleTema.Size = new System.Drawing.Size(45, 22);
@@ -153,7 +154,7 @@
             this.cerrarToolStripMenuItem});
             this.mnu_menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnu_menuPrincipal.Name = "mnu_menuPrincipal";
-            this.mnu_menuPrincipal.Size = new System.Drawing.Size(891, 56);
+            this.mnu_menuPrincipal.Size = new System.Drawing.Size(1111, 56);
             this.mnu_menuPrincipal.TabIndex = 0;
             this.mnu_menuPrincipal.Text = "menuStrip1";
             // 
@@ -166,8 +167,8 @@
             this.clientesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("clientesToolStripMenuItem1.Image")));
             this.clientesToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(159, 52);
-            this.clientesToolStripMenuItem1.Text = "Pasajeros";
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(145, 52);
+            this.clientesToolStripMenuItem1.Text = "Clientes";
             // 
             // informacionToolStripMenuItem1
             // 
@@ -188,7 +189,6 @@
             // 
             this.vuelosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listaDeVuelosToolStripMenuItem,
-            this.ventaDeVuelosToolStripMenuItem,
             this.estadisticasHistoricasToolStripMenuItem});
             this.vuelosToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.vuelosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("vuelosToolStripMenuItem.Image")));
@@ -204,14 +204,6 @@
             this.listaDeVuelosToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.listaDeVuelosToolStripMenuItem.Text = "Administrar Vuelos";
             this.listaDeVuelosToolStripMenuItem.Click += new System.EventHandler(this.ListaDeVuelosToolStripMenuItem_Click);
-            // 
-            // ventaDeVuelosToolStripMenuItem
-            // 
-            this.ventaDeVuelosToolStripMenuItem.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ventaDeVuelosToolStripMenuItem.Name = "ventaDeVuelosToolStripMenuItem";
-            this.ventaDeVuelosToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
-            this.ventaDeVuelosToolStripMenuItem.Text = "Venta De Vuelos";
-            this.ventaDeVuelosToolStripMenuItem.Click += new System.EventHandler(this.VentaDeVuelosToolStripMenuItem_Click_1);
             // 
             // estadisticasHistoricasToolStripMenuItem
             // 
@@ -246,11 +238,12 @@
             // 
             // pnl_PanelDeFondo
             // 
+            this.pnl_PanelDeFondo.Controls.Add(this.pnl_barraInfo);
             this.pnl_PanelDeFondo.Controls.Add(this.pic_ImagenDeFondo);
             this.pnl_PanelDeFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_PanelDeFondo.Location = new System.Drawing.Point(0, 56);
             this.pnl_PanelDeFondo.Name = "pnl_PanelDeFondo";
-            this.pnl_PanelDeFondo.Size = new System.Drawing.Size(891, 526);
+            this.pnl_PanelDeFondo.Size = new System.Drawing.Size(1111, 620);
             this.pnl_PanelDeFondo.TabIndex = 5;
             // 
             // pic_ImagenDeFondo
@@ -259,7 +252,7 @@
             this.pic_ImagenDeFondo.Image = ((System.Drawing.Image)(resources.GetObject("pic_ImagenDeFondo.Image")));
             this.pic_ImagenDeFondo.Location = new System.Drawing.Point(0, 0);
             this.pic_ImagenDeFondo.Name = "pic_ImagenDeFondo";
-            this.pic_ImagenDeFondo.Size = new System.Drawing.Size(891, 526);
+            this.pic_ImagenDeFondo.Size = new System.Drawing.Size(1111, 620);
             this.pic_ImagenDeFondo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_ImagenDeFondo.TabIndex = 0;
             this.pic_ImagenDeFondo.TabStop = false;
@@ -275,14 +268,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(891, 582);
+            this.ClientSize = new System.Drawing.Size(1111, 676);
             this.ControlBox = false;
-            this.Controls.Add(this.pnl_barraInfo);
             this.Controls.Add(this.pnl_PanelDeFondo);
             this.Controls.Add(this.mnu_menuPrincipal);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnu_menuPrincipal;
             this.Name = "FrmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -316,7 +309,6 @@
         private System.Windows.Forms.ToolStripMenuItem cancelacionToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem vuelosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaDeVuelosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ventaDeVuelosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horaToolStripMenuItem;
         private System.Windows.Forms.Timer Reloj;

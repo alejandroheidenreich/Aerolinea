@@ -12,15 +12,49 @@ namespace Entidades
         private bool equipajeDeMano;
         private double equipajeDeBodega;
 
+        public Equipaje(bool equipajeDeMano, double equipajeDeBodega)
+        {
+            this.equipajeDeMano = equipajeDeMano;
+            this.equipajeDeBodega = equipajeDeBodega;
+
+        }
+
         public bool EquipajeDeMano
         {
-            get => equipajeDeMano;
-            set => equipajeDeMano = value;
+            get
+            {
+                return equipajeDeMano;
+            }
+            set
+            {
+                equipajeDeMano = value;
+            }
         }
+       
         public double EquipajeDeBodega
         {
-            get => equipajeDeBodega;
-            set => equipajeDeBodega = value;
+            get
+            {
+                return equipajeDeBodega;
+            }
+            set
+            {
+                if (value <= 25 && 0 < value )
+                {
+                    equipajeDeBodega = value;
+                }
+            }
         }
+
+        private void ValidarPesoEquipaje(double peso, out double pesoValido)
+        {
+            pesoValido = 0;
+            if (peso > 25)
+            {
+                throw new Exception("No se admiten equipaje mayores a 25 KG.");
+            }
+            pesoValido = peso;
+        }
+
     }
 }

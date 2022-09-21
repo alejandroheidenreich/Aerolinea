@@ -12,15 +12,10 @@ namespace Entidades
         Internacional
     }
 
-    public enum ClaseDePasajero
-    {
-        Tursita,
-        Premium
-    }
 
     public class Vuelo
     {
-
+        private string id;
         private string destino;
         private string origen;
         private int horaDelVuelo;
@@ -28,16 +23,22 @@ namespace Entidades
         private DateTime partida;
         private Aeronave aeronave;
         private List<Pasajero> listaDePasajeros;
-        //private Dictionary<Pasajero,ClaseDePasajero> claseDePasajeros;//TODO: Implementar
+        /*private Dictionary<Pasajero,ClaseDePasajero> claseDePasajeros;*///TODO: Implementar
 
         public Vuelo(Aeronave aeronave,  string origen, string destino, DateTime partida)
         {
+            this.id = GenerarID();
             this.aeronave = aeronave;
             this.listaDePasajeros = new List<Pasajero>();
             this.destino = destino;
             this.origen = origen;
             this.partida = partida;
             GenerarDuracionDeVuelos();
+        }
+
+        public string ID
+        {
+            get => id;
         }
 
         public string Origen
@@ -58,6 +59,14 @@ namespace Entidades
             }
         }
 
+        //public string Bodega
+        //{
+        //    get
+        //    {
+        //        if (this.aeronave.Bodega == null)
+        //        return 
+        //    }
+        //}
         public string Duracion
         {
             get => new DateTime(1,1,1,this.horaDelVuelo, this.minutosDelVuelo,0).ToString("HH:mm");
@@ -94,6 +103,7 @@ namespace Entidades
             get => partida;
             set => partida = value;
         }
+        
 
         private void GenerarDuracionDeVuelos()
         {
@@ -150,24 +160,15 @@ namespace Entidades
             return !(v == p);
         }
 
-        public static bool operator +(Vuelo v, Pasajero p)
-        {
-            //TODO: Implementar y posible refactorizacion
-            if (v.listaDePasajeros.Count < v.aeronave.AsientosTotales)
-            {
-                foreach (Pasajero item in v.listaDePasajeros)
-                {
-                    if (item == p)
-                    {
-                        return false;
-                    }
-                }
-                v.listaDePasajeros.Add(p);
-                return true;
-            }
-            return false;
-        }
-
+        //private double BodegaActual()
+        //{
+        //    double bodegaActual = 0;
+        //    foreach (Pasajero item in this.listaDePasajeros)
+        //    {
+        //       bodegaActual += item.
+        //    }
+        //    return bodegaActual;
+        //}
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -176,8 +177,21 @@ namespace Entidades
             sb.Append("Disponibilidad: ");
             sb.AppendLine(this.Disponibilidad);
 
-
             return base.ToString();
+        }
+
+        private string GenerarID()
+        {
+            string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            char[] idArray = new char[11];
+            Random random = new Random();
+
+            for (int i = 0; i < idArray.Length; i++)
+            {
+                idArray[i] = caracteres[random.Next(caracteres.Length)];
+            }
+
+            return new String(idArray);
         }
     }
 }

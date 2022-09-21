@@ -5,14 +5,15 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class FrmInformacionDeLosPasajeros : Form
+    public partial class FrmInformacionDeLosClientes : Form
     {
-
-        public FrmInformacionDeLosPasajeros(bool temaActual)
+        private bool ordenAscendente;
+        public FrmInformacionDeLosClientes(bool temaActual)
         {
             InitializeComponent();
             TemaActual(temaActual);
-            dtg_Pasajeros.DataSource = Sistema.pasajeros;
+            dtg_Pasajeros.DataSource = Sistema.clientes;
+            this.ordenAscendente = false;
             //this.dtg_Pasajeros.Columns["Equipaje"].Visible = false;
             //this.dtg_Pasajeros.Columns["EquipajeDeBodega"].Visible = false;
         }
@@ -45,8 +46,8 @@ namespace Interfaz
         {
             if (!string.IsNullOrEmpty(this.txt_Buscar.Text))
             {
-                List<Pasajero> filtrado = new List<Pasajero>();
-                FiltrarDatosDePasajeros(filtrado);
+                List<Cliente> filtrado = new List<Cliente>();
+                FiltrarDatosDeClientes(filtrado);
                 this.dtg_Pasajeros.DataSource = filtrado;
             }
             else
@@ -55,9 +56,9 @@ namespace Interfaz
             }
         }
 
-        private void FiltrarDatosDePasajeros(List<Pasajero> filtrado)
+        private void FiltrarDatosDeClientes(List<Cliente> filtrado)
         {
-            foreach (Pasajero item in Sistema.pasajeros)
+            foreach (Cliente item in Sistema.clientes)
             {
                 if (item.Nombre.ToUpper().StartsWith(this.txt_Buscar.Text.ToUpper()))
                 {
@@ -71,6 +72,6 @@ namespace Interfaz
                     filtrado.Add(item);
                 }
             }
-        } 
+        }
     }
 }

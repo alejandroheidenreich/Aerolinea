@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Entidades
 {
-    public abstract class Persona
+    public abstract class Individuo
     {
         private string nombre;
         private string apellido;
@@ -11,13 +11,18 @@ namespace Entidades
         private int dni;
         private string email;
 
-        protected Persona(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email)
+        protected Individuo(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email)
         {
-            this.nombre = nombre;
-            this.apellido = apellido;
+            ValidarCampoString(nombre, out this.nombre);
+            //this.nombre = nombre;
+            ValidarCampoString(apellido, out this.apellido);
+            //this.apellido = apellido;
+            //ValidarDateTime(fechaDeNacimiento, out this.fechaDeNacimiento);
             this.fechaDeNacimiento = fechaDeNacimiento;
-            this.dni = dni;
-            this.email = email;
+            ValidarCampoEntero(dni, out this.dni);
+            //this.dni = dni;
+            ValidarCampoString(email, out this.email);
+            //this.email = email;
         }
 
         public string Nombre
@@ -30,7 +35,7 @@ namespace Entidades
             get => apellido;
             set => apellido = value;
         }
-        public DateTime FechaDeNacimiento
+        public DateTime Nacimiento
         {
             get => fechaDeNacimiento;
             set => fechaDeNacimiento = value;
@@ -60,7 +65,38 @@ namespace Entidades
             return edad;
         }
 
-        public static bool operator ==(Persona p1, Persona p2)
+        private void ValidarCampoString(string campo, out string campoValidado)
+        {
+            campoValidado = string.Empty;
+            if (string.IsNullOrEmpty(campo))
+            {
+                throw new Exception("No se admiten campos nulos.");
+            }
+            campoValidado = campo;
+        }
+
+        private void ValidarCampoEntero(int campo, out int campoValidado)
+        {
+            campoValidado = -1;
+            if (string.IsNullOrEmpty(campo.ToString()))
+            {
+                throw new Exception("No se admiten campos nulos.");
+            }
+            campoValidado = campo;
+        }
+
+        private void ValidarDateTime(DateTime fecha, out DateTime fechaValidado)
+        {
+            //TODO: arreglar validacion de data time
+            fechaValidado = DateTime.MaxValue;
+            if (fecha > DateTime.MinValue && fecha < DateTime.MaxValue)
+            {
+                throw new Exception("No se admiten campos nulos.");
+            }
+            fechaValidado = fecha;
+        }
+
+        public static bool operator ==(Individuo p1, Individuo p2)
         {
             bool sonIguales = false;
             if (p1.dni == p2.dni)
@@ -70,14 +106,14 @@ namespace Entidades
             return sonIguales;
         }
 
-        public static bool operator !=(Persona p1, Persona p2)
+        public static bool operator !=(Individuo p1, Individuo p2)
         {
             return !(p1 == p2);
         }
 
         public override bool Equals(object obj)
         {
-            Persona p = obj as Persona;
+            Individuo p = obj as Individuo;
             return p is not null && this == p;
         }
 
@@ -104,5 +140,6 @@ namespace Entidades
             return sb.ToString();
         }
 
+       
     }
 }

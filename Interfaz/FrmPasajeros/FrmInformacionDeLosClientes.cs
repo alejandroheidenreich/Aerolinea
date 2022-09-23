@@ -12,7 +12,7 @@ namespace Interfaz
         {
             InitializeComponent();
             TemaActual(temaActual);
-            dtg_Pasajeros.DataSource = Sistema.clientes;
+            dtg_Pasajeros.DataSource = BaseDeDatos.clientes;
             this.ordenAscendente = false;
             //this.dtg_Pasajeros.Columns["Equipaje"].Visible = false;
             //this.dtg_Pasajeros.Columns["EquipajeDeBodega"].Visible = false;
@@ -52,13 +52,13 @@ namespace Interfaz
             }
             else
             {
-                dtg_Pasajeros.DataSource = Sistema.pasajeros;
+                dtg_Pasajeros.DataSource = BaseDeDatos.pasajeros;
             }
         }
 
         private void FiltrarDatosDeClientes(List<Cliente> filtrado)
         {
-            foreach (Cliente item in Sistema.clientes)
+            foreach (Cliente item in BaseDeDatos.clientes)
             {
                 if (item.Nombre.ToUpper().StartsWith(this.txt_Buscar.Text.ToUpper()))
                 {

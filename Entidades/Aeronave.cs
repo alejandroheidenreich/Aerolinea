@@ -77,10 +77,11 @@ namespace Entidades
             sb.AppendLine($"Matricula: {this.matricula}");
             sb.AppendLine($"Cantidad de Asientos Totales: {this.cantidadDeAsientosTotales}");
             sb.AppendLine($"Cantidad de Asientos Premium: {this.Premium}");
+            sb.AppendLine($"Cantidad de Asientos Tursitas: {this.Tursita}");
             sb.AppendLine($"Cantidad de Baños: {this.cantidadDeBanios}");
             sb.AppendLine($"Capacidad de Bodega: {this.capacidadDeBodega.ToString("0.##")} KG.");
 
-            return base.ToString();
+            return sb.ToString();
         }
     }
 }

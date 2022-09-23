@@ -16,6 +16,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
     {
         private Vuelo vuelo;
         private bool temaActual;
+        List<Cliente> listaClientes;
         public FrmInformacionDeVuelos(Vuelo vuelo, bool temaActual)
         {
             InitializeComponent();
@@ -29,13 +30,16 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Origen.Text = $"Origen: {vuelo.Origen}";
             this.lbl_Destino.Text = $"Destino: {vuelo.Destino}";
             this.lbl_TipoDeVuelo.Text = vuelo.Tipo.ToString();
-            this.lbl_Disponibilidad.Text = $"Disponibilidad: {vuelo.Disponibilidad}";
             this.lbl_Duracion.Text = $"Duracion: {vuelo.Duracion}";
             this.lbl_Partida.Text = $"Partida: {vuelo.Partida.ToString("HH:mm - dd/MM/yyyy")}";
-            this.dtg_ListaDePasajeros.DataSource = vuelo.ListaDePasajeros;
-            this.lbl_Matricula.Text = $"Matricula: {vuelo.Aeronave.Matricula}";
-            this.lbl_CantidadBanios.Text = $"Baños: {vuelo.Aeronave.Baños}";
-            this.lbl_CapacidadBodega.Text = $"Bodega: {vuelo.Aeronave.Bodega} KG.";
+            this.lbl_Aeronave.Text = this.vuelo.Aeronave.ToString();
+
+            listaClientes = new List<Cliente>();
+            foreach (Pasaje item in this.vuelo.ListaDePasajeros)
+            {
+                listaClientes.Add(item.Cliente);
+            }
+            this.dtg_ListaDePasajeros.DataSource = this.listaClientes;
         }
 
         private void btn_Atras_Click(object sender, EventArgs e)
@@ -66,10 +70,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Duracion.BackColor = Color.DarkGray;
             this.lbl_Partida.BackColor = Color.DarkGray;
             this.lbl_EncabezadoAeronave.BackColor = Color.LightGray;
-            this.lbl_Disponibilidad.BackColor = Color.LightGray;
-            this.lbl_Matricula.BackColor = Color.LightGray;
-            this.lbl_CantidadBanios.BackColor = Color.LightGray;
-            this.lbl_CapacidadBodega.BackColor = Color.LightGray;
+            this.lbl_Aeronave.BackColor = Color.LightGray;
         }
 
         private void ActivarLightMode()
@@ -84,10 +85,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Duracion.BackColor = Color.WhiteSmoke;
             this.lbl_Partida.BackColor = Color.WhiteSmoke;
             this.lbl_EncabezadoAeronave.BackColor = Color.LightGray;
-            this.lbl_Disponibilidad.BackColor = Color.LightGray;
-            this.lbl_Matricula.BackColor = Color.LightGray;
-            this.lbl_CantidadBanios.BackColor = Color.LightGray;
-            this.lbl_CapacidadBodega.BackColor = Color.LightGray;
+            this.lbl_Aeronave.BackColor = Color.LightGray;
         }
     }
 }

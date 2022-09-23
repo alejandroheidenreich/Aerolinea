@@ -12,9 +12,10 @@ namespace Entidades
         Internacional
     }
 
-
     public class Vuelo
     {
+        private const double PRECIOPORHORANACIONAL = 50;
+        private const double PRECIOPORHORAINTERNACIONAL = 100;
         private string id;
         private string destino;
         private string origen;
@@ -22,18 +23,37 @@ namespace Entidades
         private int minutosDelVuelo;
         private DateTime partida;
         private Aeronave aeronave;
-        private List<Pasajero> listaDePasajeros;
+        private List<Pasaje> listaDePasajeros;
         /*private Dictionary<Pasajero,ClaseDePasajero> claseDePasajeros;*///TODO: Implementar
 
-        public Vuelo(Aeronave aeronave,  string origen, string destino, DateTime partida)
+        public Vuelo(Aeronave aeronave, string origen, string destino, DateTime partida)
         {
             this.id = GenerarID();
             this.aeronave = aeronave;
-            this.listaDePasajeros = new List<Pasajero>();
+            this.listaDePasajeros = new List<Pasaje>();
             this.destino = destino;
             this.origen = origen;
             this.partida = partida;
+            ValidarOrigenDestino(origen, destino);
+            ValidarVueloInternacional();
             GenerarDuracionDeVuelos();
+        }
+
+        private static void ValidarOrigenDestino(string origen, string destino)
+        {
+            if (origen == destino)
+            {
+                throw new Exception("El origen no puede ser igual que el destino");
+            }
+        }
+
+        private void ValidarVueloInternacional()
+        {
+            if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Internacional &&
+                            this.origen != "Buenos Aires" && this.destino != "Buenos Aires")
+            {
+                throw new Exception("Vuelos internacionales deben partir o arribar en Buenos Aires");
+            }
         }
 
         public string ID
@@ -85,7 +105,7 @@ namespace Entidades
             get => aeronave;
             set => aeronave = value;
         }
-        public List<Pasajero> ListaDePasajeros
+        public List<Pasaje> ListaDePasajeros
         {
             get => listaDePasajeros;
             set => listaDePasajeros = value;
@@ -103,7 +123,6 @@ namespace Entidades
             get => partida;
             set => partida = value;
         }
-        
 
         private void GenerarDuracionDeVuelos()
         {
@@ -127,6 +146,54 @@ namespace Entidades
                 }
             }
         }
+
+        public string InformarConPrecioDelPasaje(Pasaje pasaje, out double precioFinal)
+        {
+            StringBuilder sb = new StringBuilder();
+            precioFinal = -1;
+            double horasTotales = this.horaDelVuelo + (this.minutosDelVuelo / 60);
+
+
+            if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Nacional)
+            {
+                precioFinal = PRECIOPORHORANACIONAL * horasTotales;
+            }
+            else
+            {
+                precioFinal = PRECIOPORHORAINTERNACIONAL * horasTotales;
+            }
+            sb.AppendLine($"Registro: {pasaje.IdRegistro}");
+            sb.AppendLine($"Precio Bruto: {precioFinal} U$D");
+
+            if (pasaje.Clase == ClaseDePasajero.Premium)
+            {
+                precioFinal *= 1.25;
+                sb.AppendLine($"Impuesto por Premium: {precioFinal*0.25} U$D");
+            }
+
+            //if (pasaje.PesoAdicional > 0)
+            //{
+            //    double precioPeso = pasaje.PesoAdicional * precioFinal / 100;
+            //    precioFinal += precioPeso;
+            //    sb.AppendLine($"Impuesto por Peso Adicional: {precioPeso}");
+            //}
+
+
+            return sb.ToString();
+        }
+
+        private bool PasajeExisteEnVuelo(Pasaje pasaje)
+        {
+            foreach (Pasaje item in this.listaDePasajeros)
+            {
+                if (pasaje.IdRegistro == item.IdRegistro)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private static TipoDeVuelo DestinoEsInternacional(string origen, string destino)
         {
             if (origen == "Acapulco(México)" ||
@@ -143,9 +210,9 @@ namespace Entidades
             return TipoDeVuelo.Nacional;
         }
 
-        public static bool operator ==(Vuelo v, Pasajero p)
+        public static bool operator ==(Vuelo v, Pasaje p)
         {
-            foreach (Pasajero item in v.listaDePasajeros)
+            foreach (Pasaje item in v.listaDePasajeros)
             {
                 if (item == p)
                 {
@@ -155,7 +222,8 @@ namespace Entidades
             return false;
         }
 
-        public static bool operator !=(Vuelo v, Pasajero p)
+       
+        public static bool operator !=(Vuelo v, Pasaje p)
         {
             return !(v == p);
         }
@@ -169,6 +237,7 @@ namespace Entidades
         //    }
         //    return bodegaActual;
         //}
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

@@ -33,7 +33,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private void FrmAeronaves_Load(object sender, EventArgs e)
         {
             TemaActual(this.temaActual);
-            this.dtg_Aeronaves.DataSource = Sistema.aeronaves;
+            this.dtg_Aeronaves.DataSource = BaseDeDatos.aeronaves;
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)

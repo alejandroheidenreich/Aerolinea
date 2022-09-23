@@ -1,11 +1,13 @@
 ﻿using Entidades;
 using Interfaz.FrmCliente;
+using Interfaz.FrmPasajeros;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +18,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
     {
         private Vuelo vuelo;
         private List<DataTicket>? tickets;
-        private List<Pasajero>? nuevosPasajeros;
+        private List<Pasaje>? nuevosPasajeros;
         private bool clase;
         private int contadorDeTickets;
         private bool tema;
@@ -29,7 +31,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.contadorDeTickets = vuelo.ListaDePasajeros.Count;
         }
 
-        public List<Pasajero>? NuevosPasajeros
+        public List<Pasaje>? NuevosPasajeros
         {
             get => nuevosPasajeros;
             set => nuevosPasajeros = value;
@@ -37,9 +39,9 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private void FrmVentaVuelo_Load(object sender, EventArgs e)
         {
             TemaActual(this.tema);
-            ListarLosClientes(Sistema.clientes);
+            ListarLosClientes(BaseDeDatos.clientes);
             tickets = new List<DataTicket>();
-            nuevosPasajeros = new List<Pasajero>();
+            nuevosPasajeros = new List<Pasaje>();
             VerificarExiteData();
         }
         private void TemaActual(bool temaActual)
@@ -74,13 +76,13 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             }
             else
             {
-                ListarLosClientes(Sistema.clientes);
+                ListarLosClientes(BaseDeDatos.clientes);
             }
         }
         private void FiltrarDatosDeClientes(List<Cliente> filtrado)
         {
             //TODO: sacar de aca mandar a clase sistema
-            foreach (Cliente item in Sistema.clientes)
+            foreach (Cliente item in BaseDeDatos.clientes)
             {
                 if (item.Nombre.ToUpper().StartsWith(this.txt_Buscar.Text.ToUpper()))
                 {
@@ -111,36 +113,63 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 
         private void btn_AgregarCompra_Click(object sender, EventArgs e)
         {
-            if (this.contadorDeTickets == dtg_CarritoDeCompra.RowCount)
+            if (this.contadorDeTickets == 10000)
             {
-                this.lbl_Error.Text = "Se ha llegado al limite de pasajeros";
-                this.lbl_Error.Visible = true;
+                //TODO: ARREGLAR 
+                //this.lbl_Error.Text = "Se ha llegado al limite de pasajeros";
+                //this.lbl_Error.Visible = true;
             }
-            else if (this.lst_Clientes.SelectedItem is null && this.vuelo is null)
+            else if (this.lst_Clientes.SelectedItem is null )
             {
-                this.lbl_Error.Text = "Se ha producido un error en la compra";
+                this.lbl_Error.Text = "Porfavor seleccione un cliente";
                 this.lbl_Error.Visible = true;
             }
             else
             {
+                Pasaje pasajeAgregado = new Pasaje((Cliente)lst_Clientes.SelectedItem, VerificarPremium());
                 this.lbl_Error.Visible = false;
-                this.nuevosPasajeros.Add(
-                    new Pasajero(
-                        ((Cliente)this.lst_Clientes.SelectedItem).Nombre,
-                        ((Cliente)this.lst_Clientes.SelectedItem).Apellido,
-                        ((Cliente)this.lst_Clientes.SelectedItem).Nacimiento,
-                        ((Cliente)this.lst_Clientes.SelectedItem).Dni,
-                        ((Cliente)this.lst_Clientes.SelectedItem).Email,
-                        VerificarPremium()
-                        )
-                    );
+                if (Sistema.VerificarCarritoDecompras(this.vuelo, pasajeAgregado, this.nuevosPasajeros))
+                {
+                    double precioFinal;
+                    this.nuevosPasajeros.Add(pasajeAgregado);
 
-                tickets.Add(new DataTicket(this.vuelo.ID, (Cliente)this.lst_Clientes.SelectedItem, VerificarPremium(), 11));
-                VerificarExiteData();
-                FormValidador.ActualizarDataGridVuelos(this.dtg_CarritoDeCompra, tickets);
+                    this.vuelo.InformarConPrecioDelPasaje(pasajeAgregado, out precioFinal);
+                    tickets.Add(new DataTicket(pasajeAgregado.IdRegistro, (Cliente)this.lst_Clientes.SelectedItem, VerificarPremium(), precioFinal));
+                    ActualizarFacturacionActual();
+                    VerificarExiteData();
+                    ActualizarDataGrid(this.dtg_CarritoDeCompra, tickets);
+                }
+                else
+                {
+                    this.lbl_Error.Text = "El pasajero alcanzo el limite de pasajes por vuelo";
+                    this.lbl_Error.Visible = true;
+                }
             }
         }
 
+        public void ActualizarFacturacionActual()
+        {
+            this.rtb_Facturacion.Clear();
+            StringBuilder sb = new StringBuilder();
+            double precioFinal = 0;
+            double precioDelPasaje;
+
+            foreach (Pasaje item in this.nuevosPasajeros)
+            {
+                sb.AppendLine(this.vuelo.InformarConPrecioDelPasaje(item, out precioDelPasaje));
+                precioFinal += precioDelPasaje;
+            }
+            sb.AppendLine("***********************************");
+            sb.AppendLine($"Precio Final Neto (+IVA) {precioFinal * 1.21} U$D");
+
+            rtb_Facturacion.Text = sb.ToString();
+        }
+        public static void ActualizarDataGrid(DataGridView dtg, List<DataTicket> lista)
+        {
+            dtg.DataSource = null;
+            dtg.DataSource = lista;
+
+        }
         private ClaseDePasajero VerificarPremium()
         {
             if (chk_Clase.Checked)
@@ -157,19 +186,50 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 
         private void btn_Finalizar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            try
+            {
+                Sistema.AltaDePasajero(this.nuevosPasajeros, this.vuelo);
+                this.DialogResult = DialogResult.OK;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dtg_CarritoDeCompra_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtg_CarritoDeCompra.Columns[e.ColumnIndex].Name == "btn_Eliminar")
+            if (dtg_CarritoDeCompra.Columns[e.ColumnIndex].Name == "Eliminar")
             {
+                EliminarPasajeroDeListaParcial(ObtenerSeleccionado().Registro);
                 tickets.Remove(ObtenerSeleccionado());
-                FormValidador.ActualizarDataGridVuelos(dtg_CarritoDeCompra, tickets);
+                ActualizarDataGrid(this.dtg_CarritoDeCompra, tickets);
+                ActualizarFacturacionActual();
                 VerificarExiteData();
             }
         }
 
+        private void EliminarPasajeroDeListaParcial(string idRegistro)
+        {
+            Pasaje pasajeBorrar = EncontrarPasaje(idRegistro);
+            if (pasajeBorrar is not null)
+            {
+                this.nuevosPasajeros.Remove(pasajeBorrar);
+            }
+        }
+
+        private Pasaje EncontrarPasaje(string idRegistro)
+        {
+            foreach (Pasaje item in this.nuevosPasajeros)
+            {
+                if (item.IdRegistro == idRegistro)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
         private DataTicket ObtenerSeleccionado()
         {
             return (DataTicket)dtg_CarritoDeCompra.CurrentRow.DataBoundItem;
@@ -184,6 +244,31 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             else
             {
                 dtg_CarritoDeCompra.Visible = true;
+            }
+        }
+
+        private void btn_Equipaje_Click(object sender, EventArgs e)
+        {
+            if (dtg_CarritoDeCompra.Visible && dtg_CarritoDeCompra.CurrentRow.DataBoundItem is not null)
+            {
+                FrmAltaEquipaje frmEquipaje = new FrmAltaEquipaje();
+                DialogResult respuesta = frmEquipaje.ShowDialog();
+
+                if (respuesta == DialogResult.OK)
+                {
+                    Pasaje pasajeAgregarEquipaje = EncontrarPasaje(ObtenerSeleccionado().Registro);
+
+                    pasajeAgregarEquipaje.EquipajeDeMano = frmEquipaje.EquipajeDeMano;
+                    foreach (double item in frmEquipaje.EquipajesBodega)
+                    {
+                        pasajeAgregarEquipaje.AgregarEquipaje(item);
+                    }
+                }
+            }
+            else
+            {
+                this.lbl_Error.Text = "Debe seleccionar un Pasajero Registrado";
+                this.lbl_Error.Visible = true;
             }
         }
     }

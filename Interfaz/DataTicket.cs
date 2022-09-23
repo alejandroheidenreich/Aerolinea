@@ -10,23 +10,21 @@ namespace Interfaz
 {
     public class DataTicket
     {
-        private string id;
+        private string registro;
         private Cliente cliente;
         private ClaseDePasajero clase;
         private double precio;
-        //private Button boton;
-                
-        public DataTicket(string id, Cliente cliente, ClaseDePasajero claseDePasajero, double precio/*, Button boton*/)
+
+        public DataTicket(string registro, Cliente cliente, ClaseDePasajero claseDePasajero, double precio)
         {
-            this.id = id;
+            this.registro = registro;
             this.cliente = cliente;
             this.clase = claseDePasajero;
             this.precio = precio;
-            //this.boton = boton;
         }
-        public string Id
+        public string Registro
         {
-            get => id;
+            get => registro;
         }
         public string Cliente
         {
@@ -40,9 +38,5 @@ namespace Interfaz
         {
             get => precio;
         }
-        //public Button Boton
-        //{
-        //    get => boton;
-        //}
     }
 }

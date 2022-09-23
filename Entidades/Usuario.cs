@@ -15,10 +15,9 @@ namespace Entidades
         public Usuario(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email, string nombreDeUsuario, string contrasenia)
             :base(nombre,apellido, fechaDeNacimiento, dni,email)
         {
+            Sistema.VerificarUsuarioNoRepetido(nombreDeUsuario);
             ValidarString(nombreDeUsuario, out this.nombreDeUsuario, "El nombre no puede ser nulo.");
-            //this.nombreDeUsuario = nombreDeUsuario;
             ValidarContrasenia(contrasenia, out this.contrasenia);
-            //this.contrasenia = contrasenia;
         }
         public string NombreDeUsuario
         {

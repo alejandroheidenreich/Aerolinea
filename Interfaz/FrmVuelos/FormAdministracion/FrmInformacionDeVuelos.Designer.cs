@@ -38,11 +38,8 @@
             this.lbl_Partida = new System.Windows.Forms.Label();
             this.dtg_ListaDePasajeros = new System.Windows.Forms.DataGridView();
             this.btn_Atras = new System.Windows.Forms.Button();
-            this.lbl_Disponibilidad = new System.Windows.Forms.Label();
+            this.lbl_Aeronave = new System.Windows.Forms.Label();
             this.lbl_EncabezadoAeronave = new System.Windows.Forms.Label();
-            this.lbl_Matricula = new System.Windows.Forms.Label();
-            this.lbl_CantidadBanios = new System.Windows.Forms.Label();
-            this.lbl_CapacidadBodega = new System.Windows.Forms.Label();
             this.pnl_Aeronave = new System.Windows.Forms.Panel();
             this.pnl_Fondo = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_ListaDePasajeros)).BeginInit();
@@ -84,7 +81,7 @@
             // 
             this.lbl_Duracion.AutoSize = true;
             this.lbl_Duracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Duracion.Location = new System.Drawing.Point(794, 71);
+            this.lbl_Duracion.Location = new System.Drawing.Point(788, 71);
             this.lbl_Duracion.Name = "lbl_Duracion";
             this.lbl_Duracion.Size = new System.Drawing.Size(70, 20);
             this.lbl_Duracion.TabIndex = 3;
@@ -94,7 +91,7 @@
             // 
             this.lbl_Partida.AutoSize = true;
             this.lbl_Partida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Partida.Location = new System.Drawing.Point(583, 71);
+            this.lbl_Partida.Location = new System.Drawing.Point(565, 71);
             this.lbl_Partida.Name = "lbl_Partida";
             this.lbl_Partida.Size = new System.Drawing.Size(58, 20);
             this.lbl_Partida.TabIndex = 4;
@@ -146,15 +143,15 @@
             this.btn_Atras.UseVisualStyleBackColor = true;
             this.btn_Atras.Click += new System.EventHandler(this.btn_Atras_Click);
             // 
-            // lbl_Disponibilidad
+            // lbl_Aeronave
             // 
-            this.lbl_Disponibilidad.AutoSize = true;
-            this.lbl_Disponibilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Disponibilidad.Location = new System.Drawing.Point(30, 82);
-            this.lbl_Disponibilidad.Name = "lbl_Disponibilidad";
-            this.lbl_Disponibilidad.Size = new System.Drawing.Size(47, 20);
-            this.lbl_Disponibilidad.TabIndex = 8;
-            this.lbl_Disponibilidad.Text = "dispo";
+            this.lbl_Aeronave.AutoSize = true;
+            this.lbl_Aeronave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Aeronave.Location = new System.Drawing.Point(12, 69);
+            this.lbl_Aeronave.Name = "lbl_Aeronave";
+            this.lbl_Aeronave.Size = new System.Drawing.Size(46, 20);
+            this.lbl_Aeronave.TabIndex = 8;
+            this.lbl_Aeronave.Text = "avion";
             // 
             // lbl_EncabezadoAeronave
             // 
@@ -166,46 +163,13 @@
             this.lbl_EncabezadoAeronave.TabIndex = 9;
             this.lbl_EncabezadoAeronave.Text = "Aeronave";
             // 
-            // lbl_Matricula
-            // 
-            this.lbl_Matricula.AutoSize = true;
-            this.lbl_Matricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Matricula.Location = new System.Drawing.Point(28, 123);
-            this.lbl_Matricula.Name = "lbl_Matricula";
-            this.lbl_Matricula.Size = new System.Drawing.Size(73, 20);
-            this.lbl_Matricula.TabIndex = 10;
-            this.lbl_Matricula.Text = "matricula";
-            // 
-            // lbl_CantidadBanios
-            // 
-            this.lbl_CantidadBanios.AutoSize = true;
-            this.lbl_CantidadBanios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_CantidadBanios.Location = new System.Drawing.Point(30, 167);
-            this.lbl_CantidadBanios.Name = "lbl_CantidadBanios";
-            this.lbl_CantidadBanios.Size = new System.Drawing.Size(53, 20);
-            this.lbl_CantidadBanios.TabIndex = 11;
-            this.lbl_CantidadBanios.Text = "baños";
-            // 
-            // lbl_CapacidadBodega
-            // 
-            this.lbl_CapacidadBodega.AutoSize = true;
-            this.lbl_CapacidadBodega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_CapacidadBodega.Location = new System.Drawing.Point(28, 203);
-            this.lbl_CapacidadBodega.Name = "lbl_CapacidadBodega";
-            this.lbl_CapacidadBodega.Size = new System.Drawing.Size(63, 20);
-            this.lbl_CapacidadBodega.TabIndex = 12;
-            this.lbl_CapacidadBodega.Text = "bodega";
-            // 
             // pnl_Aeronave
             // 
-            this.pnl_Aeronave.Controls.Add(this.lbl_CapacidadBodega);
-            this.pnl_Aeronave.Controls.Add(this.lbl_Disponibilidad);
-            this.pnl_Aeronave.Controls.Add(this.lbl_CantidadBanios);
+            this.pnl_Aeronave.Controls.Add(this.lbl_Aeronave);
             this.pnl_Aeronave.Controls.Add(this.lbl_EncabezadoAeronave);
-            this.pnl_Aeronave.Controls.Add(this.lbl_Matricula);
-            this.pnl_Aeronave.Location = new System.Drawing.Point(662, 130);
+            this.pnl_Aeronave.Location = new System.Drawing.Point(647, 130);
             this.pnl_Aeronave.Name = "pnl_Aeronave";
-            this.pnl_Aeronave.Size = new System.Drawing.Size(272, 323);
+            this.pnl_Aeronave.Size = new System.Drawing.Size(310, 244);
             this.pnl_Aeronave.TabIndex = 13;
             // 
             // pnl_Fondo
@@ -252,11 +216,8 @@
         private System.Windows.Forms.Label lbl_Partida;
         private System.Windows.Forms.DataGridView dtg_ListaDePasajeros;
         private System.Windows.Forms.Button btn_Atras;
-        private System.Windows.Forms.Label lbl_Disponibilidad;
+        private System.Windows.Forms.Label lbl_Aeronave;
         private System.Windows.Forms.Label lbl_EncabezadoAeronave;
-        private System.Windows.Forms.Label lbl_Matricula;
-        private System.Windows.Forms.Label lbl_CantidadBanios;
-        private System.Windows.Forms.Label lbl_CapacidadBodega;
         private System.Windows.Forms.Panel pnl_Aeronave;
         private System.Windows.Forms.Panel pnl_Fondo;
     }

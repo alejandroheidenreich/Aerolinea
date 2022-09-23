@@ -19,7 +19,7 @@ namespace Interfaz
         private void FrmAdministracionDeVuelos_Load(object sender, EventArgs e)
         {
             TemaActual(temaActual);
-            dtg_Vuelos.DataSource = Sistema.vuelos;
+            dtg_Vuelos.DataSource = BaseDeDatos.vuelos;
             this.dtg_Vuelos.Columns["Aeronave"].Visible = false;
         }
         private void TemaActual(bool temaActual)
@@ -66,14 +66,14 @@ namespace Interfaz
             }
             else
             {
-                dtg_Vuelos.DataSource = Sistema.vuelos;
+                dtg_Vuelos.DataSource = BaseDeDatos.vuelos;
             }
         }
 
         private void FiltrarDatosDeVuelo(List<Vuelo> filtrado)
         {
             //TODO: sacar de aca mandar a clase
-            foreach (Vuelo item in Sistema.vuelos)
+            foreach (Vuelo item in BaseDeDatos.vuelos)
             {
                 if (item.Origen.ToString().ToUpper().StartsWith(this.txt_Buscar.Text.ToUpper()))
                 {
@@ -95,7 +95,7 @@ namespace Interfaz
         {
             FrmAltaVuelo altaVuelo = new FrmAltaVuelo(this.temaActual);
             altaVuelo.ShowDialog();
-            FormValidador.ActualizarDataGridVuelos(dtg_Vuelos, Sistema.vuelos);
+            ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
             this.dtg_Vuelos.Columns["Aeronave"].Visible = false;
         }
 
@@ -105,11 +105,17 @@ namespace Interfaz
             if (respuesta == DialogResult.Yes)
             {
                 Sistema.BajaDeVuelo((Vuelo)dtg_Vuelos.CurrentRow.DataBoundItem);
-                FormValidador.ActualizarDataGridVuelos(dtg_Vuelos, Sistema.vuelos);
+                ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
                 this.dtg_Vuelos.Columns["Aeronave"].Visible = false;
             }
         }
 
+        public static void ActualizarDataGrid(DataGridView dtg, List<Vuelo> lista)
+        {
+            dtg.DataSource = null;
+            dtg.DataSource = lista;
+
+        }
         private Vuelo ObtenerVueloSeleccionado()
         {
             return (Vuelo)dtg_Vuelos.CurrentRow.DataBoundItem;
@@ -132,8 +138,8 @@ namespace Interfaz
 
                 if (respuesta == DialogResult.OK)
                 {
-                    Sistema.AltaDePasajero(ventaVuelo.NuevosPasajeros, ObtenerVueloSeleccionado());
-                    FormValidador.ActualizarDataGridVuelos(dtg_Vuelos, Sistema.vuelos);
+                    
+                    ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
                 }
             }
             else
@@ -143,7 +149,6 @@ namespace Interfaz
             }
  
         }
-
         private void btn_VentaVuelo_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Vender Pasaje",this.btn_VentaVuelo);

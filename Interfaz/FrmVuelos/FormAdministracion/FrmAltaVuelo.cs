@@ -27,12 +27,13 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             TemaActual(this.temaActual);
             lbl_MensajeError.Visible = false;
-            foreach (string item in Sistema.localidades)
+            
+            foreach (string item in BaseDeDatos.localidades)
             {
                 cmb_Origen.Items.Add(item);
                 cmb_Destino.Items.Add(item);
             }
-            foreach (Aeronave item in Sistema.aeronaves)
+            foreach (Aeronave item in BaseDeDatos.aeronaves)
             {
                 cmb_Aeronave.Items.Add(item.Matricula);
             }
@@ -62,8 +63,17 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 Aeronave aeronave = Sistema.BuscarAeronavePorMatricula(cmb_Aeronave.Text);
                 if (aeronave is not null)
                 {
-                    Sistema.AltaDeVuelo(new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text,dtp_Partida.Value));
-                    this.Close();
+                    try
+                    {
+                        Sistema.AltaDeVuelo(new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text,dtp_Partida.Value));
+                        this.Close();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        this.lbl_MensajeError.Text = $"       {ex.Message}";
+                        this.lbl_MensajeError.Visible = true;
+                    }
                 }
             }
         }
@@ -113,6 +123,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.btn_Salir.BackColor = Color.LightGray;
             this.btn_MasInfoAeronave.BackColor = Color.LightGray;
             this.btn_Agregar.BackColor = Color.LightGray;
+            this.lbl_MensajeError.BackColor = Color.DarkGray;
         }
 
         private void ActivarLightMode()
@@ -126,6 +137,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.btn_Salir.BackColor = Color.WhiteSmoke;
             this.btn_MasInfoAeronave.BackColor = Color.WhiteSmoke;
             this.btn_Agregar.BackColor = Color.WhiteSmoke;
+            this.lbl_MensajeError.BackColor = Color.WhiteSmoke;
         }
     }
 }

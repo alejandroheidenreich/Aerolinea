@@ -41,7 +41,10 @@
             this.lbl_Aeronave = new System.Windows.Forms.Label();
             this.lbl_EncabezadoAeronave = new System.Windows.Forms.Label();
             this.pnl_Aeronave = new System.Windows.Forms.Panel();
+            this.lbl_DispoBodega = new System.Windows.Forms.Label();
             this.pnl_Fondo = new System.Windows.Forms.Panel();
+            this.lbl_Premium = new System.Windows.Forms.Label();
+            this.lbl_Turista = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_ListaDePasajeros)).BeginInit();
             this.pnl_Aeronave.SuspendLayout();
             this.pnl_Fondo.SuspendLayout();
@@ -165,12 +168,25 @@
             // 
             // pnl_Aeronave
             // 
+            this.pnl_Aeronave.Controls.Add(this.lbl_Turista);
+            this.pnl_Aeronave.Controls.Add(this.lbl_Premium);
+            this.pnl_Aeronave.Controls.Add(this.lbl_DispoBodega);
             this.pnl_Aeronave.Controls.Add(this.lbl_Aeronave);
             this.pnl_Aeronave.Controls.Add(this.lbl_EncabezadoAeronave);
             this.pnl_Aeronave.Location = new System.Drawing.Point(647, 130);
             this.pnl_Aeronave.Name = "pnl_Aeronave";
-            this.pnl_Aeronave.Size = new System.Drawing.Size(310, 244);
+            this.pnl_Aeronave.Size = new System.Drawing.Size(310, 274);
             this.pnl_Aeronave.TabIndex = 13;
+            // 
+            // lbl_DispoBodega
+            // 
+            this.lbl_DispoBodega.AutoSize = true;
+            this.lbl_DispoBodega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_DispoBodega.Location = new System.Drawing.Point(13, 189);
+            this.lbl_DispoBodega.Name = "lbl_DispoBodega";
+            this.lbl_DispoBodega.Size = new System.Drawing.Size(110, 20);
+            this.lbl_DispoBodega.TabIndex = 14;
+            this.lbl_DispoBodega.Text = "bodega actual";
             // 
             // pnl_Fondo
             // 
@@ -186,6 +202,26 @@
             this.pnl_Fondo.Name = "pnl_Fondo";
             this.pnl_Fondo.Size = new System.Drawing.Size(960, 605);
             this.pnl_Fondo.TabIndex = 14;
+            // 
+            // lbl_Premium
+            // 
+            this.lbl_Premium.AutoSize = true;
+            this.lbl_Premium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Premium.Location = new System.Drawing.Point(13, 209);
+            this.lbl_Premium.Name = "lbl_Premium";
+            this.lbl_Premium.Size = new System.Drawing.Size(70, 20);
+            this.lbl_Premium.TabIndex = 15;
+            this.lbl_Premium.Text = "premium";
+            // 
+            // lbl_Turista
+            // 
+            this.lbl_Turista.AutoSize = true;
+            this.lbl_Turista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Turista.Location = new System.Drawing.Point(13, 229);
+            this.lbl_Turista.Name = "lbl_Turista";
+            this.lbl_Turista.Size = new System.Drawing.Size(53, 20);
+            this.lbl_Turista.TabIndex = 16;
+            this.lbl_Turista.Text = "turista";
             // 
             // FrmInformacionDeVuelos
             // 
@@ -220,5 +256,8 @@
         private System.Windows.Forms.Label lbl_EncabezadoAeronave;
         private System.Windows.Forms.Panel pnl_Aeronave;
         private System.Windows.Forms.Panel pnl_Fondo;
+        private System.Windows.Forms.Label lbl_DispoBodega;
+        private System.Windows.Forms.Label lbl_Turista;
+        private System.Windows.Forms.Label lbl_Premium;
     }
 }

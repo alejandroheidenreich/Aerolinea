@@ -14,15 +14,10 @@ namespace Entidades
         protected Individuo(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email)
         {
             ValidarCampoString(nombre, out this.nombre);
-            //this.nombre = nombre;
             ValidarCampoString(apellido, out this.apellido);
-            //this.apellido = apellido;
-            //ValidarDateTime(fechaDeNacimiento, out this.fechaDeNacimiento);
-            this.fechaDeNacimiento = fechaDeNacimiento;
-            ValidarCampoEntero(dni, out this.dni);
-            //this.dni = dni;
-            ValidarCampoString(email, out this.email);
-            //this.email = email;
+            ValidarDateTime(fechaDeNacimiento, out this.fechaDeNacimiento);
+            ValidarCampoDni(dni, out this.dni);
+            ValidarCampoEmail(email, out this.email);
         }
 
         public string Nombre
@@ -75,23 +70,32 @@ namespace Entidades
             campoValidado = campo;
         }
 
-        private void ValidarCampoEntero(int campo, out int campoValidado)
+        private void ValidarCampoEmail(string email, out string emailValidado)
         {
-            campoValidado = -1;
-            if (string.IsNullOrEmpty(campo.ToString()))
+            emailValidado = string.Empty;
+            if (string.IsNullOrEmpty(email) || !email.Contains("@"))
             {
-                throw new Exception("No se admiten campos nulos.");
+                throw new Exception("No es un email valido.");
             }
-            campoValidado = campo;
+            emailValidado = email;
+        }
+
+        private void ValidarCampoDni(int dni, out int dniValidado)
+        {
+            dniValidado = -1;
+            if (dni < 1000000 || dni > 99999999)
+            {
+                throw new Exception("No es un dni valido.");
+            }
+            dniValidado = dni;
         }
 
         private void ValidarDateTime(DateTime fecha, out DateTime fechaValidado)
         {
-            //TODO: arreglar validacion de data time
-            fechaValidado = DateTime.MaxValue;
-            if (fecha > DateTime.MinValue && fecha < DateTime.MaxValue)
+            fechaValidado = DateTime.MinValue;
+            if (CalcularEdad(fecha) < 18)
             {
-                throw new Exception("No se admiten campos nulos.");
+                throw new Exception("Debe ser mayor de 18 años.");
             }
             fechaValidado = fecha;
         }

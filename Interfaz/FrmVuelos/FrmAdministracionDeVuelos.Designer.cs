@@ -49,7 +49,6 @@
             // 
             this.dtg_Vuelos.AllowUserToAddRows = false;
             this.dtg_Vuelos.AllowUserToDeleteRows = false;
-            this.dtg_Vuelos.AllowUserToOrderColumns = true;
             this.dtg_Vuelos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtg_Vuelos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -81,9 +80,11 @@
             this.dtg_Vuelos.Size = new System.Drawing.Size(1028, 520);
             this.dtg_Vuelos.StandardTab = true;
             this.dtg_Vuelos.TabIndex = 0;
+            this.dtg_Vuelos.TabStop = false;
             // 
             // btn_AgregarVuelo
             // 
+            this.btn_AgregarVuelo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_AgregarVuelo.Image = ((System.Drawing.Image)(resources.GetObject("btn_AgregarVuelo.Image")));
             this.btn_AgregarVuelo.Location = new System.Drawing.Point(12, 329);
             this.btn_AgregarVuelo.Name = "btn_AgregarVuelo";
@@ -95,6 +96,7 @@
             // 
             // btn_ExaminarVuelo
             // 
+            this.btn_ExaminarVuelo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_ExaminarVuelo.Image = ((System.Drawing.Image)(resources.GetObject("btn_ExaminarVuelo.Image")));
             this.btn_ExaminarVuelo.Location = new System.Drawing.Point(12, 385);
             this.btn_ExaminarVuelo.Name = "btn_ExaminarVuelo";
@@ -106,6 +108,7 @@
             // 
             // btn_EliminarVuelo
             // 
+            this.btn_EliminarVuelo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_EliminarVuelo.Image = ((System.Drawing.Image)(resources.GetObject("btn_EliminarVuelo.Image")));
             this.btn_EliminarVuelo.Location = new System.Drawing.Point(12, 441);
             this.btn_EliminarVuelo.Name = "btn_EliminarVuelo";
@@ -137,8 +140,9 @@
             // 
             // btn_VentaVuelo
             // 
+            this.btn_VentaVuelo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_VentaVuelo.Image = ((System.Drawing.Image)(resources.GetObject("btn_VentaVuelo.Image")));
-            this.btn_VentaVuelo.Location = new System.Drawing.Point(71, 34);
+            this.btn_VentaVuelo.Location = new System.Drawing.Point(12, 34);
             this.btn_VentaVuelo.Name = "btn_VentaVuelo";
             this.btn_VentaVuelo.Size = new System.Drawing.Size(53, 50);
             this.btn_VentaVuelo.TabIndex = 8;
@@ -151,7 +155,7 @@
             this.lbl_Error.AutoSize = true;
             this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_Error.ForeColor = System.Drawing.Color.Maroon;
-            this.lbl_Error.Location = new System.Drawing.Point(140, 51);
+            this.lbl_Error.Location = new System.Drawing.Point(103, 51);
             this.lbl_Error.Name = "lbl_Error";
             this.lbl_Error.Size = new System.Drawing.Size(56, 15);
             this.lbl_Error.TabIndex = 9;

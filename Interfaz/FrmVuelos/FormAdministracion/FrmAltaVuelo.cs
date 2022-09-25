@@ -139,5 +139,10 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.btn_Agregar.BackColor = Color.WhiteSmoke;
             this.lbl_MensajeError.BackColor = Color.WhiteSmoke;
         }
+
+        private void btn_MasInfoAeronave_MouseHover(object sender, EventArgs e)
+        {
+            this.tt_Ayuda.Show("Lista de las Aeronaves", this.btn_MasInfoAeronave);
+        }
     }
 }

@@ -81,7 +81,7 @@ namespace Entidades
             bool puedeComprar = false;
             foreach (Pasaje item in vuelo.ListaDePasajeros)
             {
-                if (item.Cliente == pasajero.Cliente)
+                if (item.Equals(pasajero.Cliente))
                 {
                     contadorDePasajes++;
                 }
@@ -93,23 +93,64 @@ namespace Entidades
             return puedeComprar;
         }
 
-        public static bool VerificarCarritoDecompras(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajerosParaAgregar)
+        public static bool VerificarPasajeComprar(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajerosParaAgregar)
         {
             //TODO: Refactorizar
+            bool puedeComprar = false;
             int contadorDePasajes = CaclucarCantidadDelMismoPasajeEnLista(pasajero, pasajerosParaAgregar);
+            foreach (Pasaje item in vuelo.ListaDePasajeros)
+            {
+                if (item.Equals(pasajero.Cliente))
+                {
+                    contadorDePasajes++;
+                }
+            }
+            if (contadorDePasajes < 5 )
+            {
+                puedeComprar = true;
+            }
+            return puedeComprar;
+        }
+
+        public static bool VerificarPasajeComprar(Vuelo vuelo, Pasaje pasajero)
+        {
+            int contadorDePasajes = 0;
             bool puedeComprar = false;
             foreach (Pasaje item in vuelo.ListaDePasajeros)
             {
-                if (item.Cliente == pasajero.Cliente)
+                if (item.Equals(pasajero.Cliente))
                 {
                     contadorDePasajes++;
                 }
             }
             if (contadorDePasajes < 5)
             {
+
                 puedeComprar = true;
             }
             return puedeComprar;
+        }
+
+        public static void ValidadCompraDeClase(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajesAComprar)
+        {
+            int contadorPremium = 0;
+            int contadorTurista = 0;
+            foreach (Pasaje item in pasajesAComprar)
+            {
+                if (item.Clase == ClaseDePasajero.Premium)
+                {
+                    contadorPremium++;
+                }
+                else
+                {
+                    contadorTurista++;
+                }
+            }
+            if ((pasajero.Clase == ClaseDePasajero.Tursita && vuelo.Tursita + contadorTurista + 1 > vuelo.Aeronave.Tursita) ||
+                pasajero.Clase == ClaseDePasajero.Premium && vuelo.Premium + contadorPremium + 1 > vuelo.Aeronave.Premium)
+            {
+                throw new Exception($"Ya no hay disponibilidad para Pasajeros {pasajero.Clase} en este vuelo");
+            }
         }
 
         private static int CaclucarCantidadDelMismoPasajeEnLista(Pasaje pasajero, List<Pasaje> pasajerosParaAgregar)
@@ -141,6 +182,14 @@ namespace Entidades
             }
         }
 
+        public static void BajaDeCliente(Cliente clienteBaja)
+        {
+            if (clienteBaja is not null)
+            {
+                BaseDeDatos.clientes.Remove(clienteBaja);
+            }
+        }
+
         public static Aeronave BuscarAeronavePorMatricula(string matricula)
         {
             foreach (Aeronave item in BaseDeDatos.aeronaves)
@@ -156,7 +205,7 @@ namespace Entidades
         public static DateTime FechaAleatoria()
         {
             Random rand = new Random();
-            int año = rand.Next(1950, 2010);
+            int año = rand.Next(1950, DateTime.Now.Year-18);
             int mes = rand.Next(1, 12);
             int dia = rand.Next(1, 28);
 

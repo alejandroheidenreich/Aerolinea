@@ -3,13 +3,8 @@ using Interfaz.FrmCliente;
 using Interfaz.FrmPasajeros;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz.FrmVuelos.FormAdministracion
@@ -19,9 +14,11 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private Vuelo vuelo;
         private List<DataTicket>? tickets;
         private List<Pasaje>? nuevosPasajeros;
-        private bool clase;
         private int contadorDeTickets;
         private bool tema;
+        private bool mouseAccion;
+        private int mousePosX;
+        private int mousePosY;
 
         public FrmVentaVuelo(Vuelo vuelo, bool temaActual)
         {
@@ -29,6 +26,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.tema = temaActual;
             this.vuelo = vuelo;
             this.contadorDeTickets = vuelo.ListaDePasajeros.Count;
+            this.lbl_EncabezadoVuelo.Text = vuelo.ToString();
         }
 
         public List<Pasaje>? NuevosPasajeros
@@ -36,6 +34,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             get => nuevosPasajeros;
             set => nuevosPasajeros = value;
         }
+
         private void FrmVentaVuelo_Load(object sender, EventArgs e)
         {
             TemaActual(this.tema);
@@ -48,12 +47,47 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             if (temaActual)
             {
-                this.BackColor = Color.DarkGray;
+                ActivarDarkMode();
             }
             else
             {
-                this.BackColor = Color.WhiteSmoke;
+                ActivarLightMode();
             }
+        }
+
+        private void ActivarLightMode()
+        {
+            this.BackColor = Color.SkyBlue;
+            this.pnl_Fondo.BackColor = Color.WhiteSmoke;
+            this.btn_AgregarCliente.BackColor = Color.LightGray;
+            this.btn_Equipaje.BackColor = Color.LightGray;
+            this.btn_AgregarCompra.BackColor = Color.LightGray;
+            this.btn_Finalizar.BackColor = Color.LightGray;
+            this.btn_Salir.BackColor = Color.LightGray;
+            this.dtg_CarritoDeCompra.DefaultCellStyle.BackColor = Color.LightGray;
+            this.lst_Clientes.BackColor = Color.DarkGray;
+            this.rtb_Facturacion.BackColor = Color.DarkGray;
+            this.chk_Clase.BackColor = Color.WhiteSmoke;
+            this.lbl_Error.BackColor = Color.WhiteSmoke;
+            this.lbl_EncabezadoFacturacion.BackColor = Color.WhiteSmoke;
+        }
+
+
+        private void ActivarDarkMode()
+        {
+            this.BackColor = Color.SteelBlue;
+            this.pnl_Fondo.BackColor = Color.DarkGray;
+            this.btn_AgregarCliente.BackColor = Color.DimGray;
+            this.btn_Equipaje.BackColor = Color.DimGray;
+            this.btn_AgregarCompra.BackColor = Color.DimGray;
+            this.btn_Finalizar.BackColor = Color.DimGray;
+            this.btn_Salir.BackColor = Color.DimGray;
+            this.dtg_CarritoDeCompra.DefaultCellStyle.BackColor = Color.DarkGray;
+            this.lst_Clientes.BackColor = Color.DarkGray;
+            this.rtb_Facturacion.BackColor = Color.DarkGray;
+            this.chk_Clase.BackColor = Color.DarkGray;
+            this.lbl_Error.BackColor = Color.DarkGray;
+            this.lbl_EncabezadoFacturacion.BackColor = Color.DarkGray;
         }
         private void ListarLosClientes(List<Cliente> listaClientes)
         {
@@ -101,7 +135,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         }
         private void btn_AgregarCliente_Click(object sender, EventArgs e)
         {
-            FrmAltaCliente altaCliente = new FrmAltaCliente();
+            FrmAltaCliente altaCliente = new FrmAltaCliente(this.tema);
 
             DialogResult respuesta = altaCliente.ShowDialog();
 
@@ -113,13 +147,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 
         private void btn_AgregarCompra_Click(object sender, EventArgs e)
         {
-            if (this.contadorDeTickets == 10000)
-            {
-                //TODO: ARREGLAR 
-                //this.lbl_Error.Text = "Se ha llegado al limite de pasajeros";
-                //this.lbl_Error.Visible = true;
-            }
-            else if (this.lst_Clientes.SelectedItem is null )
+            if (this.lst_Clientes.SelectedItem is null)
             {
                 this.lbl_Error.Text = "Porfavor seleccione un cliente";
                 this.lbl_Error.Visible = true;
@@ -128,23 +156,37 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             {
                 Pasaje pasajeAgregado = new Pasaje((Cliente)lst_Clientes.SelectedItem, VerificarPremium());
                 this.lbl_Error.Visible = false;
-                if (Sistema.VerificarCarritoDecompras(this.vuelo, pasajeAgregado, this.nuevosPasajeros))
+                try
                 {
-                    double precioFinal;
-                    this.nuevosPasajeros.Add(pasajeAgregado);
-
-                    this.vuelo.InformarConPrecioDelPasaje(pasajeAgregado, out precioFinal);
-                    tickets.Add(new DataTicket(pasajeAgregado.IdRegistro, (Cliente)this.lst_Clientes.SelectedItem, VerificarPremium(), precioFinal));
-                    ActualizarFacturacionActual();
-                    VerificarExiteData();
-                    ActualizarDataGrid(this.dtg_CarritoDeCompra, tickets);
+                    Sistema.ValidadCompraDeClase(this.vuelo, pasajeAgregado, this.nuevosPasajeros);
+                    if (Sistema.VerificarPasajeComprar(this.vuelo, pasajeAgregado, this.nuevosPasajeros))
+                    {
+                        AgregarVuelo(pasajeAgregado);
+                    }
+                    else
+                    {
+                        this.lbl_Error.Text = "El pasajero alcanzo el limite de pasajes por vuelo";
+                        this.lbl_Error.Visible = true;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    this.lbl_Error.Text = "El pasajero alcanzo el limite de pasajes por vuelo";
+                    this.lbl_Error.Text = ex.Message;
                     this.lbl_Error.Visible = true;
+
                 }
             }
+        }
+
+        private void AgregarVuelo(Pasaje pasajeAgregado)
+        {
+            double precioFinal;
+            this.nuevosPasajeros.Add(pasajeAgregado);
+            this.vuelo.InformarConPrecioDelPasaje(pasajeAgregado, out precioFinal);
+            tickets.Add(new DataTicket(pasajeAgregado.IdRegistro, (Cliente)this.lst_Clientes.SelectedItem, VerificarPremium(), precioFinal));
+            ActualizarFacturacionActual();
+            VerificarExiteData();
+            ActualizarDataGrid(this.dtg_CarritoDeCompra, tickets);
         }
 
         public void ActualizarFacturacionActual()
@@ -160,7 +202,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 precioFinal += precioDelPasaje;
             }
             sb.AppendLine("***********************************");
-            sb.AppendLine($"Precio Final Neto (+IVA) {precioFinal * 1.21} U$D");
+            sb.AppendLine($"Precio Final Neto (+IVA) {(precioFinal * 1.21).ToString("0.00")} U$D");
 
             rtb_Facturacion.Text = sb.ToString();
         }
@@ -188,8 +230,16 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             try
             {
-                Sistema.AltaDePasajero(this.nuevosPasajeros, this.vuelo);
-                this.DialogResult = DialogResult.OK;
+                if (this.nuevosPasajeros.Count != 0)
+                {
+                    Sistema.AltaDePasajero(this.nuevosPasajeros, this.vuelo);
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    this.lbl_Error.Text = "La facturacion esta vacia";
+                    this.lbl_Error.Visible = true;
+                }
 
             }
             catch (Exception ex)
@@ -240,10 +290,13 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             if (tickets.Count == 0)
             {
                 dtg_CarritoDeCompra.Visible = false;
+                btn_Equipaje.Visible = false;
+                this.rtb_Facturacion.Clear();
             }
             else
             {
                 dtg_CarritoDeCompra.Visible = true;
+                btn_Equipaje.Visible = true;
             }
         }
 
@@ -251,18 +304,18 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             if (dtg_CarritoDeCompra.Visible && dtg_CarritoDeCompra.CurrentRow.DataBoundItem is not null)
             {
-                FrmAltaEquipaje frmEquipaje = new FrmAltaEquipaje();
+                Pasaje pasajeAgregarEquipaje = EncontrarPasaje(ObtenerSeleccionado().Registro);
+                FrmAltaEquipaje frmEquipaje = new FrmAltaEquipaje(this.vuelo, this.tema, pasajeAgregarEquipaje.Cliente);
                 DialogResult respuesta = frmEquipaje.ShowDialog();
 
                 if (respuesta == DialogResult.OK)
                 {
-                    Pasaje pasajeAgregarEquipaje = EncontrarPasaje(ObtenerSeleccionado().Registro);
-
                     pasajeAgregarEquipaje.EquipajeDeMano = frmEquipaje.EquipajeDeMano;
                     foreach (double item in frmEquipaje.EquipajesBodega)
                     {
                         pasajeAgregarEquipaje.AgregarEquipaje(item);
                     }
+                    ActualizarFacturacionActual();
                 }
             }
             else
@@ -270,6 +323,51 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 this.lbl_Error.Text = "Debe seleccionar un Pasajero Registrado";
                 this.lbl_Error.Visible = true;
             }
+        }
+
+        private void pnl_Fondo_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = true;
+            this.mousePosX = e.X;
+            this.mousePosY = e.Y;
+        }
+
+        private void pnl_Fondo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseAccion)
+            {
+                this.SetDesktopLocation(MousePosition.X - mousePosX, MousePosition.Y - mousePosY);
+            }
+        }
+
+        private void pnl_Fondo_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = false;
+        }
+
+        private void btn_AgregarCompra_MouseHover(object sender, EventArgs e)
+        {
+            this.tt_Ayuda.Show("Agregar a Compra", this.btn_AgregarCompra);
+        }
+
+        private void btn_AgregarCliente_MouseHover(object sender, EventArgs e)
+        {
+            this.tt_Ayuda.Show("Agregar Nuevo Cliente", this.btn_AgregarCliente);
+        }
+
+        private void btn_Finalizar_MouseHover(object sender, EventArgs e)
+        {
+            this.tt_Ayuda.Show("Terminar Operacion", this.btn_Finalizar);
+        }
+
+        private void btn_Equipaje_MouseHover(object sender, EventArgs e)
+        {
+            this.tt_Ayuda.Show("Añadir Equipaje al Pasajero", this.btn_Equipaje);
+        }
+
+        private void lst_Clientes_MouseHover(object sender, EventArgs e)
+        {
+            this.tt_Ayuda.Show("Seleccionar Cliente a Vender Pasaje", this.lst_Clientes);
         }
     }
 }

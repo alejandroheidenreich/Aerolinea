@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -19,7 +16,6 @@ namespace Entidades
 
         static BaseDeDatos()
         {
-
             CargarUsuarios();
 
             CargarClientes();
@@ -27,8 +23,6 @@ namespace Entidades
             CargarLocalidades();
 
             CargarAeronaves();
-
-            //CargarPasajes();
 
             CargarVuelos();
 
@@ -40,13 +34,13 @@ namespace Entidades
         {
             aeronaves = new List<Aeronave>()
             {
-                new Aeronave(250,3,2000),
-                new Aeronave(115,2,1500),
-                new Aeronave(450,5,10000),
-                new Aeronave(75,1,500),
-                new Aeronave(300,2,3500),
-                new Aeronave(230,2,2000),
-                new Aeronave(270,3,3000)
+                new Aeronave(200,6,20000),
+                new Aeronave(315,9,35000),
+                new Aeronave(450,12,100000),
+                new Aeronave(275,8,50000),
+                new Aeronave(350,10,35000),
+                new Aeronave(430,11,120000),
+                new Aeronave(270,8,30000)
             };
         }
 
@@ -1111,17 +1105,17 @@ namespace Entidades
 
             try
             {
-                usuarios.Add(new Usuario("Alejandro", "Heidenreich", new DateTime(1995, 12, 02), 55555555, "ale@gmal.com", "HeidenreichAlejandro", "Contraseña123#"));
-                usuarios.Add(new Usuario("José", "Argento", new DateTime(1955, 10, 19), 11111111, "pepe@gmal.com", "pepe", "Pep3Pepo$o"));
+                usuarios.Add(new Usuario("Alejandro", "Heidenreich", new DateTime(1995, 12, 02), 56556556, "ale@gmal.com", "HeidenreichAlejandro", "Contraseña123#"));
+                usuarios.Add(new Usuario("José", "Argento", new DateTime(1955, 10, 19), 12112112, "pepe@gmal.com", "pepe", "Pep3Pepo$o"));
                 usuarios.Add(new Usuario("Lionel", "Messi", new DateTime(1987, 07, 24), 10101010, "leo@gmal.com", "messi10", "Scaloneta#10"));
                 usuarios.Add(new Usuario("Bartolomeo", "Simpson", new DateTime(1981, 12, 13), 66666666, "bart@gmal.com", "elbarto", "1ayCaramba!"));
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                throw;
             }
-            
+
         }
 
         private static void AltaRandomDePasajeros()
@@ -1130,19 +1124,92 @@ namespace Entidades
 
             foreach (Vuelo item in vuelos)
             {
-                for (int i = 0; i < item.Aeronave.AsientosTotales; i++)
+                for (int i = 0; i < rnd.Next(200, item.Aeronave.AsientosTotales); i++)
                 {
-                    Pasaje pasaje = new Pasaje(clientes[rnd.Next(0, 998)], (ClaseDePasajero)rnd.Next(0, 1));
-                    item.ListaDePasajeros.Add(pasaje);
-                    if (rnd.Next(0, 40) == 5)
+                    ClaseDePasajero aux;
+                    if (rnd.Next(1, 10) == 1)
                     {
-                        break;
+                        aux = ClaseDePasajero.Premium;
+                    }
+                    else
+                    {
+                        aux = ClaseDePasajero.Tursita;
+                    }
+
+                    if (aux == ClaseDePasajero.Tursita && ValidarCantidadTuristaDelVuelo(item))
+                    {
+                        Pasaje pasaje = new Pasaje(clientes[rnd.Next(0, 998)], aux);
+                        CargarEquipajesDePasajeros(pasaje, item);
+                        item.ListaDePasajeros.Add(pasaje);
+                    }
+                    else if (aux == ClaseDePasajero.Premium && ValidarCantidadPremiumDelVuelo(item))
+                    {
+                        Pasaje pasaje = new Pasaje(clientes[rnd.Next(0, 998)], aux);
+                        CargarEquipajesDePasajeros(pasaje, item);
+                        if (Sistema.VerificarPasajeComprar(item, pasaje))
+                        {
+                            item.ListaDePasajeros.Add(pasaje);
+                        }
                     }
                 }
             }
         }
 
-        public static DateTime FechaAleatoria(int inicioYear,int finalYear)
+        private static void CargarEquipajesDePasajeros(Pasaje pasajero, Vuelo vuelo)
+        {
+            Random rnd = new Random();
+            double peso;
+
+            if (rnd.Next(1, 3) == 1)
+            {
+                pasajero.EquipajeDeMano = true;
+            }
+            for (int i = 0; i < rnd.Next(0, 3); i++)
+            {
+                peso = rnd.Next(10, 35);
+                if (vuelo.EspacioDisponibleBodega() > peso)
+                {
+                    pasajero.AgregarEquipaje(peso);
+                }
+            }
+        }
+
+        private static bool ValidarCantidadPremiumDelVuelo(Vuelo vuelo)
+        {
+            int contador = 0;
+            foreach (Pasaje item in vuelo.ListaDePasajeros)
+            {
+                if (item.Clase == ClaseDePasajero.Premium)
+                {
+                    contador++;
+                    if (contador == vuelo.Aeronave.Premium)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private static bool ValidarCantidadTuristaDelVuelo(Vuelo vuelo)
+        {
+            int contador = 0;
+            foreach (Pasaje item in vuelo.ListaDePasajeros)
+            {
+                if (item.Clase == ClaseDePasajero.Tursita)
+                {
+                    contador++;
+                    if (contador == vuelo.Aeronave.Tursita)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+
+        public static DateTime FechaAleatoria(int inicioYear, int finalYear)
         {
             Random rand = new Random();
             int año = rand.Next(inicioYear, finalYear);
@@ -1151,7 +1218,7 @@ namespace Entidades
             int hora = rand.Next(0, 23);
             int minutos = rand.Next(0, 30);
 
-            return new DateTime(año, mes, dia, hora, minutos,0);
+            return new DateTime(año, mes, dia, hora, minutos, 0);
         }
 
     }

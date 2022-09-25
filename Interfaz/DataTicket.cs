@@ -34,9 +34,9 @@ namespace Interfaz
         {
             get => clase;
         }
-        public double Precio
+        public string Precio
         {
-            get => precio;
+            get => $"{precio.ToString("0.##")} U$D";
         }
     }
 }

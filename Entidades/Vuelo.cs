@@ -79,14 +79,6 @@ namespace Entidades
             }
         }
 
-        //public string Bodega
-        //{
-        //    get
-        //    {
-        //        if (this.aeronave.Bodega == null)
-        //        return 
-        //    }
-        //}
         public string Duracion
         {
             get => new DateTime(1,1,1,this.horaDelVuelo, this.minutosDelVuelo,0).ToString("HH:mm");
@@ -124,6 +116,21 @@ namespace Entidades
             set => partida = value;
         }
 
+        public int Premium
+        {
+            get
+            {
+                return CantidadDeVuelosClase(ClaseDePasajero.Premium);
+            }
+        }
+        public int Tursita
+        {
+            get
+            {
+                return CantidadDeVuelosClase(ClaseDePasajero.Tursita);
+            }
+        }
+
         private void GenerarDuracionDeVuelos()
         {
             Random rnd = new Random();
@@ -147,11 +154,23 @@ namespace Entidades
             }
         }
 
+        private int CantidadDeVuelosClase(ClaseDePasajero clase)
+        {
+            int contador = 0;
+            foreach (Pasaje item in this.listaDePasajeros)
+            {
+                if (item.Clase == clase)
+                {
+                    contador++;
+                }
+            }
+            return contador;
+        }
         public string InformarConPrecioDelPasaje(Pasaje pasaje, out double precioFinal)
         {
             StringBuilder sb = new StringBuilder();
             precioFinal = -1;
-            double horasTotales = this.horaDelVuelo + (this.minutosDelVuelo / 60);
+            double horasTotales = this.horaDelVuelo + ((double)this.minutosDelVuelo / 60);
 
 
             if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Nacional)
@@ -163,20 +182,20 @@ namespace Entidades
                 precioFinal = PRECIOPORHORAINTERNACIONAL * horasTotales;
             }
             sb.AppendLine($"Registro: {pasaje.IdRegistro}");
-            sb.AppendLine($"Precio Bruto: {precioFinal} U$D");
+            sb.AppendLine($"Precio Bruto: {precioFinal.ToString("0.00")} U$D");
 
             if (pasaje.Clase == ClaseDePasajero.Premium)
             {
                 precioFinal *= 1.25;
-                sb.AppendLine($"Impuesto por Premium: {precioFinal*0.25} U$D");
+                sb.AppendLine($"Impuesto por Premium: {(precioFinal*0.25).ToString("0.00")} U$D");
             }
 
-            //if (pasaje.PesoAdicional > 0)
-            //{
-            //    double precioPeso = pasaje.PesoAdicional * precioFinal / 100;
-            //    precioFinal += precioPeso;
-            //    sb.AppendLine($"Impuesto por Peso Adicional: {precioPeso}");
-            //}
+            if (pasaje.PesoAdicional > 0)
+            {
+                double precioPeso = pasaje.PesoAdicional * precioFinal *.01;
+                precioFinal += precioPeso;
+                sb.AppendLine($"Impuesto por Peso Adicional: {precioPeso.ToString("0.00")} U$D");
+            }
 
 
             return sb.ToString();
@@ -194,6 +213,19 @@ namespace Entidades
             return false;
         }
 
+        public double EspacioDisponibleBodega()
+        {
+            double acumuladorBodega = 0;
+            foreach (Pasaje item in this.listaDePasajeros)
+            {
+                foreach (double itemDelItem in item.EquipajeDeBodega)
+                {
+                    acumuladorBodega += itemDelItem;
+                }
+            }
+
+            return this.aeronave.Bodega - acumuladorBodega;
+        }
         private static TipoDeVuelo DestinoEsInternacional(string origen, string destino)
         {
             if (origen == "Acapulco(México)" ||
@@ -228,25 +260,14 @@ namespace Entidades
             return !(v == p);
         }
 
-        //private double BodegaActual()
-        //{
-        //    double bodegaActual = 0;
-        //    foreach (Pasajero item in this.listaDePasajeros)
-        //    {
-        //       bodegaActual += item.
-        //    }
-        //    return bodegaActual;
-        //}
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"Destino: {this.destino} - {this.Tipo}");
-            sb.Append("Disponibilidad: ");
-            sb.AppendLine(this.Disponibilidad);
+            sb.AppendLine($"Vuelo: {this.id}");
+            sb.Append($"Origen: {this.origen}    Destino: {this.destino} - ({this.Tipo})");
 
-            return base.ToString();
+            return sb.ToString();
         }
 
         private string GenerarID()

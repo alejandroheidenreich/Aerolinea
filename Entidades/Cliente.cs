@@ -8,7 +8,6 @@ namespace Entidades
 {
     public class Cliente : Individuo
     {
-        //TODO: Posible clase padre de pasajero
         public Cliente(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email)
             : base(nombre, apellido, fechaDeNacimiento, dni, email)
         {
@@ -17,17 +16,25 @@ namespace Entidades
 
         public static bool operator ==(Cliente c1, Cliente c2)
         {
-            bool sonIguales = false;
-            if (c1.Dni == c2.Dni)
-            {
-                sonIguales = true;
-            }
-            return sonIguales;
+            return c1.Dni == c2.Dni;
         }
 
         public static bool operator !=(Cliente c1, Cliente c2)
         {
             return !(c1 == c2);
+        }
+
+        public override bool Equals(object obj)
+        {
+            //TODO: aplicar
+            Cliente aux = obj as Cliente;
+            return aux is not null && aux == this;  
+        }
+
+        public override int GetHashCode()
+        {
+            //TODO: aplicar
+            return this.Dni;
         }
 
         public override string ToString()

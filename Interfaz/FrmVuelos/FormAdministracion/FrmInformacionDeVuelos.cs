@@ -33,6 +33,9 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Duracion.Text = $"Duracion: {vuelo.Duracion}";
             this.lbl_Partida.Text = $"Partida: {vuelo.Partida.ToString("HH:mm - dd/MM/yyyy")}";
             this.lbl_Aeronave.Text = this.vuelo.Aeronave.ToString();
+            this.lbl_DispoBodega.Text = $"Bodega Actual: {this.vuelo.EspacioDisponibleBodega()}/{this.vuelo.Aeronave.Bodega} KG.";
+            this.lbl_Premium.Text = $"Premium: {vuelo.Premium}/{vuelo.Aeronave.Premium}";
+            this.lbl_Premium.Text = $"Premium: {vuelo.Tursita}/{vuelo.Aeronave.Tursita}";
 
             listaClientes = new List<Cliente>();
             foreach (Pasaje item in this.vuelo.ListaDePasajeros)
@@ -71,6 +74,9 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Partida.BackColor = Color.DarkGray;
             this.lbl_EncabezadoAeronave.BackColor = Color.LightGray;
             this.lbl_Aeronave.BackColor = Color.LightGray;
+            this.lbl_DispoBodega.BackColor = Color.LightGray;
+            this.lbl_Premium.BackColor = Color.LightGray;
+            this.lbl_Turista.BackColor = Color.LightGray;
         }
 
         private void ActivarLightMode()
@@ -86,6 +92,9 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Partida.BackColor = Color.WhiteSmoke;
             this.lbl_EncabezadoAeronave.BackColor = Color.LightGray;
             this.lbl_Aeronave.BackColor = Color.LightGray;
+            this.lbl_DispoBodega.BackColor = Color.LightGray;
+            this.lbl_Premium.BackColor = Color.LightGray;
+            this.lbl_Turista.BackColor = Color.LightGray;
         }
     }
 }

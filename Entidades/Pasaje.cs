@@ -31,6 +31,8 @@ namespace Entidades
             this.claseDePasajero = claseDePasajero;
             this.equipajesMaximos = 4;
             this.pesoAdicional = 0;
+            this.equipajeDeBodega = new List<double>();
+            this.EquipajeDeMano = false;
         }
 
         public string IdRegistro
@@ -63,33 +65,46 @@ namespace Entidades
             }
         }
 
+        public List<double> EquipajeDeBodega
+        {
+            get => equipajeDeBodega;
+            set => equipajeDeBodega = value;
+        }
+
         public void AgregarEquipaje(double pesoValija)
         {
-            if (equipajeDeBodega.Count == equipajesMaximos)
+            if (this.equipajeDeBodega.Count > this.equipajesMaximos)
             {
-                equipajeDeBodega.Add(pesoValija);
+                throw new Exception($"Llego al maximo ({this.equipajesMaximos}) de equipajes en bodega");
             }
             else
             {
-                throw new Exception("Llego al maximo de equipajes en bodega");
+                equipajeDeBodega.Add(pesoValija);
             }
         }
 
         private void CalcularPesoEquipajeAdicional()
         {
-            if (this.claseDePasajero == ClaseDePasajero.Tursita && this.equipajeDeBodega.Count > 1)
+            if (this.claseDePasajero == ClaseDePasajero.Tursita)
             {
-                for (int i = 1; i < this.equipajeDeBodega.Count; i++)
-                {
-                    this.pesoAdicional += this.equipajeDeBodega[i];
-                }
+                CondicionarEquipaje(25, 1);
             }
-            else if (this.claseDePasajero == ClaseDePasajero.Premium && this.equipajeDeBodega.Count > 2)
+            else if (this.claseDePasajero == ClaseDePasajero.Premium)
             {
-                for (int i = 1; i < this.equipajeDeBodega.Count; i++)
+                CondicionarEquipaje(21,2);
+            }
+        }
+
+        private void CondicionarEquipaje(int peso, int cantidad)
+        {
+            for (int i = 0; i < this.equipajeDeBodega.Count; i++)
+            {
+                if (i < cantidad && this.equipajeDeBodega[i] > peso)
                 {
-                    this.pesoAdicional += this.equipajeDeBodega[i];
+                    this.pesoAdicional += this.equipajeDeBodega[i] - peso;
+                    break;
                 }
+                this.pesoAdicional += this.equipajeDeBodega[i];
             }
         }
 
@@ -106,6 +121,7 @@ namespace Entidades
 
             return new String(matriculaArray);
         }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using Interfaz.FrmVuelos.FormAdministracion;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,7 +11,6 @@ namespace Interfaz
     public partial class FrmAdministracionDeVuelos : Form
     {
         private bool temaActual;
-        private bool mouseEnVender;
         public FrmAdministracionDeVuelos(bool temaActual)
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace Interfaz
         {
             TemaActual(temaActual);
             dtg_Vuelos.DataSource = BaseDeDatos.vuelos;
-            this.dtg_Vuelos.Columns["Aeronave"].Visible = false;
+            ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
         }
         private void TemaActual(bool temaActual)
         {
@@ -96,7 +96,6 @@ namespace Interfaz
             FrmAltaVuelo altaVuelo = new FrmAltaVuelo(this.temaActual);
             altaVuelo.ShowDialog();
             ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
-            this.dtg_Vuelos.Columns["Aeronave"].Visible = false;
         }
 
         private void btn_EliminarVuelo_Click(object sender, EventArgs e)
@@ -106,7 +105,6 @@ namespace Interfaz
             {
                 Sistema.BajaDeVuelo((Vuelo)dtg_Vuelos.CurrentRow.DataBoundItem);
                 ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
-                this.dtg_Vuelos.Columns["Aeronave"].Visible = false;
             }
         }
 
@@ -114,7 +112,9 @@ namespace Interfaz
         {
             dtg.DataSource = null;
             dtg.DataSource = lista;
-
+            dtg.Columns["Aeronave"].Visible = false;
+            dtg.Columns["Premium"].Visible = false;
+            dtg.Columns["Tursita"].Visible = false;
         }
         private Vuelo ObtenerVueloSeleccionado()
         {

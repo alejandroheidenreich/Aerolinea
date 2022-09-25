@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVerificarContrasenia));
             this.lbl_IngreseContrasenia = new System.Windows.Forms.Label();
             this.txt_Contrasenia = new System.Windows.Forms.TextBox();
             this.btn_Ingresar = new System.Windows.Forms.Button();
@@ -58,6 +59,7 @@
             // btn_Ingresar
             // 
             this.btn_Ingresar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_Ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Ingresar.Location = new System.Drawing.Point(75, 179);
             this.btn_Ingresar.Name = "btn_Ingresar";
@@ -68,6 +70,7 @@
             // 
             // btn_Salir
             // 
+            this.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Salir.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Salir.ForeColor = System.Drawing.Color.Maroon;
             this.btn_Salir.Location = new System.Drawing.Point(224, 251);
@@ -102,6 +105,7 @@
             this.Controls.Add(this.lbl_IngreseContrasenia);
             this.Controls.Add(this.pnl_FondoPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmVerificarContrasenia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVerificarContrasenia";

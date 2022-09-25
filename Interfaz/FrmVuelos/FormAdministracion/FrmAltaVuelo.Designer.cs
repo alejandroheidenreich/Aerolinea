@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAltaVuelo));
             this.cmb_Origen = new System.Windows.Forms.ComboBox();
             this.cmb_Destino = new System.Windows.Forms.ComboBox();
@@ -42,6 +43,7 @@
             this.dtp_Partida = new System.Windows.Forms.DateTimePicker();
             this.lbl_Partida = new System.Windows.Forms.Label();
             this.pnl_FondoPrincipal = new System.Windows.Forms.Panel();
+            this.tt_Ayuda = new System.Windows.Forms.ToolTip(this.components);
             this.pnl_FondoPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +100,7 @@
             this.btn_MasInfoAeronave.Text = "?";
             this.btn_MasInfoAeronave.UseVisualStyleBackColor = true;
             this.btn_MasInfoAeronave.Click += new System.EventHandler(this.btn_MasInfoAeronave_Click);
+            this.btn_MasInfoAeronave.MouseHover += new System.EventHandler(this.btn_MasInfoAeronave_MouseHover);
             // 
             // btn_Agregar
             // 
@@ -229,5 +232,6 @@
         private System.Windows.Forms.DateTimePicker dtp_Partida;
         private System.Windows.Forms.Label lbl_Partida;
         private System.Windows.Forms.Panel pnl_FondoPrincipal;
+        private System.Windows.Forms.ToolTip tt_Ayuda;
     }
 }

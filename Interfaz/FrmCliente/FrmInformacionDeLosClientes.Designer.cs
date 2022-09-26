@@ -75,7 +75,7 @@
             this.dtg_Clientes.RowHeadersVisible = false;
             this.dtg_Clientes.RowTemplate.Height = 25;
             this.dtg_Clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtg_Clientes.Size = new System.Drawing.Size(1038, 508);
+            this.dtg_Clientes.Size = new System.Drawing.Size(1405, 583);
             this.dtg_Clientes.TabIndex = 0;
             this.dtg_Clientes.TabStop = false;
             this.dtg_Clientes.VirtualMode = true;
@@ -104,7 +104,7 @@
             // 
             this.btn_AgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_AgregarCliente.Image = ((System.Drawing.Image)(resources.GetObject("btn_AgregarCliente.Image")));
-            this.btn_AgregarCliente.Location = new System.Drawing.Point(773, 56);
+            this.btn_AgregarCliente.Location = new System.Drawing.Point(972, 60);
             this.btn_AgregarCliente.Name = "btn_AgregarCliente";
             this.btn_AgregarCliente.Size = new System.Drawing.Size(175, 59);
             this.btn_AgregarCliente.TabIndex = 3;
@@ -116,7 +116,7 @@
             // 
             this.btn_BajaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_BajaCliente.Image = ((System.Drawing.Image)(resources.GetObject("btn_BajaCliente.Image")));
-            this.btn_BajaCliente.Location = new System.Drawing.Point(1022, 56);
+            this.btn_BajaCliente.Location = new System.Drawing.Point(1248, 60);
             this.btn_BajaCliente.Name = "btn_BajaCliente";
             this.btn_BajaCliente.Size = new System.Drawing.Size(59, 59);
             this.btn_BajaCliente.TabIndex = 4;
@@ -128,7 +128,7 @@
             // 
             this.btn_EditarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_EditarCliente.Image = ((System.Drawing.Image)(resources.GetObject("btn_EditarCliente.Image")));
-            this.btn_EditarCliente.Location = new System.Drawing.Point(954, 56);
+            this.btn_EditarCliente.Location = new System.Drawing.Point(1168, 60);
             this.btn_EditarCliente.Name = "btn_EditarCliente";
             this.btn_EditarCliente.Size = new System.Drawing.Size(59, 59);
             this.btn_EditarCliente.TabIndex = 5;
@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 669);
+            this.ClientSize = new System.Drawing.Size(1492, 782);
             this.ControlBox = false;
             this.Controls.Add(this.btn_EditarCliente);
             this.Controls.Add(this.btn_BajaCliente);

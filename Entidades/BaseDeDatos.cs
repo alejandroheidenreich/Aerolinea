@@ -9,13 +9,17 @@ namespace Entidades
         public static List<Aeronave> aeronaves;
         public static List<Pasaje> pasajeros;
         public static List<Cliente> clientes;
-        public static List<Vuelo> vuelos;
+        public static List<Vuelo> vuelosTotales;
         public static List<string> localidades;
-        public static List<string> localidadesNacionales;
-        public static List<string> localidadesInternacionales;
+        public static List<Vuelo> vuelosActivos;
+        public static List<Vuelo> vuelosHistorial;
 
         static BaseDeDatos()
         {
+            vuelosHistorial = new List<Vuelo>();
+
+            vuelosActivos = new List<Vuelo>();
+
             CargarUsuarios();
 
             CargarClientes();
@@ -27,6 +31,8 @@ namespace Entidades
             CargarVuelos();
 
             AltaRandomDePasajeros();
+
+            Sistema.ActualizarVuelos();
         }
 
 
@@ -64,7 +70,6 @@ namespace Entidades
                 "Tucumán",
                 "Puerto Madryn",
                 "Ushuaia",
-                "Buenos Aires",
                 "Recife(Brasil)",//17
                 "Roma(Italia)",//18
                 "Acapulco(México)",//19
@@ -74,15 +79,16 @@ namespace Entidades
 
         private static void CargarVuelos()
         {
-            vuelos = new List<Vuelo>();
+            vuelosTotales = new List<Vuelo>();
             Random rnd = new Random();
 
-            for (int i = 0; i < 100; i++)
+
+            for (int i = 0; i < 200; i++)
             {
                 try
                 {
-                    Vuelo nuevoVuelo = new Vuelo(aeronaves[rnd.Next(0, 6)], localidades[rnd.Next(0, 20)], localidades[rnd.Next(0, 20)], FechaAleatoria(2022, 2024));
-                    vuelos.Add(nuevoVuelo);
+                    Vuelo nuevoVuelo = new Vuelo(aeronaves[rnd.Next(0, 6)], localidades[rnd.Next(0, 20)], localidades[rnd.Next(0, 20)], FechaAleatoria(2022, 2024), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio());
+                    vuelosTotales.Add(nuevoVuelo);
                 }
                 catch (Exception ex)
                 {
@@ -1122,7 +1128,7 @@ namespace Entidades
         {
             Random rnd = new Random();
 
-            foreach (Vuelo item in vuelos)
+            foreach (Vuelo item in vuelosTotales)
             {
                 for (int i = 0; i < rnd.Next(200, item.Aeronave.AsientosTotales); i++)
                 {
@@ -1160,10 +1166,8 @@ namespace Entidades
             Random rnd = new Random();
             double peso;
 
-            if (rnd.Next(1, 3) == 1)
-            {
-                pasajero.EquipajeDeMano = true;
-            }
+            pasajero.EquipajeDeMano = BooleanoAleatorio();
+            
             for (int i = 0; i < rnd.Next(0, 3); i++)
             {
                 peso = rnd.Next(10, 35);
@@ -1172,6 +1176,18 @@ namespace Entidades
                     pasajero.AgregarEquipaje(peso);
                 }
             }
+        }
+
+        private static bool BooleanoAleatorio()
+        {
+            Random rnd = new Random();
+            bool booleano = true;
+
+            if (rnd.Next(1, 3) == 2)
+            {
+                booleano = false;
+            }
+            return booleano;
         }
 
         private static bool ValidarCantidadPremiumDelVuelo(Vuelo vuelo)

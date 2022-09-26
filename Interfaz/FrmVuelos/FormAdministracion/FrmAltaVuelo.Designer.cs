@@ -43,6 +43,12 @@
             this.dtp_Partida = new System.Windows.Forms.DateTimePicker();
             this.lbl_Partida = new System.Windows.Forms.Label();
             this.pnl_FondoPrincipal = new System.Windows.Forms.Panel();
+            this.chk_Alcohol = new System.Windows.Forms.CheckBox();
+            this.chk_SinAlcohol = new System.Windows.Forms.CheckBox();
+            this.chk_Premium = new System.Windows.Forms.CheckBox();
+            this.chk_Vegano = new System.Windows.Forms.CheckBox();
+            this.chk_Comida = new System.Windows.Forms.CheckBox();
+            this.chk_Wifi = new System.Windows.Forms.CheckBox();
             this.tt_Ayuda = new System.Windows.Forms.ToolTip(this.components);
             this.pnl_FondoPrincipal.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +85,7 @@
             // 
             // btn_Salir
             // 
+            this.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Salir.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Salir.ForeColor = System.Drawing.Color.Maroon;
             this.btn_Salir.Location = new System.Drawing.Point(440, 279);
@@ -91,6 +98,7 @@
             // 
             // btn_MasInfoAeronave
             // 
+            this.btn_MasInfoAeronave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_MasInfoAeronave.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_MasInfoAeronave.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btn_MasInfoAeronave.Location = new System.Drawing.Point(177, 158);
@@ -104,8 +112,9 @@
             // 
             // btn_Agregar
             // 
+            this.btn_Agregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Agregar.Location = new System.Drawing.Point(80, 246);
+            this.btn_Agregar.Location = new System.Drawing.Point(80, 250);
             this.btn_Agregar.Name = "btn_Agregar";
             this.btn_Agregar.Size = new System.Drawing.Size(361, 39);
             this.btn_Agregar.TabIndex = 5;
@@ -150,7 +159,7 @@
             this.lbl_MensajeError.ForeColor = System.Drawing.Color.IndianRed;
             this.lbl_MensajeError.Image = ((System.Drawing.Image)(resources.GetObject("lbl_MensajeError.Image")));
             this.lbl_MensajeError.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbl_MensajeError.Location = new System.Drawing.Point(45, 210);
+            this.lbl_MensajeError.Location = new System.Drawing.Point(18, 292);
             this.lbl_MensajeError.Name = "lbl_MensajeError";
             this.lbl_MensajeError.Size = new System.Drawing.Size(72, 15);
             this.lbl_MensajeError.TabIndex = 11;
@@ -164,7 +173,7 @@
             this.dtp_Partida.Location = new System.Drawing.Point(271, 52);
             this.dtp_Partida.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.dtp_Partida.Name = "dtp_Partida";
-            this.dtp_Partida.Size = new System.Drawing.Size(220, 26);
+            this.dtp_Partida.Size = new System.Drawing.Size(194, 26);
             this.dtp_Partida.TabIndex = 13;
             this.dtp_Partida.ValueChanged += new System.EventHandler(this.dtp_Partida_ValueChanged);
             // 
@@ -181,11 +190,90 @@
             // pnl_FondoPrincipal
             // 
             this.pnl_FondoPrincipal.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnl_FondoPrincipal.Controls.Add(this.chk_Alcohol);
+            this.pnl_FondoPrincipal.Controls.Add(this.chk_SinAlcohol);
+            this.pnl_FondoPrincipal.Controls.Add(this.lbl_MensajeError);
+            this.pnl_FondoPrincipal.Controls.Add(this.chk_Premium);
+            this.pnl_FondoPrincipal.Controls.Add(this.chk_Vegano);
+            this.pnl_FondoPrincipal.Controls.Add(this.chk_Comida);
+            this.pnl_FondoPrincipal.Controls.Add(this.chk_Wifi);
             this.pnl_FondoPrincipal.Controls.Add(this.btn_Salir);
             this.pnl_FondoPrincipal.Location = new System.Drawing.Point(12, 12);
             this.pnl_FondoPrincipal.Name = "pnl_FondoPrincipal";
             this.pnl_FondoPrincipal.Size = new System.Drawing.Size(491, 323);
             this.pnl_FondoPrincipal.TabIndex = 15;
+            this.pnl_FondoPrincipal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_FondoPrincipal_MouseDown);
+            this.pnl_FondoPrincipal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_FondoPrincipal_MouseMove);
+            this.pnl_FondoPrincipal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_FondoPrincipal_MouseUp);
+            // 
+            // chk_Alcohol
+            // 
+            this.chk_Alcohol.AutoSize = true;
+            this.chk_Alcohol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chk_Alcohol.Location = new System.Drawing.Point(259, 204);
+            this.chk_Alcohol.Name = "chk_Alcohol";
+            this.chk_Alcohol.Size = new System.Drawing.Size(170, 24);
+            this.chk_Alcohol.TabIndex = 21;
+            this.chk_Alcohol.Text = "Bebidas Alcoholicas";
+            this.chk_Alcohol.UseVisualStyleBackColor = true;
+            // 
+            // chk_SinAlcohol
+            // 
+            this.chk_SinAlcohol.AutoSize = true;
+            this.chk_SinAlcohol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chk_SinAlcohol.Location = new System.Drawing.Point(259, 165);
+            this.chk_SinAlcohol.Name = "chk_SinAlcohol";
+            this.chk_SinAlcohol.Size = new System.Drawing.Size(169, 24);
+            this.chk_SinAlcohol.TabIndex = 20;
+            this.chk_SinAlcohol.Text = "Bebidas Sin Alcohol";
+            this.chk_SinAlcohol.UseVisualStyleBackColor = true;
+            // 
+            // chk_Premium
+            // 
+            this.chk_Premium.AutoSize = true;
+            this.chk_Premium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chk_Premium.Location = new System.Drawing.Point(351, 135);
+            this.chk_Premium.Name = "chk_Premium";
+            this.chk_Premium.Size = new System.Drawing.Size(134, 24);
+            this.chk_Premium.TabIndex = 19;
+            this.chk_Premium.Text = "Menu Premium";
+            this.chk_Premium.UseVisualStyleBackColor = true;
+            this.chk_Premium.Visible = false;
+            // 
+            // chk_Vegano
+            // 
+            this.chk_Vegano.AutoSize = true;
+            this.chk_Vegano.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chk_Vegano.Location = new System.Drawing.Point(351, 106);
+            this.chk_Vegano.Name = "chk_Vegano";
+            this.chk_Vegano.Size = new System.Drawing.Size(128, 24);
+            this.chk_Vegano.TabIndex = 18;
+            this.chk_Vegano.Text = "Menu Vegano";
+            this.chk_Vegano.UseVisualStyleBackColor = true;
+            this.chk_Vegano.Visible = false;
+            // 
+            // chk_Comida
+            // 
+            this.chk_Comida.AutoSize = true;
+            this.chk_Comida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chk_Comida.Location = new System.Drawing.Point(259, 119);
+            this.chk_Comida.Name = "chk_Comida";
+            this.chk_Comida.Size = new System.Drawing.Size(82, 24);
+            this.chk_Comida.TabIndex = 17;
+            this.chk_Comida.Text = "Comida";
+            this.chk_Comida.UseVisualStyleBackColor = true;
+            this.chk_Comida.CheckedChanged += new System.EventHandler(this.chk_Comida_CheckedChanged);
+            // 
+            // chk_Wifi
+            // 
+            this.chk_Wifi.AutoSize = true;
+            this.chk_Wifi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chk_Wifi.Location = new System.Drawing.Point(259, 80);
+            this.chk_Wifi.Name = "chk_Wifi";
+            this.chk_Wifi.Size = new System.Drawing.Size(68, 24);
+            this.chk_Wifi.TabIndex = 16;
+            this.chk_Wifi.Text = "WIFII";
+            this.chk_Wifi.UseVisualStyleBackColor = true;
             // 
             // FrmAltaVuelo
             // 
@@ -196,7 +284,6 @@
             this.ControlBox = false;
             this.Controls.Add(this.lbl_Partida);
             this.Controls.Add(this.dtp_Partida);
-            this.Controls.Add(this.lbl_MensajeError);
             this.Controls.Add(this.lbl_Aeronave);
             this.Controls.Add(this.lbl_Destino);
             this.Controls.Add(this.lbl_Origen);
@@ -212,6 +299,7 @@
             this.Text = "FrmAltaVuelo";
             this.Load += new System.EventHandler(this.FrmAltaVuelo_Load);
             this.pnl_FondoPrincipal.ResumeLayout(false);
+            this.pnl_FondoPrincipal.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +321,11 @@
         private System.Windows.Forms.Label lbl_Partida;
         private System.Windows.Forms.Panel pnl_FondoPrincipal;
         private System.Windows.Forms.ToolTip tt_Ayuda;
+        private System.Windows.Forms.CheckBox chk_Alcohol;
+        private System.Windows.Forms.CheckBox chk_SinAlcohol;
+        private System.Windows.Forms.CheckBox chk_Premium;
+        private System.Windows.Forms.CheckBox chk_Vegano;
+        private System.Windows.Forms.CheckBox chk_Comida;
+        private System.Windows.Forms.CheckBox chk_Wifi;
     }
 }

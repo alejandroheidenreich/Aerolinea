@@ -62,6 +62,10 @@ namespace Interfaz
         {
             ActivarForm(new FrmConfiguracionCuenta(this.usuarioActual,btn_ToggleTema.Checked));
         }
+        private void estadisticasHistoricasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActivarForm(new FrmEstadisitcasHistoricas(btn_ToggleTema.Checked));
+        }
         private void ActivarForm(Form form)
         {
             OcultarForm();
@@ -143,6 +147,8 @@ namespace Interfaz
             cerrarToolStripMenuItem.ForeColor = Color.Black;
             horaToolStripMenuItem.ForeColor = Color.Black;
             cerrarSecionToolStripMenuItem.ForeColor = Color.Black;
-        }        
+        }
+
+        
     }
 }

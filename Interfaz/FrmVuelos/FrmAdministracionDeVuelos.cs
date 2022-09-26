@@ -19,8 +19,8 @@ namespace Interfaz
         private void FrmAdministracionDeVuelos_Load(object sender, EventArgs e)
         {
             TemaActual(temaActual);
-            dtg_Vuelos.DataSource = BaseDeDatos.vuelos;
-            ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
+            dtg_Vuelos.DataSource = BaseDeDatos.vuelosActivos;
+            ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
         }
         private void TemaActual(bool temaActual)
         {
@@ -66,14 +66,14 @@ namespace Interfaz
             }
             else
             {
-                dtg_Vuelos.DataSource = BaseDeDatos.vuelos;
+                dtg_Vuelos.DataSource = BaseDeDatos.vuelosActivos;
             }
         }
 
         private void FiltrarDatosDeVuelo(List<Vuelo> filtrado)
         {
             //TODO: sacar de aca mandar a clase
-            foreach (Vuelo item in BaseDeDatos.vuelos)
+            foreach (Vuelo item in BaseDeDatos.vuelosActivos)
             {
                 if (item.Origen.ToString().ToUpper().StartsWith(this.txt_Buscar.Text.ToUpper()))
                 {
@@ -95,7 +95,7 @@ namespace Interfaz
         {
             FrmAltaVuelo altaVuelo = new FrmAltaVuelo(this.temaActual);
             altaVuelo.ShowDialog();
-            ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
+            ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
         }
 
         private void btn_EliminarVuelo_Click(object sender, EventArgs e)
@@ -103,13 +103,14 @@ namespace Interfaz
             DialogResult respuesta = MessageBox.Show($"¿Esta seguro que quiere eliminar?{Environment.NewLine} Esta accion es inrreversible", "Eliminar Vuelo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
             if (respuesta == DialogResult.Yes)
             {
-                Sistema.BajaDeVuelo((Vuelo)dtg_Vuelos.CurrentRow.DataBoundItem);
-                ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
+                Sistema.BajaDeVuelo((Vuelo)dtg_Vuelos.CurrentRow.DataBoundItem); 
+                ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
             }
         }
 
         public static void ActualizarDataGrid(DataGridView dtg, List<Vuelo> lista)
         {
+            Sistema.ActualizarVuelos();
             dtg.DataSource = null;
             dtg.DataSource = lista;
             dtg.Columns["Aeronave"].Visible = false;
@@ -139,7 +140,7 @@ namespace Interfaz
                 if (respuesta == DialogResult.OK)
                 {
                     
-                    ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelos);
+                    ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
                 }
             }
             else
@@ -167,6 +168,11 @@ namespace Interfaz
         private void btn_EliminarVuelo_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Eliminar Vuelo", this.btn_EliminarVuelo);
+        }
+
+        private void txt_Buscar_MouseHover(object sender, EventArgs e)
+        {
+            this.tt_Ayuda.Show("Filtrar la Lista de Vuelos por Origen, Desitno o Tipo", this.txt_Buscar);
         }
     }
 }

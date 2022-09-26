@@ -45,33 +45,37 @@
             this.dtg_Aeronaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtg_Aeronaves.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtg_Aeronaves.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtg_Aeronaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtg_Aeronaves.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dtg_Aeronaves.Location = new System.Drawing.Point(16, 22);
+            this.dtg_Aeronaves.EnableHeadersVisualStyles = false;
+            this.dtg_Aeronaves.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dtg_Aeronaves.Location = new System.Drawing.Point(16, 44);
             this.dtg_Aeronaves.MultiSelect = false;
             this.dtg_Aeronaves.Name = "dtg_Aeronaves";
             this.dtg_Aeronaves.ReadOnly = true;
             this.dtg_Aeronaves.RowHeadersVisible = false;
             this.dtg_Aeronaves.RowTemplate.Height = 25;
-            this.dtg_Aeronaves.Size = new System.Drawing.Size(682, 313);
+            this.dtg_Aeronaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtg_Aeronaves.Size = new System.Drawing.Size(682, 291);
             this.dtg_Aeronaves.TabIndex = 0;
             // 
             // btn_Seleccionar
             // 
+            this.btn_Seleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Seleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Seleccionar.Location = new System.Drawing.Point(224, 352);
             this.btn_Seleccionar.Name = "btn_Seleccionar";
@@ -83,6 +87,7 @@
             // 
             // btn_Salir
             // 
+            this.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Salir.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Salir.ForeColor = System.Drawing.Color.Maroon;
             this.btn_Salir.Location = new System.Drawing.Point(671, 376);
@@ -103,6 +108,9 @@
             this.pnl_Fondo.Name = "pnl_Fondo";
             this.pnl_Fondo.Size = new System.Drawing.Size(722, 426);
             this.pnl_Fondo.TabIndex = 3;
+            this.pnl_Fondo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseDown);
+            this.pnl_Fondo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseMove);
+            this.pnl_Fondo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseUp);
             // 
             // FrmAeronaves
             // 

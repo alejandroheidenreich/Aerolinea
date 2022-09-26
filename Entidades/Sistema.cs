@@ -1,11 +1,21 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 
 namespace Entidades
 {
     public static class Sistema
     {
+        public static SortedDictionary<string, double> destinosFacturados;
+
+        static Sistema()
+        {
+            destinosFacturados = new SortedDictionary<string, double>();
+
+            HistorialDeVuelosPorFacturacion();
+        }
         public static Usuario VerificarUsuarioContrasenia(string nombreDeUsuario, string contrasenia)
         {
             foreach (Usuario item in BaseDeDatos.usuarios)
@@ -168,9 +178,13 @@ namespace Entidades
 
         public static void AltaDeVuelo(Vuelo vueloAAgregar)
         {
-            if (vueloAAgregar is not null)
+            if (vueloAAgregar is not null && vueloAAgregar.Partida >= DateTime.Now)
             {
-                BaseDeDatos.vuelos.Add(vueloAAgregar);
+                BaseDeDatos.vuelosTotales.Add(vueloAAgregar);
+            }
+            else
+            {
+                throw new Exception("La Partida del vuelo no es valida.");
             }
         }
 
@@ -178,7 +192,7 @@ namespace Entidades
         {
             if (vueloAEliminar is not null)
             {
-                BaseDeDatos.vuelos.Remove(vueloAEliminar);
+                BaseDeDatos.vuelosTotales.Remove(vueloAEliminar);
             }
         }
 
@@ -212,6 +226,37 @@ namespace Entidades
             return new DateTime(año, mes, dia);
         }
 
+        public static void ActualizarVuelos()
+        {
+            foreach (Vuelo item in BaseDeDatos.vuelosTotales)
+            {
+                if (item.Disponibilidad == "FINALIZADO")
+                {
+                    BaseDeDatos.vuelosHistorial.Add(item);
+                }
+                else
+                {
+                    BaseDeDatos.vuelosActivos.Add(item);
+                }
+            }
+        }
 
+        
+        public static void HistorialDeVuelosPorFacturacion()
+        {
+            foreach (string item in BaseDeDatos.localidades)
+            {
+                destinosFacturados.Add(item, 0);
+            }
+            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+            {
+                destinosFacturados[item.Destino]+=item.GananciaTotal;
+            }          
+        }
+
+        private static void OrdenarDiccionario(Dictionary<string, double> aux)
+        {
+
+        }
     }
 }

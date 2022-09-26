@@ -62,9 +62,10 @@
             this.pnl_barraInfo.Controls.Add(this.lbl_InfoUsuarioFecha);
             this.pnl_barraInfo.Controls.Add(this.lbl_DarkTheme);
             this.pnl_barraInfo.Controls.Add(this.btn_ToggleTema);
-            this.pnl_barraInfo.Location = new System.Drawing.Point(0, 580);
+            this.pnl_barraInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnl_barraInfo.Location = new System.Drawing.Point(0, 686);
             this.pnl_barraInfo.Name = "pnl_barraInfo";
-            this.pnl_barraInfo.Size = new System.Drawing.Size(1111, 40);
+            this.pnl_barraInfo.Size = new System.Drawing.Size(1492, 40);
             this.pnl_barraInfo.TabIndex = 1;
             // 
             // lbl_InfoUsuarioFecha
@@ -80,7 +81,7 @@
             // lbl_DarkTheme
             // 
             this.lbl_DarkTheme.AutoSize = true;
-            this.lbl_DarkTheme.Location = new System.Drawing.Point(978, 11);
+            this.lbl_DarkTheme.Location = new System.Drawing.Point(1359, 11);
             this.lbl_DarkTheme.Name = "lbl_DarkTheme";
             this.lbl_DarkTheme.Size = new System.Drawing.Size(70, 15);
             this.lbl_DarkTheme.TabIndex = 4;
@@ -95,7 +96,7 @@
             this.btn_ToggleTema.CheckState = System.Windows.Forms.CheckState.Checked;
             this.btn_ToggleTema.EncendidoCirculoColor = System.Drawing.Color.Chartreuse;
             this.btn_ToggleTema.EncendidoSlideColor = System.Drawing.Color.Gainsboro;
-            this.btn_ToggleTema.Location = new System.Drawing.Point(1054, 8);
+            this.btn_ToggleTema.Location = new System.Drawing.Point(1435, 8);
             this.btn_ToggleTema.MinimumSize = new System.Drawing.Size(45, 22);
             this.btn_ToggleTema.Name = "btn_ToggleTema";
             this.btn_ToggleTema.Size = new System.Drawing.Size(45, 22);
@@ -154,7 +155,7 @@
             this.cerrarToolStripMenuItem});
             this.mnu_menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnu_menuPrincipal.Name = "mnu_menuPrincipal";
-            this.mnu_menuPrincipal.Size = new System.Drawing.Size(1111, 56);
+            this.mnu_menuPrincipal.Size = new System.Drawing.Size(1492, 56);
             this.mnu_menuPrincipal.TabIndex = 0;
             this.mnu_menuPrincipal.Text = "menuStrip1";
             // 
@@ -211,6 +212,7 @@
             this.estadisticasHistoricasToolStripMenuItem.Name = "estadisticasHistoricasToolStripMenuItem";
             this.estadisticasHistoricasToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.estadisticasHistoricasToolStripMenuItem.Text = "Estadisticas Historicas";
+            this.estadisticasHistoricasToolStripMenuItem.Click += new System.EventHandler(this.estadisticasHistoricasToolStripMenuItem_Click);
             // 
             // horaToolStripMenuItem
             // 
@@ -243,7 +245,7 @@
             this.pnl_PanelDeFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_PanelDeFondo.Location = new System.Drawing.Point(0, 56);
             this.pnl_PanelDeFondo.Name = "pnl_PanelDeFondo";
-            this.pnl_PanelDeFondo.Size = new System.Drawing.Size(1111, 620);
+            this.pnl_PanelDeFondo.Size = new System.Drawing.Size(1492, 726);
             this.pnl_PanelDeFondo.TabIndex = 5;
             // 
             // pic_ImagenDeFondo
@@ -252,7 +254,7 @@
             this.pic_ImagenDeFondo.Image = ((System.Drawing.Image)(resources.GetObject("pic_ImagenDeFondo.Image")));
             this.pic_ImagenDeFondo.Location = new System.Drawing.Point(0, 0);
             this.pic_ImagenDeFondo.Name = "pic_ImagenDeFondo";
-            this.pic_ImagenDeFondo.Size = new System.Drawing.Size(1111, 620);
+            this.pic_ImagenDeFondo.Size = new System.Drawing.Size(1492, 726);
             this.pic_ImagenDeFondo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_ImagenDeFondo.TabIndex = 0;
             this.pic_ImagenDeFondo.TabStop = false;
@@ -268,7 +270,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1111, 676);
+            this.ClientSize = new System.Drawing.Size(1492, 782);
             this.ControlBox = false;
             this.Controls.Add(this.pnl_PanelDeFondo);
             this.Controls.Add(this.mnu_menuPrincipal);

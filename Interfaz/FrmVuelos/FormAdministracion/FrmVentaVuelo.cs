@@ -305,7 +305,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             if (dtg_CarritoDeCompra.Visible && dtg_CarritoDeCompra.CurrentRow.DataBoundItem is not null)
             {
                 Pasaje pasajeAgregarEquipaje = EncontrarPasaje(ObtenerSeleccionado().Registro);
-                FrmAltaEquipaje frmEquipaje = new FrmAltaEquipaje(this.vuelo, this.tema, pasajeAgregarEquipaje.Cliente);
+                FrmAltaEquipaje frmEquipaje = new FrmAltaEquipaje(this.vuelo, this.tema, pasajeAgregarEquipaje);
                 DialogResult respuesta = frmEquipaje.ShowDialog();
 
                 if (respuesta == DialogResult.OK)

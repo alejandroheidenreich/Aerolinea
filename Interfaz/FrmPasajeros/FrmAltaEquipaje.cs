@@ -12,16 +12,16 @@ namespace Interfaz.FrmPasajeros
         private List<double>? equipajesBodega;
         private Vuelo vuelo;
         private bool tema;
-        private Cliente cliente;
+        private Pasaje pasajero;
         private bool mouseAccion;
         private int mousePosX;
         private int mousePosY;
-        public FrmAltaEquipaje(Vuelo vuelo, bool tema, Cliente cliente)
+        public FrmAltaEquipaje(Vuelo vuelo, bool tema, Pasaje pasajero)
         {
             InitializeComponent();
             this.vuelo = vuelo;
             this.tema = tema;
-            this.cliente = cliente;
+            this.pasajero = pasajero;
         }
         public bool EquipajeDeMano
         {
@@ -36,7 +36,7 @@ namespace Interfaz.FrmPasajeros
             equipajesBodega = new List<double>();
             this.equipajeDeMano = false;
             this.TemaActual(this.tema);
-            this.lbl_EncabezadoCliente.Text = $"Equipaje del cliente:{Environment.NewLine}{this.cliente.ToString()}";
+            this.lbl_EncabezadoCliente.Text = $"Equipaje del cliente:{Environment.NewLine}{this.pasajero.Cliente.ToString()}";
         }
         private void TemaActual(bool temaActual)
         {
@@ -91,8 +91,15 @@ namespace Interfaz.FrmPasajeros
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-
-            this.DialogResult = DialogResult.OK;
+            try
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex )
+            {
+                lbl_Error.Text = ex.Message;
+                lbl_Error.Visible = true;
+            }
         }
 
         private void chk_EquipajeDeMano_CheckedChanged(object sender, EventArgs e)
@@ -109,9 +116,15 @@ namespace Interfaz.FrmPasajeros
 
         private void btn_AgregarEquipaje_Click(object sender, EventArgs e)
         {
-            if (nud_PesoEquipaje.Value < 0)
+
+            if (nud_PesoEquipaje.Value <= 0)
             {
                 lbl_Error.Text = "El equipaje debe tener un Peso";
+                lbl_Error.Visible = true;
+            }
+            else if (this.equipajesBodega.Count == this.pasajero.EquipajesMaximos)
+            {
+                lbl_Error.Text = $"Llego al maximo ({this.pasajero.EquipajesMaximos}) de equipajes en bodega";
                 lbl_Error.Visible = true;
             }
             else if ((double)nud_PesoEquipaje.Value > this.vuelo.EspacioDisponibleBodega())

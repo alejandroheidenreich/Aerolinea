@@ -15,6 +15,9 @@ namespace Interfaz.FrmVuelos.FormAdministracion
     {
         private bool fechaCambio;
         private bool temaActual;
+        private bool mouseAccion;
+        private int mousePosX;
+        private int mousePosY;
         public FrmAltaVuelo(bool temaActual)
         {
             //TODO: DESARROLLAR VER DESTINO ENUM PARA UN SOLO ENUM
@@ -65,7 +68,8 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 {
                     try
                     {
-                        Sistema.AltaDeVuelo(new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text,dtp_Partida.Value));
+                        //TODO: Arreglar
+                        Sistema.AltaDeVuelo(new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text, dtp_Partida.Value, chk_Wifi.Checked, chk_Comida.Checked, chk_Vegano.Checked, chk_Premium.Checked, chk_SinAlcohol.Checked, chk_Alcohol.Checked));
                         this.Close();
 
                     }
@@ -143,6 +147,40 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private void btn_MasInfoAeronave_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Lista de las Aeronaves", this.btn_MasInfoAeronave);
+        }
+
+        private void pnl_FondoPrincipal_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = true;
+            this.mousePosX = e.X;
+            this.mousePosY = e.Y;
+        }
+
+        private void pnl_FondoPrincipal_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseAccion)
+            {
+                this.SetDesktopLocation(MousePosition.X - mousePosX, MousePosition.Y - mousePosY);
+            }
+        }
+
+        private void pnl_FondoPrincipal_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = false;
+        }
+
+        private void chk_Comida_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.chk_Comida.Checked)
+            {
+                this.chk_Premium.Visible = true;
+                this.chk_Vegano.Visible = true;
+            }
+            else
+            {
+                this.chk_Premium.Visible = false;
+                this.chk_Vegano.Visible = false;
+            }
         }
     }
 }

@@ -146,7 +146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 458);
+            this.ClientSize = new System.Drawing.Size(1492, 782);
             this.ControlBox = false;
             this.Controls.Add(this.lbl_CambiarEmail);
             this.Controls.Add(this.lbl_Email);

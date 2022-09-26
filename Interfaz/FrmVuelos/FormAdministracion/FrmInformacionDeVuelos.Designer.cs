@@ -41,10 +41,10 @@
             this.lbl_Aeronave = new System.Windows.Forms.Label();
             this.lbl_EncabezadoAeronave = new System.Windows.Forms.Label();
             this.pnl_Aeronave = new System.Windows.Forms.Panel();
+            this.lbl_Turista = new System.Windows.Forms.Label();
+            this.lbl_Premium = new System.Windows.Forms.Label();
             this.lbl_DispoBodega = new System.Windows.Forms.Label();
             this.pnl_Fondo = new System.Windows.Forms.Panel();
-            this.lbl_Premium = new System.Windows.Forms.Label();
-            this.lbl_Turista = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_ListaDePasajeros)).BeginInit();
             this.pnl_Aeronave.SuspendLayout();
             this.pnl_Fondo.SuspendLayout();
@@ -138,6 +138,7 @@
             // 
             // btn_Atras
             // 
+            this.btn_Atras.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Atras.Image = ((System.Drawing.Image)(resources.GetObject("btn_Atras.Image")));
             this.btn_Atras.Location = new System.Drawing.Point(15, 12);
             this.btn_Atras.Name = "btn_Atras";
@@ -178,6 +179,26 @@
             this.pnl_Aeronave.Size = new System.Drawing.Size(310, 274);
             this.pnl_Aeronave.TabIndex = 13;
             // 
+            // lbl_Turista
+            // 
+            this.lbl_Turista.AutoSize = true;
+            this.lbl_Turista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Turista.Location = new System.Drawing.Point(13, 229);
+            this.lbl_Turista.Name = "lbl_Turista";
+            this.lbl_Turista.Size = new System.Drawing.Size(53, 20);
+            this.lbl_Turista.TabIndex = 16;
+            this.lbl_Turista.Text = "turista";
+            // 
+            // lbl_Premium
+            // 
+            this.lbl_Premium.AutoSize = true;
+            this.lbl_Premium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Premium.Location = new System.Drawing.Point(13, 209);
+            this.lbl_Premium.Name = "lbl_Premium";
+            this.lbl_Premium.Size = new System.Drawing.Size(70, 20);
+            this.lbl_Premium.TabIndex = 15;
+            this.lbl_Premium.Text = "premium";
+            // 
             // lbl_DispoBodega
             // 
             this.lbl_DispoBodega.AutoSize = true;
@@ -202,26 +223,9 @@
             this.pnl_Fondo.Name = "pnl_Fondo";
             this.pnl_Fondo.Size = new System.Drawing.Size(960, 605);
             this.pnl_Fondo.TabIndex = 14;
-            // 
-            // lbl_Premium
-            // 
-            this.lbl_Premium.AutoSize = true;
-            this.lbl_Premium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Premium.Location = new System.Drawing.Point(13, 209);
-            this.lbl_Premium.Name = "lbl_Premium";
-            this.lbl_Premium.Size = new System.Drawing.Size(70, 20);
-            this.lbl_Premium.TabIndex = 15;
-            this.lbl_Premium.Text = "premium";
-            // 
-            // lbl_Turista
-            // 
-            this.lbl_Turista.AutoSize = true;
-            this.lbl_Turista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Turista.Location = new System.Drawing.Point(13, 229);
-            this.lbl_Turista.Name = "lbl_Turista";
-            this.lbl_Turista.Size = new System.Drawing.Size(53, 20);
-            this.lbl_Turista.TabIndex = 16;
-            this.lbl_Turista.Text = "turista";
+            this.pnl_Fondo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseDown);
+            this.pnl_Fondo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseMove);
+            this.pnl_Fondo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseUp);
             // 
             // FrmInformacionDeVuelos
             // 
@@ -234,6 +238,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInformacionDeVuelos";
             this.Load += new System.EventHandler(this.FrmInformacionDeVuelos_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmInformacionDeVuelos_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmInformacionDeVuelos_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmInformacionDeVuelos_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_ListaDePasajeros)).EndInit();
             this.pnl_Aeronave.ResumeLayout(false);
             this.pnl_Aeronave.PerformLayout();

@@ -62,7 +62,7 @@
             this.dtg_Vuelos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -70,14 +70,14 @@
             this.dtg_Vuelos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtg_Vuelos.EnableHeadersVisualStyles = false;
             this.dtg_Vuelos.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dtg_Vuelos.Location = new System.Drawing.Point(71, 90);
+            this.dtg_Vuelos.Location = new System.Drawing.Point(71, 96);
             this.dtg_Vuelos.MultiSelect = false;
             this.dtg_Vuelos.Name = "dtg_Vuelos";
             this.dtg_Vuelos.ReadOnly = true;
             this.dtg_Vuelos.RowHeadersVisible = false;
             this.dtg_Vuelos.RowTemplate.Height = 25;
             this.dtg_Vuelos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtg_Vuelos.Size = new System.Drawing.Size(1028, 520);
+            this.dtg_Vuelos.Size = new System.Drawing.Size(1387, 588);
             this.dtg_Vuelos.StandardTab = true;
             this.dtg_Vuelos.TabIndex = 0;
             this.dtg_Vuelos.TabStop = false;
@@ -137,12 +137,13 @@
             this.txt_Buscar.Size = new System.Drawing.Size(557, 26);
             this.txt_Buscar.TabIndex = 7;
             this.txt_Buscar.TextChanged += new System.EventHandler(this.txt_Buscar_TextChanged);
+            this.txt_Buscar.MouseHover += new System.EventHandler(this.txt_Buscar_MouseHover);
             // 
             // btn_VentaVuelo
             // 
             this.btn_VentaVuelo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_VentaVuelo.Image = ((System.Drawing.Image)(resources.GetObject("btn_VentaVuelo.Image")));
-            this.btn_VentaVuelo.Location = new System.Drawing.Point(12, 34);
+            this.btn_VentaVuelo.Location = new System.Drawing.Point(12, 96);
             this.btn_VentaVuelo.Name = "btn_VentaVuelo";
             this.btn_VentaVuelo.Size = new System.Drawing.Size(53, 50);
             this.btn_VentaVuelo.TabIndex = 8;
@@ -167,7 +168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1122, 688);
+            this.ClientSize = new System.Drawing.Size(1492, 782);
             this.ControlBox = false;
             this.Controls.Add(this.lbl_Error);
             this.Controls.Add(this.btn_VentaVuelo);

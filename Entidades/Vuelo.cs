@@ -24,9 +24,14 @@ namespace Entidades
         private DateTime partida;
         private Aeronave aeronave;
         private List<Pasaje> listaDePasajeros;
-        /*private Dictionary<Pasajero,ClaseDePasajero> claseDePasajeros;*///TODO: Implementar
+        private bool wifii;
+        private bool comida;
+        private bool menuVegano;
+        private bool menuPremium;
+        private bool bebidasSinAlcohol;
+        private bool bebidasAlcoholicas;
 
-        public Vuelo(Aeronave aeronave, string origen, string destino, DateTime partida)
+        public Vuelo(Aeronave aeronave, string origen, string destino, DateTime partida, bool wifii, bool comida, bool menuVegano, bool menuPremium, bool bebidasSinAlcohol, bool bebidasAlcoholicas)
         {
             this.id = GenerarID();
             this.aeronave = aeronave;
@@ -37,6 +42,12 @@ namespace Entidades
             ValidarOrigenDestino(origen, destino);
             ValidarVueloInternacional();
             GenerarDuracionDeVuelos();
+            this.wifii = wifii;
+            this.comida = comida;
+            ValidarMenu(menuVegano, out this.menuVegano);
+            ValidarMenu(menuPremium, out this.menuPremium);
+            this.bebidasSinAlcohol = bebidasSinAlcohol;
+            this.bebidasAlcoholicas = bebidasAlcoholicas;
         }
 
         private static void ValidarOrigenDestino(string origen, string destino)
@@ -50,12 +61,20 @@ namespace Entidades
         private void ValidarVueloInternacional()
         {
             if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Internacional &&
-                            this.origen != "Buenos Aires" && this.destino != "Buenos Aires")
+                                        this.origen != "Buenos Aires" && this.destino != "Buenos Aires")
             {
                 throw new Exception("Vuelos internacionales deben partir o arribar en Buenos Aires");
             }
         }
 
+        private void ValidarMenu(bool menu, out bool menuValidado)
+        {
+            if (!this.comida && menu)
+            {
+                throw new Exception("Si el vuelo no provee comida, no puede tener un menu");
+            }
+            menuValidado = menu;
+        }
         public string ID
         {
             get => id;
@@ -87,8 +106,16 @@ namespace Entidades
         {
             get
             {
-                if (this.listaDePasajeros.Count == this.aeronave.AsientosTotales)
+                string vuelo = EstadoDelVuelo();
+                if (!string.IsNullOrEmpty(vuelo))
+                {
+                    return vuelo;
+                }
+                else if (this.listaDePasajeros.Count == this.aeronave.AsientosTotales)
+                {
                     return "COMPLETO";
+                }
+                
                 return $"{this.listaDePasajeros.Count}/ {this.aeronave.AsientosTotales}";
             }
         }
@@ -131,6 +158,37 @@ namespace Entidades
             }
         }
 
+        public bool Wifii
+        {
+            get => wifii;
+            set => wifii = value;
+        }
+        public bool Comida
+        {
+            get => comida;
+            set => comida = value;
+        }
+        public bool MenuVegano
+        {
+            get => menuVegano;
+            set => menuVegano = value;
+        }
+        public bool MenuPremium
+        {
+            get => menuPremium;
+            set => menuPremium = value;
+        }
+        public bool BebidasSinAlcohol
+        {
+            get => bebidasSinAlcohol;
+            set => bebidasSinAlcohol = value;
+        }
+        public bool BebidasAlcoholicas
+        {
+            get => bebidasAlcoholicas;
+            set => bebidasAlcoholicas = value;
+        }
+
         private void GenerarDuracionDeVuelos()
         {
             Random rnd = new Random();
@@ -154,6 +212,44 @@ namespace Entidades
             }
         }
 
+        public double GananciaTotal
+        {
+            get
+            {
+                double ganancia = 0;
+                double precioPasaje;
+                foreach (Pasaje item in this.listaDePasajeros)
+                {
+                    InformarConPrecioDelPasaje(item, out precioPasaje);
+                    ganancia += precioPasaje;
+                }
+                return ganancia;
+            }
+        }
+        private string EstadoDelVuelo()
+        {
+            string estado = string.Empty;
+            if (HorarioDeLlegada() < DateTime.Now)
+            {
+                estado = "FINALIZADO";
+            }
+            else if (this.partida < DateTime.Now)
+            {
+                estado = "EN VUELO";
+            }
+            return estado;
+        }
+
+        private DateTime HorarioDeLlegada()
+        {
+            DateTime llegada;
+
+            llegada = this.partida.AddHours(this.horaDelVuelo);
+            llegada = this.partida.AddMinutes(this.minutosDelVuelo);
+
+            return llegada;
+            
+        }
         private int CantidadDeVuelosClase(ClaseDePasajero clase)
         {
             int contador = 0;
@@ -169,7 +265,7 @@ namespace Entidades
         public string InformarConPrecioDelPasaje(Pasaje pasaje, out double precioFinal)
         {
             StringBuilder sb = new StringBuilder();
-            precioFinal = -1;
+            precioFinal = 0;
             double horasTotales = this.horaDelVuelo + ((double)this.minutosDelVuelo / 60);
 
 
@@ -199,18 +295,6 @@ namespace Entidades
 
 
             return sb.ToString();
-        }
-
-        private bool PasajeExisteEnVuelo(Pasaje pasaje)
-        {
-            foreach (Pasaje item in this.listaDePasajeros)
-            {
-                if (pasaje.IdRegistro == item.IdRegistro)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         public double EspacioDisponibleBodega()
@@ -253,7 +337,6 @@ namespace Entidades
             }
             return false;
         }
-
        
         public static bool operator !=(Vuelo v, Pasaje p)
         {

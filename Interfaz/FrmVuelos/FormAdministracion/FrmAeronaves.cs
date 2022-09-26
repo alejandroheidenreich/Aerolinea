@@ -15,7 +15,9 @@ namespace Interfaz.FrmVuelos.FormAdministracion
     {
         private Aeronave? aeronave;
         private bool temaActual;
-
+        private bool mouseAccion;
+        private int mousePosX;
+        private int mousePosY;
 
         public FrmAeronaves(bool temaActual)
         {
@@ -81,6 +83,26 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.btn_Salir.BackColor = Color.WhiteSmoke;
             this.btn_Seleccionar.BackColor = Color.WhiteSmoke;
 
+        }
+
+        private void pnl_Fondo_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = true;
+            this.mousePosX = e.X;
+            this.mousePosY = e.Y;
+        }
+
+        private void pnl_Fondo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseAccion)
+            {
+                this.SetDesktopLocation(MousePosition.X - mousePosX, MousePosition.Y - mousePosY);
+            }
+        }
+
+        private void pnl_Fondo_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = false;
         }
     }
 }

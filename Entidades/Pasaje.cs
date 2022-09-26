@@ -70,6 +70,11 @@ namespace Entidades
             get => equipajeDeBodega;
             set => equipajeDeBodega = value;
         }
+        public int EquipajesMaximos
+        {
+            get => equipajesMaximos;
+            set => equipajesMaximos = value;
+        }
 
         public void AgregarEquipaje(double pesoValija)
         {

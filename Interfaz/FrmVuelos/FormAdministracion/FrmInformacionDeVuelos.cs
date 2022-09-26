@@ -17,6 +17,9 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private Vuelo vuelo;
         private bool temaActual;
         List<Cliente> listaClientes;
+        private bool mouseAccion;
+        private int mousePosX;
+        private int mousePosY;
         public FrmInformacionDeVuelos(Vuelo vuelo, bool temaActual)
         {
             InitializeComponent();
@@ -35,7 +38,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Aeronave.Text = this.vuelo.Aeronave.ToString();
             this.lbl_DispoBodega.Text = $"Bodega Actual: {this.vuelo.EspacioDisponibleBodega()}/{this.vuelo.Aeronave.Bodega} KG.";
             this.lbl_Premium.Text = $"Premium: {vuelo.Premium}/{vuelo.Aeronave.Premium}";
-            this.lbl_Premium.Text = $"Premium: {vuelo.Tursita}/{vuelo.Aeronave.Tursita}";
+            this.lbl_Turista.Text = $"Tursita: {vuelo.Tursita}/{vuelo.Aeronave.Tursita}";
 
             listaClientes = new List<Cliente>();
             foreach (Pasaje item in this.vuelo.ListaDePasajeros)
@@ -95,6 +98,46 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_DispoBodega.BackColor = Color.LightGray;
             this.lbl_Premium.BackColor = Color.LightGray;
             this.lbl_Turista.BackColor = Color.LightGray;
+        }
+
+        private void FrmInformacionDeVuelos_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = true;
+            this.mousePosX = e.X;
+            this.mousePosY = e.Y;
+        }
+
+        private void FrmInformacionDeVuelos_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseAccion)
+            {
+                this.SetDesktopLocation(MousePosition.X - mousePosX, MousePosition.Y - mousePosY);
+            }
+        }
+
+        private void FrmInformacionDeVuelos_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = false;
+        }
+
+        private void pnl_Fondo_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = true;
+            this.mousePosX = e.X;
+            this.mousePosY = e.Y;
+        }
+
+        private void pnl_Fondo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseAccion)
+            {
+                this.SetDesktopLocation(MousePosition.X - mousePosX, MousePosition.Y - mousePosY);
+            }
+        }
+
+        private void pnl_Fondo_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = false;
         }
     }
 }

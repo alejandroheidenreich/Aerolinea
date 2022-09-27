@@ -18,8 +18,6 @@ namespace Entidades
             this.capacidadDeBodega = capacidadDeBodega;
         }
 
-        //20% asientos premium
-
         public string Matricula
         {
             get => matricula;

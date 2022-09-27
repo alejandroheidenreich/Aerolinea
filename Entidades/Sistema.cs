@@ -3,19 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Runtime.Intrinsics.X86;
 
 namespace Entidades
 {
     public static class Sistema
     {
-        public static SortedDictionary<string, double> destinosFacturados;
-
-        static Sistema()
-        {
-            destinosFacturados = new SortedDictionary<string, double>();
-
-            HistorialDeVuelosPorFacturacion();
-        }
         public static Usuario VerificarUsuarioContrasenia(string nombreDeUsuario, string contrasenia)
         {
             foreach (Usuario item in BaseDeDatos.usuarios)
@@ -178,14 +171,11 @@ namespace Entidades
 
         public static void AltaDeVuelo(Vuelo vueloAAgregar)
         {
-            if (vueloAAgregar is not null && vueloAAgregar.Partida >= DateTime.Now)
+            if (vueloAAgregar is null || vueloAAgregar.Partida < DateTime.Now)
             {
-                BaseDeDatos.vuelosTotales.Add(vueloAAgregar);
+                throw new Exception("La Partida del vuelo no es valida.");   
             }
-            else
-            {
-                throw new Exception("La Partida del vuelo no es valida.");
-            }
+            BaseDeDatos.vuelosTotales.Add(vueloAAgregar);
         }
 
         public static void BajaDeVuelo(Vuelo vueloAEliminar)
@@ -240,23 +230,160 @@ namespace Entidades
                 }
             }
         }
+       
+        public static Dictionary<string, string> HistorialDeVuelosPorFacturacion()
+        {
+            Dictionary<string, double> destinoFacturadosDouble = new Dictionary<string, double>(); 
+            foreach (string item in BaseDeDatos.localidades)
+            {
+                destinoFacturadosDouble.Add(item, 0);
+            }
+            AcumularValoresDeGanacia(destinoFacturadosDouble);
+            return ConvertirDiccionarioAListaPasarloAListaStringDouble(destinoFacturadosDouble);
+        }
+        private static void AcumularValoresDeGanacia(Dictionary<string, double> dic)
+        {
+            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+            {
+                dic[item.Destino] += item.GananciaTotal;
+            }
+        }
+        private static Dictionary<string, string> ConvertirDiccionarioAListaPasarloAListaStringDouble(Dictionary<string, double> dic)
+        {
+            List<KeyValuePair<string, double>> lista;
 
-        
-        public static void HistorialDeVuelosPorFacturacion()
+            lista = dic.ToList();
+            lista.Sort(OrdenarDiccionarioStringDouble);
+            return CargarDiccionarioPasarDoubleAString(lista);
+        }
+        private static Dictionary<string, string> CargarDiccionarioPasarDoubleAString(List<KeyValuePair<string, double>> lista)
+        {
+            Dictionary<string, string> diccionario = new Dictionary<string, string>();
+
+            foreach (KeyValuePair<string, double> item in lista)
+            {
+                diccionario[item.Key] = $"$ {item.Value.ToString("0.00")} USD";
+            }
+            return diccionario;
+        }
+        private static int OrdenarDiccionarioStringDouble(KeyValuePair<string, double> p1, KeyValuePair<string, double> p2)
+        {
+            return (int)(p2.Value - p1.Value);
+        }
+
+
+        public static Dictionary<string, int> ClientesPorCantidadDeVuelos()
+        {
+            Dictionary<string, int> clientesCantidadVuelos = new Dictionary<string, int>();
+            foreach (Cliente item in BaseDeDatos.clientes)
+            {
+                clientesCantidadVuelos.Add(item.ToString(), 0);
+            }
+            ContarPasajes(clientesCantidadVuelos);
+            return ConvertirDiccionarioAListaStringInt(clientesCantidadVuelos);
+            
+        }
+        private static void ContarPasajes(Dictionary<string, int> clientesCantidadVuelos)
+        {
+            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+            {
+                foreach (Pasaje itemDelItem in item.ListaDePasajeros)
+                {
+                    clientesCantidadVuelos[itemDelItem.Cliente.ToString()]++;
+                }
+            }
+        }
+        private static Dictionary<string, int> ConvertirDiccionarioAListaStringInt(Dictionary<string, int> clientesCantidadVuelos)
+        {
+            List<KeyValuePair<string, int>> lista;
+
+            lista = clientesCantidadVuelos.ToList();
+            lista.Sort(OrdenarDiccionarioStringInt);
+            return CargarDiccionarioStringInt(lista);
+        }
+        private static Dictionary<string, int> CargarDiccionarioStringInt(List<KeyValuePair<string, int>> lista)
+        {
+            Dictionary<string, int> diccionario = new Dictionary<string, int>();
+
+            foreach (KeyValuePair<string, int> item in lista)
+            {
+                diccionario[item.Key] = item.Value;
+            }
+            return diccionario;
+        }
+        private static int OrdenarDiccionarioStringInt(KeyValuePair<string, int> p1, KeyValuePair<string, int> p2)
+        {
+            return p2.Value - p1.Value;
+        }
+
+
+        public static string DestinoFavorito()
+        {
+            string favorito = "Ninguno";
+            int cantidadMayor = -1;
+            bool primero = true;
+            Dictionary<string, int> destinoFavorito = new Dictionary<string, int>();
+
+            InicializarDestinosFavorito(destinoFavorito);
+            ContarVuelosPorDesitno(destinoFavorito);
+            foreach (KeyValuePair<string, int> item in destinoFavorito)
+            {
+                if (primero || cantidadMayor < item.Value)
+                {
+                    cantidadMayor = item.Value;
+                    favorito = item.Key;
+                    primero = false;
+                }
+
+            }
+            return favorito;
+        }
+        private static void InicializarDestinosFavorito(Dictionary<string, int> destinoFavorito)
         {
             foreach (string item in BaseDeDatos.localidades)
             {
-                destinosFacturados.Add(item, 0);
+                destinoFavorito.Add(item, 0);
             }
-            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+        }
+        private static void ContarVuelosPorDesitno(Dictionary<string, int> destinoFavorito)
+        {
+            foreach (Vuelo item in BaseDeDatos.vuelosTotales)
             {
-                destinosFacturados[item.Destino]+=item.GananciaTotal;
-            }          
+                destinoFavorito[item.Destino]++;
+            }
         }
 
-        private static void OrdenarDiccionario(Dictionary<string, double> aux)
+        public static Dictionary<string, string> AeronaveCantidadDeHoras()
         {
-
+            Dictionary<string, double> horasDeAeronaves = new Dictionary<string, double>();
+            foreach (Aeronave item in BaseDeDatos.aeronaves)
+            {
+                horasDeAeronaves.Add(item.Matricula, 0);
+            }
+            ContarHorasMinutos(horasDeAeronaves);
+            return ConvertirDiccionarioHorarioInforme(horasDeAeronaves);
+        }
+        private static void ContarHorasMinutos(Dictionary<string, double> dic)
+        {
+            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+            {
+                dic[item.Aeronave.Matricula]+= item.HoraDelVuelo + (double)item.MinutosDelVuelo/60;
+            }
+        }
+        private static Dictionary<string, string> ConvertirDiccionarioHorarioInforme(Dictionary<string, double> horaAeronave)
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            string minutos;
+            foreach (KeyValuePair<string, double> item in horaAeronave)
+            {
+                minutos = ((int)((item.Value - (int)item.Value) * 60)).ToString();
+                if ((int)((item.Value - (int)item.Value) * 60) < 10)
+                {
+                    minutos =  $"0{(int)((item.Value - (int)item.Value) * 60)}";
+                }
+                dict[item.Key] = $"{((int)item.Value)}:{minutos}";
+            }
+            return dict;
         }
     }
 }

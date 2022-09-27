@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Entidades
@@ -100,7 +98,7 @@ namespace Entidades
 
         public string Duracion
         {
-            get => new DateTime(1,1,1,this.horaDelVuelo, this.minutosDelVuelo,0).ToString("HH:mm");
+            get => new DateTime(1, 1, 1, this.horaDelVuelo, this.minutosDelVuelo, 0).ToString("HH:mm");
         }
         public string Disponibilidad
         {
@@ -115,7 +113,7 @@ namespace Entidades
                 {
                     return "COMPLETO";
                 }
-                
+
                 return $"{this.listaDePasajeros.Count}/ {this.aeronave.AsientosTotales}";
             }
         }
@@ -131,10 +129,12 @@ namespace Entidades
         }
         public int HoraDelVuelo
         {
+            get => horaDelVuelo;
             set => horaDelVuelo = value;
         }
         public int MinutosDelVuelo
         {
+            get => minutosDelVuelo;
             set => minutosDelVuelo = value;
         }
         public DateTime Partida
@@ -248,7 +248,7 @@ namespace Entidades
             llegada = this.partida.AddMinutes(this.minutosDelVuelo);
 
             return llegada;
-            
+
         }
         private int CantidadDeVuelosClase(ClaseDePasajero clase)
         {
@@ -283,12 +283,12 @@ namespace Entidades
             if (pasaje.Clase == ClaseDePasajero.Premium)
             {
                 precioFinal *= 1.25;
-                sb.AppendLine($"Impuesto por Premium: {(precioFinal*0.25).ToString("0.00")} U$D");
+                sb.AppendLine($"Impuesto por Premium: {(precioFinal * 0.25).ToString("0.00")} U$D");
             }
 
             if (pasaje.PesoAdicional > 0)
             {
-                double precioPeso = pasaje.PesoAdicional * precioFinal *.01;
+                double precioPeso = pasaje.PesoAdicional * precioFinal * .01;
                 precioFinal += precioPeso;
                 sb.AppendLine($"Impuesto por Peso Adicional: {precioPeso.ToString("0.00")} U$D");
             }
@@ -337,7 +337,7 @@ namespace Entidades
             }
             return false;
         }
-       
+
         public static bool operator !=(Vuelo v, Pasaje p)
         {
             return !(v == p);

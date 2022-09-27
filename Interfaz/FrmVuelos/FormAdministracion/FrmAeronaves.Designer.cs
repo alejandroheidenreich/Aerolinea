@@ -44,6 +44,7 @@
             this.dtg_Aeronaves.AllowUserToDeleteRows = false;
             this.dtg_Aeronaves.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtg_Aeronaves.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtg_Aeronaves.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -54,7 +55,7 @@
             this.dtg_Aeronaves.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtg_Aeronaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -70,14 +71,14 @@
             this.dtg_Aeronaves.RowHeadersVisible = false;
             this.dtg_Aeronaves.RowTemplate.Height = 25;
             this.dtg_Aeronaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtg_Aeronaves.Size = new System.Drawing.Size(682, 291);
+            this.dtg_Aeronaves.Size = new System.Drawing.Size(675, 230);
             this.dtg_Aeronaves.TabIndex = 0;
             // 
             // btn_Seleccionar
             // 
             this.btn_Seleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Seleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Seleccionar.Location = new System.Drawing.Point(224, 352);
+            this.btn_Seleccionar.Location = new System.Drawing.Point(214, 289);
             this.btn_Seleccionar.Name = "btn_Seleccionar";
             this.btn_Seleccionar.Size = new System.Drawing.Size(299, 51);
             this.btn_Seleccionar.TabIndex = 1;
@@ -90,9 +91,9 @@
             this.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Salir.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Salir.ForeColor = System.Drawing.Color.Maroon;
-            this.btn_Salir.Location = new System.Drawing.Point(671, 376);
+            this.btn_Salir.Location = new System.Drawing.Point(643, 315);
             this.btn_Salir.Name = "btn_Salir";
-            this.btn_Salir.Size = new System.Drawing.Size(48, 47);
+            this.btn_Salir.Size = new System.Drawing.Size(48, 48);
             this.btn_Salir.TabIndex = 2;
             this.btn_Salir.Text = "X";
             this.btn_Salir.UseVisualStyleBackColor = true;
@@ -106,7 +107,7 @@
             this.pnl_Fondo.Controls.Add(this.dtg_Aeronaves);
             this.pnl_Fondo.Location = new System.Drawing.Point(12, 12);
             this.pnl_Fondo.Name = "pnl_Fondo";
-            this.pnl_Fondo.Size = new System.Drawing.Size(722, 426);
+            this.pnl_Fondo.Size = new System.Drawing.Size(706, 374);
             this.pnl_Fondo.TabIndex = 3;
             this.pnl_Fondo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseDown);
             this.pnl_Fondo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseMove);
@@ -117,7 +118,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(746, 450);
+            this.ClientSize = new System.Drawing.Size(730, 401);
             this.ControlBox = false;
             this.Controls.Add(this.pnl_Fondo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

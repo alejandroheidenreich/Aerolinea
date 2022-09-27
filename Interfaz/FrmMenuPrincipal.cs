@@ -10,6 +10,9 @@ namespace Interfaz
     {
         private Usuario usuarioActual;
         private Form? formActivo;
+        private bool mouseAccion;
+        private int mousePosX;
+        private int mousePosY;
         public FrmMenuPrincipal(Usuario usuarioActual)
         {
             InitializeComponent();
@@ -149,6 +152,29 @@ namespace Interfaz
             cerrarSecionToolStripMenuItem.ForeColor = Color.Black;
         }
 
-        
+        private void mnu_menuPrincipal_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = true;
+            this.mousePosX = e.X;
+            this.mousePosY = e.Y;
+        }
+
+        private void mnu_menuPrincipal_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnu_menuPrincipal_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseAccion)
+            {
+                this.SetDesktopLocation(MousePosition.X - mousePosX, MousePosition.Y - mousePosY);
+            }
+        }
+
+        private void mnu_menuPrincipal_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.mouseAccion = false;
+        }
     }
 }

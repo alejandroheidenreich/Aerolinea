@@ -82,7 +82,6 @@ namespace Entidades
             vuelosTotales = new List<Vuelo>();
             Random rnd = new Random();
 
-
             for (int i = 0; i < 200; i++)
             {
                 try
@@ -95,7 +94,6 @@ namespace Entidades
                     Console.WriteLine(ex.Message);
                 }
             }
-
         }
         private static void CargarClientes()
         {
@@ -1132,14 +1130,11 @@ namespace Entidades
             {
                 for (int i = 0; i < rnd.Next(200, item.Aeronave.AsientosTotales); i++)
                 {
-                    ClaseDePasajero aux;
+                    ClaseDePasajero aux = ClaseDePasajero.Tursita;
+                    
                     if (rnd.Next(1, 10) == 1)
                     {
                         aux = ClaseDePasajero.Premium;
-                    }
-                    else
-                    {
-                        aux = ClaseDePasajero.Tursita;
                     }
 
                     if (aux == ClaseDePasajero.Tursita && ValidarCantidadTuristaDelVuelo(item))
@@ -1183,7 +1178,7 @@ namespace Entidades
             Random rnd = new Random();
             bool booleano = true;
 
-            if (rnd.Next(1, 3) == 2)
+            if (rnd.Next(1, 4) == 2)
             {
                 booleano = false;
             }

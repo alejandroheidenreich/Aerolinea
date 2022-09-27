@@ -24,13 +24,17 @@ namespace Interfaz
         {
             TemaActual(this.tema);
             BindingSource bs = new BindingSource();
-            if (Sistema.destinosFacturados.Count > 0)
-            {
-                bs.DataSource = Sistema.destinosFacturados.Comparer;
-                this.dtg_DestinosFacturados.DataSource = bs;
-                
-            }
-            this.dtg_PasajerosFrecuentes.DataSource = BaseDeDatos.vuelosHistorial;
+            BindingSource bs2 = new BindingSource();
+            BindingSource bs3 = new BindingSource();
+
+            bs.DataSource = Sistema.HistorialDeVuelosPorFacturacion();
+            bs2.DataSource = Sistema.ClientesPorCantidadDeVuelos();
+            bs3.DataSource = Sistema.AeronaveCantidadDeHoras();
+
+            this.dtg_DestinosFacturados.DataSource = bs;
+            this.dtg_PasajerosFrecuentes.DataSource = bs2;
+            this.dtg_Aeronaves.DataSource = bs3;
+            this.lbl_DestinoFavorito.Text = $"Destino Favorito: {Sistema.DestinoFavorito()}";
         }
         private void TemaActual(bool temaActual)
         {

@@ -69,7 +69,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private void ActivarDarkMode()
         {
             this.BackColor = Color.SteelBlue;
-            this.dtg_Aeronaves.BackgroundColor = Color.DarkGray;
             this.pnl_Fondo.BackColor = Color.DarkGray;
             this.btn_Salir.BackColor = Color.LightGray;
             this.btn_Seleccionar.BackColor = Color.LightGray;
@@ -78,7 +77,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private void ActivarLightMode()
         {
             this.BackColor = Color.SkyBlue;
-            this.dtg_Aeronaves.BackgroundColor = Color.LightGray;
             this.pnl_Fondo.BackColor = Color.WhiteSmoke;
             this.btn_Salir.BackColor = Color.WhiteSmoke;
             this.btn_Seleccionar.BackColor = Color.WhiteSmoke;

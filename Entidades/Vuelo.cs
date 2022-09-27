@@ -92,6 +92,7 @@ namespace Entidades
         {
             get
             {
+                // TODO: convertir en atributo
                 return DestinoEsInternacional(this.origen, this.destino);
             }
         }
@@ -104,6 +105,7 @@ namespace Entidades
         {
             get
             {
+                // TODO: convertir en atributo
                 string vuelo = EstadoDelVuelo();
                 if (!string.IsNullOrEmpty(vuelo))
                 {
@@ -147,6 +149,7 @@ namespace Entidades
         {
             get
             {
+                // TODO: convertir en atributo
                 return CantidadDeVuelosClase(ClaseDePasajero.Premium);
             }
         }
@@ -154,6 +157,7 @@ namespace Entidades
         {
             get
             {
+                // TODO: convertir en atributo
                 return CantidadDeVuelosClase(ClaseDePasajero.Tursita);
             }
         }
@@ -212,20 +216,45 @@ namespace Entidades
             }
         }
 
-        public double GananciaTotal
+        public double GananciaTotal()
         {
-            get
+            double ganancia = 0;
+            double precioPasaje;
+            foreach (Pasaje item in this.listaDePasajeros)
             {
-                double ganancia = 0;
-                double precioPasaje;
-                foreach (Pasaje item in this.listaDePasajeros)
-                {
-                    InformarConPrecioDelPasaje(item, out precioPasaje);
-                    ganancia += precioPasaje;
-                }
-                return ganancia;
+                InformarConPrecioDelPasaje(item, out precioPasaje);
+                ganancia += precioPasaje;
             }
+            return ganancia;
         }
+
+        public double GananciaCabotaje()
+        {
+            double gananciaCabotaje = 0;
+            double horas = CalcularHorasTotales();
+            double precioBase = PrecioSegunTipoDeVuelo(horas);
+            foreach (Pasaje item in this.listaDePasajeros)
+            {
+                gananciaCabotaje += item.PesoAdicional * precioBase * .01;
+            }
+            return gananciaCabotaje;
+        }
+
+        public double GananciaInternacional()
+        {
+            double gananciaInternacional = 0;
+            if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Internacional)
+            {
+                double horas = CalcularHorasTotales();
+                double precioBase = PrecioSegunTipoDeVuelo(horas);
+                for (int i = 0; i < this.listaDePasajeros.Count; i++)
+                {
+                    gananciaInternacional += precioBase;
+                }
+            }
+            return gananciaInternacional;
+        }
+
         private string EstadoDelVuelo()
         {
             string estado = string.Empty;
@@ -239,7 +268,6 @@ namespace Entidades
             }
             return estado;
         }
-
         private DateTime HorarioDeLlegada()
         {
             DateTime llegada;
@@ -266,17 +294,8 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             precioFinal = 0;
-            double horasTotales = this.horaDelVuelo + ((double)this.minutosDelVuelo / 60);
-
-
-            if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Nacional)
-            {
-                precioFinal = PRECIOPORHORANACIONAL * horasTotales;
-            }
-            else
-            {
-                precioFinal = PRECIOPORHORAINTERNACIONAL * horasTotales;
-            }
+            double horasTotales = CalcularHorasTotales();
+            precioFinal = PrecioSegunTipoDeVuelo(horasTotales);
             sb.AppendLine($"Registro: {pasaje.IdRegistro}");
             sb.AppendLine($"Precio Bruto: {precioFinal.ToString("0.00")} U$D");
 
@@ -292,9 +311,27 @@ namespace Entidades
                 precioFinal += precioPeso;
                 sb.AppendLine($"Impuesto por Peso Adicional: {precioPeso.ToString("0.00")} U$D");
             }
-
-
             return sb.ToString();
+        }
+
+        private double CalcularHorasTotales()
+        {
+            return this.horaDelVuelo + ((double)this.minutosDelVuelo / 60);
+        }
+
+        private double PrecioSegunTipoDeVuelo(double horasTotales)
+        {
+            double precioFinal;
+            if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Nacional)
+            {
+                precioFinal = PRECIOPORHORANACIONAL * horasTotales;
+            }
+            else
+            {
+                precioFinal = PRECIOPORHORAINTERNACIONAL * horasTotales;
+            }
+
+            return precioFinal;
         }
 
         public double EspacioDisponibleBodega()

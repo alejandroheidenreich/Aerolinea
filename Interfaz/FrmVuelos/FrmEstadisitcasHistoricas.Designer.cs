@@ -144,9 +144,9 @@
             this.gb_Ganacias.Controls.Add(this.lbl_Cabotaje);
             this.gb_Ganacias.Controls.Add(this.lbl_GananciasTotales);
             this.gb_Ganacias.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gb_Ganacias.Location = new System.Drawing.Point(1043, 181);
+            this.gb_Ganacias.Location = new System.Drawing.Point(990, 181);
             this.gb_Ganacias.Name = "gb_Ganacias";
-            this.gb_Ganacias.Size = new System.Drawing.Size(269, 137);
+            this.gb_Ganacias.Size = new System.Drawing.Size(323, 137);
             this.gb_Ganacias.TabIndex = 5;
             this.gb_Ganacias.TabStop = false;
             this.gb_Ganacias.Text = "Ganacias";
@@ -219,7 +219,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtg_Aeronaves.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtg_Aeronaves.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dtg_Aeronaves.Location = new System.Drawing.Point(1043, 392);
+            this.dtg_Aeronaves.Location = new System.Drawing.Point(990, 388);
             this.dtg_Aeronaves.MultiSelect = false;
             this.dtg_Aeronaves.Name = "dtg_Aeronaves";
             this.dtg_Aeronaves.ReadOnly = true;
@@ -233,7 +233,7 @@
             // 
             this.lbl_EncabezaAeronaves.AutoSize = true;
             this.lbl_EncabezaAeronaves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_EncabezaAeronaves.Location = new System.Drawing.Point(1043, 362);
+            this.lbl_EncabezaAeronaves.Location = new System.Drawing.Point(990, 358);
             this.lbl_EncabezaAeronaves.Name = "lbl_EncabezaAeronaves";
             this.lbl_EncabezaAeronaves.Size = new System.Drawing.Size(216, 16);
             this.lbl_EncabezaAeronaves.TabIndex = 9;

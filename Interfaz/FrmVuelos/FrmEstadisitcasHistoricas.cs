@@ -35,6 +35,9 @@ namespace Interfaz
             this.dtg_PasajerosFrecuentes.DataSource = bs2;
             this.dtg_Aeronaves.DataSource = bs3;
             this.lbl_DestinoFavorito.Text = $"Destino Favorito: {Sistema.DestinoFavorito()}";
+            this.lbl_GananciasTotales.Text = $"Ganancias Totales: {Sistema.InformarGananciaTotalDeLosVuelos()}";
+            this.lbl_Cabotaje.Text = $"Ganancias Cabotajes: {Sistema.InformarGananciaCabotajeDeLosVuelos()}";
+            this.lbl_Internacional.Text = $"Ganancias Internacional: {Sistema.InformarGananciaInternacionalDeLosVuelos()}";
         }
         private void TemaActual(bool temaActual)
         {

@@ -114,7 +114,6 @@ namespace Interfaz
             dtg.DataSource = null;
             dtg.DataSource = lista;
             dtg.Columns["Aeronave"].Visible = false;
-            dtg.Columns["GananciaTotal"].Visible = false;
             dtg.Columns["Premium"].Visible = false;
             dtg.Columns["Tursita"].Visible = false;
         }

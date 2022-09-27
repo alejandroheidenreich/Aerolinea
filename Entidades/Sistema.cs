@@ -245,7 +245,7 @@ namespace Entidades
         {
             foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
             {
-                dic[item.Destino] += item.GananciaTotal;
+                dic[item.Destino] += item.GananciaTotal();
             }
         }
         private static Dictionary<string, string> ConvertirDiccionarioAListaPasarloAListaStringDouble(Dictionary<string, double> dic)
@@ -384,6 +384,36 @@ namespace Entidades
                 dict[item.Key] = $"{((int)item.Value)}:{minutos}";
             }
             return dict;
+        }
+
+        public static string InformarGananciaTotalDeLosVuelos()
+        {
+            double ganancia = 0;
+            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+            {
+                ganancia += item.GananciaTotal();
+            }
+            return $"$ {ganancia.ToString("0.00")} USD";
+        }
+
+        public static string InformarGananciaCabotajeDeLosVuelos()
+        {
+            double ganancia = 0;
+            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+            {
+                ganancia += item.GananciaCabotaje();
+            }
+            return $"$ {ganancia.ToString("0.00")} USD";
+        }
+
+        public static string InformarGananciaInternacionalDeLosVuelos()
+        {
+            double ganancia = 0;
+            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+            {
+                ganancia += item.GananciaInternacional();
+            }
+            return $"$ {ganancia.ToString("0.00")} USD";
         }
     }
 }

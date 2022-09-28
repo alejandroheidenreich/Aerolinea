@@ -4,11 +4,6 @@ using System.Text;
 
 namespace Entidades
 {
-    public enum ClaseDePasajero
-    {
-        Tursita,
-        Premium
-    }
     public class Pasaje
     {
         private string idRegistro;

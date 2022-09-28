@@ -11,7 +11,6 @@ namespace Entidades
         private string nombreDeUsuario;
         private string contrasenia;
 
-        //public Usuario() { };
         public Usuario(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email, string nombreDeUsuario, string contrasenia)
             :base(nombre,apellido, fechaDeNacimiento, dni,email)
         {
@@ -23,7 +22,6 @@ namespace Entidades
         {
             get => nombreDeUsuario;
         }
-        
         
         public bool VerificarContrasenia(string contraseniaActual)
         {

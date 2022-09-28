@@ -51,7 +51,6 @@ namespace Entidades
             get => capacidadDeBodega;
             set => capacidadDeBodega = value;
         }
-
         private string GenerarMatricula()
         {
             string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

@@ -4,11 +4,7 @@ using System.Text;
 
 namespace Entidades
 {
-    public enum TipoDeVuelo
-    {
-        Nacional,
-        Internacional
-    }
+    
 
     public class Vuelo
     {
@@ -56,7 +52,6 @@ namespace Entidades
         {
             get => id;
         }
-
         public string Origen
         {
             get => origen;
@@ -71,7 +66,6 @@ namespace Entidades
         {
             get => this.tipo;
         }
-
         public string Duracion
         {
             get => this.duracion;
@@ -108,7 +102,6 @@ namespace Entidades
             get => partida;
             set => partida = value;
         }
-
         public int Premium
         {
             get
@@ -160,7 +153,6 @@ namespace Entidades
                 throw new Exception("El origen no puede ser igual que el destino");
             }
         }
-
         private void ValidarVueloInternacional()
         {
             if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Internacional &&
@@ -203,10 +195,8 @@ namespace Entidades
             {
                 return "COMPLETO";
             }
-
             return $"{this.listaDePasajeros.Count}/ {this.aeronave.AsientosTotales}";
         }
-
         private void GenerarDuracionDeVuelos()
         {
             Random rnd = new Random();

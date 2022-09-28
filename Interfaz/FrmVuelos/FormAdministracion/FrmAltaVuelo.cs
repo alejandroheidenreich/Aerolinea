@@ -13,13 +13,11 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 {
     public partial class FrmAltaVuelo : Form
     {
-        private Vuelo nuevoVuelo;
         private bool fechaCambio;
         private bool temaActual;
         private bool mouseAccion;
         private int mousePosX;
         private int mousePosY;
-
 
         public FrmAltaVuelo(bool temaActual)
         {
@@ -27,12 +25,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.fechaCambio = false;
             this.temaActual = temaActual;
         }
-
-        public Vuelo NuevoVuelo
-        {
-            get => nuevoVuelo;
-        }
-
         private void FrmAltaVuelo_Load(object sender, EventArgs e)
         {
             TemaActual(this.temaActual);
@@ -52,7 +44,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             this.Close();
         }
-
         private void btn_MasInfoAeronave_Click(object sender, EventArgs e)
         {
             FrmAeronaves dataAeronaves = new FrmAeronaves(this.temaActual);
@@ -64,7 +55,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 cmb_Aeronave.Text = dataAeronaves.Aeronave.Matricula;
             }
         }
-
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
             if (VerificarIngresos())
@@ -74,10 +64,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 {
                     try
                     {
-                        //TODO: Arreglar
-                        //nuevoVuelo = new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text, dtp_Partida.Value, chk_Wifi.Checked, chk_Comida.Checked, chk_Vegano.Checked, chk_Premium.Checked, chk_SinAlcohol.Checked, chk_Alcohol.Checked);
-                        nuevoVuelo = new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text, dtp_Partida.Value, chk_Wifi.Checked, chk_Comida.Checked, chk_Vegano.Checked, chk_Premium.Checked, chk_SinAlcohol.Checked, chk_Alcohol.Checked);
-                        Sistema.AltaDeVuelo(nuevoVuelo);
+                        Sistema.AltaDeVuelo(new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text, dtp_Partida.Value, chk_Wifi.Checked, chk_Comida.Checked, chk_Vegano.Checked, chk_Premium.Checked, chk_SinAlcohol.Checked, chk_Alcohol.Checked));
                         this.DialogResult = DialogResult.OK;
                     }
                     catch (Exception ex)
@@ -88,7 +75,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 }
             }
         }
-
         private bool VerificarIngresos()
         {
             lbl_MensajeError.Visible = false;
@@ -106,12 +92,10 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             }
             return true;
         }
-
         private void dtp_Partida_ValueChanged(object sender, EventArgs e)
         {
             this.fechaCambio = true;
         }
-
         private void TemaActual(bool temaActual)
         {
             if (temaActual)
@@ -136,7 +120,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.btn_Agregar.BackColor = Color.LightGray;
             this.lbl_MensajeError.BackColor = Color.DarkGray;
         }
-
         private void ActivarTemaClaro()
         {
             this.BackColor = Color.SkyBlue;
@@ -150,19 +133,16 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.btn_Agregar.BackColor = Color.WhiteSmoke;
             this.lbl_MensajeError.BackColor = Color.WhiteSmoke;
         }
-
         private void btn_MasInfoAeronave_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Lista de las Aeronaves", this.btn_MasInfoAeronave);
         }
-
         private void pnl_FondoPrincipal_MouseDown(object sender, MouseEventArgs e)
         {
             this.mouseAccion = true;
             this.mousePosX = e.X;
             this.mousePosY = e.Y;
         }
-
         private void pnl_FondoPrincipal_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseAccion)
@@ -170,12 +150,10 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 this.SetDesktopLocation(MousePosition.X - mousePosX, MousePosition.Y - mousePosY);
             }
         }
-
         private void pnl_FondoPrincipal_MouseUp(object sender, MouseEventArgs e)
         {
             this.mouseAccion = false;
         }
-
         private void chk_Comida_CheckedChanged(object sender, EventArgs e)
         {
             if (this.chk_Comida.Checked)

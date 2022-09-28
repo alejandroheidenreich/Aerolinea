@@ -37,15 +37,6 @@ Con esta venta podremos navegar por nuestra aplicacion, consta con un _menu stri
 ![](/login.png)
 
 
-## How to clone
-If you have special requirements, you have to list it step by step.
-* This is the first step
-* Then you have to do this
-* Finally do this
-
-Markdown has enumation and nested lists.
-
-
 ## Justificación técnica
 Indicar tema a tema (de los temas 01 al 09) dónde se fue aplicando en el código y por qué se decidió implementarlo de esa forma. Toda decisión tiene que estar argumentada con razones técnicas que giren alrededor de los pilares de la programación orientada a objetos y cuestiones de mantenibilidad, código limpio, flexibilidad al cambio, experiencia de usuario, accesibilidad, uso seguro, rendimiento y eficiencia.
 Suma identificar pros y contras, si los tienen en mente.

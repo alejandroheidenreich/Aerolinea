@@ -26,18 +26,21 @@ namespace Entidades
         private bool menuPremium;
         private bool bebidasSinAlcohol;
         private bool bebidasAlcoholicas;
-
-        public Vuelo(Aeronave aeronave, string origen, string destino, DateTime partida, bool wifii, bool comida, bool menuVegano, bool menuPremium, bool bebidasSinAlcohol, bool bebidasAlcoholicas)
+        private Vuelo()
         {
-            this.id = GenerarID();
-            this.aeronave = aeronave;
             this.listaDePasajeros = new List<Pasaje>();
+            this.id = GenerarID();
+        }
+        public Vuelo(Aeronave aeronave, string origen, string destino, DateTime partida, bool wifii, bool comida, bool menuVegano, bool menuPremium, bool bebidasSinAlcohol, bool bebidasAlcoholicas):this()
+        {
             this.origen = origen;
             this.destino = destino;
             ValidarOrigenDestino(origen, destino);
             ValidarVueloInternacional();
             this.tipo = DestinoEsInternacional(this.origen, this.destino);
             this.partida = partida;
+            this.aeronave = aeronave;
+            this.aeronave.AgregarVueloAPlanDeVuelos(this.partida);
             GenerarDuracionDeVuelos();
             this.duracion = new DateTime(1, 1, 1, this.horaDelVuelo, this.minutosDelVuelo, 0).ToString("HH:mm");
             this.wifii = wifii;
@@ -262,13 +265,13 @@ namespace Entidades
         private string EstadoDelVuelo()
         {
             string estado = string.Empty;
-            if (HorarioDeLlegada() < DateTime.Now)
+            if (HorarioDeLlegada() > DateTime.Now && this.partida < DateTime.Now)
             {
-                estado = "FINALIZADO";
+                estado = "EN VUELO";
             }
             else if (this.partida < DateTime.Now)
             {
-                estado = "EN VUELO";
+                estado = "FINALIZADO";
             }
             return estado;
         }

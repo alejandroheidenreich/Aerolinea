@@ -14,7 +14,7 @@ namespace Entidades
         public Usuario(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email, string nombreDeUsuario, string contrasenia)
             :base(nombre,apellido, fechaDeNacimiento, dni,email)
         {
-            Sistema.VerificarUsuarioNoRepetido(nombreDeUsuario);
+            Sistema.VerificarUsuarioNoRepetido(nombreDeUsuario,dni);
             ValidarString(nombreDeUsuario, out this.nombreDeUsuario, "El nombre no puede ser nulo.");
             ValidarContrasenia(contrasenia, out this.contrasenia);
         }
@@ -25,6 +25,7 @@ namespace Entidades
         
         public bool VerificarContrasenia(string contraseniaActual)
         {
+            // booleando para saber si viene con cambio de contraseña
             if (contraseniaActual == this.contrasenia)
             {
                 return true;
@@ -36,6 +37,7 @@ namespace Entidades
             //TODO: Desarrollar cambio de contraseña
             this.contrasenia = nuevaContrasenia;
         }
+
         public static bool operator ==(Usuario u1, Usuario u2)
         {
             return u1.nombreDeUsuario == u2.nombreDeUsuario && u1.contrasenia == u2.contrasenia;
@@ -50,12 +52,6 @@ namespace Entidades
         {
             Usuario usuario = obj as Usuario;
             return usuario is not null && this == usuario;
-        }
-
-        public override int GetHashCode()
-        {
-            return nombreDeUsuario.GetHashCode()
-                    + contrasenia.GetHashCode();
         }
 
         private static void ValidarString(string strAValidar, out string strValidado, string msjError)

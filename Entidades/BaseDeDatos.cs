@@ -17,25 +17,16 @@ namespace Entidades
         static BaseDeDatos()
         {
             vuelosHistorial = new List<Vuelo>();
-
             vuelosActivos = new List<Vuelo>();
 
             CargarUsuarios();
-
             CargarClientes();
-
             CargarLocalidades();
-
             CargarAeronaves();
-
             CargarVuelos();
-
             AltaRandomDePasajeros();
-
             Sistema.ActualizarVuelos();
         }
-
-
         private static void CargarAeronaves()
         {
             aeronaves = new List<Aeronave>()
@@ -49,7 +40,6 @@ namespace Entidades
                 new Aeronave(270,8,30000)
             };
         }
-
         private static void CargarLocalidades()
         {
             localidades = new List<string>()
@@ -70,13 +60,12 @@ namespace Entidades
                 "Tucumán",
                 "Puerto Madryn",
                 "Ushuaia",
-                "Recife(Brasil)",//17
-                "Roma(Italia)",//18
-                "Acapulco(México)",//19
-                "Miami(EEUU)"//20
+                "Recife(Brasil)",
+                "Roma(Italia)",
+                "Acapulco(México)",
+                "Miami(EEUU)"
             };
         }
-
         private static void CargarVuelos()
         {
             vuelosTotales = new List<Vuelo>();
@@ -97,7 +86,6 @@ namespace Entidades
         }
         private static void CargarClientes()
         {
-            //clientes = new List<Cliente>();
             clientes = new List<Cliente>()
              {
                 new Cliente("Babette", "Cruwys", Sistema.FechaAleatoria(), 41788234, "bcruwys0@soundcloud.com"),
@@ -1103,7 +1091,6 @@ namespace Entidades
 
             };
         }
-
         private static void CargarUsuarios()
         {
             usuarios = new List<Usuario>();
@@ -1114,15 +1101,12 @@ namespace Entidades
                 usuarios.Add(new Usuario("José", "Argento", new DateTime(1955, 10, 19), 12112112, "pepe@gmal.com", "pepe", "Pep3Pepo$o"));
                 usuarios.Add(new Usuario("Lionel", "Messi", new DateTime(1987, 07, 24), 10101010, "leo@gmal.com", "messi10", "Scaloneta#10"));
                 usuarios.Add(new Usuario("Bartolomeo", "Simpson", new DateTime(1981, 12, 13), 66666666, "bart@gmal.com", "elbarto", "1ayCaramba!"));
-
             }
             catch (Exception)
             {
                 throw;
             }
-
         }
-
         private static void AltaRandomDePasajeros()
         {
             Random rnd = new Random();
@@ -1156,7 +1140,6 @@ namespace Entidades
                 }
             }
         }
-
         private static void CargarEquipajesDePasajeros(Pasaje pasajero, Vuelo vuelo)
         {
             Random rnd = new Random();
@@ -1173,7 +1156,6 @@ namespace Entidades
                 }
             }
         }
-
         private static bool BooleanoAleatorio()
         {
             Random rnd = new Random();
@@ -1185,7 +1167,6 @@ namespace Entidades
             }
             return booleano;
         }
-
         private static bool ValidarCantidadPremiumDelVuelo(Vuelo vuelo)
         {
             int contador = 0;
@@ -1202,7 +1183,6 @@ namespace Entidades
             }
             return true;
         }
-
         private static bool ValidarCantidadTuristaDelVuelo(Vuelo vuelo)
         {
             int contador = 0;
@@ -1219,7 +1199,6 @@ namespace Entidades
             }
             return true;
         }
-
         public static DateTime FechaAleatoria(int inicioYear, int finalYear)
         {
             Random rand = new Random();
@@ -1231,6 +1210,5 @@ namespace Entidades
 
             return new DateTime(año, mes, dia, hora, minutos, 0);
         }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Entidades
@@ -9,9 +10,15 @@ namespace Entidades
         private int cantidadDeAsientosTotales;
         private int cantidadDeBanios;
         private double capacidadDeBodega;
+        private List<DateTime> planDeVuelos;
 
-        public Aeronave(int cantidadDeAsientos, int cantidadDeBanios, double capacidadDeBodega)
+        private Aeronave()
         {
+            planDeVuelos = new List<DateTime>();
+        }
+        public Aeronave(int cantidadDeAsientos, int cantidadDeBanios, double capacidadDeBodega):this()
+        {
+            
             this.matricula = GenerarMatricula();
             this.cantidadDeAsientosTotales = cantidadDeAsientos;
             this.cantidadDeBanios = cantidadDeBanios;
@@ -62,6 +69,25 @@ namespace Entidades
                 matriculaArray[i] = caracteres[random.Next(caracteres.Length)];
             }
             return new String(matriculaArray);
+        }
+        
+        public void AgregarVueloAPlanDeVuelos(DateTime vueloFecha)
+        {
+            if (ValidadNuevoPlanDeVuelo(vueloFecha))
+            {
+                this.planDeVuelos.Add(vueloFecha);
+            }
+        }
+        private bool ValidadNuevoPlanDeVuelo(DateTime vueloFecha)
+        {
+            foreach (DateTime item in this.planDeVuelos)
+            {
+                if (item.ToShortDateString() == vueloFecha.ToShortDateString())
+                {
+                    throw new Exception($"La aerovane {this.matricula} ya tiene un vuelo en {vueloFecha.ToString("dd/MM/yyyy")}");
+                }
+            }
+            return true;
         }
         public override string ToString()
         {

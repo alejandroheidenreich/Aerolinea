@@ -37,7 +37,6 @@ namespace Entidades
         }
         public int Dni
         {
-            get => dni;
             set => dni = value;
         }
 
@@ -123,13 +122,9 @@ namespace Entidades
 
         public override int GetHashCode()
         {
-            return this.dni.GetHashCode();
+            return this.dni;
         }
 
-        public virtual string Mostrar()
-        {
-            return this.ToString();
-        }
 
         public override string ToString()
         {

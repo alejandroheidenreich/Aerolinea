@@ -15,15 +15,18 @@ namespace Entidades
         private int equipajesMaximos;
         private double pesoAdicional;
 
-        public Pasaje(Cliente cliente, ClaseDePasajero claseDePasajero)
+        private Pasaje()
         {
             this.idRegistro = GenerarRegsitro();
-            this.cliente = cliente;
-            this.claseDePasajero = claseDePasajero;
-            this.equipajesMaximos = 4;
-            this.pesoAdicional = 0;
             this.equipajeDeBodega = new List<double>();
             this.EquipajeDeMano = false;
+            this.equipajesMaximos = 4;
+            this.pesoAdicional = 0;
+        }
+        public Pasaje(Cliente cliente, ClaseDePasajero claseDePasajero):this()
+        {
+            this.cliente = cliente;
+            this.claseDePasajero = claseDePasajero;
         }
 
         public string IdRegistro

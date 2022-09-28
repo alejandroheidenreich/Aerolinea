@@ -9,26 +9,39 @@ namespace Entidades
 {
     public static class Sistema
     {
-        public static Usuario VerificarUsuarioContrasenia(string nombreDeUsuario, string contrasenia)
+        public static int VerificarUsuarioContrasenia(string nombreDeUsuario, string contrasenia)
         {
             foreach (Usuario item in BaseDeDatos.usuarios)
             {
                 if (item.NombreDeUsuario == nombreDeUsuario && item.VerificarContrasenia(contrasenia))
                 {
-                    return item;
+                    return BaseDeDatos.usuarios.IndexOf(item);
                 }
             }
-            return null;    
+            return -1;    
         }
-        public static void VerificarUsuarioNoRepetido(string nuevoUsuario)
+        public static void VerificarUsuarioNoRepetido(string nuevoUsuario, int dni)
         {
             foreach (Usuario item in BaseDeDatos.usuarios)
             {
-                if (item.NombreDeUsuario == nuevoUsuario)
+                if (item.NombreDeUsuario == nuevoUsuario && item.GetHashCode() != dni)
                 {
                     throw new Exception("El usuario ya existe");
                 }
             }
+        }
+
+        public static bool EditarUsuario(Usuario usuarioEditado)
+        {
+            for (int i = 0; i < BaseDeDatos.usuarios.Count; i++)
+            {
+                if (BaseDeDatos.usuarios[i].GetHashCode() == usuarioEditado.GetHashCode())
+                {
+                    BaseDeDatos.usuarios[i] = usuarioEditado;
+                    return true;
+                }
+            }
+            return false;
         }
         public static void AltaDeCliente(Cliente clienteAAgregar)
         {

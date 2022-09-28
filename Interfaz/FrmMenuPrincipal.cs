@@ -8,16 +8,16 @@ namespace Interfaz
 {
     public partial class FrmMenuPrincipal : Form
     {
-        private Usuario usuarioActual;
+        private int usuario;
         private Form? formActivo;
         private bool mouseAccion;
         private int mousePosX;
         private int mousePosY;
-        public FrmMenuPrincipal(Usuario usuarioActual)
+        public FrmMenuPrincipal(int usuarioActual)
         {
             InitializeComponent();
-            this.usuarioActual = usuarioActual;
-            MensajeDeBarraDeInformacion(usuarioActual);
+            this.usuario = usuarioActual;
+            MensajeDeBarraDeInformacion(BaseDeDatos.usuarios[this.usuario]);
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
@@ -42,22 +42,42 @@ namespace Interfaz
         }
         private void InformacionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             ActivarForm(new FrmInformacionDeLosClientes(btn_ToggleTema.Checked));
         }
-
-        private void ListaDeVuelosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void VuelosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ActivarForm(new FrmAdministracionDeVuelos(btn_ToggleTema.Checked));
         }
-
-        private void configurarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ActivarForm(new FrmConfiguracionCuenta(this.usuarioActual,btn_ToggleTema.Checked));
-        }
-        private void estadisticasHistoricasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EstadisitcasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ActivarForm(new FrmEstadisitcasHistoricas(btn_ToggleTema.Checked));
         }
+        private void configurarCuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActivarForm(new FrmConfiguracionCuenta(this.usuario,btn_ToggleTema.Checked));
+        }
+        private void HoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (horaToolStripMenuItem.Checked)
+            {
+                Reloj.Enabled = true;
+                this.horaToolStripMenuItem.Text = DateTime.Now.ToString("HH:mm:ss");
+            }
+            else
+            {
+                Reloj.Enabled = false;
+                this.horaToolStripMenuItem.Text = string.Empty;
+            }
+        }
+        private void CerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void ActivarForm(Form form)
         {
             try
@@ -73,8 +93,7 @@ namespace Interfaz
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show($"Rompio padre {ex.Message}");
+                MessageBox.Show($"Ocurrio un error {ex.Message}, Reiniciar la aplicacion");
             }
         }
 
@@ -86,24 +105,6 @@ namespace Interfaz
             }
         }
 
-        private void CerrarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void HoraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (horaToolStripMenuItem.Checked)
-            {
-                Reloj.Enabled = true;
-                this.horaToolStripMenuItem.Text = DateTime.Now.ToString("HH:mm:ss");
-            }
-            else
-            {
-                Reloj.Enabled = false;
-                this.horaToolStripMenuItem.Text = string.Empty;
-            }
-        }
         private void MensajeDeBarraDeInformacion(Usuario usuario)
         {
             DateTime fechaDeHoy = DateTime.Now;
@@ -126,27 +127,12 @@ namespace Interfaz
             this.BackColor = Color.DarkGray;
             pnl_barraInfo.BackColor = Color.SteelBlue;
             mnu_menuPrincipal.BackColor = Color.SteelBlue;
-            lbl_InfoUsuarioFecha.ForeColor = Color.LightGray;
-            inicioToolStripMenuItem.ForeColor = Color.LightGray;
-            clientesToolStripMenuItem1.ForeColor = Color.LightGray;
-            vuelosToolStripMenuItem.ForeColor = Color.LightGray;
-            cuentaToolStripMenuItem.ForeColor = Color.LightGray;
-            cerrarToolStripMenuItem.ForeColor = Color.LightGray;
-            horaToolStripMenuItem.ForeColor = Color.LightGray;
         }
         private void ActivarTemaClaro()
         {
             BackColor = Color.WhiteSmoke;
             pnl_barraInfo.BackColor = Color.SkyBlue;
             mnu_menuPrincipal.BackColor = Color.SkyBlue;
-            lbl_InfoUsuarioFecha.ForeColor = Color.Black;
-            inicioToolStripMenuItem.ForeColor = Color.Black;
-            clientesToolStripMenuItem1.ForeColor = Color.Black;
-            vuelosToolStripMenuItem.ForeColor = Color.Black;
-            cuentaToolStripMenuItem.ForeColor = Color.Black;
-            cerrarToolStripMenuItem.ForeColor = Color.Black;
-            horaToolStripMenuItem.ForeColor = Color.Black;
-            cerrarSecionToolStripMenuItem.ForeColor = Color.Black;
         }
 
         private void mnu_menuPrincipal_MouseDown(object sender, MouseEventArgs e)
@@ -168,5 +154,7 @@ namespace Interfaz
         {
             this.mouseAccion = false;
         }
+
+        
     }
 }

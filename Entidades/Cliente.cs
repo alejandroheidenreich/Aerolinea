@@ -16,7 +16,7 @@ namespace Entidades
 
         public static bool operator ==(Cliente c1, Cliente c2)
         {
-            return c1.Dni == c2.Dni;
+            return c1.GetHashCode() == c2.GetHashCode();
         }
 
         public static bool operator !=(Cliente c1, Cliente c2)
@@ -31,15 +31,9 @@ namespace Entidades
             return aux is not null && aux == this;  
         }
 
-        public override int GetHashCode()
-        {
-            //TODO: aplicar
-            return this.Dni;
-        }
-
         public override string ToString()
         {
-            return $"{base.Apellido}, {base.Nombre} - DNI: {base.Dni}";  
+            return $"{base.Apellido}, {base.Nombre} - DNI: {base.GetHashCode()}";  
         }
     }
 }

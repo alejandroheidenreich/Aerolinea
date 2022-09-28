@@ -150,9 +150,11 @@ namespace Interfaz
             }
             else
             {
-                if (ObtenerVueloSeleccionado().Disponibilidad == "COMPLETO")
+                if (ObtenerVueloSeleccionado().Disponibilidad == "COMPLETO" || 
+                    ObtenerVueloSeleccionado().Disponibilidad == "EN VUELO" ||
+                    ObtenerVueloSeleccionado().Disponibilidad == "FINALIZADO")
                 {
-                    this.lbl_Error.Text = "El vuelo que se desea vender ya esta COMPLETO";
+                    this.lbl_Error.Text = $"El vuelo que se desea vender ya esta {ObtenerVueloSeleccionado().Disponibilidad}";
                     this.lbl_Error.Visible = true;
                 }
                 else

@@ -36,10 +36,10 @@ namespace Interfaz
             {
                 try
                 {
-                    Usuario usuarioIngresado = Sistema.VerificarUsuarioContrasenia(txt_usuario.Text, txt_contrasenia.Text);
-                    if (usuarioIngresado is not null)
+                    int posicionDelUsuario = Sistema.VerificarUsuarioContrasenia(txt_usuario.Text, txt_contrasenia.Text);
+                    if (posicionDelUsuario > -1)
                     {
-                        AccederAlMenuPrincipal(usuarioIngresado);
+                        AccederAlMenuPrincipal(posicionDelUsuario);
                     }
                     else
                     {
@@ -60,7 +60,7 @@ namespace Interfaz
             lbl_mensajeDeError.Visible = true;
         }
 
-        private void AccederAlMenuPrincipal(Usuario usuarioIngresado)
+        private void AccederAlMenuPrincipal(int usuarioIngresado)
         {
             FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal(usuarioIngresado);
             this.Hide();

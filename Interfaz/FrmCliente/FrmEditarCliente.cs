@@ -25,7 +25,7 @@ namespace Interfaz.FrmCliente
         {
             txt_Nombre.Text = editarCliente.Nombre;
             txt_Apellido.Text = editarCliente.Apellido;
-            txt_Dni.Text = editarCliente.Dni.ToString();
+            txt_Dni.Text = editarCliente.GetHashCode().ToString();
             dtp_Nacimiento.Value = editarCliente.Nacimiento;
             txt_Email.Text = editarCliente.Email;
             this.TemaActual(tema);

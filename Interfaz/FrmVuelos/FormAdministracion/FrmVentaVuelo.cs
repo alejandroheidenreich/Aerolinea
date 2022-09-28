@@ -126,7 +126,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 {
                     filtrado.Add(item);
                 }
-                else if (item.Dni.ToString().ToUpper().StartsWith(this.txt_Buscar.Text.ToUpper()))
+                else if (item.GetHashCode().ToString().ToUpper().StartsWith(this.txt_Buscar.Text.ToUpper()))
                 {
                     filtrado.Add(item);
                 }

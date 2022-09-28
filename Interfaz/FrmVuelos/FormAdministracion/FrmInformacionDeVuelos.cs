@@ -57,14 +57,14 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             if (temaActual)
             {
-                ActivarDarkMode();
+                ActivarTemaOscuro();
             }
             else
             {
-                ActivarLightMode();
+                ActivarTemaClaro();
             }
         }
-        private void ActivarDarkMode()
+        private void ActivarTemaOscuro()
         {
             this.BackColor = Color.SteelBlue;
             this.pnl_Aeronave.BackColor = Color.LightGray;
@@ -82,7 +82,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Turista.BackColor = Color.LightGray;
         }
 
-        private void ActivarLightMode()
+        private void ActivarTemaClaro()
         {
             this.BackColor = Color.SkyBlue;
             this.pnl_Aeronave.BackColor = Color.LightGray;

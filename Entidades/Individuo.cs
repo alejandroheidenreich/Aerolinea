@@ -41,7 +41,7 @@ namespace Entidades
             set => dni = value;
         }
 
-        public int Edad => CalcularEdad(fechaDeNacimiento);
+        public int Edad => CalcularEdad(this.fechaDeNacimiento);
 
         public string Email
         {

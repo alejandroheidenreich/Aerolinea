@@ -9,8 +9,8 @@ namespace Entidades
         public static List<Aeronave> aeronaves;
         public static List<Pasaje> pasajeros;
         public static List<Cliente> clientes;
-        public static List<Vuelo> vuelosTotales;
         public static List<string> localidades;
+        public static List<Vuelo> vuelosTotales;
         public static List<Vuelo> vuelosActivos;
         public static List<Vuelo> vuelosHistorial;
 
@@ -97,6 +97,7 @@ namespace Entidades
         }
         private static void CargarClientes()
         {
+            //clientes = new List<Cliente>();
             clientes = new List<Cliente>()
              {
                 new Cliente("Babette", "Cruwys", Sistema.FechaAleatoria(), 41788234, "bcruwys0@soundcloud.com"),
@@ -1218,7 +1219,6 @@ namespace Entidades
             }
             return true;
         }
-
 
         public static DateTime FechaAleatoria(int inicioYear, int finalYear)
         {

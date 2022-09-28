@@ -39,8 +39,7 @@ namespace Entidades
 
         public override string ToString()
         {
-            return $"{base.Apellido}, {base.Nombre} - DNI: {base.Dni}";
-            ;
+            return $"{base.Apellido}, {base.Nombre} - DNI: {base.Dni}";  
         }
     }
 }

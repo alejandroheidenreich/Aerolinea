@@ -17,8 +17,10 @@ namespace Entidades
         private string id;
         private string destino;
         private string origen;
+        private TipoDeVuelo tipo;
         private int horaDelVuelo;
         private int minutosDelVuelo;
+        private string duracion;
         private DateTime partida;
         private Aeronave aeronave;
         private List<Pasaje> listaDePasajeros;
@@ -34,12 +36,14 @@ namespace Entidades
             this.id = GenerarID();
             this.aeronave = aeronave;
             this.listaDePasajeros = new List<Pasaje>();
-            this.destino = destino;
             this.origen = origen;
-            this.partida = partida;
+            this.destino = destino;
             ValidarOrigenDestino(origen, destino);
             ValidarVueloInternacional();
+            this.tipo = DestinoEsInternacional(this.origen, this.destino);
+            this.partida = partida;
             GenerarDuracionDeVuelos();
+            this.duracion = new DateTime(1, 1, 1, this.horaDelVuelo, this.minutosDelVuelo, 0).ToString("HH:mm");
             this.wifii = wifii;
             this.comida = comida;
             ValidarMenu(menuVegano, out this.menuVegano);
@@ -48,31 +52,6 @@ namespace Entidades
             this.bebidasAlcoholicas = bebidasAlcoholicas;
         }
 
-        private static void ValidarOrigenDestino(string origen, string destino)
-        {
-            if (origen == destino)
-            {
-                throw new Exception("El origen no puede ser igual que el destino");
-            }
-        }
-
-        private void ValidarVueloInternacional()
-        {
-            if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Internacional &&
-                                        this.origen != "Buenos Aires" && this.destino != "Buenos Aires")
-            {
-                throw new Exception("Vuelos internacionales deben partir o arribar en Buenos Aires");
-            }
-        }
-
-        private void ValidarMenu(bool menu, out bool menuValidado)
-        {
-            if (!this.comida && menu)
-            {
-                throw new Exception("Si el vuelo no provee comida, no puede tener un menu");
-            }
-            menuValidado = menu;
-        }
         public string ID
         {
             get => id;
@@ -90,33 +69,18 @@ namespace Entidades
         }
         public TipoDeVuelo Tipo
         {
-            get
-            {
-                // TODO: convertir en atributo
-                return DestinoEsInternacional(this.origen, this.destino);
-            }
+            get => this.tipo;
         }
 
         public string Duracion
         {
-            get => new DateTime(1, 1, 1, this.horaDelVuelo, this.minutosDelVuelo, 0).ToString("HH:mm");
+            get => this.duracion;
         }
         public string Disponibilidad
         {
             get
             {
-                // TODO: convertir en atributo
-                string vuelo = EstadoDelVuelo();
-                if (!string.IsNullOrEmpty(vuelo))
-                {
-                    return vuelo;
-                }
-                else if (this.listaDePasajeros.Count == this.aeronave.AsientosTotales)
-                {
-                    return "COMPLETO";
-                }
-
-                return $"{this.listaDePasajeros.Count}/ {this.aeronave.AsientosTotales}";
+                return CargarDisponibilidad();
             }
         }
         public Aeronave Aeronave
@@ -149,7 +113,6 @@ namespace Entidades
         {
             get
             {
-                // TODO: convertir en atributo
                 return CantidadDeVuelosClase(ClaseDePasajero.Premium);
             }
         }
@@ -157,11 +120,9 @@ namespace Entidades
         {
             get
             {
-                // TODO: convertir en atributo
                 return CantidadDeVuelosClase(ClaseDePasajero.Tursita);
             }
         }
-
         public bool Wifii
         {
             get => wifii;
@@ -191,6 +152,59 @@ namespace Entidades
         {
             get => bebidasAlcoholicas;
             set => bebidasAlcoholicas = value;
+        }
+        private static void ValidarOrigenDestino(string origen, string destino)
+        {
+            if (origen == destino)
+            {
+                throw new Exception("El origen no puede ser igual que el destino");
+            }
+        }
+
+        private void ValidarVueloInternacional()
+        {
+            if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Internacional &&
+                                        this.origen != "Buenos Aires" && this.destino != "Buenos Aires")
+            {
+                throw new Exception("Vuelos internacionales deben partir o arribar en Buenos Aires");
+            }
+        }
+        private static TipoDeVuelo DestinoEsInternacional(string origen, string destino)
+        {
+            if (origen == "Acapulco(México)" ||
+                origen == "Miami(EEUU)" ||
+                origen == "Recife(Brasil)" ||
+                origen == "Roma(Italia)" ||
+                destino == "Acapulco(México)" ||
+                destino == "Miami(EEUU)" ||
+                destino == "Recife(Brasil)" ||
+                destino == "Roma(Italia)")
+            {
+                return TipoDeVuelo.Internacional;
+            }
+            return TipoDeVuelo.Nacional;
+        }
+        private void ValidarMenu(bool menu, out bool menuValidado)
+        {
+            if (!this.comida && menu)
+            {
+                throw new Exception("Si el vuelo no provee comida, no puede tener un menu");
+            }
+            menuValidado = menu;
+        }
+        private string CargarDisponibilidad()
+        {
+            string vuelo = EstadoDelVuelo();
+            if (!string.IsNullOrEmpty(vuelo))
+            {
+                return vuelo;
+            }
+            else if (this.listaDePasajeros.Count == this.aeronave.AsientosTotales)
+            {
+                return "COMPLETO";
+            }
+
+            return $"{this.listaDePasajeros.Count}/ {this.aeronave.AsientosTotales}";
         }
 
         private void GenerarDuracionDeVuelos()
@@ -347,21 +361,7 @@ namespace Entidades
 
             return this.aeronave.Bodega - acumuladorBodega;
         }
-        private static TipoDeVuelo DestinoEsInternacional(string origen, string destino)
-        {
-            if (origen == "Acapulco(México)" ||
-                origen == "Miami(EEUU)" ||
-                origen == "Recife(Brasil)" ||
-                origen == "Roma(Italia)" ||
-                destino == "Acapulco(México)" ||
-                destino == "Miami(EEUU)" ||
-                destino == "Recife(Brasil)" ||
-                destino == "Roma(Italia)")
-            {
-                return TipoDeVuelo.Internacional;
-            }
-            return TipoDeVuelo.Nacional;
-        }
+        
 
         public static bool operator ==(Vuelo v, Pasaje p)
         {

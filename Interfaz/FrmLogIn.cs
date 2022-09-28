@@ -48,7 +48,7 @@ namespace Interfaz
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"No es valido: {ex.Message}");
+                    MessageBox.Show($"No es valido: {ex.Message} es este");
                 }
 
             }

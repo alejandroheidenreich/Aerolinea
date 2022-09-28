@@ -13,18 +13,25 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 {
     public partial class FrmAltaVuelo : Form
     {
+        private Vuelo nuevoVuelo;
         private bool fechaCambio;
         private bool temaActual;
         private bool mouseAccion;
         private int mousePosX;
         private int mousePosY;
+
+
         public FrmAltaVuelo(bool temaActual)
         {
-            //TODO: DESARROLLAR VER DESTINO ENUM PARA UN SOLO ENUM
             InitializeComponent();
             this.fechaCambio = false;
             this.temaActual = temaActual;
-    }
+        }
+
+        public Vuelo NuevoVuelo
+        {
+            get => nuevoVuelo;
+        }
 
         private void FrmAltaVuelo_Load(object sender, EventArgs e)
         {
@@ -41,7 +48,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 cmb_Aeronave.Items.Add(item.Matricula);
             }
         }
-
         private void btn_Salir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -69,9 +75,10 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                     try
                     {
                         //TODO: Arreglar
-                        Sistema.AltaDeVuelo(new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text, dtp_Partida.Value, chk_Wifi.Checked, chk_Comida.Checked, chk_Vegano.Checked, chk_Premium.Checked, chk_SinAlcohol.Checked, chk_Alcohol.Checked));
-                        this.Close();
-
+                        //nuevoVuelo = new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text, dtp_Partida.Value, chk_Wifi.Checked, chk_Comida.Checked, chk_Vegano.Checked, chk_Premium.Checked, chk_SinAlcohol.Checked, chk_Alcohol.Checked);
+                        nuevoVuelo = new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text, dtp_Partida.Value, chk_Wifi.Checked, chk_Comida.Checked, chk_Vegano.Checked, chk_Premium.Checked, chk_SinAlcohol.Checked, chk_Alcohol.Checked);
+                        Sistema.AltaDeVuelo(nuevoVuelo);
+                        this.DialogResult = DialogResult.OK;
                     }
                     catch (Exception ex)
                     {
@@ -109,14 +116,14 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             if (temaActual)
             {
-                ActivarDarkMode();
+                ActivarTemaOscuro();
             }
             else
             {
-                ActivarLightMode();
+                ActivarTemaClaro();
             }
         }
-        private void ActivarDarkMode()
+        private void ActivarTemaOscuro()
         {
             this.BackColor = Color.SteelBlue;
             this.pnl_FondoPrincipal.BackColor = Color.DarkGray;
@@ -130,7 +137,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_MensajeError.BackColor = Color.DarkGray;
         }
 
-        private void ActivarLightMode()
+        private void ActivarTemaClaro()
         {
             this.BackColor = Color.SkyBlue;
             this.pnl_FondoPrincipal.BackColor = Color.WhiteSmoke;

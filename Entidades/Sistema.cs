@@ -20,7 +20,6 @@ namespace Entidades
             }
             return null;    
         }
-
         public static void VerificarUsuarioNoRepetido(string nuevoUsuario)
         {
             foreach (Usuario item in BaseDeDatos.usuarios)
@@ -31,7 +30,6 @@ namespace Entidades
                 }
             }
         }
-
         public static void AltaDeCliente(Cliente clienteAAgregar)
         {
             if (clienteAAgregar is not null)
@@ -39,7 +37,6 @@ namespace Entidades
                 BaseDeDatos.clientes.Add(clienteAAgregar);
             }
         }
-
         public static void AltaDePasajero(List<Pasaje> pasajerosAAgregar, Vuelo vuelo)
         {
             //TODO: Refactorizar
@@ -64,7 +61,6 @@ namespace Entidades
                     }
                 }
             }
-
             if (huboFallo)
             {
                 //TODO: Refactorizar
@@ -117,6 +113,7 @@ namespace Entidades
 
         public static bool VerificarPasajeComprar(Vuelo vuelo, Pasaje pasajero)
         {
+            //TODO: Refactorizar
             int contadorDePasajes = 0;
             bool puedeComprar = false;
             foreach (Pasaje item in vuelo.ListaDePasajeros)
@@ -136,6 +133,7 @@ namespace Entidades
 
         public static void ValidadCompraDeClase(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajesAComprar)
         {
+            //TODO: Refactorizar
             int contadorPremium = 0;
             int contadorTurista = 0;
             foreach (Pasaje item in pasajesAComprar)
@@ -173,16 +171,16 @@ namespace Entidades
         {
             if (vueloAAgregar is null || vueloAAgregar.Partida < DateTime.Now)
             {
-                throw new Exception("La Partida del vuelo no es valida.");   
+                throw new Exception("La Partida del vuelo no es valida.");
             }
-            BaseDeDatos.vuelosTotales.Add(vueloAAgregar);
+            BaseDeDatos.vuelosActivos.Add(vueloAAgregar);
         }
 
         public static void BajaDeVuelo(Vuelo vueloAEliminar)
         {
             if (vueloAEliminar is not null)
             {
-                BaseDeDatos.vuelosTotales.Remove(vueloAEliminar);
+                BaseDeDatos.vuelosActivos.Remove(vueloAEliminar);
             }
         }
 
@@ -385,7 +383,6 @@ namespace Entidades
             }
             return dict;
         }
-
         public static string InformarGananciaTotalDeLosVuelos()
         {
             double ganancia = 0;
@@ -395,7 +392,6 @@ namespace Entidades
             }
             return $"$ {ganancia.ToString("0.00")} USD";
         }
-
         public static string InformarGananciaCabotajeDeLosVuelos()
         {
             double ganancia = 0;
@@ -405,7 +401,6 @@ namespace Entidades
             }
             return $"$ {ganancia.ToString("0.00")} USD";
         }
-
         public static string InformarGananciaInternacionalDeLosVuelos()
         {
             double ganancia = 0;

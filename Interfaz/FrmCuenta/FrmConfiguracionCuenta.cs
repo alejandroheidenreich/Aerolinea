@@ -35,19 +35,19 @@ namespace Interfaz.FrmCuenta
         {
             if (temaActual)
             {
-                ActivarDarkMode();
+                ActivarTemaOscuro();
             }
             else
             {
-                ActivarLightMode();
+                ActivarTemaClaro();
             }
         }
-        private void ActivarLightMode()
+        private void ActivarTemaClaro()
         {
             this.BackColor = Color.WhiteSmoke;
         }
 
-        private void ActivarDarkMode()
+        private void ActivarTemaOscuro()
         {
             this.BackColor = Color.DarkGray;
         }

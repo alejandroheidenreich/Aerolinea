@@ -17,13 +17,11 @@ namespace Entidades
             this.cantidadDeBanios = cantidadDeBanios;
             this.capacidadDeBodega = capacidadDeBodega;
         }
-
         public string Matricula
         {
             get => matricula;
             set => matricula = value;
         }
-
         public int Premium
         {
             get 
@@ -38,7 +36,6 @@ namespace Entidades
                 return this.cantidadDeAsientosTotales-this.Premium;
             }
         }
-
         public int AsientosTotales
         {
             get => cantidadDeAsientosTotales;
@@ -54,6 +51,7 @@ namespace Entidades
             get => capacidadDeBodega;
             set => capacidadDeBodega = value;
         }
+
         private string GenerarMatricula()
         {
             string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -64,10 +62,8 @@ namespace Entidades
             {
                 matriculaArray[i] = caracteres[random.Next(caracteres.Length)];
             }
-
             return new String(matriculaArray);
         }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

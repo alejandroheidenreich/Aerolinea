@@ -21,7 +21,6 @@ namespace Interfaz.FrmCliente
         {
             get => nuevoCliente;
         }
-
         public FrmAltaCliente(bool tema)
         {
             InitializeComponent();
@@ -39,15 +38,15 @@ namespace Interfaz.FrmCliente
         {
             if (temaActual)
             {
-                ActivarDarkMode();
+                ActivarTemaOscuro();
             }
             else
             {
-                ActivarLightMode();
+                ActivarTemaClaro();
             }
         }
 
-        private void ActivarLightMode()
+        private void ActivarTemaClaro()
         {
             this.BackColor = Color.SkyBlue;
             this.pnl_Fondo.BackColor = Color.WhiteSmoke;
@@ -56,7 +55,7 @@ namespace Interfaz.FrmCliente
             this.lbl_EncabezadoNacimiento.BackColor = Color.WhiteSmoke;
         }
 
-        private void ActivarDarkMode()
+        private void ActivarTemaOscuro()
         {
             this.BackColor = Color.SteelBlue;
             this.pnl_Fondo.BackColor = Color.DarkGray;
@@ -78,7 +77,6 @@ namespace Interfaz.FrmCliente
                 int.TryParse(this.txt_Dni.Text, out dni);
 
                 this.nuevoCliente = new Cliente(this.txt_Nombre.Text, this.txt_Apellido.Text, this.dtp_Nacimiento.Value, dni, this.txt_Email.Text);
-
                 this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)

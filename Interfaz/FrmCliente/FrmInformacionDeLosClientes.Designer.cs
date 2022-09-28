@@ -39,6 +39,7 @@
             this.btn_BajaCliente = new System.Windows.Forms.Button();
             this.tt_Ayuda = new System.Windows.Forms.ToolTip(this.components);
             this.btn_EditarCliente = new System.Windows.Forms.Button();
+            this.lbl_Error = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_Clientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Lupa)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +50,7 @@
             this.dtg_Clientes.AllowUserToDeleteRows = false;
             this.dtg_Clientes.AllowUserToResizeRows = false;
             this.dtg_Clientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtg_Clientes.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -86,7 +88,7 @@
             this.txt_Buscar.Location = new System.Drawing.Point(81, 75);
             this.txt_Buscar.Name = "txt_Buscar";
             this.txt_Buscar.PlaceholderText = "Buscar";
-            this.txt_Buscar.Size = new System.Drawing.Size(673, 26);
+            this.txt_Buscar.Size = new System.Drawing.Size(401, 26);
             this.txt_Buscar.TabIndex = 1;
             this.txt_Buscar.TextChanged += new System.EventHandler(this.txt_Buscar_TextChanged_1);
             // 
@@ -135,12 +137,25 @@
             this.btn_EditarCliente.UseVisualStyleBackColor = true;
             this.btn_EditarCliente.Click += new System.EventHandler(this.btn_EditarCliente_Click);
             // 
+            // lbl_Error
+            // 
+            this.lbl_Error.AutoSize = true;
+            this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Error.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_Error.Location = new System.Drawing.Point(532, 82);
+            this.lbl_Error.Name = "lbl_Error";
+            this.lbl_Error.Size = new System.Drawing.Size(56, 15);
+            this.lbl_Error.TabIndex = 6;
+            this.lbl_Error.Text = "ERROR";
+            this.lbl_Error.Visible = false;
+            // 
             // FrmInformacionDeLosClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1492, 782);
             this.ControlBox = false;
+            this.Controls.Add(this.lbl_Error);
             this.Controls.Add(this.btn_EditarCliente);
             this.Controls.Add(this.btn_BajaCliente);
             this.Controls.Add(this.btn_AgregarCliente);
@@ -169,5 +184,6 @@
         private System.Windows.Forms.Button btn_BajaCliente;
         private System.Windows.Forms.ToolTip tt_Ayuda;
         private System.Windows.Forms.Button btn_EditarCliente;
+        private System.Windows.Forms.Label lbl_Error;
     }
 }

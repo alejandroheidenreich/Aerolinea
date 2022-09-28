@@ -25,15 +25,14 @@ namespace Interfaz
         {
             if (temaActual)
             {
-                ActivarDarkMode();
+                ActivarTemaOscuro();
             }
             else
             {
-                ActivarLightMode();
+                ActivarTemaClaro();
             }
         }
-
-        private void ActivarLightMode()
+        private void ActivarTemaClaro()
         {
             this.BackColor = Color.WhiteSmoke;
             this.pic_Lupa.BackColor = Color.WhiteSmoke;
@@ -41,8 +40,7 @@ namespace Interfaz
             this.btn_EditarCliente.BackColor = Color.LightGray;
             this.btn_BajaCliente.BackColor = Color.LightGray;
         }
-
-        private void ActivarDarkMode()
+        private void ActivarTemaOscuro()
         {
             this.BackColor = Color.DarkGray;
             this.pic_Lupa.BackColor = Color.DarkGray;
@@ -50,7 +48,6 @@ namespace Interfaz
             this.btn_EditarCliente.BackColor = Color.DimGray;
             this.btn_BajaCliente.BackColor = Color.DimGray;
         }
-
         private void txt_Buscar_TextChanged_1(object sender, System.EventArgs e)
         {
             if (!string.IsNullOrEmpty(this.txt_Buscar.Text))
@@ -64,7 +61,6 @@ namespace Interfaz
                 dtg_Clientes.DataSource = BaseDeDatos.clientes;
             }
         }
-
         private void FiltrarDatosDeClientes(List<Cliente> filtrado)
         {
             foreach (Cliente item in BaseDeDatos.clientes)
@@ -82,7 +78,6 @@ namespace Interfaz
                 }
             }
         }
-
         private void btbn_AgregarCliente_Click(object sender, System.EventArgs e)
         {
             FrmAltaCliente altaCliente = new FrmAltaCliente(this.tema);
@@ -92,45 +87,56 @@ namespace Interfaz
             if (respuesta == DialogResult.OK)
             {
                 Sistema.AltaDeCliente(altaCliente.NuevoCliente);
-            }
-        }
-
-        private void btn_BajaCliente_Click(object sender, System.EventArgs e)
-        {
-            DialogResult respuesta = MessageBox.Show($"¿Esta seguro que quiere eliminar al Cliente {dtg_Clientes.CurrentRow.DataBoundItem}?{Environment.NewLine} Esta accion es inrreversible", "Dar Baja a Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-            if (respuesta == DialogResult.Yes)
-            {
-                Sistema.BajaDeCliente((Cliente)dtg_Clientes.CurrentRow.DataBoundItem);
                 ActualizarDataGrid(dtg_Clientes, BaseDeDatos.clientes);
             }
         }
-
+        private void btn_BajaCliente_Click(object sender, System.EventArgs e)
+        {
+            if (this.dtg_Clientes.RowCount == 0)
+            {
+                this.lbl_Error.Text = "No hay clientes para eliminar";
+                this.lbl_Error.Visible = true;
+            }
+            else
+            {
+                DialogResult respuesta = MessageBox.Show($"¿Esta seguro que quiere eliminar al Cliente {dtg_Clientes.CurrentRow.DataBoundItem}?{Environment.NewLine} Esta accion es inrreversible", "Dar Baja a Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Sistema.BajaDeCliente((Cliente)dtg_Clientes.CurrentRow.DataBoundItem);
+                    ActualizarDataGrid(dtg_Clientes, BaseDeDatos.clientes);
+                }
+            }
+        }
         public static void ActualizarDataGrid(DataGridView dtg, List<Cliente> lista)
         {
             dtg.DataSource = null;
             dtg.DataSource = lista;
         }
-
         private void btn_AgregarCliente_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Agregar Nuevo Cliente", this.btn_AgregarCliente);
         }
-
         private void btn_BajaCliente_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Dar Baja Cliente", this.btn_BajaCliente);
         }
-
         private void btn_EditarCliente_Click(object sender, EventArgs e)
         {
-            FrmEditarCliente editarCliente = new FrmEditarCliente(this.tema,(Cliente)dtg_Clientes.CurrentRow.DataBoundItem);
-
-            DialogResult respuesta = editarCliente.ShowDialog();
-
-            if (respuesta == DialogResult.OK)
+            if (this.dtg_Clientes.RowCount == 0)
             {
-                ActualizarDataGrid(dtg_Clientes, BaseDeDatos.clientes);
-                MessageBox.Show($"Se ha modificado el cliente {dtg_Clientes.CurrentRow.DataBoundItem}", "Editar Cliente");
+                this.lbl_Error.Text = "No hay clientes para editar";
+                this.lbl_Error.Visible = true;
+            }
+            else
+            {
+                FrmEditarCliente editarCliente = new FrmEditarCliente(this.tema, (Cliente)dtg_Clientes.CurrentRow.DataBoundItem);
+                DialogResult respuesta = editarCliente.ShowDialog();
+
+                if (respuesta == DialogResult.OK)
+                {
+                    ActualizarDataGrid(dtg_Clientes, BaseDeDatos.clientes);
+                    MessageBox.Show($"Se ha modificado el cliente {dtg_Clientes.CurrentRow.DataBoundItem}", "Editar Cliente");
+                }
             }
         }
     }

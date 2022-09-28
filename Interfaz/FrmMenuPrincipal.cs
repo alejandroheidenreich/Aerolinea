@@ -21,28 +21,18 @@ namespace Interfaz
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-            ActivarDarkMode();
+            ActivarTemaOscuro();
         }
         private void Reloj_Tick(object sender, EventArgs e)
         {
             this.horaToolStripMenuItem.Text = DateTime.Now.ToString("HH:mm:ss");
         }
-
         private void CerrarSecionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                FrmLogIn login = new FrmLogIn();
-                this.Hide();
-                login.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Se produjo el siguiente error: {ex.Message}");
-                Application.Exit();
-            }
+            FrmLogIn login = new FrmLogIn();
+            this.Hide();
+            login.ShowDialog();
         }
-
         private void InicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OcultarForm();
@@ -50,7 +40,6 @@ namespace Interfaz
             this.btn_ToggleTema.Visible = true;
             this.lbl_DarkTheme.Visible = true;
         }
-
         private void InformacionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ActivarForm(new FrmInformacionDeLosClientes(btn_ToggleTema.Checked));
@@ -71,13 +60,22 @@ namespace Interfaz
         }
         private void ActivarForm(Form form)
         {
-            OcultarForm();
-            formActivo = form;
-            formActivo.MdiParent = this;
-            pnl_PanelDeFondo.Visible = false;
-            this.btn_ToggleTema.Visible = false;
-            this.lbl_DarkTheme.Visible = false;
-            formActivo.Show();
+            try
+            {
+                OcultarForm();
+                formActivo = form;
+                formActivo.MdiParent = this;
+                pnl_PanelDeFondo.Visible = false;
+                this.btn_ToggleTema.Visible = false;
+                this.lbl_DarkTheme.Visible = false;
+                formActivo.Show();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Rompio padre {ex.Message}");
+            }
         }
 
         private void OcultarForm()
@@ -103,7 +101,7 @@ namespace Interfaz
             else
             {
                 Reloj.Enabled = false;
-                this.horaToolStripMenuItem.Text = String.Empty;
+                this.horaToolStripMenuItem.Text = string.Empty;
             }
         }
         private void MensajeDeBarraDeInformacion(Usuario usuario)
@@ -116,15 +114,14 @@ namespace Interfaz
         {
             if (btn_ToggleTema.Checked)
             {
-                ActivarDarkMode();
+                ActivarTemaOscuro();
             }
             else
             {
-                ActivarLightMode();
+                ActivarTemaClaro();
             }
         }
-
-        private void ActivarDarkMode()
+        private void ActivarTemaOscuro()
         {
             this.BackColor = Color.DarkGray;
             pnl_barraInfo.BackColor = Color.SteelBlue;
@@ -137,7 +134,7 @@ namespace Interfaz
             cerrarToolStripMenuItem.ForeColor = Color.LightGray;
             horaToolStripMenuItem.ForeColor = Color.LightGray;
         }
-        private void ActivarLightMode()
+        private void ActivarTemaClaro()
         {
             BackColor = Color.WhiteSmoke;
             pnl_barraInfo.BackColor = Color.SkyBlue;
@@ -157,11 +154,6 @@ namespace Interfaz
             this.mouseAccion = true;
             this.mousePosX = e.X;
             this.mousePosY = e.Y;
-        }
-
-        private void mnu_menuPrincipal_MouseHover(object sender, EventArgs e)
-        {
-
         }
 
         private void mnu_menuPrincipal_MouseMove(object sender, MouseEventArgs e)

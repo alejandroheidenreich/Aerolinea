@@ -47,15 +47,15 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             if (temaActual)
             {
-                ActivarDarkMode();
+                ActivarTemaOscuro();
             }
             else
             {
-                ActivarLightMode();
+                ActivarTemaClaro();
             }
         }
 
-        private void ActivarLightMode()
+        private void ActivarTemaClaro()
         {
             this.BackColor = Color.SkyBlue;
             this.pnl_Fondo.BackColor = Color.WhiteSmoke;
@@ -73,7 +73,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         }
 
 
-        private void ActivarDarkMode()
+        private void ActivarTemaOscuro()
         {
             this.BackColor = Color.SteelBlue;
             this.pnl_Fondo.BackColor = Color.DarkGray;

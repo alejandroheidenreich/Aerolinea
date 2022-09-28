@@ -81,11 +81,11 @@
             // lbl_DarkTheme
             // 
             this.lbl_DarkTheme.AutoSize = true;
-            this.lbl_DarkTheme.Location = new System.Drawing.Point(1359, 11);
+            this.lbl_DarkTheme.Location = new System.Drawing.Point(1353, 11);
             this.lbl_DarkTheme.Name = "lbl_DarkTheme";
-            this.lbl_DarkTheme.Size = new System.Drawing.Size(70, 15);
+            this.lbl_DarkTheme.Size = new System.Drawing.Size(76, 15);
             this.lbl_DarkTheme.TabIndex = 4;
-            this.lbl_DarkTheme.Text = "Dark Theme";
+            this.lbl_DarkTheme.Text = "Tema Oscuro";
             // 
             // btn_ToggleTema
             // 

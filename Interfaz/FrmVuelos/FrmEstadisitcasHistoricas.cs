@@ -28,6 +28,11 @@ namespace Interfaz
             BindingSource bs3 = new BindingSource();
 
             bs.DataSource = Sistema.HistorialDeVuelosPorFacturacion();
+            if (Sistema.ClientesPorCantidadDeVuelos().Count == 0)
+            {
+                this.dtg_PasajerosFrecuentes.Visible = false;
+                this.lbl_EncabezaPasajerosFecuentes.Text = "No hay pasajeros en el historial";
+            }
             bs2.DataSource = Sistema.ClientesPorCantidadDeVuelos();
             bs3.DataSource = Sistema.AeronaveCantidadDeHoras();
 
@@ -43,15 +48,15 @@ namespace Interfaz
         {
             if (temaActual)
             {
-                ActivarDarkMode();
+                ActivarTemaOscuro();
             }
             else
             {
-                ActivarLightMode();
+                ActivarTemaClaro();
             }
         }
 
-        private void ActivarLightMode()
+        private void ActivarTemaClaro()
         {
             this.BackColor = Color.WhiteSmoke;
             //this.pic_Lupa.BackColor = Color.WhiteSmoke;
@@ -62,7 +67,7 @@ namespace Interfaz
             //this.dtg_Vuelos.DefaultCellStyle.BackColor = Color.DarkGray;
         }
 
-        private void ActivarDarkMode()
+        private void ActivarTemaOscuro()
         {
             this.BackColor = Color.DarkGray;
             //this.pic_Lupa.BackColor = Color.DarkGray;

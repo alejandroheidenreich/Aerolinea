@@ -26,15 +26,14 @@ namespace Interfaz
         {
             if (temaActual)
             {
-                ActivarDarkMode();
+                ActivarTemaOscuro();
             }
             else
             {
-                ActivarLightMode();
+                ActivarTemaClaro();
             }
         }
-
-        private void ActivarLightMode()
+        private void ActivarTemaClaro()
         {
             this.BackColor = Color.WhiteSmoke;
             this.pic_Lupa.BackColor = Color.WhiteSmoke;
@@ -44,8 +43,7 @@ namespace Interfaz
             this.btn_VentaVuelo.BackColor = Color.LightGray;
             this.dtg_Vuelos.DefaultCellStyle.BackColor = Color.DarkGray;
         }
-
-        private void ActivarDarkMode()
+        private void ActivarTemaOscuro()
         {
             this.BackColor = Color.DarkGray;
             this.pic_Lupa.BackColor = Color.DarkGray;
@@ -55,7 +53,6 @@ namespace Interfaz
             this.btn_VentaVuelo.BackColor = Color.DimGray;
             this.dtg_Vuelos.DefaultCellStyle.BackColor = Color.DimGray;
         }
-
         private void txt_Buscar_TextChanged(object sender, System.EventArgs e)
         {
             if (!string.IsNullOrEmpty(this.txt_Buscar.Text))
@@ -69,7 +66,6 @@ namespace Interfaz
                 dtg_Vuelos.DataSource = BaseDeDatos.vuelosActivos;
             }
         }
-
         private void FiltrarDatosDeVuelo(List<Vuelo> filtrado)
         {
             //TODO: sacar de aca mandar a clase
@@ -90,24 +86,33 @@ namespace Interfaz
 
             }
         }
-
         private void btn_AgregarVuelo_Click(object sender, EventArgs e)
         {
             FrmAltaVuelo altaVuelo = new FrmAltaVuelo(this.temaActual);
-            altaVuelo.ShowDialog();
-            ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
-        }
-
-        private void btn_EliminarVuelo_Click(object sender, EventArgs e)
-        {
-            DialogResult respuesta = MessageBox.Show($"¿Esta seguro que quiere eliminar?{Environment.NewLine} Esta accion es inrreversible", "Eliminar Vuelo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-            if (respuesta == DialogResult.Yes)
+            DialogResult respuesta = altaVuelo.ShowDialog();
+            if (respuesta == DialogResult.OK)
             {
-                Sistema.BajaDeVuelo((Vuelo)dtg_Vuelos.CurrentRow.DataBoundItem); 
+                //Sistema.AltaDeVuelo(altaVuelo.NuevoVuelo);
                 ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
             }
         }
-
+        private void btn_EliminarVuelo_Click(object sender, EventArgs e)
+        {
+            if (dtg_Vuelos.RowCount == 0)
+            {
+                this.lbl_Error.Text = "No hay vuelos para eliminar";
+                this.lbl_Error.Visible = true;
+            }
+            else
+            {
+                DialogResult respuesta = MessageBox.Show($"¿Esta seguro que quiere eliminar?{Environment.NewLine} Esta accion es inrreversible", "Eliminar Vuelo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Sistema.BajaDeVuelo(ObtenerVueloSeleccionado());
+                    ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
+                }
+            }
+        }
         public static void ActualizarDataGrid(DataGridView dtg, List<Vuelo> lista)
         {
             Sistema.ActualizarVuelos();
@@ -116,60 +121,68 @@ namespace Interfaz
             dtg.Columns["Aeronave"].Visible = false;
             dtg.Columns["Premium"].Visible = false;
             dtg.Columns["Tursita"].Visible = false;
+            dtg.Columns["HoraDelVuelo"].Visible = false;
+            dtg.Columns["MinutosDelVuelo"].Visible = false;
         }
         private Vuelo ObtenerVueloSeleccionado()
         {
             return (Vuelo)dtg_Vuelos.CurrentRow.DataBoundItem;
         }
-
         private void btn_ExaminarVuelo_Click(object sender, EventArgs e)
         {
-            FrmInformacionDeVuelos infoVuelo = new FrmInformacionDeVuelos(ObtenerVueloSeleccionado(),this.temaActual);
-            infoVuelo.ShowDialog();
-        }
-
-        private void btn_VentaVuelo_Click(object sender, EventArgs e)
-        {
-          
-            if (ObtenerVueloSeleccionado().Disponibilidad != "COMPLETO")
+            if (dtg_Vuelos.RowCount == 0)
             {
-                this.lbl_Error.Visible = false;
-                FrmVentaVuelo ventaVuelo = new FrmVentaVuelo(ObtenerVueloSeleccionado(), this.temaActual);
-                DialogResult respuesta = ventaVuelo.ShowDialog();
-
-                if (respuesta == DialogResult.OK)
-                {
-                    
-                    ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
-                }
+                this.lbl_Error.Text = "No hay vuelos para examinar";
+                this.lbl_Error.Visible = true;
             }
             else
             {
-                this.lbl_Error.Text = "El vuelo que se desea vender ya esta COMPLETO";
+                FrmInformacionDeVuelos infoVuelo = new FrmInformacionDeVuelos(ObtenerVueloSeleccionado(),this.temaActual);
+                infoVuelo.ShowDialog();
+            }
+        }
+        private void btn_VentaVuelo_Click(object sender, EventArgs e)
+        {
+            if (dtg_Vuelos.RowCount == 0)
+            {
+                this.lbl_Error.Text = "No hay vuelos para vender";
                 this.lbl_Error.Visible = true;
             }
- 
+            else
+            {
+                if (ObtenerVueloSeleccionado().Disponibilidad == "COMPLETO")
+                {
+                    this.lbl_Error.Text = "El vuelo que se desea vender ya esta COMPLETO";
+                    this.lbl_Error.Visible = true;
+                }
+                else
+                {
+                    this.lbl_Error.Visible = false;
+                    FrmVentaVuelo ventaVuelo = new FrmVentaVuelo(ObtenerVueloSeleccionado(), this.temaActual);
+                    DialogResult respuesta = ventaVuelo.ShowDialog();
+                    if (respuesta == DialogResult.OK)
+                    {
+                        ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
+                    }
+                }
+            }
         }
         private void btn_VentaVuelo_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Vender Pasaje",this.btn_VentaVuelo);
         }
-
         private void btn_AgregarVuelo_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Agregar Vuelo", this.btn_AgregarVuelo);
         }
-
         private void btn_ExaminarVuelo_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Examinar Vuelo", this.btn_ExaminarVuelo);
         }
-
         private void btn_EliminarVuelo_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Eliminar Vuelo", this.btn_EliminarVuelo);
         }
-
         private void txt_Buscar_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Filtrar la Lista de Vuelos por Origen, Desitno o Tipo", this.txt_Buscar);

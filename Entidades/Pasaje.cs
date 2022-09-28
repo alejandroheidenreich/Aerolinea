@@ -20,10 +20,6 @@ namespace Entidades
         private int equipajesMaximos;
         private double pesoAdicional;
 
-        // equipaje pesaje o bultos? validarlo se puede pasar de mas y cobrar adicional
-
-        // un cliente se puede comprar todos los pasajes? se lo puede comprar
-
         public Pasaje(Cliente cliente, ClaseDePasajero claseDePasajero)
         {
             this.idRegistro = GenerarRegsitro();
@@ -87,7 +83,6 @@ namespace Entidades
                 equipajeDeBodega.Add(pesoValija);
             }
         }
-
         private void CalcularPesoEquipajeAdicional()
         {
             if (this.claseDePasajero == ClaseDePasajero.Tursita)
@@ -99,7 +94,6 @@ namespace Entidades
                 CondicionarEquipaje(21,2);
             }
         }
-
         private void CondicionarEquipaje(int peso, int cantidad)
         {
             for (int i = 0; i < this.equipajeDeBodega.Count; i++)
@@ -112,7 +106,6 @@ namespace Entidades
                 this.pesoAdicional += this.equipajeDeBodega[i];
             }
         }
-
         private string GenerarRegsitro()
         {
             string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -123,10 +116,8 @@ namespace Entidades
             {
                 matriculaArray[i] = caracteres[random.Next(caracteres.Length)];
             }
-
             return new String(matriculaArray);
         }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

@@ -70,33 +70,4 @@
         oNQXzVkN+M3PIGIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btn_ExaminarPasaje.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAABLpJREFUaEPtmG1IW2cUxx2DsQ8bDDbYYFvdYGzgh/lBNPE16CKKzXTOJtNoZ9XM
-        UDpjq1bUbjpr9MNMO5Wx+Tb9klIxUIvDNyyLOBQVkoXNwXQFtQ6Zw7bDqm2qydl5Hp/b3iQ31wziKuP+
-        4I/33nPuc8//ebvXhEhISEhISEgcEmFhYc9FR0cnxcXF1UZERLzELh9dIiMjX4mJicmKj4+/nJicNJdZ
-        lOPUGc9B3vliiI2NzWRpRwcs9h0srAh7uDdZlbKoOZPvOn2pCj4baIXmuStwyd5HdeFaC2COid32ZMDp
-        8AwWK0eVYw8PpKnT/8o9X+w2fFMH9aPtYLJdfVSwt4gZxXuJM6wpceRy+as470LFhEP9IksPCQ0NfRaL
-        OuadI5PJ3sBeS8WYEf9alcdTtj769BScvlxNe7hhvFNUxhtd0D5lge8dVrDfnIcine4BtvM2/9mCJCqT
-        lrTln4CYTujzXAkJCWZs8IJK++E9bZlOMC/YIh2Az+xlpQqTmnl8SWgY+SLDXVBnwEZ1brGhD7bIyATF
-        ANHZjno423lRMHZYCshAlvrE0q3NdThI5mt9VEKxw5Lt5i/+DeDOEIXBb9Vq9Q4EwMTEBExNTbEzX5xO
-        J8zOzrKz4LC2tubfAAZO6hrL4OPiApYO0N/fDz09PR4aHh6mMbvdDgsLC/SYg59fVlYG4+PjLLLP5OSk
-        R1uBihROEDUQFRX1Zs65Ine+vpAmE+bn52mhfC0uLtIYMcKZ4aiqqoLm5mbQarVU3iwvL/u0F4g2Nzfp
-        /cxAPyvZl5QPVKt8A3V1dVBSUuKh1tZWGltdXaXiQx6UlpZGc0iuN2az2ae9QMR1GjOwwsr1BdfB1dzc
-        XJpM4KaEd08TrFYrFQfJI9NmaGgIKioqIC8vj0Uec9AUInExmAE31vk6K9kTfGuewUXM0h9PIa4H+HhP
-        IZKn1+vp8fb2Nr3Xm4OmEImLQQwoFApiIoeV7AkaCOcbEGNjY4OKz8zMDDs6HIiBgoICYuBrVrIPT2s0
-        mr9ZvihCi/iwIQYaGhrIOnOwen3Jzs5eYvmikN52OBzs7L+BGGhsbITS0tLd8PDwF1jJngRqYHp6Gmw2
-        Gz3mdh1/u4c33vlut5tF9vG3+7E1cBun0BXc9l9jJXvCGVjfvutXey6XxxS6c/+eYF4wRZ5BDGDx4t9C
-        nIGsgS/8an3rLoyOjsLY2Bg1UPtjr2BeMPX5ZO+/M/DD8k9+tbPrhM7OTjCZTHT47X/+LpgXTJFnBGQA
-        V/iS0EuGL1J4YYkeWlpaoLq6Grq7uwXzgq22traDDWCCDN8HFU1NTTA9NwNfDnRDYXctvN9W+kgZHeVQ
-        Ze2ivW+xWEClUsHIyAj9Ou3q6gKDwQBKpXIX27JhW60oDR4rgiHyQwAr1T/k/87KykrX1sP7oL5eD5rr
-        F6HS2gE9P4/A9B+/0gVFil9ZWYH8/Pw72Gg6vt4tqGEsth6VjNeeZ809GdLT0+f39vbgt9u3YOfhA3Dh
-        zkNe9YODg2A0Gt24VtbItxP2yrvslqMFFtZOvuf7+vqgpqbGnZGRsYDXvsOiT8nl8rcw5an9zCMKFpuK
-        +or8UiaTyV5mlyUkJCQkJCQk/j+EhPwDrle36ZVKteEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <metadata name="tt_Ayuda.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

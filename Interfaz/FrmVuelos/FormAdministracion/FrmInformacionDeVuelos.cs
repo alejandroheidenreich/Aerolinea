@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Interfaz.FrmPasajeros;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,13 +47,22 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 listaClientes.Add(item.Cliente);
             }
             this.dtg_ListaDePasajeros.DataSource = this.listaClientes;
+            this.dtg_ListaDePasajeros.Columns["Email"].Visible = false;
         }
 
+        private void btn_ExaminarPasaje_Click(object sender, EventArgs e)
+        {
+            FrmInformacionDelPasajero formPasajero = new FrmInformacionDelPasajero(this.vuelo, ObtenerClienteSeleccionado(), this.temaActual);
+            formPasajero.ShowDialog();
+        }
         private void btn_Atras_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        private Cliente ObtenerClienteSeleccionado()
+        {
+            return (Cliente)this.dtg_ListaDePasajeros.CurrentRow.DataBoundItem;
+        }
         private void TemaActual(bool temaActual)
         {
             if (temaActual)
@@ -64,35 +74,36 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 ActivarTemaClaro();
             }
         }
-        private void ActivarTemaOscuro()
-        {
-            this.BackColor = Color.SteelBlue;
-            this.pnl_Aeronave.BackColor = Color.LightGray;
-            this.pnl_Fondo.BackColor = Color.DarkGray;
-            this.btn_Atras.BackColor = Color.LightGray;
-            this.lbl_Origen.BackColor = Color.DarkGray;
-            this.lbl_Destino.BackColor = Color.DarkGray;
-            this.lbl_TipoDeVuelo.BackColor = Color.DarkGray;
-            this.lbl_Duracion.BackColor = Color.DarkGray;
-            this.lbl_Partida.BackColor = Color.DarkGray;
-            this.lbl_EncabezadoAeronave.BackColor = Color.LightGray;
-            this.lbl_Aeronave.BackColor = Color.LightGray;
-            this.lbl_DispoBodega.BackColor = Color.LightGray;
-            this.lbl_Premium.BackColor = Color.LightGray;
-            this.lbl_Turista.BackColor = Color.LightGray;
-        }
-
         private void ActivarTemaClaro()
         {
             this.BackColor = Color.SkyBlue;
             this.pnl_Aeronave.BackColor = Color.LightGray;
             this.pnl_Fondo.BackColor = Color.WhiteSmoke;
             this.btn_Atras.BackColor = Color.WhiteSmoke;
+            this.btn_ExaminarPasaje.BackColor = Color.LightGray;
             this.lbl_Origen.BackColor = Color.WhiteSmoke;
             this.lbl_Destino.BackColor = Color.WhiteSmoke;
             this.lbl_TipoDeVuelo.BackColor = Color.WhiteSmoke;
             this.lbl_Duracion.BackColor = Color.WhiteSmoke;
             this.lbl_Partida.BackColor = Color.WhiteSmoke;
+            this.lbl_EncabezadoAeronave.BackColor = Color.LightGray;
+            this.lbl_Aeronave.BackColor = Color.LightGray;
+            this.lbl_DispoBodega.BackColor = Color.LightGray;
+            this.lbl_Premium.BackColor = Color.LightGray;
+            this.lbl_Turista.BackColor = Color.LightGray;
+        }
+        private void ActivarTemaOscuro()
+        {
+            this.BackColor = Color.SteelBlue;
+            this.pnl_Aeronave.BackColor = Color.LightGray;
+            this.pnl_Fondo.BackColor = Color.DarkGray;
+            this.btn_Atras.BackColor = Color.LightGray;
+            this.btn_ExaminarPasaje.BackColor = Color.DimGray;
+            this.lbl_Origen.BackColor = Color.DarkGray;
+            this.lbl_Destino.BackColor = Color.DarkGray;
+            this.lbl_TipoDeVuelo.BackColor = Color.DarkGray;
+            this.lbl_Duracion.BackColor = Color.DarkGray;
+            this.lbl_Partida.BackColor = Color.DarkGray;
             this.lbl_EncabezadoAeronave.BackColor = Color.LightGray;
             this.lbl_Aeronave.BackColor = Color.LightGray;
             this.lbl_DispoBodega.BackColor = Color.LightGray;
@@ -138,6 +149,11 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private void pnl_Fondo_MouseUp(object sender, MouseEventArgs e)
         {
             this.mouseAccion = false;
+        }
+
+        private void btn_ExaminarPasaje_MouseHover(object sender, EventArgs e)
+        {
+            this.tt_Ayuda.Show("Informacion del Pasaje", this.btn_ExaminarPasaje);
         }
     }
 }

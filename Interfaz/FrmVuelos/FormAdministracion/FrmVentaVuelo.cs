@@ -71,8 +71,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Error.BackColor = Color.WhiteSmoke;
             this.lbl_EncabezadoFacturacion.BackColor = Color.WhiteSmoke;
         }
-
-
         private void ActivarTemaOscuro()
         {
             this.BackColor = Color.SteelBlue;

@@ -217,6 +217,18 @@ namespace Entidades
             return null;
         }
 
+        public static Pasaje BuscarPasajePorCliente(Vuelo vuelo, Cliente cliente)
+        {
+            foreach (Pasaje item in vuelo.ListaDePasajeros)
+            {
+                if (item.Cliente.Equals(cliente))
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
         public static DateTime FechaAleatoria()
         {
             Random rand = new Random();

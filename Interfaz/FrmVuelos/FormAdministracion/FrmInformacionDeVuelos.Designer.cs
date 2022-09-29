@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInformacionDeVuelos));
@@ -45,6 +46,8 @@
             this.lbl_Premium = new System.Windows.Forms.Label();
             this.lbl_DispoBodega = new System.Windows.Forms.Label();
             this.pnl_Fondo = new System.Windows.Forms.Panel();
+            this.btn_ExaminarPasaje = new System.Windows.Forms.Button();
+            this.tt_Ayuda = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_ListaDePasajeros)).BeginInit();
             this.pnl_Aeronave.SuspendLayout();
             this.pnl_Fondo.SuspendLayout();
@@ -127,14 +130,14 @@
             this.dtg_ListaDePasajeros.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtg_ListaDePasajeros.EnableHeadersVisualStyles = false;
             this.dtg_ListaDePasajeros.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dtg_ListaDePasajeros.Location = new System.Drawing.Point(29, 130);
+            this.dtg_ListaDePasajeros.Location = new System.Drawing.Point(90, 155);
             this.dtg_ListaDePasajeros.MultiSelect = false;
             this.dtg_ListaDePasajeros.Name = "dtg_ListaDePasajeros";
             this.dtg_ListaDePasajeros.ReadOnly = true;
             this.dtg_ListaDePasajeros.RowHeadersVisible = false;
             this.dtg_ListaDePasajeros.RowTemplate.Height = 25;
             this.dtg_ListaDePasajeros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtg_ListaDePasajeros.Size = new System.Drawing.Size(612, 451);
+            this.dtg_ListaDePasajeros.Size = new System.Drawing.Size(570, 428);
             this.dtg_ListaDePasajeros.TabIndex = 5;
             // 
             // btn_Atras
@@ -143,7 +146,7 @@
             this.btn_Atras.Image = ((System.Drawing.Image)(resources.GetObject("btn_Atras.Image")));
             this.btn_Atras.Location = new System.Drawing.Point(15, 12);
             this.btn_Atras.Name = "btn_Atras";
-            this.btn_Atras.Size = new System.Drawing.Size(53, 46);
+            this.btn_Atras.Size = new System.Drawing.Size(53, 53);
             this.btn_Atras.TabIndex = 7;
             this.btn_Atras.UseVisualStyleBackColor = true;
             this.btn_Atras.Click += new System.EventHandler(this.btn_Atras_Click);
@@ -175,9 +178,9 @@
             this.pnl_Aeronave.Controls.Add(this.lbl_DispoBodega);
             this.pnl_Aeronave.Controls.Add(this.lbl_Aeronave);
             this.pnl_Aeronave.Controls.Add(this.lbl_EncabezadoAeronave);
-            this.pnl_Aeronave.Location = new System.Drawing.Point(647, 130);
+            this.pnl_Aeronave.Location = new System.Drawing.Point(666, 132);
             this.pnl_Aeronave.Name = "pnl_Aeronave";
-            this.pnl_Aeronave.Size = new System.Drawing.Size(310, 274);
+            this.pnl_Aeronave.Size = new System.Drawing.Size(291, 274);
             this.pnl_Aeronave.TabIndex = 13;
             // 
             // lbl_Turista
@@ -212,6 +215,7 @@
             // 
             // pnl_Fondo
             // 
+            this.pnl_Fondo.Controls.Add(this.btn_ExaminarPasaje);
             this.pnl_Fondo.Controls.Add(this.lbl_Destino);
             this.pnl_Fondo.Controls.Add(this.lbl_Partida);
             this.pnl_Fondo.Controls.Add(this.dtg_ListaDePasajeros);
@@ -227,6 +231,18 @@
             this.pnl_Fondo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseDown);
             this.pnl_Fondo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseMove);
             this.pnl_Fondo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_Fondo_MouseUp);
+            // 
+            // btn_ExaminarPasaje
+            // 
+            this.btn_ExaminarPasaje.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_ExaminarPasaje.Image = ((System.Drawing.Image)(resources.GetObject("btn_ExaminarPasaje.Image")));
+            this.btn_ExaminarPasaje.Location = new System.Drawing.Point(9, 242);
+            this.btn_ExaminarPasaje.Name = "btn_ExaminarPasaje";
+            this.btn_ExaminarPasaje.Size = new System.Drawing.Size(75, 220);
+            this.btn_ExaminarPasaje.TabIndex = 15;
+            this.btn_ExaminarPasaje.UseVisualStyleBackColor = true;
+            this.btn_ExaminarPasaje.Click += new System.EventHandler(this.btn_ExaminarPasaje_Click);
+            this.btn_ExaminarPasaje.MouseHover += new System.EventHandler(this.btn_ExaminarPasaje_MouseHover);
             // 
             // FrmInformacionDeVuelos
             // 
@@ -267,5 +283,7 @@
         private System.Windows.Forms.Label lbl_DispoBodega;
         private System.Windows.Forms.Label lbl_Turista;
         private System.Windows.Forms.Label lbl_Premium;
+        private System.Windows.Forms.Button btn_ExaminarPasaje;
+        private System.Windows.Forms.ToolTip tt_Ayuda;
     }
 }

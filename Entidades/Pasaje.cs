@@ -8,7 +8,6 @@ namespace Entidades
     {
         private string idRegistro;
         private Cliente cliente;
-        private Vuelo vuelo;
         private ClaseDePasajero claseDePasajero;
         private bool equipajeDeMano;
         private List<double> equipajeDeBodega;
@@ -54,8 +53,7 @@ namespace Entidades
         {
             get
             {
-                CalcularPesoEquipajeAdicional();
-                return pesoAdicional;
+                return this.pesoAdicional;
             }
         }
 
@@ -79,29 +77,58 @@ namespace Entidades
             else
             {
                 equipajeDeBodega.Add(pesoValija);
+                OrdenarEquipaje();
+                this.pesoAdicional = CalcularPesoEquipajeAdicional();
             }
         }
-        private void CalcularPesoEquipajeAdicional()
+        private double CalcularPesoEquipajeAdicional()
         {
+            double pesoValija;
             if (this.claseDePasajero == ClaseDePasajero.Tursita)
             {
-                CondicionarEquipaje(25, 1);
+                pesoValija = CondicionarEquipaje(25, 1);
             }
-            else if (this.claseDePasajero == ClaseDePasajero.Premium)
+            else
             {
-                CondicionarEquipaje(21,2);
+                pesoValija = CondicionarEquipaje(21,2);
             }
+            return pesoValija;
         }
-        private void CondicionarEquipaje(int peso, int cantidad)
+        private double CondicionarEquipaje(int peso, int cantidad)
         {
+            double pesoAdicional = 0;
             for (int i = 0; i < this.equipajeDeBodega.Count; i++)
             {
-                if (i < cantidad && this.equipajeDeBodega[i] > peso)
+                if (i < cantidad)
                 {
-                    this.pesoAdicional += this.equipajeDeBodega[i] - peso;
-                    break;
+                    if (this.equipajeDeBodega[i] > peso)
+                    {
+                        pesoAdicional += this.equipajeDeBodega[i] - peso;
+                    }
                 }
-                this.pesoAdicional += this.equipajeDeBodega[i];
+                else
+                {
+                    pesoAdicional += this.equipajeDeBodega[i];
+                }
+            }
+
+            return pesoAdicional;
+        }
+
+        private void OrdenarEquipaje()
+        {
+            double aux;
+            for (int i = 0; i < this.equipajeDeBodega.Count; i++)
+            {
+                for (int j = 0; j < this.equipajeDeBodega.Count; j++)
+                {
+                    if (this.equipajeDeBodega[i] > this.equipajeDeBodega[j])
+                    {
+                        aux = this.equipajeDeBodega[i];
+                        this.equipajeDeBodega[i] = this.equipajeDeBodega[j];
+                        this.equipajeDeBodega[j] = aux;
+                    }
+                }
             }
         }
         private string GenerarRegsitro()

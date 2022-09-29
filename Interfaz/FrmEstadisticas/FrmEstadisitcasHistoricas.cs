@@ -22,6 +22,7 @@ namespace Interfaz
 
         private void FrmEstadisitcasHistoricas_Load(object sender, EventArgs e)
         {
+            Sistema.ActualizarVuelos();
             TemaActual(this.tema);
             BindingSource bs = new BindingSource();
             BindingSource bs2 = new BindingSource();

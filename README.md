@@ -5,6 +5,7 @@ Aplicacion para un sistema de aerolineas desarrollada por Alejandro Heidenreich.
 Hola, soy Alejandro Heidenreich estudiante en Tecnico Universitario en Programacion (UTN-FRA). Disfrute mucho este trabajo, fue un desafio al tener que entender e investigar como plantearia el funcionamiento de la administracion de una aerolinea, con esto aprendi las diferentes posturas para resolver un mismo problema. Me dirvti mucho durante esta experiencia y seguire avanzando en mi aplicacion en el futuo.
 
 ## **Resumen**
+
 ### Log In
 Al correr la apliacion se presenta con una venta para realizar el **Log In**. 
 
@@ -122,6 +123,29 @@ Al momento de estar conforme con la operacion el usuario puede dar click en _Fin
 
 ### **Agregar Nuevo Vuelo**
 ![](readme/agregarVuelo.png)
+
+Esta ventana va a permitir Crear un Nuevo Vuelo, designando un _Origen_ y _Destino_ ( Validando que no sean iguales, y si es _Internacional_ debe tener como origen o destino _"Buenos Aires"_ ), una _Aeronave( Matricula )_  y una _Partida_ ( Validando que la aeronave no tiene un vuelo ya designado en ese dia de la partida; y la partida tiene que ser mayor a la actual en el momento del ingreso ). Tambien marcara con los _checkbox_ los serivicios extra que tendra este vuelo como _Wifii_, _Comida_ ( si tiene comida los _Menus_), _Bebidas Sin Alcohol_ y _Bebidas Alcoholicas_.
+
+Consta de tres botones:
+* Agregar : si todos los campos son correctos creara un nuevo vuelo, caso contrario dara un mensaje de error.
+* X ( Salir ) : cerrara la ventana descartando la creacion del vuelo.
+* ? ( Lista de las Aeronaves ) : abrira una ventana con la informacion de las aeronaves
+![](readme/seleccionarAeronave.png)
+Al clickear _Seleccionar_ retornara en el campo _Aeronave_ la matricula correspondiente a la aeronave seleccionada. O click en X ( Salir ) y no retornara nada.
+
+### **Examinar Vuelo**
+![](readme/examinarVuelo.png)
+En esta ventana se podra visualizar datos generales del vuelo,
+la lista de clientes asociados al vuelo, la informacion de la aeronaves y un boton, que segun el cliente seleccionado, abrira otra ventana para visualizar la informacion del pasajero.
+![](readme/informacionPasajero.png)
+Ambos tienen un boton para retroceder, solo son formularios informativos.
+
+### **Eliminar Vuelo**
+Segun el vuelo seleccionado, saltara una ventana para confirmar la eliminacion del vuelo, si es aceptada el vuelo se eliminara de la lista en la Base de Datos, caso contrario no se realizara ningun cambio.
+
+### **Estadisticas**
+![](readme/estadisticasHistoricas.png)
+
 
 ## Diagrama de Clases
 ![](readme/diagramaDeClases.png)

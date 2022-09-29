@@ -102,11 +102,29 @@ Una vez seleccionado el cliente deseado, marcando si este cliente va a adquirir 
 * Precio Base
 * Eliminar ( boton para eliminar pasajero del carrito de compras )
 
-Seleccionado un pasajero del _data grid_ y haciendo click en el boton _Añadir Equipaje al Pasajero_, el usuario podra asignarle equipajes a dicho pasajero mediante el siguiente formulario.
+Seleccionado un pasajero del _data grid_ y haciendo click en el boton _Añadir Equipaje al Pasajero_, el usuario podra asignarle equipajes a dicho pasajero mediante el siguiente formulario :
+#### Agregar Equipaje 
+![](readme/agregarEquipaje.png)
 
+Figurara los datos del pasajero que se le agregara el equipaje. Un _checkbox_ para detallar que el pasajero llevara equipaje de mano, por defecto no.
+
+Un _NumericUpDown_ para designar un peso al equipaje de bodega, que se agregara al _listbox_ una vez dado click al boton _Agregar Equipaje_ hasta un limite de cuatro equipajes por pasajero.
+
+Tambien cuenta con un boton _Eliminar Equipaje_ para sacarlo de la lista.
+
+Una vez que el usuario haya finalizado con la carga de los equipajes podra dar clic en el boton _Confirmar_ para aceptar la carga o en el boton _Cancelar_ para descartar cualquier accion.
+
+Volviendo a la ventanta anterior podiendo visualizar la facturacion de la operacion _Precio Bruto_, _Adicional por Clase Premium_, _Adicional por Peso Adicional_ y _Precio Final + IVA_.
+
+El usuario puede seguir agregando pasajes hasta un maximo de cinco pasajes por pasajero, permitiendo designar la clase que desea si es posible y si el vuelo no esta completo.
+
+Al momento de estar conforme con la operacion el usuario puede dar click en _Finalizar Compra_, caso contrario el usuario tambien puede cancelar todo el proceso y no realizar ningun cambio pulsando el boton _X ( Salir )_.
+
+### **Agregar Nuevo Vuelo**
+![](readme/agregarVuelo.png)
 
 ## Diagrama de Clases
-![](/login.png)
+![](readme/diagramaDeClases.png)
 
 
 ## Justificación técnica

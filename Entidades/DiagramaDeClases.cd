@@ -3,7 +3,7 @@
   <Class Name="Entidades.Aeronave">
     <Position X="6" Y="0.5" Width="5.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAACIEAAAAAAkAAAAAAAAAAAgQAgAIQAgAAAAAAA=</HashCode>
+      <HashCode>ABAQAACYEgAAAAAkAAAAAAAAAAAgQAgAIQAgAAAAAAA=</HashCode>
       <FileName>Aeronave.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -16,16 +16,16 @@
   </Class>
   <Class Name="Entidades.Cliente">
     <Position X="11.75" Y="0.5" Width="5.75" />
-    <InheritanceLine Type="Entidades.Individuo" ManuallyRouted="true" FixedToPoint="true">
+    <InheritanceLine Type="Entidades.Individuo" ManuallyRouted="true">
       <Path>
         <Point X="16.75" Y="6" />
-        <Point X="16.75" Y="5.308" />
-        <Point X="14.625" Y="5.308" />
-        <Point X="14.625" Y="2.694" />
+        <Point X="16.75" Y="5.283" />
+        <Point X="14.625" Y="5.283" />
+        <Point X="14.625" Y="2.502" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAiA=</HashCode>
       <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -39,21 +39,21 @@
   <Class Name="Entidades.Pasaje">
     <Position X="5.75" Y="5.75" Width="4" />
     <TypeIdentifier>
-      <HashCode>AAACAAICAgAACgIEAQCAAAAAgAAAEGAEABAggACAAIA=</HashCode>
+      <HashCode>AAACAAICAgAACgIEAQCAAAAAgAAQEGAAABAggACAAIA=</HashCode>
       <FileName>Pasaje.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Sistema">
     <Position X="18.75" Y="6" Width="7" />
     <TypeIdentifier>
-      <HashCode>ACAAQICAAgAgEACAAEAAQAQAiMDgDCGAAAAQAACDAgE=</HashCode>
+      <HashCode>ACAAQoCAAgAgEACAAEAAQAQQiMDgDCGAAAAQAACDAgE=</HashCode>
       <FileName>Sistema.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Usuario">
     <Position X="18" Y="0.5" Width="8.25" />
     <TypeIdentifier>
-      <HashCode>AAQAAAEQBIAAAgAAgIAAAACAQAAAAIAAAAAAAAAAQiE=</HashCode>
+      <HashCode>AAQAAAEQBIAAAgAAgIAAAACAQAAAAAAAAAAAAAAAQiE=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>

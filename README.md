@@ -145,6 +145,33 @@ Segun el vuelo seleccionado, saltara una ventana para confirmar la eliminacion d
 
 ### **Estadisticas**
 ![](readme/estadisticasHistoricas.png)
+Sobre los vuelos **ya realizados** muestra informacion de los mismos :
+* Los destinos ordenados por facturacion
+* Clientes ordenados por cantidad de vuelos adquiridos
+* El destino mas solicitado en el sistema
+* Ganacias totales, por cabojate y por internacional
+* Cantidad de horas de cada aeronave
+
+### **Cuenta**
+![](readme/opcionesCuenta.png)
+* **Cerrar Sesion** : Cerrar el _menu principal_ y volvera al _log in_.
+
+* **Configurar Cuenta** : abre la siguiente ventana.
+
+![](readme/cuenta.png)
+Se podra visualizar la informacion del usuario, con un boton _Editar Perfil_ se desplegara un panel con los datos precargados con dos botones, _Guardar_ y _Cancelar_.
+* Guardar : verificando que la contraseña sea correcta y validando todos los campo, cambiara los datos del usuario, caso contrario se mostrara un mensaje de error.
+* Cancelar : descartara cambios y ocultara el panel de edicion.
+
+### **Hora**
+Haciendo click ocultara o mostrara la hora actual ( por defecto es visible ).
+
+![](readme/horaNoVisible.png)
+
+![](readme/horaVisible.png)
+
+### **Cerrar**
+Cerrara inmediatamente la aplicacion.
 
 
 ## Diagrama de Clases

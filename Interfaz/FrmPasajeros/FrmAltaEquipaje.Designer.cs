@@ -66,7 +66,7 @@
             this.btn_AgregarEquipaje.Location = new System.Drawing.Point(107, 125);
             this.btn_AgregarEquipaje.Name = "btn_AgregarEquipaje";
             this.btn_AgregarEquipaje.Size = new System.Drawing.Size(58, 61);
-            this.btn_AgregarEquipaje.TabIndex = 3;
+            this.btn_AgregarEquipaje.TabIndex = 2;
             this.btn_AgregarEquipaje.UseVisualStyleBackColor = true;
             this.btn_AgregarEquipaje.Click += new System.EventHandler(this.btn_AgregarEquipaje_Click);
             this.btn_AgregarEquipaje.MouseHover += new System.EventHandler(this.btn_AgregarEquipaje_MouseHover);
@@ -77,7 +77,7 @@
             this.btn_Cancelar.Location = new System.Drawing.Point(197, 253);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(112, 61);
-            this.btn_Cancelar.TabIndex = 4;
+            this.btn_Cancelar.TabIndex = 7;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
@@ -104,7 +104,7 @@
             0});
             this.nud_PesoEquipaje.Name = "nud_PesoEquipaje";
             this.nud_PesoEquipaje.Size = new System.Drawing.Size(75, 22);
-            this.nud_PesoEquipaje.TabIndex = 7;
+            this.nud_PesoEquipaje.TabIndex = 1;
             this.nud_PesoEquipaje.ValueChanged += new System.EventHandler(this.nud_PesoEquipaje_ValueChanged);
             // 
             // lbl_EncabezadoPeso
@@ -123,7 +123,7 @@
             this.btn_Confirmar.Location = new System.Drawing.Point(26, 253);
             this.btn_Confirmar.Name = "btn_Confirmar";
             this.btn_Confirmar.Size = new System.Drawing.Size(112, 61);
-            this.btn_Confirmar.TabIndex = 9;
+            this.btn_Confirmar.TabIndex = 6;
             this.btn_Confirmar.Text = "Confirmar";
             this.btn_Confirmar.UseVisualStyleBackColor = true;
             this.btn_Confirmar.Click += new System.EventHandler(this.btn_Confirmar_Click);
@@ -147,7 +147,7 @@
             this.lst_Equipajes.Location = new System.Drawing.Point(305, 9);
             this.lst_Equipajes.Name = "lst_Equipajes";
             this.lst_Equipajes.Size = new System.Drawing.Size(204, 289);
-            this.lst_Equipajes.TabIndex = 11;
+            this.lst_Equipajes.TabIndex = 4;
             // 
             // btn_Eliminar
             // 
@@ -157,7 +157,7 @@
             this.btn_Eliminar.Location = new System.Drawing.Point(515, 9);
             this.btn_Eliminar.Name = "btn_Eliminar";
             this.btn_Eliminar.Size = new System.Drawing.Size(37, 38);
-            this.btn_Eliminar.TabIndex = 12;
+            this.btn_Eliminar.TabIndex = 5;
             this.btn_Eliminar.UseVisualStyleBackColor = true;
             this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 

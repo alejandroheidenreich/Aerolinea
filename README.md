@@ -173,12 +173,22 @@ Haciendo click ocultara o mostrara la hora actual ( por defecto es visible ).
 ### **Cerrar**
 Cerrara inmediatamente la aplicacion.
 
-
 ## Diagrama de Clases
 ![](readme/diagramaDeClases.png)
 
 
 ## Justificación técnica
+
+- Introducción a .NET y C#
+- Clases y métodos estáticos
+- Programación orientada a objetos
+- Sobrecarga
+- Windows Forms
+- Colecciones
+- Encapsulamiento
+- Herencia
+- Polimorfismo y clases abstractas
+
 Indicar tema a tema (de los temas 01 al 09) dónde se fue aplicando en el código y por qué se decidió implementarlo de esa forma. Toda decisión tiene que estar argumentada con razones técnicas que giren alrededor de los pilares de la programación orientada a objetos y cuestiones de mantenibilidad, código limpio, flexibilidad al cambio, experiencia de usuario, accesibilidad, uso seguro, rendimiento y eficiencia.
 Suma identificar pros y contras, si los tienen en mente.
 El objetivo es que demuestren que saben lo que hacen y que tomaron decisiones con criterio y no mecanizadas.
@@ -188,5 +198,5 @@ Si se utilizó alguna biblioteca externa también se deberá justificar la elecc
 codigo
 ```
 
-### Propuesta de valor agregado 
+## Propuesta de valor agregado 
 En esta sección se explicará y justificará la funcionalidad adicional propuesta para el punto de promoción.

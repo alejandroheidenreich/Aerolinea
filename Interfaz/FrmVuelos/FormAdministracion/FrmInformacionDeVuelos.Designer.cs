@@ -138,7 +138,8 @@
             this.dtg_ListaDePasajeros.RowTemplate.Height = 25;
             this.dtg_ListaDePasajeros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_ListaDePasajeros.Size = new System.Drawing.Size(570, 428);
-            this.dtg_ListaDePasajeros.TabIndex = 5;
+            this.dtg_ListaDePasajeros.TabIndex = 0;
+            this.dtg_ListaDePasajeros.TabStop = false;
             // 
             // btn_Atras
             // 
@@ -147,7 +148,7 @@
             this.btn_Atras.Location = new System.Drawing.Point(15, 12);
             this.btn_Atras.Name = "btn_Atras";
             this.btn_Atras.Size = new System.Drawing.Size(53, 53);
-            this.btn_Atras.TabIndex = 7;
+            this.btn_Atras.TabIndex = 2;
             this.btn_Atras.UseVisualStyleBackColor = true;
             this.btn_Atras.Click += new System.EventHandler(this.btn_Atras_Click);
             // 
@@ -239,7 +240,7 @@
             this.btn_ExaminarPasaje.Location = new System.Drawing.Point(9, 242);
             this.btn_ExaminarPasaje.Name = "btn_ExaminarPasaje";
             this.btn_ExaminarPasaje.Size = new System.Drawing.Size(75, 220);
-            this.btn_ExaminarPasaje.TabIndex = 15;
+            this.btn_ExaminarPasaje.TabIndex = 1;
             this.btn_ExaminarPasaje.UseVisualStyleBackColor = true;
             this.btn_ExaminarPasaje.Click += new System.EventHandler(this.btn_ExaminarPasaje_Click);
             this.btn_ExaminarPasaje.MouseHover += new System.EventHandler(this.btn_ExaminarPasaje_MouseHover);

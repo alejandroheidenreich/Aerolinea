@@ -100,6 +100,8 @@ namespace Entidades
             fechaValidado = fecha;
         }
 
+        public abstract int Antiguedad();
+
         public static bool operator ==(Individuo p1, Individuo p2)
         {
             bool sonIguales = false;
@@ -125,7 +127,6 @@ namespace Entidades
         {
             return this.dni;
         }
-
 
         public override string ToString()
         {

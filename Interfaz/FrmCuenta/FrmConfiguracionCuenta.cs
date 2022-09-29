@@ -38,6 +38,7 @@ namespace Interfaz.FrmCuenta
             this.lbl_Apellido.Text = this.usuarioActual.Apellido;
             this.lbl_Nacimiento.Text = this.usuarioActual.Nacimiento.ToString("dd/MM/yyyy");
             this.lbl_Email.Text = this.usuarioActual.Email;
+            this.lbl_Antiguedad.Text = $"{this.usuarioActual.Antiguedad()} años";
         }
 
         private void TemaActual(bool temaActual)
@@ -94,7 +95,7 @@ namespace Interfaz.FrmCuenta
             }
             else
             {
-                Usuario usuarioEditado = new Usuario(this.txt_NombreEditar.Text, this.txt_ApellidoEditar.Text, this.usuarioActual.Nacimiento, this.usuarioActual.GetHashCode(), this.txt_EmailEditar.Text, this.txt_UsuarioEditar.Text, this.txt_Contrasenia.Text);
+                Usuario usuarioEditado = new Usuario(this.txt_NombreEditar.Text, this.txt_ApellidoEditar.Text, this.usuarioActual.Nacimiento, this.usuarioActual.GetHashCode(), this.txt_EmailEditar.Text, this.txt_UsuarioEditar.Text, this.txt_Contrasenia.Text, this.usuarioActual.AntiguedadComoEmpleado);
                 if (Sistema.EditarUsuario(usuarioEditado))
                 {
                     pnl_EditarUsuario.Visible = false;

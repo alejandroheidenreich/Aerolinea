@@ -10,34 +10,39 @@ namespace Entidades
     {
         private string nombreDeUsuario;
         private string contrasenia;
+        private DateTime antiguedadComoEmpleado;
 
-        public Usuario(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email, string nombreDeUsuario, string contrasenia)
-            :base(nombre,apellido, fechaDeNacimiento, dni,email)
+        public Usuario(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email, string nombreDeUsuario, string contrasenia, DateTime antiguedadComoEmpleado)
+            : base(nombre, apellido, fechaDeNacimiento, dni, email)
         {
-            Sistema.VerificarUsuarioNoRepetido(nombreDeUsuario,dni);
+            Sistema.VerificarUsuarioNoRepetido(nombreDeUsuario, dni);
             ValidarString(nombreDeUsuario, out this.nombreDeUsuario, "El nombre no puede ser nulo.");
             ValidarContrasenia(contrasenia, out this.contrasenia);
+            this.antiguedadComoEmpleado = antiguedadComoEmpleado;
         }
         public string NombreDeUsuario
         {
             get => nombreDeUsuario;
         }
-        
+        public DateTime AntiguedadComoEmpleado
+        {
+            get => antiguedadComoEmpleado;
+            set => antiguedadComoEmpleado = value;
+        }
+
         public bool VerificarContrasenia(string contraseniaActual)
         {
-            // booleando para saber si viene con cambio de contraseña
             if (contraseniaActual == this.contrasenia)
             {
                 return true;
             }
             return false;
         }
-        private void CambiarContrasenia(string nuevaContrasenia)
-        {
-            //TODO: Desarrollar cambio de contraseña
-            this.contrasenia = nuevaContrasenia;
-        }
 
+        public override int Antiguedad()
+        {
+            return DateTime.Now.Year - this.antiguedadComoEmpleado.Year;
+        }
         public static bool operator ==(Usuario u1, Usuario u2)
         {
             return u1.nombreDeUsuario == u2.nombreDeUsuario && u1.contrasenia == u2.contrasenia;

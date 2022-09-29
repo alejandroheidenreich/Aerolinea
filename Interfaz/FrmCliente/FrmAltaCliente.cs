@@ -75,8 +75,8 @@ namespace Interfaz.FrmCliente
             {
                 int dni;
                 int.TryParse(this.txt_Dni.Text, out dni);
-
-                this.nuevoCliente = new Cliente(this.txt_Nombre.Text, this.txt_Apellido.Text, this.dtp_Nacimiento.Value, dni, this.txt_Email.Text);
+                DateTime fechaActual = DateTime.Now;
+                this.nuevoCliente = new Cliente(this.txt_Nombre.Text, this.txt_Apellido.Text, this.dtp_Nacimiento.Value, dni, this.txt_Email.Text, fechaActual);
                 this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)

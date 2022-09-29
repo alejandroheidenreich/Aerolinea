@@ -8,12 +8,17 @@ namespace Entidades
 {
     public class Cliente : Individuo
     {
-        public Cliente(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email)
+        private DateTime antiguedadComoCliente;
+        public Cliente(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email, DateTime antiguedadComoCliente)
             : base(nombre, apellido, fechaDeNacimiento, dni, email)
         {
-            // xd
+            this.antiguedadComoCliente = antiguedadComoCliente;
         }
 
+        public override int Antiguedad()
+        {
+            return DateTime.Now.Year - this.antiguedadComoCliente.Year;
+        }
         public static bool operator ==(Cliente c1, Cliente c2)
         {
             return c1.GetHashCode() == c2.GetHashCode();

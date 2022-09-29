@@ -73,6 +73,7 @@
             this.dtg_Aeronaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_Aeronaves.Size = new System.Drawing.Size(675, 230);
             this.dtg_Aeronaves.TabIndex = 0;
+            this.dtg_Aeronaves.TabStop = false;
             // 
             // btn_Seleccionar
             // 

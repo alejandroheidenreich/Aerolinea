@@ -68,7 +68,6 @@ namespace Interfaz
         }
         private void FiltrarDatosDeVuelo(List<Vuelo> filtrado)
         {
-            //TODO: sacar de aca mandar a clase
             foreach (Vuelo item in BaseDeDatos.vuelosActivos)
             {
                 if (item.Origen.ToString().ToUpper().StartsWith(this.txt_Buscar.Text.ToUpper()))
@@ -92,7 +91,6 @@ namespace Interfaz
             DialogResult respuesta = altaVuelo.ShowDialog();
             if (respuesta == DialogResult.OK)
             {
-                //Sistema.AltaDeVuelo(altaVuelo.NuevoVuelo);
                 ActualizarDataGrid(dtg_Vuelos, BaseDeDatos.vuelosActivos);
             }
         }

@@ -54,7 +54,7 @@
             this.txt_usuario.Name = "txt_usuario";
             this.txt_usuario.PlaceholderText = "USUARIO";
             this.txt_usuario.Size = new System.Drawing.Size(352, 17);
-            this.txt_usuario.TabIndex = 2;
+            this.txt_usuario.TabIndex = 1;
             // 
             // txt_contrasenia
             // 
@@ -67,7 +67,7 @@
             this.txt_contrasenia.PasswordChar = '⚫';
             this.txt_contrasenia.PlaceholderText = "CONTRASEÑA";
             this.txt_contrasenia.Size = new System.Drawing.Size(352, 17);
-            this.txt_contrasenia.TabIndex = 3;
+            this.txt_contrasenia.TabIndex = 2;
             // 
             // btn_Ingresar
             // 
@@ -81,7 +81,7 @@
             this.btn_Ingresar.Location = new System.Drawing.Point(312, 216);
             this.btn_Ingresar.Name = "btn_Ingresar";
             this.btn_Ingresar.Size = new System.Drawing.Size(358, 40);
-            this.btn_Ingresar.TabIndex = 4;
+            this.btn_Ingresar.TabIndex = 0;
             this.btn_Ingresar.Text = "INGRESAR";
             this.btn_Ingresar.UseVisualStyleBackColor = false;
             this.btn_Ingresar.Click += new System.EventHandler(this.btn_Ingresar_Click);
@@ -98,7 +98,7 @@
             this.btn_Salir.Location = new System.Drawing.Point(709, 259);
             this.btn_Salir.Name = "btn_Salir";
             this.btn_Salir.Size = new System.Drawing.Size(43, 38);
-            this.btn_Salir.TabIndex = 0;
+            this.btn_Salir.TabIndex = 4;
             this.btn_Salir.Text = "X";
             this.btn_Salir.UseVisualStyleBackColor = false;
             this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
@@ -156,7 +156,7 @@
             this.lbl_recuperarContrasenia.Location = new System.Drawing.Point(422, 271);
             this.lbl_recuperarContrasenia.Name = "lbl_recuperarContrasenia";
             this.lbl_recuperarContrasenia.Size = new System.Drawing.Size(141, 16);
-            this.lbl_recuperarContrasenia.TabIndex = 1;
+            this.lbl_recuperarContrasenia.TabIndex = 5;
             this.lbl_recuperarContrasenia.TabStop = true;
             this.lbl_recuperarContrasenia.Text = "¿Olvidaste tu contraseña?";
             this.lbl_recuperarContrasenia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_recuperarContrasenia_LinkClicked);
@@ -187,7 +187,7 @@
             this.btn_BotonAutoCompletado.Location = new System.Drawing.Point(738, 12);
             this.btn_BotonAutoCompletado.Name = "btn_BotonAutoCompletado";
             this.btn_BotonAutoCompletado.Size = new System.Drawing.Size(30, 29);
-            this.btn_BotonAutoCompletado.TabIndex = 8;
+            this.btn_BotonAutoCompletado.TabIndex = 3;
             this.btn_BotonAutoCompletado.Text = "©";
             this.btn_BotonAutoCompletado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_BotonAutoCompletado.UseVisualStyleBackColor = false;

@@ -79,6 +79,7 @@
             this.dtg_DestinosFacturados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_DestinosFacturados.Size = new System.Drawing.Size(396, 507);
             this.dtg_DestinosFacturados.TabIndex = 0;
+            this.dtg_DestinosFacturados.TabStop = false;
             // 
             // dtg_PasajerosFrecuentes
             // 
@@ -107,6 +108,7 @@
             this.dtg_PasajerosFrecuentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_PasajerosFrecuentes.Size = new System.Drawing.Size(385, 507);
             this.dtg_PasajerosFrecuentes.TabIndex = 1;
+            this.dtg_PasajerosFrecuentes.TabStop = false;
             // 
             // lbl_EncabezadoForm
             // 
@@ -228,6 +230,7 @@
             this.dtg_Aeronaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_Aeronaves.Size = new System.Drawing.Size(216, 188);
             this.dtg_Aeronaves.TabIndex = 8;
+            this.dtg_Aeronaves.TabStop = false;
             // 
             // lbl_EncabezaAeronaves
             // 

@@ -121,7 +121,8 @@
             this.dtg_CarritoDeCompra.RowTemplate.Height = 25;
             this.dtg_CarritoDeCompra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_CarritoDeCompra.Size = new System.Drawing.Size(733, 318);
-            this.dtg_CarritoDeCompra.TabIndex = 2;
+            this.dtg_CarritoDeCompra.TabIndex = 5;
+            this.dtg_CarritoDeCompra.TabStop = false;
             this.dtg_CarritoDeCompra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_CarritoDeCompra_CellContentClick);
             // 
             // Column1
@@ -185,7 +186,7 @@
             this.btn_AgregarCliente.Location = new System.Drawing.Point(325, 81);
             this.btn_AgregarCliente.Name = "btn_AgregarCliente";
             this.btn_AgregarCliente.Size = new System.Drawing.Size(55, 56);
-            this.btn_AgregarCliente.TabIndex = 3;
+            this.btn_AgregarCliente.TabIndex = 2;
             this.btn_AgregarCliente.UseVisualStyleBackColor = true;
             this.btn_AgregarCliente.Click += new System.EventHandler(this.btn_AgregarCliente_Click);
             this.btn_AgregarCliente.MouseHover += new System.EventHandler(this.btn_AgregarCliente_MouseHover);
@@ -197,7 +198,7 @@
             this.btn_AgregarCompra.Location = new System.Drawing.Point(325, 153);
             this.btn_AgregarCompra.Name = "btn_AgregarCompra";
             this.btn_AgregarCompra.Size = new System.Drawing.Size(55, 56);
-            this.btn_AgregarCompra.TabIndex = 4;
+            this.btn_AgregarCompra.TabIndex = 3;
             this.btn_AgregarCompra.UseVisualStyleBackColor = true;
             this.btn_AgregarCompra.Click += new System.EventHandler(this.btn_AgregarCompra_Click);
             this.btn_AgregarCompra.MouseHover += new System.EventHandler(this.btn_AgregarCompra_MouseHover);
@@ -210,7 +211,7 @@
             this.btn_Salir.Location = new System.Drawing.Point(809, 611);
             this.btn_Salir.Name = "btn_Salir";
             this.btn_Salir.Size = new System.Drawing.Size(40, 40);
-            this.btn_Salir.TabIndex = 5;
+            this.btn_Salir.TabIndex = 8;
             this.btn_Salir.Text = "X";
             this.btn_Salir.UseVisualStyleBackColor = true;
             this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
@@ -222,7 +223,7 @@
             this.btn_Finalizar.Location = new System.Drawing.Point(777, 48);
             this.btn_Finalizar.Name = "btn_Finalizar";
             this.btn_Finalizar.Size = new System.Drawing.Size(62, 218);
-            this.btn_Finalizar.TabIndex = 6;
+            this.btn_Finalizar.TabIndex = 7;
             this.btn_Finalizar.UseVisualStyleBackColor = true;
             this.btn_Finalizar.Click += new System.EventHandler(this.btn_Finalizar_Click);
             this.btn_Finalizar.MouseHover += new System.EventHandler(this.btn_Finalizar_MouseHover);
@@ -233,7 +234,7 @@
             this.chk_Clase.Location = new System.Drawing.Point(386, 173);
             this.chk_Clase.Name = "chk_Clase";
             this.chk_Clase.Size = new System.Drawing.Size(75, 19);
-            this.chk_Clase.TabIndex = 7;
+            this.chk_Clase.TabIndex = 4;
             this.chk_Clase.Text = "Premium";
             this.chk_Clase.UseVisualStyleBackColor = true;
             // 
@@ -275,7 +276,7 @@
             this.btn_Equipaje.Location = new System.Drawing.Point(777, 306);
             this.btn_Equipaje.Name = "btn_Equipaje";
             this.btn_Equipaje.Size = new System.Drawing.Size(62, 300);
-            this.btn_Equipaje.TabIndex = 11;
+            this.btn_Equipaje.TabIndex = 6;
             this.btn_Equipaje.UseVisualStyleBackColor = true;
             this.btn_Equipaje.Click += new System.EventHandler(this.btn_Equipaje_Click);
             this.btn_Equipaje.MouseHover += new System.EventHandler(this.btn_Equipaje_MouseHover);

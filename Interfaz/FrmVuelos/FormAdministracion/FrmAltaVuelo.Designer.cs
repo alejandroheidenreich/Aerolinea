@@ -91,7 +91,7 @@
             this.btn_Salir.Location = new System.Drawing.Point(440, 279);
             this.btn_Salir.Name = "btn_Salir";
             this.btn_Salir.Size = new System.Drawing.Size(48, 41);
-            this.btn_Salir.TabIndex = 3;
+            this.btn_Salir.TabIndex = 12;
             this.btn_Salir.Text = "X";
             this.btn_Salir.UseVisualStyleBackColor = true;
             this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
@@ -104,7 +104,7 @@
             this.btn_MasInfoAeronave.Location = new System.Drawing.Point(177, 158);
             this.btn_MasInfoAeronave.Name = "btn_MasInfoAeronave";
             this.btn_MasInfoAeronave.Size = new System.Drawing.Size(42, 32);
-            this.btn_MasInfoAeronave.TabIndex = 4;
+            this.btn_MasInfoAeronave.TabIndex = 3;
             this.btn_MasInfoAeronave.Text = "?";
             this.btn_MasInfoAeronave.UseVisualStyleBackColor = true;
             this.btn_MasInfoAeronave.Click += new System.EventHandler(this.btn_MasInfoAeronave_Click);
@@ -117,7 +117,7 @@
             this.btn_Agregar.Location = new System.Drawing.Point(80, 250);
             this.btn_Agregar.Name = "btn_Agregar";
             this.btn_Agregar.Size = new System.Drawing.Size(361, 39);
-            this.btn_Agregar.TabIndex = 5;
+            this.btn_Agregar.TabIndex = 11;
             this.btn_Agregar.Text = "AGREGAR";
             this.btn_Agregar.UseVisualStyleBackColor = true;
             this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click);
@@ -174,7 +174,7 @@
             this.dtp_Partida.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.dtp_Partida.Name = "dtp_Partida";
             this.dtp_Partida.Size = new System.Drawing.Size(194, 26);
-            this.dtp_Partida.TabIndex = 13;
+            this.dtp_Partida.TabIndex = 4;
             this.dtp_Partida.ValueChanged += new System.EventHandler(this.dtp_Partida_ValueChanged);
             // 
             // lbl_Partida
@@ -213,7 +213,7 @@
             this.chk_Alcohol.Location = new System.Drawing.Point(259, 204);
             this.chk_Alcohol.Name = "chk_Alcohol";
             this.chk_Alcohol.Size = new System.Drawing.Size(170, 24);
-            this.chk_Alcohol.TabIndex = 21;
+            this.chk_Alcohol.TabIndex = 10;
             this.chk_Alcohol.Text = "Bebidas Alcoholicas";
             this.chk_Alcohol.UseVisualStyleBackColor = true;
             // 
@@ -224,7 +224,7 @@
             this.chk_SinAlcohol.Location = new System.Drawing.Point(259, 165);
             this.chk_SinAlcohol.Name = "chk_SinAlcohol";
             this.chk_SinAlcohol.Size = new System.Drawing.Size(169, 24);
-            this.chk_SinAlcohol.TabIndex = 20;
+            this.chk_SinAlcohol.TabIndex = 9;
             this.chk_SinAlcohol.Text = "Bebidas Sin Alcohol";
             this.chk_SinAlcohol.UseVisualStyleBackColor = true;
             // 
@@ -235,7 +235,7 @@
             this.chk_Premium.Location = new System.Drawing.Point(351, 135);
             this.chk_Premium.Name = "chk_Premium";
             this.chk_Premium.Size = new System.Drawing.Size(134, 24);
-            this.chk_Premium.TabIndex = 19;
+            this.chk_Premium.TabIndex = 8;
             this.chk_Premium.Text = "Menu Premium";
             this.chk_Premium.UseVisualStyleBackColor = true;
             this.chk_Premium.Visible = false;
@@ -247,7 +247,7 @@
             this.chk_Vegano.Location = new System.Drawing.Point(351, 106);
             this.chk_Vegano.Name = "chk_Vegano";
             this.chk_Vegano.Size = new System.Drawing.Size(128, 24);
-            this.chk_Vegano.TabIndex = 18;
+            this.chk_Vegano.TabIndex = 7;
             this.chk_Vegano.Text = "Menu Vegano";
             this.chk_Vegano.UseVisualStyleBackColor = true;
             this.chk_Vegano.Visible = false;
@@ -259,7 +259,7 @@
             this.chk_Comida.Location = new System.Drawing.Point(259, 119);
             this.chk_Comida.Name = "chk_Comida";
             this.chk_Comida.Size = new System.Drawing.Size(82, 24);
-            this.chk_Comida.TabIndex = 17;
+            this.chk_Comida.TabIndex = 6;
             this.chk_Comida.Text = "Comida";
             this.chk_Comida.UseVisualStyleBackColor = true;
             this.chk_Comida.CheckedChanged += new System.EventHandler(this.chk_Comida_CheckedChanged);
@@ -271,7 +271,7 @@
             this.chk_Wifi.Location = new System.Drawing.Point(259, 80);
             this.chk_Wifi.Name = "chk_Wifi";
             this.chk_Wifi.Size = new System.Drawing.Size(68, 24);
-            this.chk_Wifi.TabIndex = 16;
+            this.chk_Wifi.TabIndex = 5;
             this.chk_Wifi.Text = "WIFII";
             this.chk_Wifi.UseVisualStyleBackColor = true;
             // 

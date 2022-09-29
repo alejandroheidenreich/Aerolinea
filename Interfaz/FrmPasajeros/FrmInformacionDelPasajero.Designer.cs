@@ -74,7 +74,7 @@
             this.btn_Atras.Location = new System.Drawing.Point(15, 15);
             this.btn_Atras.Name = "btn_Atras";
             this.btn_Atras.Size = new System.Drawing.Size(53, 53);
-            this.btn_Atras.TabIndex = 12;
+            this.btn_Atras.TabIndex = 0;
             this.btn_Atras.UseVisualStyleBackColor = true;
             this.btn_Atras.Click += new System.EventHandler(this.btn_Atras_Click);
             // 

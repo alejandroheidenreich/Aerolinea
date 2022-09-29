@@ -90,7 +90,7 @@
             this.btn_AgregarVuelo.Location = new System.Drawing.Point(12, 329);
             this.btn_AgregarVuelo.Name = "btn_AgregarVuelo";
             this.btn_AgregarVuelo.Size = new System.Drawing.Size(53, 50);
-            this.btn_AgregarVuelo.TabIndex = 1;
+            this.btn_AgregarVuelo.TabIndex = 2;
             this.btn_AgregarVuelo.UseVisualStyleBackColor = true;
             this.btn_AgregarVuelo.Click += new System.EventHandler(this.btn_AgregarVuelo_Click);
             this.btn_AgregarVuelo.MouseHover += new System.EventHandler(this.btn_AgregarVuelo_MouseHover);
@@ -102,7 +102,7 @@
             this.btn_ExaminarVuelo.Location = new System.Drawing.Point(12, 385);
             this.btn_ExaminarVuelo.Name = "btn_ExaminarVuelo";
             this.btn_ExaminarVuelo.Size = new System.Drawing.Size(53, 50);
-            this.btn_ExaminarVuelo.TabIndex = 2;
+            this.btn_ExaminarVuelo.TabIndex = 3;
             this.btn_ExaminarVuelo.UseVisualStyleBackColor = true;
             this.btn_ExaminarVuelo.Click += new System.EventHandler(this.btn_ExaminarVuelo_Click);
             this.btn_ExaminarVuelo.MouseHover += new System.EventHandler(this.btn_ExaminarVuelo_MouseHover);
@@ -114,7 +114,7 @@
             this.btn_EliminarVuelo.Location = new System.Drawing.Point(12, 441);
             this.btn_EliminarVuelo.Name = "btn_EliminarVuelo";
             this.btn_EliminarVuelo.Size = new System.Drawing.Size(53, 50);
-            this.btn_EliminarVuelo.TabIndex = 3;
+            this.btn_EliminarVuelo.TabIndex = 4;
             this.btn_EliminarVuelo.UseVisualStyleBackColor = true;
             this.btn_EliminarVuelo.Click += new System.EventHandler(this.btn_EliminarVuelo_Click);
             this.btn_EliminarVuelo.MouseHover += new System.EventHandler(this.btn_EliminarVuelo_MouseHover);
@@ -136,7 +136,7 @@
             this.txt_Buscar.Name = "txt_Buscar";
             this.txt_Buscar.PlaceholderText = "Buscar";
             this.txt_Buscar.Size = new System.Drawing.Size(557, 26);
-            this.txt_Buscar.TabIndex = 7;
+            this.txt_Buscar.TabIndex = 5;
             this.txt_Buscar.TextChanged += new System.EventHandler(this.txt_Buscar_TextChanged);
             this.txt_Buscar.MouseHover += new System.EventHandler(this.txt_Buscar_MouseHover);
             // 
@@ -147,7 +147,7 @@
             this.btn_VentaVuelo.Location = new System.Drawing.Point(12, 96);
             this.btn_VentaVuelo.Name = "btn_VentaVuelo";
             this.btn_VentaVuelo.Size = new System.Drawing.Size(53, 50);
-            this.btn_VentaVuelo.TabIndex = 8;
+            this.btn_VentaVuelo.TabIndex = 1;
             this.btn_VentaVuelo.UseVisualStyleBackColor = true;
             this.btn_VentaVuelo.Click += new System.EventHandler(this.btn_VentaVuelo_Click);
             this.btn_VentaVuelo.MouseHover += new System.EventHandler(this.btn_VentaVuelo_MouseHover);

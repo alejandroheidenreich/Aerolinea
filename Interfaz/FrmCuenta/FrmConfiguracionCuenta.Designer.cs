@@ -42,6 +42,8 @@
             this.lbl_Usuario = new System.Windows.Forms.Label();
             this.btn_Editar = new System.Windows.Forms.Button();
             this.gb_Perfil = new System.Windows.Forms.GroupBox();
+            this.lbl_Antiguedad = new System.Windows.Forms.Label();
+            this.lbl_EncabezadoAntiguedad = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnl_EditarUsuario = new System.Windows.Forms.Panel();
             this.lbl_Error = new System.Windows.Forms.Label();
@@ -182,15 +184,17 @@
             // 
             this.btn_Editar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Editar.Image")));
-            this.btn_Editar.Location = new System.Drawing.Point(285, 531);
+            this.btn_Editar.Location = new System.Drawing.Point(285, 562);
             this.btn_Editar.Name = "btn_Editar";
             this.btn_Editar.Size = new System.Drawing.Size(576, 80);
-            this.btn_Editar.TabIndex = 12;
+            this.btn_Editar.TabIndex = 0;
             this.btn_Editar.UseVisualStyleBackColor = true;
             this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
             // 
             // gb_Perfil
             // 
+            this.gb_Perfil.Controls.Add(this.lbl_Antiguedad);
+            this.gb_Perfil.Controls.Add(this.lbl_EncabezadoAntiguedad);
             this.gb_Perfil.Controls.Add(this.lbl_EncabezadoUsuario);
             this.gb_Perfil.Controls.Add(this.lbl_EncabezadoNombre);
             this.gb_Perfil.Controls.Add(this.lbl_Usuario);
@@ -204,10 +208,31 @@
             this.gb_Perfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gb_Perfil.Location = new System.Drawing.Point(285, 185);
             this.gb_Perfil.Name = "gb_Perfil";
-            this.gb_Perfil.Size = new System.Drawing.Size(576, 321);
+            this.gb_Perfil.Size = new System.Drawing.Size(576, 331);
             this.gb_Perfil.TabIndex = 13;
             this.gb_Perfil.TabStop = false;
             this.gb_Perfil.Text = "Mi Perfil";
+            // 
+            // lbl_Antiguedad
+            // 
+            this.lbl_Antiguedad.AutoSize = true;
+            this.lbl_Antiguedad.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Antiguedad.Location = new System.Drawing.Point(200, 287);
+            this.lbl_Antiguedad.Name = "lbl_Antiguedad";
+            this.lbl_Antiguedad.Size = new System.Drawing.Size(158, 31);
+            this.lbl_Antiguedad.TabIndex = 13;
+            this.lbl_Antiguedad.Text = "antiguedad";
+            // 
+            // lbl_EncabezadoAntiguedad
+            // 
+            this.lbl_EncabezadoAntiguedad.AutoSize = true;
+            this.lbl_EncabezadoAntiguedad.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_EncabezadoAntiguedad.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbl_EncabezadoAntiguedad.Location = new System.Drawing.Point(24, 287);
+            this.lbl_EncabezadoAntiguedad.Name = "lbl_EncabezadoAntiguedad";
+            this.lbl_EncabezadoAntiguedad.Size = new System.Drawing.Size(170, 31);
+            this.lbl_EncabezadoAntiguedad.TabIndex = 12;
+            this.lbl_EncabezadoAntiguedad.Text = "Antiguedad:";
             // 
             // pictureBox1
             // 
@@ -261,7 +286,7 @@
             this.txt_Contrasenia.Name = "txt_Contrasenia";
             this.txt_Contrasenia.PasswordChar = '⚫';
             this.txt_Contrasenia.Size = new System.Drawing.Size(425, 31);
-            this.txt_Contrasenia.TabIndex = 29;
+            this.txt_Contrasenia.TabIndex = 5;
             // 
             // lbl_EncabezadoContraseniaActualEdit
             // 
@@ -279,7 +304,7 @@
             this.txt_EmailEditar.Location = new System.Drawing.Point(92, 410);
             this.txt_EmailEditar.Name = "txt_EmailEditar";
             this.txt_EmailEditar.Size = new System.Drawing.Size(425, 31);
-            this.txt_EmailEditar.TabIndex = 27;
+            this.txt_EmailEditar.TabIndex = 4;
             // 
             // lbl_EncabezadoEmailEditar
             // 
@@ -297,7 +322,7 @@
             this.txt_ApellidoEditar.Location = new System.Drawing.Point(92, 323);
             this.txt_ApellidoEditar.Name = "txt_ApellidoEditar";
             this.txt_ApellidoEditar.Size = new System.Drawing.Size(425, 31);
-            this.txt_ApellidoEditar.TabIndex = 25;
+            this.txt_ApellidoEditar.TabIndex = 3;
             // 
             // lbl_EncabezadoApellidoEditar
             // 
@@ -315,7 +340,7 @@
             this.txt_NombreEditar.Location = new System.Drawing.Point(92, 230);
             this.txt_NombreEditar.Name = "txt_NombreEditar";
             this.txt_NombreEditar.Size = new System.Drawing.Size(425, 31);
-            this.txt_NombreEditar.TabIndex = 23;
+            this.txt_NombreEditar.TabIndex = 2;
             // 
             // lbl_EncabezadoNombreEdiar
             // 
@@ -333,7 +358,7 @@
             this.btn_Cancelar.Location = new System.Drawing.Point(379, 660);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(179, 69);
-            this.btn_Cancelar.TabIndex = 21;
+            this.btn_Cancelar.TabIndex = 7;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
@@ -344,7 +369,7 @@
             this.btn_Guardar.Location = new System.Drawing.Point(76, 660);
             this.btn_Guardar.Name = "btn_Guardar";
             this.btn_Guardar.Size = new System.Drawing.Size(179, 69);
-            this.btn_Guardar.TabIndex = 20;
+            this.btn_Guardar.TabIndex = 6;
             this.btn_Guardar.Text = "Guardar";
             this.btn_Guardar.UseVisualStyleBackColor = true;
             this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
@@ -365,7 +390,7 @@
             this.txt_UsuarioEditar.Location = new System.Drawing.Point(92, 139);
             this.txt_UsuarioEditar.Name = "txt_UsuarioEditar";
             this.txt_UsuarioEditar.Size = new System.Drawing.Size(425, 31);
-            this.txt_UsuarioEditar.TabIndex = 18;
+            this.txt_UsuarioEditar.TabIndex = 1;
             // 
             // lbl_EncabezadoEditar
             // 
@@ -435,5 +460,7 @@
         private System.Windows.Forms.TextBox txt_UsuarioEditar;
         private System.Windows.Forms.Label lbl_EncabezadoEditar;
         private System.Windows.Forms.Label lbl_Error;
+        private System.Windows.Forms.Label lbl_Antiguedad;
+        private System.Windows.Forms.Label lbl_EncabezadoAntiguedad;
     }
 }

@@ -30,14 +30,15 @@ namespace Entidades
             get => apellido;
             set => apellido = value;
         }
+        public int Dni
+        {
+            get => dni;
+            set => dni = value;
+        }
         public DateTime Nacimiento
         {
             get => fechaDeNacimiento;
             set => fechaDeNacimiento = value;
-        }
-        public int Dni
-        {
-            set => dni = value;
         }
 
         public int Edad => CalcularEdad(this.fechaDeNacimiento);

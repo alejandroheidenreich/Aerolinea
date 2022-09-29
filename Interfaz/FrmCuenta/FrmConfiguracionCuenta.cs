@@ -94,13 +94,9 @@ namespace Interfaz.FrmCuenta
             }
             else
             {
-                //TODO: EDITAR PERFIL
                 Usuario usuarioEditado = new Usuario(this.txt_NombreEditar.Text, this.txt_ApellidoEditar.Text, this.usuarioActual.Nacimiento, this.usuarioActual.GetHashCode(), this.txt_EmailEditar.Text, this.txt_UsuarioEditar.Text, this.txt_Contrasenia.Text);
-
                 if (Sistema.EditarUsuario(usuarioEditado))
                 {
-                    //usuarioActual = usuarioEditado;
-                    //MessageBox.Show("Perfil ediatdo");
                     pnl_EditarUsuario.Visible = false;
                     ActualizarDatosDelUsuario();
                 }

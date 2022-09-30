@@ -161,5 +161,9 @@ namespace Entidades
             return false;
         }
 
+        public override string ToString()
+        {
+            return $"Bienvenido {this.Nombre}";
+        }
     }
 }

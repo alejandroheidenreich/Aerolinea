@@ -32,7 +32,7 @@ namespace Interfaz.FrmCuenta
         private void ActualizarDatosDelUsuario()
         {
             this.usuarioActual = BaseDeDatos.usuarios[this.usuario];
-            this.lbl_bienvenida.Text = $"¡Bienvenido {this.usuarioActual.Nombre}!";
+            this.lbl_bienvenida.Text = this.usuarioActual.ToString();
             this.lbl_Usuario.Text = this.usuarioActual.NombreDeUsuario;
             this.lbl_Nombre.Text = this.usuarioActual.Nombre;
             this.lbl_Apellido.Text = this.usuarioActual.Apellido;

@@ -115,11 +115,11 @@ Tambien cuenta con un boton _Eliminar Equipaje_ para sacarlo de la lista.
 
 Una vez que el usuario haya finalizado con la carga de los equipajes podra dar clic en el boton _Confirmar_ para aceptar la carga o en el boton _Cancelar_ para descartar cualquier accion.
 
-Volviendo a la ventanta anterior podiendo visualizar la facturacion de la operacion _Precio Bruto_, _Adicional por Clase Premium_, _Adicional por Peso Adicional_ y _Precio Final + IVA_.
+Volviendo a la ventanta anterior podiendo visualizar la facturacion de la operacion _Precio Bruto_, _Adicional por Clase Premium_ ( un 15% adicional al Precio Bruto ), _Adicional por Peso Adicional_ ( un 1% adicional al Precio Bruto ) y _Precio Final + IVA_.
 
 El usuario puede seguir agregando pasajes hasta un maximo de cinco pasajes por pasajero, permitiendo designar la clase que desea si es posible y si el vuelo no esta completo.
 
-Al momento de estar conforme con la operacion el usuario puede dar click en _Finalizar Compra_, caso contrario el usuario tambien puede cancelar todo el proceso y no realizar ningun cambio pulsando el boton _X ( Salir )_.
+Al momento de estar conforme con la operacion el usuario puede dar click en _Terminar Operacion_ y creara un archivo _xlsx_ con la facutracion del ticket creado mediante el **Paquete Nuget: IronXL**, caso contrario el usuario tambien puede cancelar todo el proceso y no realizar ningun cambio pulsando el boton _X ( Salir )_.
 
 ### **Agregar Nuevo Vuelo**
 ![](readme/agregarVuelo.png)

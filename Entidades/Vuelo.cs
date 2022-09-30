@@ -300,33 +300,41 @@ namespace Entidades
         public string InformarConPrecioDelPasaje(Pasaje pasaje, out double precioFinal)
         {
             StringBuilder sb = new StringBuilder();
-            precioFinal = 0;
-            double horasTotales = CalcularHorasTotales();
-            precioFinal = PrecioSegunTipoDeVuelo(horasTotales);
+            double precioBase = PrecioSegunTipoDeVuelo(CalcularHorasTotales());
+            precioFinal = precioBase;
             sb.AppendLine($"Registro: {pasaje.IdRegistro}");
-            sb.AppendLine($"Precio Bruto: {precioFinal.ToString("0.00")} U$D");
+            sb.AppendLine($"Precio Bruto: {precioBase.ToString("0.00")} U$D");
 
             if (pasaje.Clase == ClaseDePasajero.Premium)
             {
-                precioFinal *= 1.25;
-                sb.AppendLine($"Impuesto por Premium: {(precioFinal * 0.25).ToString("0.00")} U$D");
+                double precioPreium = CalcularAdicionalPremium(precioBase);
+                precioFinal += precioPreium;
+                sb.AppendLine($"Impuesto por Premium: $ {(precioPreium).ToString("0.00")} U$D");
             }
-
             if (pasaje.PesoAdicional > 0)
             {
-                double precioPeso = pasaje.PesoAdicional * precioFinal * .01;
+                double precioPeso = CalcularAdicionalPeso(precioBase, pasaje.PesoAdicional);
                 precioFinal += precioPeso;
-                sb.AppendLine($"Impuesto por Peso Adicional: {precioPeso.ToString("0.00")} U$D");
+                sb.AppendLine($"Impuesto por Peso Adicional: $ {precioPeso.ToString("0.00")} U$D");
             }
             return sb.ToString();
         }
 
-        private double CalcularHorasTotales()
+        public double CalcularAdicionalPremium(double precioBase)
+        {
+            return precioBase * 0.15;
+        }
+
+        public double CalcularAdicionalPeso(double precioBase, double pesoAdicional)
+        {
+            return precioBase * 0.01 * pesoAdicional;
+        }
+        public double CalcularHorasTotales()
         {
             return this.horaDelVuelo + ((double)this.minutosDelVuelo / 60);
         }
 
-        private double PrecioSegunTipoDeVuelo(double horasTotales)
+        public double PrecioSegunTipoDeVuelo(double horasTotales)
         {
             double precioFinal;
             if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Nacional)

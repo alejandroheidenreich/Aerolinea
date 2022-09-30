@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using IronXL;
 
 namespace Interfaz.FrmVuelos.FormAdministracion
 {
@@ -14,7 +15,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private Vuelo vuelo;
         private List<DataTicket>? tickets;
         private List<Pasaje>? nuevosPasajeros;
-        private int contadorDeTickets;
         private bool tema;
         private bool mouseAccion;
         private int mousePosX;
@@ -25,7 +25,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             InitializeComponent();
             this.tema = temaActual;
             this.vuelo = vuelo;
-            this.contadorDeTickets = vuelo.ListaDePasajeros.Count;
             this.lbl_EncabezadoVuelo.Text = vuelo.ToString();
         }
 
@@ -200,10 +199,24 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 precioFinal += precioDelPasaje;
             }
             sb.AppendLine("***********************************");
-            sb.AppendLine($"Precio Final Neto (+IVA) {(precioFinal * 1.21).ToString("0.00")} U$D");
+            sb.AppendLine($"Precio Final Neto (+IVA): $ {(precioFinal * 1.21).ToString("0.00")} U$D");
 
             rtb_Facturacion.Text = sb.ToString();
         }
+
+        private string GenerarRegsitro()
+        {
+            string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            char[] matriculaArray = new char[6];
+            Random random = new Random();
+
+            for (int i = 0; i < matriculaArray.Length; i++)
+            {
+                matriculaArray[i] = caracteres[random.Next(caracteres.Length)];
+            }
+            return new String(matriculaArray);
+        }
+
         public static void ActualizarDataGrid(DataGridView dtg, List<DataTicket> lista)
         {
             dtg.DataSource = null;
@@ -230,6 +243,8 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             {
                 if (this.nuevosPasajeros.Count != 0)
                 {
+                    GenerarTicket();
+
                     Sistema.AltaDePasajero(this.nuevosPasajeros, this.vuelo);
                     this.DialogResult = DialogResult.OK;
                 }
@@ -244,6 +259,52 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void GenerarTicket()
+        {
+            WorkBook archivo = WorkBook.Create(ExcelFileFormat.XLSX);
+            WorkSheet hoja = archivo.CreateWorkSheet("ticket");
+            string ticket = GenerarRegsitro();
+            double precioPremium;
+            double precioPeso;
+            double precioFinal = 0;
+            double horasTotales = vuelo.CalcularHorasTotales();
+            double precioBase = vuelo.PrecioSegunTipoDeVuelo(horasTotales);
+            int fila = 1;
+
+            hoja["A1"].Style.BottomBorder.Type = IronXL.Styles.BorderType.Double;
+            hoja["A1"].Style.Font.Bold = true;
+            hoja["A1"].Value = $"Ticket {ticket}";
+
+            for (int i = 0; i < this.nuevosPasajeros.Count; i++)
+            {
+                precioFinal += precioBase;
+                fila++;
+                hoja[$"A{fila}"].Value = $"Registro: {this.nuevosPasajeros[i].IdRegistro}";
+                fila++;
+                hoja[$"A{fila}"].Value = $"Preio Bruto: $ {precioBase.ToString("0.00")} USD";
+                if (this.nuevosPasajeros[i].Clase == ClaseDePasajero.Premium)
+                {
+                    fila++;
+                    precioPremium = vuelo.CalcularAdicionalPremium(precioBase);
+                    precioFinal += precioPremium;
+                    hoja[$"A{fila}"].Value = $"Impuesto por Premium: $ {precioPremium.ToString("0.00")} USD";
+                }
+                if (this.nuevosPasajeros[i].PesoAdicional > 0)
+                {
+                    fila++;
+                    precioPeso = vuelo.CalcularAdicionalPeso(precioBase, this.nuevosPasajeros[i].PesoAdicional);
+                    precioFinal += precioPeso;
+                    hoja[$"A{fila}"].Value = $"Impuesto por Peso Adicional: $ {precioPeso.ToString("0.00")} USD";
+                }
+                fila++;
+            }
+            hoja[$"A{fila}"].Style.BottomBorder.Type = IronXL.Styles.BorderType.Double;
+            fila++;
+            hoja[$"A{fila}"].Style.Font.Bold = true;
+            hoja[$"A{fila}"].Value = $"Precio Fianl Neto (+IVA): $ {(precioFinal*1.21).ToString("0.00")} USD";
+            archivo.SaveAs($"Ticket {ticket}.xlsx");
         }
 
         private void dtg_CarritoDeCompra_CellContentClick(object sender, DataGridViewCellEventArgs e)

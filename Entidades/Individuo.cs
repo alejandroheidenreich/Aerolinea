@@ -104,12 +104,7 @@ namespace Entidades
 
         public static bool operator ==(Individuo p1, Individuo p2)
         {
-            bool sonIguales = false;
-            if (p1.dni == p2.dni)
-            {
-                sonIguales = true;
-            }
-            return sonIguales;
+            return p1 is not null && p2 is not null && p1.dni == p2.dni;
         }
 
         public static bool operator !=(Individuo p1, Individuo p2)

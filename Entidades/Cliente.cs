@@ -38,7 +38,6 @@ namespace Entidades
 
         public override bool Equals(object obj)
         {
-            //TODO: aplicar
             Cliente aux = obj as Cliente;
             return aux is not null && aux == this;  
         }

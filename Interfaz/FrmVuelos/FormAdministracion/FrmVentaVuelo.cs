@@ -112,7 +112,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         }
         private void FiltrarDatosDeClientes(List<Cliente> filtrado)
         {
-            //TODO: sacar de aca mandar a clase sistema
             foreach (Cliente item in BaseDeDatos.clientes)
             {
                 if (item.Nombre.ToUpper().StartsWith(this.txt_Buscar.Text.ToUpper()))

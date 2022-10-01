@@ -333,7 +333,6 @@ namespace Entidades
         {
             return this.horaDelVuelo + ((double)this.minutosDelVuelo / 60);
         }
-
         public double PrecioSegunTipoDeVuelo(double horasTotales)
         {
             double precioFinal;
@@ -363,24 +362,6 @@ namespace Entidades
             return this.aeronave.Bodega - acumuladorBodega;
         }
         
-
-        public static bool operator ==(Vuelo v, Pasaje p)
-        {
-            foreach (Pasaje item in v.listaDePasajeros)
-            {
-                if (item == p)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public static bool operator !=(Vuelo v, Pasaje p)
-        {
-            return !(v == p);
-        }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -390,7 +371,6 @@ namespace Entidades
 
             return sb.ToString();
         }
-
         private string GenerarID()
         {
             string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

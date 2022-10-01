@@ -52,7 +52,6 @@ namespace Entidades
         }
         public static void AltaDePasajero(List<Pasaje> pasajerosAAgregar, Vuelo vuelo)
         {
-            //TODO: Refactorizar
             bool huboFallo = false;
             List<Pasaje> fallos = new List<Pasaje>();
             if (vuelo.Disponibilidad == "COMPLETO")
@@ -61,22 +60,10 @@ namespace Entidades
             }
             else
             {
-                foreach (Pasaje item in pasajerosAAgregar)
-                {
-                    if (VerificarCantidadDePasajesPorCliente(vuelo, item))
-                    {
-                        vuelo.ListaDePasajeros.Add(item);
-                    }
-                    else
-                    {
-                        huboFallo = true;
-                        fallos.Add(item);
-                    }
-                }
+                huboFallo = AgregarPasajeroLista(pasajerosAAgregar, vuelo, huboFallo, fallos);
             }
             if (huboFallo)
             {
-                //TODO: Refactorizar
                 string mensaje = string.Empty;
                 foreach (Pasaje item in fallos)
                 {
@@ -86,9 +73,25 @@ namespace Entidades
             }
         }
 
+        private static bool AgregarPasajeroLista(List<Pasaje> pasajerosAAgregar, Vuelo vuelo, bool huboFallo, List<Pasaje> fallos)
+        {
+            foreach (Pasaje item in pasajerosAAgregar)
+            {
+                if (VerificarCantidadDePasajesPorCliente(vuelo, item))
+                {
+                    vuelo.ListaDePasajeros.Add(item);
+                }
+                else
+                {
+                    huboFallo = true;
+                    fallos.Add(item);
+                }
+            }
+            return huboFallo;
+        }
+
         public static bool VerificarCantidadDePasajesPorCliente(Vuelo vuelo, Pasaje pasajero)
         {
-            //TODO: Refactorizar
             int contadorDePasajes = 0;
             bool puedeComprar = false;
             foreach (Pasaje item in vuelo.ListaDePasajeros)
@@ -107,7 +110,6 @@ namespace Entidades
 
         public static bool VerificarPasajeComprar(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajerosParaAgregar)
         {
-            //TODO: Refactorizar
             bool puedeComprar = false;
             int contadorDePasajes = CaclucarCantidadDelMismoPasajeEnLista(pasajero, pasajerosParaAgregar);
             foreach (Pasaje item in vuelo.ListaDePasajeros)
@@ -126,7 +128,6 @@ namespace Entidades
 
         public static bool VerificarPasajeComprar(Vuelo vuelo, Pasaje pasajero)
         {
-            //TODO: Refactorizar
             int contadorDePasajes = 0;
             bool puedeComprar = false;
             foreach (Pasaje item in vuelo.ListaDePasajeros)
@@ -146,7 +147,6 @@ namespace Entidades
 
         public static void ValidadCompraDeClase(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajesAComprar)
         {
-            //TODO: Refactorizar
             int contadorPremium = 0;
             int contadorTurista = 0;
             foreach (Pasaje item in pasajesAComprar)

@@ -70,7 +70,6 @@ namespace Entidades
             }
             return new String(matriculaArray);
         }
-        
         public void AgregarVueloAPlanDeVuelos(DateTime vueloFecha)
         {
             if (ValidadNuevoPlanDeVuelo(vueloFecha))

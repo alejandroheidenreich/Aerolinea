@@ -45,7 +45,7 @@ namespace Entidades
         }
         public static bool operator ==(Usuario u1, Usuario u2)
         {
-            return u1.nombreDeUsuario == u2.nombreDeUsuario && u1.contrasenia == u2.contrasenia;
+            return u1 is not null && u2 is not null && u1.nombreDeUsuario == u2.nombreDeUsuario && u1.contrasenia == u2.contrasenia;
         }
 
         public static bool operator !=(Usuario u1, Usuario u2)

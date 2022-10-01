@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -39,12 +35,12 @@ namespace Entidades
         public override bool Equals(object obj)
         {
             Cliente aux = obj as Cliente;
-            return aux is not null && aux == this;  
+            return aux is not null && aux == this;
         }
 
         public override string ToString()
         {
-            return $"{base.Apellido}, {base.Nombre} - DNI: {base.GetHashCode()}";  
+            return $"{base.Apellido}, {base.Nombre} - DNI: {base.GetHashCode()}";
         }
     }
 }

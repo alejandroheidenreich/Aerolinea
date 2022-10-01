@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Runtime.Intrinsics.X86;
 
 namespace Entidades
 {
@@ -18,7 +15,7 @@ namespace Entidades
                     return BaseDeDatos.usuarios.IndexOf(item);
                 }
             }
-            return -1;    
+            return -1;
         }
         public static void VerificarUsuarioNoRepetido(string nuevoUsuario, int dni)
         {
@@ -101,7 +98,7 @@ namespace Entidades
                     contadorDePasajes++;
                 }
             }
-            if (contadorDePasajes < 5 )
+            if (contadorDePasajes < 5)
             {
                 puedeComprar = true;
             }
@@ -119,7 +116,7 @@ namespace Entidades
                     contadorDePasajes++;
                 }
             }
-            if (contadorDePasajes < 5 )
+            if (contadorDePasajes < 5)
             {
                 puedeComprar = true;
             }
@@ -232,7 +229,7 @@ namespace Entidades
         public static DateTime FechaAleatoria()
         {
             Random rand = new Random();
-            int año = rand.Next(1950, DateTime.Now.Year-18);
+            int año = rand.Next(1950, DateTime.Now.Year - 18);
             int mes = rand.Next(1, 12);
             int dia = rand.Next(1, 28);
 
@@ -253,10 +250,10 @@ namespace Entidades
                 }
             }
         }
-       
+
         public static Dictionary<string, string> HistorialDeVuelosPorFacturacion()
         {
-            Dictionary<string, double> destinoFacturadosDouble = new Dictionary<string, double>(); 
+            Dictionary<string, double> destinoFacturadosDouble = new Dictionary<string, double>();
             foreach (string item in BaseDeDatos.localidades)
             {
                 destinoFacturadosDouble.Add(item, 0);
@@ -304,7 +301,7 @@ namespace Entidades
             }
             ContarPasajes(clientesCantidadVuelos);
             return ConvertirDiccionarioAListaStringInt(clientesCantidadVuelos);
-            
+
         }
         private static void ContarPasajes(Dictionary<string, int> clientesCantidadVuelos)
         {
@@ -390,7 +387,7 @@ namespace Entidades
         {
             foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
             {
-                dic[item.Aeronave.Matricula]+= item.HoraDelVuelo + (double)item.MinutosDelVuelo/60;
+                dic[item.Aeronave.Matricula] += item.HoraDelVuelo + (double)item.MinutosDelVuelo / 60;
             }
         }
         private static Dictionary<string, string> ConvertirDiccionarioHorarioInforme(Dictionary<string, double> horaAeronave)
@@ -402,7 +399,7 @@ namespace Entidades
                 minutos = ((int)((item.Value - (int)item.Value) * 60)).ToString();
                 if ((int)((item.Value - (int)item.Value) * 60) < 10)
                 {
-                    minutos =  $"0{(int)((item.Value - (int)item.Value) * 60)}";
+                    minutos = $"0{(int)((item.Value - (int)item.Value) * 60)}";
                 }
                 dict[item.Key] = $"{((int)item.Value)}:{minutos}";
             }

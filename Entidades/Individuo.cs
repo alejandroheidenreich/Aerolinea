@@ -100,7 +100,7 @@ namespace Entidades
             fechaValidado = fecha;
         }
 
-        public abstract int Antiguedad();
+        public abstract int CalcularAntiguedad();
 
         public static bool operator ==(Individuo p1, Individuo p2)
         {

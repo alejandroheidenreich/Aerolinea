@@ -9,13 +9,20 @@ namespace Entidades
     public class Cliente : Individuo
     {
         private DateTime antiguedadComoCliente;
+
+
         public Cliente(string nombre, string apellido, DateTime fechaDeNacimiento, int dni, string email, DateTime antiguedadComoCliente)
             : base(nombre, apellido, fechaDeNacimiento, dni, email)
         {
             this.antiguedadComoCliente = antiguedadComoCliente;
         }
+        public DateTime Antiguedad
+        {
+            get => antiguedadComoCliente;
+            set => antiguedadComoCliente = value;
+        }
 
-        public override int Antiguedad()
+        public override int CalcularAntiguedad()
         {
             return DateTime.Now.Year - this.antiguedadComoCliente.Year;
         }

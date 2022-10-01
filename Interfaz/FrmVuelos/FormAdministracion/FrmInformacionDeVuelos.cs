@@ -17,7 +17,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
     {
         private Vuelo vuelo;
         private bool temaActual;
-        List<Cliente> listaClientes;
+        List<Cliente>? listaClientes;
         private bool mouseAccion;
         private int mousePosX;
         private int mousePosY;
@@ -48,6 +48,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             }
             this.dtg_ListaDePasajeros.DataSource = this.listaClientes;
             this.dtg_ListaDePasajeros.Columns["Email"].Visible = false;
+            this.dtg_ListaDePasajeros.Columns["Antiguedad"].Visible = false;
         }
 
         private void btn_ExaminarPasaje_Click(object sender, EventArgs e)

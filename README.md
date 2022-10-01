@@ -179,15 +179,29 @@ Cerrara inmediatamente la aplicacion.
 
 ## Justificación técnica
 
-- Introducción a .NET y C#
-- Clases y métodos estáticos
-- Programación orientada a objetos
-- Sobrecarga
-- Windows Forms
-- Colecciones
-- Encapsulamiento
-- Herencia
-- Polimorfismo y clases abstractas
+* Introducción a .NET y C#
+* Clases y métodos estáticos
+
+    - Clase Estatica BaseDeDatos : al ser una clase que contiene la informacion de las lista y hardcodeos de los datos, encapsulados a la clase para no poder hardcodear fuera de la clase, que se van a utilizar a lo largo de la aplicacion no necesito que se instancien
+        
+    - Clase Estatica Sistema : es una clase con todos metodos estaticos para interactuar entre objetos instanciados, con otros obejtos o listas estaticas de BaseDeDatos
+
+* Programación orientada a objetos : mediante la abstraccion pude determinar las siguentes clases con la capadidad de instanciar objetos
+
+    - Individuo
+    - Cliente : Individuo
+    - Usuario : Individuo
+    - Pasaje
+    - Aeronave
+    - Vuelo
+    
+    
+* Sobrecarga :
+* Windows Forms
+* Colecciones
+* Encapsulamiento
+* Herencia
+* Polimorfismo y clases abstractas
 
 Indicar tema a tema (de los temas 01 al 09) dónde se fue aplicando en el código y por qué se decidió implementarlo de esa forma. Toda decisión tiene que estar argumentada con razones técnicas que giren alrededor de los pilares de la programación orientada a objetos y cuestiones de mantenibilidad, código limpio, flexibilidad al cambio, experiencia de usuario, accesibilidad, uso seguro, rendimiento y eficiencia.
 Suma identificar pros y contras, si los tienen en mente.

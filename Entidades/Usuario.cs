@@ -39,7 +39,7 @@ namespace Entidades
             return false;
         }
 
-        public override int Antiguedad()
+        public override int CalcularAntiguedad()
         {
             return DateTime.Now.Year - this.antiguedadComoEmpleado.Year;
         }

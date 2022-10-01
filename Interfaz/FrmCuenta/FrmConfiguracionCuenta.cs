@@ -38,7 +38,7 @@ namespace Interfaz.FrmCuenta
             this.lbl_Apellido.Text = this.usuarioActual.Apellido;
             this.lbl_Nacimiento.Text = this.usuarioActual.Nacimiento.ToString("dd/MM/yyyy");
             this.lbl_Email.Text = this.usuarioActual.Email;
-            this.lbl_Antiguedad.Text = $"{this.usuarioActual.Antiguedad()} años";
+            this.lbl_Antiguedad.Text = $"{this.usuarioActual.CalcularAntiguedad()} años";
         }
 
         private void TemaActual(bool temaActual)

@@ -60,23 +60,11 @@ namespace Interfaz
         private void ActivarTemaClaro()
         {
             this.BackColor = Color.WhiteSmoke;
-            //this.pic_Lupa.BackColor = Color.WhiteSmoke;
-            //this.btn_AgregarVuelo.BackColor = Color.LightGray;
-            //this.btn_EliminarVuelo.BackColor = Color.LightGray;
-            //this.btn_ExaminarVuelo.BackColor = Color.LightGray;
-            //this.btn_VentaVuelo.BackColor = Color.LightGray;
-            //this.dtg_Vuelos.DefaultCellStyle.BackColor = Color.DarkGray;
         }
 
         private void ActivarTemaOscuro()
         {
             this.BackColor = Color.DarkGray;
-            //this.pic_Lupa.BackColor = Color.DarkGray;
-            //this.btn_AgregarVuelo.BackColor = Color.DimGray;
-            //this.btn_EliminarVuelo.BackColor = Color.DimGray;
-            //this.btn_ExaminarVuelo.BackColor = Color.DimGray;
-            //this.btn_VentaVuelo.BackColor = Color.DimGray;
-            //this.dtg_Vuelos.DefaultCellStyle.BackColor = Color.DimGray;
         }
 
         

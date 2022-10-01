@@ -13,14 +13,12 @@ namespace Interfaz
         private string registro;
         private Cliente cliente;
         private ClaseDePasajero clase;
-        private double precio;
 
-        public DataTicket(string registro, Cliente cliente, ClaseDePasajero claseDePasajero, double precio)
+        public DataTicket(string registro, Cliente cliente, ClaseDePasajero claseDePasajero)
         {
             this.registro = registro;
             this.cliente = cliente;
             this.clase = claseDePasajero;
-            this.precio = precio;
         }
         public string Registro
         {
@@ -33,10 +31,6 @@ namespace Interfaz
         public ClaseDePasajero Clase
         {
             get => clase;
-        }
-        public string Precio
-        {
-            get => $"{precio.ToString("0.##")} U$D";
         }
     }
 }

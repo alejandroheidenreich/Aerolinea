@@ -30,17 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVentaVuelo));
             this.lst_Clientes = new System.Windows.Forms.ListBox();
             this.txt_Buscar = new System.Windows.Forms.TextBox();
             this.dtg_CarritoDeCompra = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.claseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataTicketBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_AgregarCliente = new System.Windows.Forms.Button();
@@ -55,6 +49,9 @@
             this.pnl_Fondo = new System.Windows.Forms.Panel();
             this.lbl_EncabezadoVuelo = new System.Windows.Forms.Label();
             this.tt_Ayuda = new System.Windows.Forms.ToolTip(this.components);
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.claseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_CarritoDeCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTicketBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTicketBindingSource)).BeginInit();
@@ -100,18 +97,16 @@
             this.dtg_CarritoDeCompra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.clienteDataGridViewTextBoxColumn,
-            this.claseDataGridViewTextBoxColumn,
-            this.precioDataGridViewTextBoxColumn,
-            this.Eliminar});
+            this.claseDataGridViewTextBoxColumn});
             this.dtg_CarritoDeCompra.DataSource = this.dataTicketBindingSource1;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtg_CarritoDeCompra.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtg_CarritoDeCompra.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtg_CarritoDeCompra.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dtg_CarritoDeCompra.Location = new System.Drawing.Point(38, 288);
             this.dtg_CarritoDeCompra.MultiSelect = false;
@@ -124,52 +119,6 @@
             this.dtg_CarritoDeCompra.TabIndex = 5;
             this.dtg_CarritoDeCompra.TabStop = false;
             this.dtg_CarritoDeCompra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_CarritoDeCompra_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Registro";
-            this.Column1.HeaderText = "Registro";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // clienteDataGridViewTextBoxColumn
-            // 
-            this.clienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente";
-            this.clienteDataGridViewTextBoxColumn.FillWeight = 60.01894F;
-            this.clienteDataGridViewTextBoxColumn.HeaderText = "Cliente";
-            this.clienteDataGridViewTextBoxColumn.Name = "clienteDataGridViewTextBoxColumn";
-            this.clienteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // claseDataGridViewTextBoxColumn
-            // 
-            this.claseDataGridViewTextBoxColumn.DataPropertyName = "Clase";
-            this.claseDataGridViewTextBoxColumn.FillWeight = 60.01894F;
-            this.claseDataGridViewTextBoxColumn.HeaderText = "Clase";
-            this.claseDataGridViewTextBoxColumn.Name = "claseDataGridViewTextBoxColumn";
-            this.claseDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            this.precioDataGridViewTextBoxColumn.DataPropertyName = "Precio";
-            this.precioDataGridViewTextBoxColumn.FillWeight = 60.01894F;
-            this.precioDataGridViewTextBoxColumn.HeaderText = "Precio";
-            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            this.precioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Eliminar
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.IndianRed;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            this.Eliminar.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Eliminar.FillWeight = 58.1495F;
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Eliminar.Text = "Eliminar";
-            this.Eliminar.UseColumnTextForButtonValue = true;
             // 
             // dataTicketBindingSource1
             // 
@@ -310,6 +259,29 @@
             this.lbl_EncabezadoVuelo.TabIndex = 9;
             this.lbl_EncabezadoVuelo.Text = "vuelo";
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Registro";
+            this.Column1.HeaderText = "Registro";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // clienteDataGridViewTextBoxColumn
+            // 
+            this.clienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente";
+            this.clienteDataGridViewTextBoxColumn.FillWeight = 60.01894F;
+            this.clienteDataGridViewTextBoxColumn.HeaderText = "Cliente";
+            this.clienteDataGridViewTextBoxColumn.Name = "clienteDataGridViewTextBoxColumn";
+            this.clienteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // claseDataGridViewTextBoxColumn
+            // 
+            this.claseDataGridViewTextBoxColumn.DataPropertyName = "Clase";
+            this.claseDataGridViewTextBoxColumn.FillWeight = 60.01894F;
+            this.claseDataGridViewTextBoxColumn.HeaderText = "Clase";
+            this.claseDataGridViewTextBoxColumn.Name = "claseDataGridViewTextBoxColumn";
+            this.claseDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // FrmVentaVuelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -352,11 +324,7 @@
         private System.Windows.Forms.CheckBox chk_Clase;
         private System.Windows.Forms.Label lbl_Error;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clienteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn claseDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.BindingSource dataTicketBindingSource1;
         private System.Windows.Forms.RichTextBox rtb_Facturacion;
         private System.Windows.Forms.Label lbl_EncabezadoFacturacion;
@@ -364,5 +332,8 @@
         private System.Windows.Forms.Panel pnl_Fondo;
         private System.Windows.Forms.Label lbl_EncabezadoVuelo;
         private System.Windows.Forms.ToolTip tt_Ayuda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clienteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn claseDataGridViewTextBoxColumn;
     }
 }

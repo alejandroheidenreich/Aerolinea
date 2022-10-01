@@ -180,7 +180,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             double precioFinal;
             this.nuevosPasajeros.Add(pasajeAgregado);
             this.vuelo.InformarConPrecioDelPasaje(pasajeAgregado, out precioFinal);
-            tickets.Add(new DataTicket(pasajeAgregado.IdRegistro, (Cliente)this.lst_Clientes.SelectedItem, VerificarPremium(), precioFinal));
+            tickets.Add(new DataTicket(pasajeAgregado.IdRegistro, (Cliente)this.lst_Clientes.SelectedItem, VerificarPremium()));
             ActualizarFacturacionActual();
             VerificarExiteData();
             ActualizarDataGrid(this.dtg_CarritoDeCompra, tickets);

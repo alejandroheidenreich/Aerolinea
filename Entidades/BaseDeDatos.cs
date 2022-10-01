@@ -13,9 +13,11 @@ namespace Entidades
         public static List<Vuelo> vuelosTotales;
         public static List<Vuelo> vuelosActivos;
         public static List<Vuelo> vuelosHistorial;
+        public static List<string> fallas;
 
         static BaseDeDatos()
         {
+            fallas = new List<string>();
             vuelosHistorial = new List<Vuelo>();
             vuelosActivos = new List<Vuelo>();
 
@@ -25,7 +27,7 @@ namespace Entidades
             CargarAeronaves();
             CargarVuelos();
             AltaRandomDePasajeros();
-            Sistema.ActualizarVuelos();
+            Sistema.InicializarListasDeVuelos();
         }
         private static void CargarAeronaves()
         {
@@ -71,16 +73,16 @@ namespace Entidades
             vuelosTotales = new List<Vuelo>();
             Random rnd = new Random();
 
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < 150; i++)
             {
                 try
                 {
-                    Vuelo nuevoVuelo = new Vuelo(aeronaves[rnd.Next(0, 6)], localidades[rnd.Next(0, 20)], localidades[rnd.Next(0, 20)], FechaAleatoria(2022, 2024), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio());
+                    Vuelo nuevoVuelo = new Vuelo(aeronaves[rnd.Next(0, 6)], localidades[rnd.Next(0, 20)], localidades[rnd.Next(0, 20)], FechaAleatoria(2018, 2024), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio());
                     vuelosTotales.Add(nuevoVuelo);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    fallas.Add(ex.Message);
                 }
             }
         }
@@ -1102,9 +1104,9 @@ namespace Entidades
                 usuarios.Add(new Usuario("Lionel", "Messi", new DateTime(1987, 07, 24), 10101010, "leo@gmal.com", "messi10", "Scaloneta#10", FechaAleatoria(2000,2021)));
                 usuarios.Add(new Usuario("Bartolomeo", "Simpson", new DateTime(1981, 12, 13), 66666666, "bart@gmal.com", "elbarto", "1ayCaramba!", FechaAleatoria(2000,2021)));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                fallas.Add(ex.Message);
             }
         }
         private static void AltaRandomDePasajeros()

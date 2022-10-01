@@ -18,7 +18,6 @@ namespace Entidades
         }
         public Aeronave(int cantidadDeAsientos, int cantidadDeBanios, double capacidadDeBodega):this()
         {
-            
             this.matricula = GenerarMatricula();
             this.cantidadDeAsientosTotales = cantidadDeAsientos;
             this.cantidadDeBanios = cantidadDeBanios;

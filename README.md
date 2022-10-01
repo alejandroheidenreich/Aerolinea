@@ -197,8 +197,23 @@ Cerrara inmediatamente la aplicacion.
     
     
 * Sobrecarga :
-* Windows Forms
+    - Pasaje y Aeronave, tiene sobrecarga de constructores para instanciar listas o valores de atributos que tienen por defecto.
+    - Metodo de Sistemas VerificarPasajeComprar, tiene sobrecarga, uno recibe un pasaje solo, y otro recibe tambien una lista de pasaje
+
+* Windows Forms :
+    - FrmLogIn
+    - FrmMenuPrincipal
+    - FrmAdminstracionDeVuelos
+    - FrmVentaVuelo
+    - FrmInformacionDeVuelos
+    - FrmAltaVuelo
+    - FrmAeronaves
+    - FrmInformacionDelPasajero
+    - FrmAltaEquipaje
+    - FrmEstadisitcasHistoricas
+    - FrmConfiguracionCuenta
 * Colecciones
+    - 
 * Encapsulamiento
 * Herencia
 * Polimorfismo y clases abstractas

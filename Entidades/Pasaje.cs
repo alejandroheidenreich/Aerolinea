@@ -56,7 +56,6 @@ namespace Entidades
                 return this.pesoAdicional;
             }
         }
-
         public List<double> EquipajeDeBodega
         {
             get => equipajeDeBodega;
@@ -114,7 +113,6 @@ namespace Entidades
 
             return pesoAdicional;
         }
-
         private void OrdenarEquipaje()
         {
             double aux;

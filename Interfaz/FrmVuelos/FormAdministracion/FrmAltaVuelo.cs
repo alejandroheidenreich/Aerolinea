@@ -18,13 +18,21 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private bool mouseAccion;
         private int mousePosX;
         private int mousePosY;
+        private Vuelo? vueloNuevo;
 
+        
         public FrmAltaVuelo(bool temaActual)
         {
             InitializeComponent();
             this.fechaCambio = false;
             this.temaActual = temaActual;
         }
+        public Vuelo VueloNuevo
+        {
+            get => vueloNuevo;
+            set => vueloNuevo = value;
+        }
+
         private void FrmAltaVuelo_Load(object sender, EventArgs e)
         {
             TemaActual(this.temaActual);
@@ -64,8 +72,16 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 {
                     try
                     {
-                        Sistema.AltaDeVuelo(new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text, dtp_Partida.Value, chk_Wifi.Checked, chk_Comida.Checked, chk_Vegano.Checked, chk_Premium.Checked, chk_SinAlcohol.Checked, chk_Alcohol.Checked));
-                        this.DialogResult = DialogResult.OK;
+                        if (dtp_Partida.Value < DateTime.Now)
+                        {
+                            this.lbl_MensajeError.Text = $"       La Partida del vuelo no es valida.";
+                            this.lbl_MensajeError.Visible = true;
+                        }
+                        else
+                        {
+                            this.vueloNuevo = new Vuelo(aeronave, cmb_Origen.Text, cmb_Destino.Text, dtp_Partida.Value, chk_Wifi.Checked, chk_Comida.Checked, chk_Vegano.Checked, chk_Premium.Checked, chk_SinAlcohol.Checked, chk_Alcohol.Checked);
+                            this.DialogResult = DialogResult.OK;
+                        }
                     }
                     catch (Exception ex)
                     {

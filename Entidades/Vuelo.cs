@@ -39,8 +39,6 @@ namespace Entidades
             ValidarVueloInternacional();
             this.tipo = DestinoEsInternacional(this.origen, this.destino);
             this.partida = partida;
-            this.aeronave = aeronave;
-            this.aeronave.AgregarVueloAPlanDeVuelos(this.partida);
             GenerarDuracionDeVuelos();
             this.duracion = new DateTime(1, 1, 1, this.horaDelVuelo, this.minutosDelVuelo, 0).ToString("HH:mm");
             this.wifii = wifii;
@@ -49,6 +47,8 @@ namespace Entidades
             ValidarMenu(menuPremium, out this.menuPremium);
             this.bebidasSinAlcohol = bebidasSinAlcohol;
             this.bebidasAlcoholicas = bebidasAlcoholicas;
+            this.aeronave = aeronave;
+            this.aeronave.AgregarVueloAPlanDeVuelos(this.partida);
         }
 
         public string ID
@@ -139,12 +139,12 @@ namespace Entidades
             get => menuPremium;
             set => menuPremium = value;
         }
-        public bool BebidasSinAlcohol
+        public bool SinAlcohol
         {
             get => bebidasSinAlcohol;
             set => bebidasSinAlcohol = value;
         }
-        public bool BebidasAlcoholicas
+        public bool Alcoholicas
         {
             get => bebidasAlcoholicas;
             set => bebidasAlcoholicas = value;

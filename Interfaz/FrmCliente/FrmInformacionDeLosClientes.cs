@@ -19,7 +19,7 @@ namespace Interfaz
         private void FrmInformacionDeLosClientes_Load(object sender, System.EventArgs e)
         {
             TemaActual(tema);
-            dtg_Clientes.DataSource = BaseDeDatos.clientes;
+            ActualizarDataGrid(dtg_Clientes);
         }
         private void TemaActual(bool temaActual)
         {
@@ -87,7 +87,7 @@ namespace Interfaz
             if (respuesta == DialogResult.OK)
             {
                 Sistema.AltaDeCliente(altaCliente.NuevoCliente);
-                ActualizarDataGrid(dtg_Clientes, BaseDeDatos.clientes);
+                ActualizarDataGrid(dtg_Clientes);
             }
         }
         private void btn_BajaCliente_Click(object sender, System.EventArgs e)
@@ -103,14 +103,14 @@ namespace Interfaz
                 if (respuesta == DialogResult.Yes)
                 {
                     Sistema.BajaDeCliente((Cliente)dtg_Clientes.CurrentRow.DataBoundItem);
-                    ActualizarDataGrid(dtg_Clientes, BaseDeDatos.clientes);
+                    ActualizarDataGrid(dtg_Clientes);
                 }
             }
         }
-        public static void ActualizarDataGrid(DataGridView dtg, List<Cliente> lista)
+        public static void ActualizarDataGrid(DataGridView dtg)
         {
             dtg.DataSource = null;
-            dtg.DataSource = lista;
+            dtg.DataSource = BaseDeDatos.clientes;
         }
         private void btn_AgregarCliente_MouseHover(object sender, EventArgs e)
         {
@@ -134,7 +134,7 @@ namespace Interfaz
 
                 if (respuesta == DialogResult.OK)
                 {
-                    ActualizarDataGrid(dtg_Clientes, BaseDeDatos.clientes);
+                    ActualizarDataGrid(dtg_Clientes);
                     MessageBox.Show($"Se ha modificado el cliente {dtg_Clientes.CurrentRow.DataBoundItem}", "Editar Cliente");
                 }
             }

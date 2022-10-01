@@ -179,11 +179,10 @@ namespace Entidades
 
         public static void AltaDeVuelo(Vuelo vueloAAgregar)
         {
-            if (vueloAAgregar is null || vueloAAgregar.Partida < DateTime.Now)
+            if (vueloAAgregar is not null)
             {
-                throw new Exception("La Partida del vuelo no es valida.");
+                BaseDeDatos.vuelosActivos.Add(vueloAAgregar);
             }
-            BaseDeDatos.vuelosActivos.Add(vueloAAgregar);
         }
 
         public static void BajaDeVuelo(Vuelo vueloAEliminar)
@@ -236,7 +235,7 @@ namespace Entidades
             return new DateTime(año, mes, dia);
         }
 
-        public static void ActualizarVuelos()
+        public static void InicializarListasDeVuelos()
         {
             foreach (Vuelo item in BaseDeDatos.vuelosTotales)
             {
@@ -250,7 +249,18 @@ namespace Entidades
                 }
             }
         }
-
+        public static void ActualizarListaDeVuelos()
+        {
+            for (int i = 0; i < BaseDeDatos.vuelosActivos.Count; i++)
+            {
+                if (BaseDeDatos.vuelosActivos[i].Disponibilidad == "FINALIZADO")
+                {
+                    BaseDeDatos.vuelosHistorial.Add(BaseDeDatos.vuelosActivos[i]);
+                    BaseDeDatos.vuelosActivos.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
         public static Dictionary<string, string> HistorialDeVuelosPorFacturacion()
         {
             Dictionary<string, double> destinoFacturadosDouble = new Dictionary<string, double>();
@@ -290,8 +300,6 @@ namespace Entidades
         {
             return (int)(p2.Value - p1.Value);
         }
-
-
         public static Dictionary<string, int> ClientesPorCantidadDeVuelos()
         {
             Dictionary<string, int> clientesCantidadVuelos = new Dictionary<string, int>();
@@ -335,8 +343,6 @@ namespace Entidades
         {
             return p2.Value - p1.Value;
         }
-
-
         public static string DestinoFavorito()
         {
             string favorito = "Ninguno";
@@ -354,7 +360,6 @@ namespace Entidades
                     favorito = item.Key;
                     primero = false;
                 }
-
             }
             return favorito;
         }
@@ -372,7 +377,6 @@ namespace Entidades
                 destinoFavorito[item.Destino]++;
             }
         }
-
         public static Dictionary<string, string> AeronaveCantidadDeHoras()
         {
             Dictionary<string, double> horasDeAeronaves = new Dictionary<string, double>();

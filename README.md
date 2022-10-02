@@ -213,8 +213,11 @@ Cerrara inmediatamente la aplicacion.
     - FrmEstadisitcasHistoricas
     - FrmConfiguracionCuenta
 * Colecciones
-    - 
+    - Listas : se utilizan en la clase estatica BaseDeDatos y en las clases instanciadas de objetos, como listaDePasajeros en Vuelo
+    - Diccionarios : se utilizan para informar estadisticas historicas
 * Encapsulamiento
+
+    - 
 * Herencia
 * Polimorfismo y clases abstractas
 

@@ -57,7 +57,7 @@ namespace Entidades
             }
             else
             {
-                huboFallo = AgregarPasajeroLista(pasajerosAAgregar, vuelo, huboFallo, fallos);
+                huboFallo = AgregarPasajeroLista(pasajerosAAgregar, vuelo, fallos);
             }
             if (huboFallo)
             {
@@ -70,8 +70,9 @@ namespace Entidades
             }
         }
 
-        private static bool AgregarPasajeroLista(List<Pasaje> pasajerosAAgregar, Vuelo vuelo, bool huboFallo, List<Pasaje> fallos)
+        private static bool AgregarPasajeroLista(List<Pasaje> pasajerosAAgregar, Vuelo vuelo, List<Pasaje> fallos)
         {
+            bool huboFallo = false;
             foreach (Pasaje item in pasajerosAAgregar)
             {
                 if (VerificarCantidadDePasajesPorCliente(vuelo, item))
@@ -108,7 +109,7 @@ namespace Entidades
         public static bool VerificarPasajeComprar(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajerosParaAgregar)
         {
             bool puedeComprar = false;
-            int contadorDePasajes = CaclucarCantidadDelMismoPasajeEnLista(pasajero, pasajerosParaAgregar);
+            int contadorDePasajes = CalcularCantidadDelMismoPasajeEnListaPasajes(pasajero, pasajerosParaAgregar);
             foreach (Pasaje item in vuelo.ListaDePasajeros)
             {
                 if (item.Equals(pasajero.Cliente))
@@ -164,7 +165,7 @@ namespace Entidades
             }
         }
 
-        private static int CaclucarCantidadDelMismoPasajeEnLista(Pasaje pasajero, List<Pasaje> pasajerosParaAgregar)
+        private static int CalcularCantidadDelMismoPasajeEnListaPasajes(Pasaje pasajero, List<Pasaje> pasajerosParaAgregar)
         {
             int contador = 0;
             foreach (Pasaje item in pasajerosParaAgregar)

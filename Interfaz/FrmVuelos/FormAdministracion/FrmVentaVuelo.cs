@@ -265,45 +265,52 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             WorkBook archivo = WorkBook.Create(ExcelFileFormat.XLSX);
             WorkSheet hoja = archivo.CreateWorkSheet("ticket");
             string ticket = GenerarRegsitro();
-            double precioPremium;
-            double precioPeso;
-            double precioFinal = 0;
+            double precioFinal;
             double horasTotales = vuelo.CalcularHorasTotales();
             double precioBase = vuelo.PrecioSegunTipoDeVuelo(horasTotales);
             int fila = 1;
 
             hoja["A1"].Style.BottomBorder.Type = IronXL.Styles.BorderType.Double;
             hoja["A1"].Style.Font.Bold = true;
-            hoja["A1"].Value = $"Ticket {ticket}";
+            AgregarFila(hoja, ref fila, $"Ticket {ticket}");
+            precioFinal = CargarFilasDePasajeros(hoja, precioBase, ref fila);
+            hoja[$"A{fila}"].Style.BottomBorder.Type = IronXL.Styles.BorderType.Double;
+            hoja[$"A{fila}"].Style.Font.Bold = true;
+            AgregarFila(hoja, ref fila, $"Precio Fianl Neto (+IVA): $ {(precioFinal * 1.21).ToString("0.00")} USD");
+            archivo.SaveAs($"Ticket {ticket}.xlsx");
+        }
 
+        private double CargarFilasDePasajeros(WorkSheet hoja, double precioBase, ref int fila)
+        {
+            double precioPremium;
+            double precioPeso;
+            double precioFinal = 0;
             for (int i = 0; i < this.nuevosPasajeros.Count; i++)
             {
                 precioFinal += precioBase;
-                fila++;
-                hoja[$"A{fila}"].Value = $"Registro: {this.nuevosPasajeros[i].IdRegistro}";
-                fila++;
-                hoja[$"A{fila}"].Value = $"Preio Bruto: $ {precioBase.ToString("0.00")} USD";
+                AgregarFila(hoja, ref fila, $"Registro: {this.nuevosPasajeros[i].IdRegistro}");
+                AgregarFila(hoja, ref fila, $"Preio Bruto: $ {precioBase.ToString("0.00")} USD");
                 if (this.nuevosPasajeros[i].Clase == ClaseDePasajero.Premium)
                 {
-                    fila++;
                     precioPremium = vuelo.CalcularAdicionalPremium(precioBase);
                     precioFinal += precioPremium;
-                    hoja[$"A{fila}"].Value = $"Impuesto por Premium: $ {precioPremium.ToString("0.00")} USD";
+                    AgregarFila(hoja, ref fila, $"Impuesto por Premium: $ {precioPremium.ToString("0.00")} USD");
                 }
                 if (this.nuevosPasajeros[i].PesoAdicional > 0)
                 {
-                    fila++;
                     precioPeso = vuelo.CalcularAdicionalPeso(precioBase, this.nuevosPasajeros[i].PesoAdicional);
                     precioFinal += precioPeso;
-                    hoja[$"A{fila}"].Value = $"Impuesto por Peso Adicional: $ {precioPeso.ToString("0.00")} USD";
+                    AgregarFila(hoja, ref fila, $"Impuesto por Peso Adicional: $ {precioPeso.ToString("0.00")}");
                 }
-                fila++;
+                AgregarFila(hoja, ref fila, "");
             }
-            hoja[$"A{fila}"].Style.BottomBorder.Type = IronXL.Styles.BorderType.Double;
+            return precioFinal;
+        }
+
+        private static void AgregarFila(WorkSheet hoja, ref int fila, string contenidoFila)
+        {
+            hoja[$"A{fila}"].Value = contenidoFila;
             fila++;
-            hoja[$"A{fila}"].Style.Font.Bold = true;
-            hoja[$"A{fila}"].Value = $"Precio Fianl Neto (+IVA): $ {(precioFinal*1.21).ToString("0.00")} USD";
-            archivo.SaveAs($"Ticket {ticket}.xlsx");
         }
 
         private void dtg_CarritoDeCompra_CellContentClick(object sender, DataGridViewCellEventArgs e)

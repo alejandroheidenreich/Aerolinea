@@ -65,7 +65,10 @@ namespace Interfaz
             }
             else
             {
-                dtg_Vuelos.DataSource = BaseDeDatos.vuelosActivos;
+                if (BaseDeDatos.vuelosActivos.Count > 0)
+                {
+                    dtg_Vuelos.DataSource = BaseDeDatos.vuelosActivos;
+                }
             }
         }
         private void FiltrarDatosDeVuelo(List<Vuelo> filtrado)
@@ -127,14 +130,22 @@ namespace Interfaz
         }
         public void ActualizarDataGrid()
         {
-            Sistema.ActualizarListaDeVuelos();
-            dtg_Vuelos.DataSource = null;
-            dtg_Vuelos.DataSource = BaseDeDatos.vuelosActivos;
-            dtg_Vuelos.Columns["Aeronave"].Visible = false;
-            dtg_Vuelos.Columns["Premium"].Visible = false;
-            dtg_Vuelos.Columns["Tursita"].Visible = false;
-            dtg_Vuelos.Columns["HoraDelVuelo"].Visible = false;
-            dtg_Vuelos.Columns["MinutosDelVuelo"].Visible = false;
+            if (BaseDeDatos.vuelosActivos.Count > 0)
+            {
+                Sistema.ActualizarListaDeVuelos();
+                dtg_Vuelos.DataSource = null;
+                dtg_Vuelos.DataSource = BaseDeDatos.vuelosActivos;
+                dtg_Vuelos.Columns["Aeronave"].Visible = false;
+                dtg_Vuelos.Columns["Premium"].Visible = false;
+                dtg_Vuelos.Columns["Tursita"].Visible = false;
+                dtg_Vuelos.Columns["HoraDelVuelo"].Visible = false;
+                dtg_Vuelos.Columns["MinutosDelVuelo"].Visible = false;
+                dtg_Vuelos.Visible = true;
+            }
+            else
+            {
+                dtg_Vuelos.Visible = false;
+            }
         }
         private Vuelo ObtenerVueloSeleccionado()
         {

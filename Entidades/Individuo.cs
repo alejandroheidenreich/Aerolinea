@@ -93,9 +93,9 @@ namespace Entidades
         private void ValidarDateTime(DateTime fecha, out DateTime fechaValidado)
         {
             fechaValidado = DateTime.MinValue;
-            if (CalcularEdad(fecha) < 18)
+            if (CalcularEdad(fecha) < 0)
             {
-                throw new Exception("Debe ser mayor de 18 años.");
+                throw new Exception("No es un nacimiento valido");
             }
             fechaValidado = fecha;
         }

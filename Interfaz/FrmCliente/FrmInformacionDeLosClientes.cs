@@ -58,7 +58,10 @@ namespace Interfaz
             }
             else
             {
-                dtg_Clientes.DataSource = BaseDeDatos.clientes;
+                if (BaseDeDatos.clientes.Count > 0)
+                {
+                    dtg_Clientes.DataSource = BaseDeDatos.clientes;
+                }
             }
         }
         private void FiltrarDatosDeClientes(List<Cliente> filtrado)
@@ -109,8 +112,16 @@ namespace Interfaz
         }
         public static void ActualizarDataGrid(DataGridView dtg)
         {
-            dtg.DataSource = null;
-            dtg.DataSource = BaseDeDatos.clientes;
+            if (BaseDeDatos.clientes.Count > 0)
+            {
+                dtg.DataSource = null;
+                dtg.DataSource = BaseDeDatos.clientes;
+                dtg.Visible = true;
+            }
+            else
+            {
+                dtg.Visible = false;
+            }
         }
         private void btn_AgregarCliente_MouseHover(object sender, EventArgs e)
         {

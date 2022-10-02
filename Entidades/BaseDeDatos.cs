@@ -73,11 +73,11 @@ namespace Entidades
             vuelosTotales = new List<Vuelo>();
             Random rnd = new Random();
 
-            for (int i = 0; i < 150; i++)
+            for (int i = 0; i < 100; i++)
             {
                 try
                 {
-                    Vuelo nuevoVuelo = new Vuelo(aeronaves[rnd.Next(0, 6)], localidades[rnd.Next(0, 20)], localidades[rnd.Next(0, 20)], FechaAleatoria(2018, 2024), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio());
+                    Vuelo nuevoVuelo = new Vuelo(aeronaves[rnd.Next(0, 6)], localidades[rnd.Next(0, 20)], localidades[rnd.Next(0, 20)], FechaAleatoria(2018, 2029), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio(), BooleanoAleatorio());
                     vuelosTotales.Add(nuevoVuelo);
                 }
                 catch (Exception ex)
@@ -1090,7 +1090,6 @@ namespace Entidades
                 new Cliente("Wendy", "Largen", Sistema.FechaAleatoria(), 77003943, "wlargenrp@vkontakte.ru", FechaAleatoria(2000,2021)),
                 new Cliente("Felicity", "Izod", Sistema.FechaAleatoria(), 56450732, "fizodrq@ca.gov", FechaAleatoria(2000,2021)),
                 new Cliente("Sonja", "Cutajar", Sistema.FechaAleatoria(), 77587124, "scutajarrr@princeton.edu", FechaAleatoria(2000,2021))
-
             };
         }
         private static void CargarUsuarios()

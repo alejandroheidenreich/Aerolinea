@@ -12,14 +12,17 @@ namespace Entidades
         {
             this.antiguedadComoCliente = antiguedadComoCliente;
         }
-        public DateTime Antiguedad
+        public int Antiguedad
         {
-            get => antiguedadComoCliente;
-            set => antiguedadComoCliente = value;
+            get => CalcularAntiguedad();
         }
 
         public override int CalcularAntiguedad()
         {
+            if ((this.antiguedadComoCliente.Year - this.Nacimiento.Year) < 0)
+            {
+                return 0;
+            }
             return DateTime.Now.Year - this.antiguedadComoCliente.Year;
         }
         public static bool operator ==(Cliente c1, Cliente c2)

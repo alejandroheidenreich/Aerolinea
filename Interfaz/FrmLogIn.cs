@@ -19,7 +19,10 @@ namespace Interfaz
 
         private void FrmLogIn_Load(object sender, EventArgs e)
         {
+            if (BaseDeDatos.usuarios.Count < 0)
+            {
 
+            }
         }
 
         private void btn_Ingresar_Click(object sender, EventArgs e)

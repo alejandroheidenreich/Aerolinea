@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAeronaves));
             this.dtg_Aeronaves = new System.Windows.Forms.DataGridView();
             this.btn_Seleccionar = new System.Windows.Forms.Button();
             this.btn_Salir = new System.Windows.Forms.Button();
@@ -123,6 +124,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.pnl_Fondo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAeronaves";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAeronaves";

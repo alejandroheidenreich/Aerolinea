@@ -202,6 +202,7 @@
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.pnl_Fondo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAltaEquipaje";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAltaEquipaje";

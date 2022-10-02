@@ -300,6 +300,7 @@
             this.Controls.Add(this.dtg_PasajerosFrecuentes);
             this.Controls.Add(this.dtg_DestinosFacturados);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEstadisitcasHistoricas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EstadisitcasHistoricas";

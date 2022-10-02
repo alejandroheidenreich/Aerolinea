@@ -163,6 +163,7 @@
             this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.dtg_Clientes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmInformacionDeLosClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InformacionDeLosPasajeros";

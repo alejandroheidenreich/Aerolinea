@@ -207,6 +207,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.pnl_Fondo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmInformacionDelPasajero";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInformacionDelPasajero";

@@ -414,6 +414,7 @@
             this.Controls.Add(this.btn_Editar);
             this.Controls.Add(this.lbl_bienvenida);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmConfiguracionCuenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmConfiguracionCuenta";

@@ -294,6 +294,7 @@
             this.Controls.Add(this.cmb_Origen);
             this.Controls.Add(this.pnl_FondoPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAltaVuelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAltaVuelo";

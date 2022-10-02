@@ -33,7 +33,6 @@ namespace Interfaz.FrmCliente
             dtp_Nacimiento.MinDate = new DateTime(1900, 1, 1);
             TemaActual(tema);
         }
-
         private void TemaActual(bool temaActual)
         {
             if (temaActual)
@@ -45,7 +44,6 @@ namespace Interfaz.FrmCliente
                 ActivarTemaClaro();
             }
         }
-
         private void ActivarTemaClaro()
         {
             this.BackColor = Color.SkyBlue;
@@ -54,7 +52,6 @@ namespace Interfaz.FrmCliente
             this.btn_Salir.BackColor = Color.LightGray;
             this.lbl_EncabezadoNacimiento.BackColor = Color.WhiteSmoke;
         }
-
         private void ActivarTemaOscuro()
         {
             this.BackColor = Color.SteelBlue;
@@ -63,12 +60,10 @@ namespace Interfaz.FrmCliente
             this.btn_Salir.BackColor = Color.DimGray;
             this.lbl_EncabezadoNacimiento.BackColor = Color.DarkGray;
         }
-
         private void btn_Salir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
             try
@@ -76,7 +71,7 @@ namespace Interfaz.FrmCliente
                 int dni;
                 int.TryParse(this.txt_Dni.Text, out dni);
                 DateTime fechaActual = DateTime.Now;
-                this.nuevoCliente = new Cliente(this.txt_Nombre.Text, this.txt_Apellido.Text, this.dtp_Nacimiento.Value, dni, this.txt_Email.Text, fechaActual);
+                this.nuevoCliente = new Cliente(this.txt_Nombre.Text, this.txt_Apellido.Text, this.dtp_Nacimiento.Value.Date, dni, this.txt_Email.Text, fechaActual);
                 this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)

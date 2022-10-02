@@ -53,7 +53,7 @@ Consta de una caja de texto donde puede filtrar por _Nombre_, _Apellido_ o _DNI_
 
 Este boton abre un formulario que consta con dos botones
 
-* Confirmar : una vez verificado los datos agrega el cliente, caso contrario muestra un mensaje de error ( ningun _Campo_ puede estar vacio, el _Dni_ debe ser de 1.000.000 a 99.999.999, debe ser mayor de 18 y el _E-Mail_ debe contener una @ _"arroba"_ )
+* Confirmar : una vez verificado los datos agrega el cliente, caso contrario muestra un mensaje de error ( ningun _Campo_ puede estar vacio, el _Dni_ debe ser de 1.000.000 a 99.999.999, debe ser mayor que la fecha actual y el _E-Mail_ debe contener una @ _"arroba"_ )
 * Salir : cierra el formulario sin cargar ningun cliente
 
 #### **Editar Cliente**
@@ -61,7 +61,7 @@ Este boton abre un formulario que consta con dos botones
 
 Este boton abre un formulario que se inicializa con todos los campos con los datos del cliente seleccionado y consta con dos botones
 
-* Confirmar Edicion : una vez verificado los datos agrega el cliente, caso contrario muestra un mensaje de error ( ningun _Campo_ puede estar vacio, el _Dni_ no se puede editar, debe ser mayor de 18 y el _E-Mail_ debe contener una @ _"arroba"_ )
+* Confirmar Edicion : una vez verificado los datos agrega el cliente, caso contrario muestra un mensaje de error ( ningun _Campo_ puede estar vacio, el _Dni_ no se puede editar, debe ser mayor que la fecha actual y el _E-Mail_ debe contener una @ _"arroba"_ )
 * Salir : cierra el formulario sin editar el cliente
 
 #### **Eliminar Cliente**

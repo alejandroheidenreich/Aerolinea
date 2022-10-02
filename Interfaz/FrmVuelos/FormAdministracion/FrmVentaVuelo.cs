@@ -363,9 +363,18 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                     pasajeAgregarEquipaje.EquipajeDeMano = frmEquipaje.EquipajeDeMano;
                     foreach (double item in frmEquipaje.EquipajesBodega!)
                     {
-                        pasajeAgregarEquipaje.AgregarEquipaje(item);
+                        try
+                        {
+                            pasajeAgregarEquipaje.AgregarEquipaje(item);
+                            ActualizarFacturacionActual();
+                        }
+                        catch (Exception ex)
+                        {
+
+                            this.lbl_Error.Text = ex.Message;
+                            this.lbl_Error.Visible = true;
+                        }
                     }
-                    ActualizarFacturacionActual();
                 }
             }
             else

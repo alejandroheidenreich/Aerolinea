@@ -33,13 +33,13 @@ namespace Entidades
         {
             aeronaves = new List<Aeronave>()
             {
-                new Aeronave(200,6,20000),
-                new Aeronave(315,9,35000),
-                new Aeronave(450,12,100000),
-                new Aeronave(275,8,50000),
-                new Aeronave(350,10,35000),
-                new Aeronave(430,11,120000),
-                new Aeronave(270,8,30000)
+                new Aeronave(200,6,5000),
+                new Aeronave(315,9,8000),
+                new Aeronave(450,12,10000),
+                new Aeronave(275,8,7000),
+                new Aeronave(350,10,8000),
+                new Aeronave(430,11,12000),
+                new Aeronave(270,8,7000)
             };
         }
         private static void CargarLocalidades()
@@ -1145,13 +1145,14 @@ namespace Entidades
         {
             Random rnd = new Random();
             double peso;
-
             pasajero.EquipajeDeMano = BooleanoAleatorio();
-            
-            for (int i = 0; i < rnd.Next(0, 3); i++)
+            int cantidadDeEquipajes = rnd.Next(0, 3);
+
+
+            for (int i = 0; i < cantidadDeEquipajes; i++)
             {
-                peso = rnd.Next(10, 35);
-                if (vuelo.CalcularEspacioDisponibleBodega() > peso)
+                peso = rnd.Next(15, 40);
+                if ((vuelo.CalcularEspacioDisponibleBodega()) > peso)
                 {
                     pasajero.AgregarEquipaje(peso);
                 }

@@ -226,14 +226,8 @@ Cerrara inmediatamente la aplicacion.
 
 * Polimorfismo y clases abstractas
 
-Indicar tema a tema (de los temas 01 al 09) dónde se fue aplicando en el código y por qué se decidió implementarlo de esa forma. Toda decisión tiene que estar argumentada con razones técnicas que giren alrededor de los pilares de la programación orientada a objetos y cuestiones de mantenibilidad, código limpio, flexibilidad al cambio, experiencia de usuario, accesibilidad, uso seguro, rendimiento y eficiencia.
-Suma identificar pros y contras, si los tienen en mente.
-El objetivo es que demuestren que saben lo que hacen y que tomaron decisiones con criterio y no mecanizadas.
-Si se utilizó alguna biblioteca externa también se deberá justificar la elección.
-
-```bash
-codigo
-```
+    - Clase Abstracta **Individuo** : esta clase tiene un metodo abstracto _public abstract int CalcularAntiguedad()_ que las clases hijas Cliente y Usuario deberan implementar. Todas las clases que no sean static tiene sobrecargas de ToString, algunas de Equals y GetHashCode 
 
 ## Propuesta de valor agregado 
-En esta sección se explicará y justificará la funcionalidad adicional propuesta para el punto de promoción.
+En mi aplicacion propuse las siguientes funcionabilidades:
+* 

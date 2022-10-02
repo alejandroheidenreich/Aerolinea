@@ -39,7 +39,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             this.lbl_Duracion.Text = $"Duracion: {vuelo.Duracion}";
             this.lbl_Partida.Text = $"Partida: {vuelo.Partida.ToString("HH:mm - dd/MM/yyyy")}";
             this.lbl_Aeronave.Text = this.vuelo.Aeronave.ToString();
-            this.lbl_DispoBodega.Text = $"Bodega Actual: {this.vuelo.CalcularEspacioDisponibleBodega()}/{this.vuelo.Aeronave.Bodega} KG.";
+            this.lbl_DispoBodega.Text = $"Bodega Actual: {(this.vuelo.Aeronave.Bodega - this.vuelo.CalcularEspacioDisponibleBodega())}/{this.vuelo.Aeronave.Bodega} KG.";
             this.lbl_Premium.Text = $"Premium: {vuelo.Premium}/{vuelo.Aeronave.Premium}";
             this.lbl_Turista.Text = $"Tursita: {vuelo.Tursita}/{vuelo.Aeronave.Tursita}";
 

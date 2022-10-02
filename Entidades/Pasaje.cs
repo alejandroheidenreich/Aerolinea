@@ -69,7 +69,7 @@ namespace Entidades
 
         public void AgregarEquipaje(double pesoValija)
         {
-            if (this.equipajeDeBodega.Count > this.equipajesMaximos)
+            if (this.equipajeDeBodega.Count == this.equipajesMaximos)
             {
                 throw new Exception($"Llego al maximo ({this.equipajesMaximos}) de equipajes en bodega");
             }

@@ -129,7 +129,7 @@ namespace Interfaz.FrmPasajeros
             }
             else if ((double)nud_PesoEquipaje.Value > this.vuelo.CalcularEspacioDisponibleBodega())
             {
-                lbl_Error.Text = $"La aeronave solo tiene {this.vuelo.CalcularEspacioDisponibleBodega()} disponible";
+                lbl_Error.Text = $"La aeronave solo tiene {this.vuelo.CalcularEspacioDisponibleBodega()} KG. disponible en la bodega";
                 lbl_Error.Visible = true;
             }
             else

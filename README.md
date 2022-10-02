@@ -218,11 +218,10 @@ Cerrara inmediatamente la aplicacion.
     - Diccionarios : se utilizan para informar estadisticas historicas en la clase Sistema 
 * Encapsulamiento
 
-    - 
+    - Todas las clases estan encapsuladas ya que atributos, metodos privados restringen el acceso al usuario y solo brindar los necesarios. Ejemplo la clase Usuario, no puede brindar informacion de la contraseña al usuario.
 * Herencia
 
     - Hay herencias de Individuo ( Abstract ) es padre de Cliente y Usuario
-    - 
 
 * Polimorfismo y clases abstractas
 

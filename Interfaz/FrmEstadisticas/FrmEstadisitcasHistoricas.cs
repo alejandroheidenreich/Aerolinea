@@ -1,12 +1,6 @@
 ﻿using Entidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -14,6 +8,7 @@ namespace Interfaz
     public partial class FrmEstadisitcasHistoricas : Form
     {
         private bool tema;
+
         public FrmEstadisitcasHistoricas(bool tema)
         {
             InitializeComponent();
@@ -27,7 +22,7 @@ namespace Interfaz
             BindingSource bs = new BindingSource();
             BindingSource bs2 = new BindingSource();
             BindingSource bs3 = new BindingSource();
-
+            InformarHistorialDeVuelos();
             InformarDestinosPorFacturacion(bs);
             InformarClientesPorCantidadDeVuelos(bs2);
             InformarAeronavesCantidadDeHorasVoladas(bs3);
@@ -37,6 +32,27 @@ namespace Interfaz
             this.lbl_Internacional.Text = $"Ganancias Internacional: {Sistema.InformarGananciaInternacionalDeLosVuelos()}";
         }
 
+        private void InformarHistorialDeVuelos()
+        {
+            if (BaseDeDatos.vuelosHistorial.Count > 0)
+            {
+                dtg_HistorialDeVuelos.Visible = true;
+                dtg_HistorialDeVuelos.DataSource = BaseDeDatos.vuelosHistorial;
+                dtg_HistorialDeVuelos.Columns["Aeronave"].Visible = false;
+                dtg_HistorialDeVuelos.Columns["HoraDelVuelo"].Visible = false;
+                dtg_HistorialDeVuelos.Columns["MinutosDelVuelo"].Visible = false;
+                dtg_HistorialDeVuelos.Columns["Wifii"].Visible = false;
+                dtg_HistorialDeVuelos.Columns["Comida"].Visible = false;
+                dtg_HistorialDeVuelos.Columns["MenuVegano"].Visible = false;
+                dtg_HistorialDeVuelos.Columns["MenuPremium"].Visible = false;
+                dtg_HistorialDeVuelos.Columns["SinAlcohol"].Visible = false;
+                dtg_HistorialDeVuelos.Columns["Alcoholicas"].Visible = false;
+            }
+            else
+            {
+                dtg_HistorialDeVuelos.Visible = false;
+            }
+        }
 
         private void InformarDestinosPorFacturacion(BindingSource bs)
         {
@@ -103,7 +119,5 @@ namespace Interfaz
         {
             this.BackColor = Color.DarkGray;
         }
-
-        
     }
 }

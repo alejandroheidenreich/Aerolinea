@@ -212,13 +212,18 @@ Cerrara inmediatamente la aplicacion.
     - FrmAltaEquipaje
     - FrmEstadisitcasHistoricas
     - FrmConfiguracionCuenta
+
 * Colecciones
     - Listas : se utilizan en la clase estatica BaseDeDatos y en las clases instanciadas de objetos, como listaDePasajeros en Vuelo
-    - Diccionarios : se utilizan para informar estadisticas historicas
+    - Diccionarios : se utilizan para informar estadisticas historicas en la clase Sistema 
 * Encapsulamiento
 
     - 
 * Herencia
+
+    - Hay herencias de Individuo ( Abstract ) es padre de Cliente y Usuario
+    - 
+
 * Polimorfismo y clases abstractas
 
 Indicar tema a tema (de los temas 01 al 09) dónde se fue aplicando en el código y por qué se decidió implementarlo de esa forma. Toda decisión tiene que estar argumentada con razones técnicas que giren alrededor de los pilares de la programación orientada a objetos y cuestiones de mantenibilidad, código limpio, flexibilidad al cambio, experiencia de usuario, accesibilidad, uso seguro, rendimiento y eficiencia.

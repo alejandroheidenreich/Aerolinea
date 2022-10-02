@@ -27,7 +27,6 @@ namespace Entidades
         public DateTime AntiguedadComoEmpleado
         {
             get => antiguedadComoEmpleado;
-            set => antiguedadComoEmpleado = value;
         }
 
         public bool VerificarContrasenia(string contraseniaActual)

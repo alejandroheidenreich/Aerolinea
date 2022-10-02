@@ -17,9 +17,9 @@ namespace Interfaz.FrmCliente
         private Cliente? nuevoCliente;
         private bool tema;
 
-        public Cliente? NuevoCliente
+        public Cliente NuevoCliente
         {
-            get => nuevoCliente;
+            get => nuevoCliente!;
         }
         public FrmAltaCliente(bool tema)
         {

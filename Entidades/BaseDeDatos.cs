@@ -1133,7 +1133,7 @@ namespace Entidades
                     {
                         Pasaje pasaje = new Pasaje(clientes[rnd.Next(0, 998)], aux);
                         CargarEquipajesDePasajeros(pasaje, item);
-                        if (Sistema.VerificarPasajeComprar(item, pasaje))
+                        if (Sistema.VerificarCantidadDePasajesPorCliente(item, pasaje))
                         {
                             item.ListaDePasajeros.Add(pasaje);
                         }
@@ -1151,7 +1151,7 @@ namespace Entidades
             for (int i = 0; i < rnd.Next(0, 3); i++)
             {
                 peso = rnd.Next(10, 35);
-                if (vuelo.EspacioDisponibleBodega() > peso)
+                if (vuelo.CalcularEspacioDisponibleBodega() > peso)
                 {
                     pasajero.AgregarEquipaje(peso);
                 }

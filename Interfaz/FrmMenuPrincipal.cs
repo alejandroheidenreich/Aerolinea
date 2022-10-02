@@ -154,7 +154,5 @@ namespace Interfaz
         {
             this.mouseAccion = false;
         }
-
-        
     }
 }

@@ -11,10 +11,8 @@ using System.Security.Permissions;
 
 namespace Interfaz.Controles
 {
-    //BotonToggle hereda de CheckBox
     public class BotonToggle : CheckBox
     {
-        //atributos inciales de colores
         private Color encendidoSlideColor = Color.MediumSlateBlue;
         private Color encendidoCirculoColor = Color.WhiteSmoke;
         private Color apagadoSlideColor = Color.Gray;
@@ -23,7 +21,6 @@ namespace Interfaz.Controles
         // construtor
         public BotonToggle()
         {
-            //inicializa el tamaño minimo del boton
             this.MinimumSize = new Size(45,22);
         }
         public Color EncendidoSlideColor 
@@ -34,7 +31,7 @@ namespace Interfaz.Controles
             }
             set 
             { 
-                encendidoSlideColor = value; 
+                encendidoSlideColor = value;
                 this.Invalidate();//Invalida toda la superficie del control y hace que se vuelva a dibujar el mismo
             }
         }
@@ -52,7 +49,10 @@ namespace Interfaz.Controles
         }
         public Color ApagadoSlideColor 
         { 
-            get { return apagadoSlideColor; }
+            get 
+            { 
+                return apagadoSlideColor; 
+            }
             set
             {
                 apagadoSlideColor = value;
@@ -61,46 +61,65 @@ namespace Interfaz.Controles
         }
         public Color ApagadoCirculoColor 
         { 
-            get { return apagadoCirculoColor; }
-            set { apagadoCirculoColor = value; this.Invalidate(); }
+            get 
+            { 
+                return apagadoCirculoColor; 
+            }
+            set 
+            { 
+                apagadoCirculoColor = value; this.Invalidate(); 
+            }
         }
 
         public override string Text 
         {
-            get { return base.Text; }
+            get 
+            { 
+                return base.Text; 
+            }
         }
-        private GraphicsPath GetGraphicsPath()
+        /// <summary>
+        /// Clase para poder dibujar figuras, compuestas por lineas y curvas
+        /// Este metodo crea las caracteristicas del ciruclo para el control
+        /// </summary>
+        /// <returns></returns>
+        private GraphicsPath ObtenerFormatoGrafico()
         {
             int tamDelArco = this.Height - 1;
             Rectangle arcoIzq = new Rectangle(0, 0, tamDelArco, tamDelArco);
             Rectangle arcoDer = new Rectangle(this.Width - tamDelArco -2, 0, tamDelArco, tamDelArco);
 
-            GraphicsPath path = new GraphicsPath();
-            path.StartFigure();
-            path.AddArc(arcoIzq, 90, 180);
-            path.AddArc(arcoDer, 270, 180);
-            path.CloseFigure();
+            GraphicsPath forma = new GraphicsPath();
+            forma.StartFigure();
+            forma.AddArc(arcoIzq, 90, 180);
+            forma.AddArc(arcoDer, 270, 180);
+            forma.CloseFigure();
 
-            return path;
+            return forma;
         }
 
+        /// <summary>
+        /// Sobrecarga del metodo OnPaint para actualizar la forma que se pintara el checkbox dentro de formulario cada vez que es interactuado
+        /// PaintEventArgs es una clase para dibujar rectangulos en el formulario
+        /// </summary>
+        /// <param name="pevent"></param>
         protected override void OnPaint(PaintEventArgs pevent)
         {
             int tamToggle = this.Height - 5;
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             pevent.Graphics.Clear(this.Parent.BackColor);
 
-            if (this.Checked) // encendido
+            if (this.Checked)//encendido
             {
                 // dibujar fondo
-                pevent.Graphics.FillPath(new SolidBrush(encendidoSlideColor),GetGraphicsPath());
+                pevent.Graphics.FillPath(new SolidBrush(encendidoSlideColor), ObtenerFormatoGrafico());
                 // dibujar circulo
                 pevent.Graphics.FillEllipse(new SolidBrush(encendidoCirculoColor), new Rectangle(this.Width - this.Height + 1, 2, tamToggle, tamToggle));
             }
             else // apagado
             {
                 // dibujar fondo
-                pevent.Graphics.FillPath(new SolidBrush(apagadoSlideColor), GetGraphicsPath());
+                pevent.Graphics.FillPath(new SolidBrush(apagadoSlideColor), ObtenerFormatoGrafico());
                 // dibujar circulo
                 pevent.Graphics.FillEllipse(new SolidBrush(apagadoCirculoColor), new Rectangle(2, 2, tamToggle, tamToggle));
             }

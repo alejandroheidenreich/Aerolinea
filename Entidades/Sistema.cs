@@ -57,7 +57,7 @@ namespace Entidades
             }
             else
             {
-                huboFallo = AgregarPasajeroLista(pasajerosAAgregar, vuelo, fallos);
+                huboFallo = AgregarPasajeroListaDeVuelo(pasajerosAAgregar, vuelo, fallos);
             }
             if (huboFallo)
             {
@@ -70,7 +70,7 @@ namespace Entidades
             }
         }
 
-        private static bool AgregarPasajeroLista(List<Pasaje> pasajerosAAgregar, Vuelo vuelo, List<Pasaje> fallos)
+        private static bool AgregarPasajeroListaDeVuelo(List<Pasaje> pasajerosAAgregar, Vuelo vuelo, List<Pasaje> fallos)
         {
             bool huboFallo = false;
             foreach (Pasaje item in pasajerosAAgregar)
@@ -88,6 +88,12 @@ namespace Entidades
             return huboFallo;
         }
 
+        /// <summary>
+        /// Verifica que el cliente no supere la cantidad maxima (5) de pasajes por vuelo
+        /// </summary>
+        /// <param name="vuelo"></param>
+        /// <param name="pasajero"></param>
+        /// <returns></returns>
         public static bool VerificarCantidadDePasajesPorCliente(Vuelo vuelo, Pasaje pasajero)
         {
             int contadorDePasajes = 0;
@@ -105,8 +111,14 @@ namespace Entidades
             }
             return puedeComprar;
         }
-
-        public static bool VerificarPasajeComprar(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajerosParaAgregar)
+        /// <summary>
+        /// Verifica que el cliente no supere la cantidad maxima (5) de pasajes por vuelo, sumando los que tiene ya en el carrito actualmente
+        /// </summary>
+        /// <param name="vuelo"></param>
+        /// <param name="pasajero"></param>
+        /// <param name="pasajerosParaAgregar"></param>
+        /// <returns></returns>
+        public static bool VerificarCantidadDePasajesPorCliente(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajerosParaAgregar)
         {
             bool puedeComprar = false;
             int contadorDePasajes = CalcularCantidadDelMismoPasajeEnListaPasajes(pasajero, pasajerosParaAgregar);
@@ -123,27 +135,15 @@ namespace Entidades
             }
             return puedeComprar;
         }
-
-        public static bool VerificarPasajeComprar(Vuelo vuelo, Pasaje pasajero)
-        {
-            int contadorDePasajes = 0;
-            bool puedeComprar = false;
-            foreach (Pasaje item in vuelo.ListaDePasajeros)
-            {
-                if (item.Equals(pasajero.Cliente))
-                {
-                    contadorDePasajes++;
-                }
-            }
-            if (contadorDePasajes < 5)
-            {
-
-                puedeComprar = true;
-            }
-            return puedeComprar;
-        }
-
-        public static void ValidadCompraDeClase(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajesAComprar)
+        
+        /// <summary>
+        /// Valida la cantidad de pasajeros de cierta clase con un lista que se encuentra en el carrito de compras actual
+        /// </summary>
+        /// <param name="vuelo"></param>
+        /// <param name="pasajero"></param>
+        /// <param name="pasajesAComprar"></param>
+        /// <exception cref="Exception"></exception>
+        public static void ValidarCompraDeClase(Vuelo vuelo, Pasaje pasajero, List<Pasaje> pasajesAComprar)
         {
             int contadorPremium = 0;
             int contadorTurista = 0;
@@ -262,7 +262,7 @@ namespace Entidades
                 }
             }
         }
-        public static Dictionary<string, string> HistorialDeVuelosPorFacturacion()
+        public static Dictionary<string, string> CargarDiccionarioHistorialDeVuelosPorFacturacion()
         {
             Dictionary<string, double> destinoFacturadosDouble = new Dictionary<string, double>();
             foreach (string item in BaseDeDatos.localidades)
@@ -270,7 +270,7 @@ namespace Entidades
                 destinoFacturadosDouble.Add(item, 0);
             }
             AcumularValoresDeGanacia(destinoFacturadosDouble);
-            return ConvertirDiccionarioAListaPasarloAListaStringDouble(destinoFacturadosDouble);
+            return ConvertirConOrdenamientoDeStringDoubleAStringString(destinoFacturadosDouble);
         }
         private static void AcumularValoresDeGanacia(Dictionary<string, double> dic)
         {
@@ -279,15 +279,26 @@ namespace Entidades
                 dic[item.Destino] += item.GananciaTotal();
             }
         }
-        private static Dictionary<string, string> ConvertirDiccionarioAListaPasarloAListaStringDouble(Dictionary<string, double> dic)
+        /// <summary>
+        /// Recibe un diccionario lo ordena pasandolo a lista por facturacion ascendente y los convierte el double a string con formato de dinero
+        /// mediante ConvertirDiccionarioPasarDoubleAString y OrdenarDiccionarioStringDoublePorValorAscendente
+        /// </summary>
+        /// <param name="dic"></param>
+        /// <returns></returns>
+        private static Dictionary<string, string> ConvertirConOrdenamientoDeStringDoubleAStringString(Dictionary<string, double> dic)
         {
             List<KeyValuePair<string, double>> lista;
 
             lista = dic.ToList();
-            lista.Sort(OrdenarDiccionarioStringDouble);
-            return CargarDiccionarioPasarDoubleAString(lista);
+            lista.Sort(OrdenarDiccionarioStringDoublePorValorAscendente);
+            return ConvertirDiccionarioPasarDoubleAString(lista);
         }
-        private static Dictionary<string, string> CargarDiccionarioPasarDoubleAString(List<KeyValuePair<string, double>> lista)
+        /// <summary>
+        /// Recibe una Lista(KeyValuePair) String Double y devuelve un diccionario String String con formato de dinero
+        /// </summary>
+        /// <param name="lista"></param>
+        /// <returns></returns>
+        private static Dictionary<string, string> ConvertirDiccionarioPasarDoubleAString(List<KeyValuePair<string, double>> lista)
         {
             Dictionary<string, string> diccionario = new Dictionary<string, string>();
 
@@ -297,22 +308,24 @@ namespace Entidades
             }
             return diccionario;
         }
-        private static int OrdenarDiccionarioStringDouble(KeyValuePair<string, double> p1, KeyValuePair<string, double> p2)
+
+        private static int OrdenarDiccionarioStringDoublePorValorAscendente(KeyValuePair<string, double> p1, KeyValuePair<string, double> p2)
         {
             return (int)(p2.Value - p1.Value);
         }
-        public static Dictionary<string, int> ClientesPorCantidadDeVuelos()
+
+        public static Dictionary<string, int> CargarDiccionarioClientesPorCantidadDeVuelos()
         {
             Dictionary<string, int> clientesCantidadVuelos = new Dictionary<string, int>();
             foreach (Cliente item in BaseDeDatos.clientes)
             {
                 clientesCantidadVuelos.Add(item.ToString(), 0);
             }
-            ContarPasajes(clientesCantidadVuelos);
-            return ConvertirDiccionarioAListaStringInt(clientesCantidadVuelos);
+            ContarPasajesPorCliente(clientesCantidadVuelos);
+            return ConvertirConOrdenamientoDeStringIntAStringString(clientesCantidadVuelos);
 
         }
-        private static void ContarPasajes(Dictionary<string, int> clientesCantidadVuelos)
+        private static void ContarPasajesPorCliente(Dictionary<string, int> clientesCantidadVuelos)
         {
             foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
             {
@@ -322,14 +335,24 @@ namespace Entidades
                 }
             }
         }
-        private static Dictionary<string, int> ConvertirDiccionarioAListaStringInt(Dictionary<string, int> clientesCantidadVuelos)
+        /// <summary>
+        /// Ordena un diccionario pasandolo a lista ascendente por valor que recibe por parametro y devuelve el diccionario alterado
+        /// </summary>
+        /// <param name="clientesCantidadVuelos"></param>
+        /// <returns></returns>
+        private static Dictionary<string, int> ConvertirConOrdenamientoDeStringIntAStringString(Dictionary<string, int> clientesCantidadVuelos)
         {
             List<KeyValuePair<string, int>> lista;
 
             lista = clientesCantidadVuelos.ToList();
-            lista.Sort(OrdenarDiccionarioStringInt);
+            lista.Sort(OrdenarDiccionarioStringIntPorValorAscendente);
             return CargarDiccionarioStringInt(lista);
         }
+        /// <summary>
+        /// Recibe una lista (KeyValuePair) y lo convierte en diccionario
+        /// </summary>
+        /// <param name="lista"></param>
+        /// <returns></returns>
         private static Dictionary<string, int> CargarDiccionarioStringInt(List<KeyValuePair<string, int>> lista)
         {
             Dictionary<string, int> diccionario = new Dictionary<string, int>();
@@ -340,11 +363,11 @@ namespace Entidades
             }
             return diccionario;
         }
-        private static int OrdenarDiccionarioStringInt(KeyValuePair<string, int> p1, KeyValuePair<string, int> p2)
+        private static int OrdenarDiccionarioStringIntPorValorAscendente(KeyValuePair<string, int> p1, KeyValuePair<string, int> p2)
         {
             return p2.Value - p1.Value;
         }
-        public static string DestinoFavorito()
+        public static string BuscarDestinoFavorito()
         {
             string favorito = "Ninguno";
             int cantidadMayor = -1;
@@ -378,7 +401,7 @@ namespace Entidades
                 destinoFavorito[item.Destino]++;
             }
         }
-        public static Dictionary<string, string> AeronaveCantidadDeHoras()
+        public static Dictionary<string, string> CargarDiccionarioDeAeronavesPorCantidadDeHorasVoladas()
         {
             Dictionary<string, double> horasDeAeronaves = new Dictionary<string, double>();
             foreach (Aeronave item in BaseDeDatos.aeronaves)
@@ -386,7 +409,7 @@ namespace Entidades
                 horasDeAeronaves.Add(item.Matricula, 0);
             }
             ContarHorasMinutos(horasDeAeronaves);
-            return ConvertirDiccionarioHorarioInforme(horasDeAeronaves);
+            return ConvertirDiccionarioYCalcularHorarioParaInformar(horasDeAeronaves);
         }
         private static void ContarHorasMinutos(Dictionary<string, double> dic)
         {
@@ -395,7 +418,7 @@ namespace Entidades
                 dic[item.Aeronave.Matricula] += item.HoraDelVuelo + (double)item.MinutosDelVuelo / 60;
             }
         }
-        private static Dictionary<string, string> ConvertirDiccionarioHorarioInforme(Dictionary<string, double> horaAeronave)
+        private static Dictionary<string, string> ConvertirDiccionarioYCalcularHorarioParaInformar(Dictionary<string, double> horaAeronave)
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
             string minutos;

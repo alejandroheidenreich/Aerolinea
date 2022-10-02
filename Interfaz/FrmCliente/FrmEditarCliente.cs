@@ -48,7 +48,6 @@ namespace Interfaz.FrmCliente
             this.pnl_Fondo.BackColor = Color.WhiteSmoke;
             this.btn_EditarCliente.BackColor = Color.LightGray;
             this.btn_Salir.BackColor = Color.LightGray;
-            //this.lbl_EncabezadoNacimiento.BackColor = Color.WhiteSmoke;
         }
 
         private void ActivarTemaOscuro()
@@ -57,7 +56,6 @@ namespace Interfaz.FrmCliente
             this.pnl_Fondo.BackColor = Color.DarkGray;
             this.btn_EditarCliente.BackColor = Color.DimGray;
             this.btn_Salir.BackColor = Color.DimGray;
-            //this.lbl_EncabezadoNacimiento.BackColor = Color.DarkGray;
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)

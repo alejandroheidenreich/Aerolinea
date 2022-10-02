@@ -16,12 +16,12 @@ namespace Interfaz
             InitializeComponent();
         }
 
-
         private void FrmLogIn_Load(object sender, EventArgs e)
         {
             if (BaseDeDatos.usuarios.Count < 0)
             {
-
+                MessageBox.Show($"No hay usuarios en el sistema{Environment.NewLine}Se cerrara la aplicacion", "Cerrando Aplicacion", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                Application.Exit();
             }
         }
 

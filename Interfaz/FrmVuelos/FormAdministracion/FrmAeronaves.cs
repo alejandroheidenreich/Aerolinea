@@ -28,14 +28,22 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             get
             {
-                return aeronave;
+                return aeronave!;
             }
         }
 
         private void FrmAeronaves_Load(object sender, EventArgs e)
         {
             TemaActual(this.temaActual);
-            this.dtg_Aeronaves.DataSource = BaseDeDatos.aeronaves;
+            if (BaseDeDatos.aeronaves.Count > 0)
+            {
+                this.dtg_Aeronaves.DataSource = BaseDeDatos.aeronaves;
+                this.btn_Seleccionar.Visible = true;
+            }
+            else
+            {
+                this.btn_Seleccionar.Visible = false;
+            }
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)
@@ -46,11 +54,11 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 
         private void btn_Seleccionar_Click(object sender, EventArgs e)
         {
-            this.aeronave = ObtenerVueloSeleccionado();
+            this.aeronave = ObtenerAeronaveSeleccionada();
             this.DialogResult = DialogResult.OK;
         }
 
-        private Aeronave ObtenerVueloSeleccionado()
+        private Aeronave ObtenerAeronaveSeleccionada()
         {
             return (Aeronave)dtg_Aeronaves.CurrentRow.DataBoundItem;
         }

@@ -15,7 +15,7 @@ namespace Interfaz.FrmPasajeros
     {
         private Vuelo vuelo;
         private Cliente cliente;
-        private Pasaje pasaje;
+        private Pasaje? pasaje;
         private bool tema;
         public FrmInformacionDelPasajero(Vuelo vuelo, Cliente cliente, bool tema)
         {

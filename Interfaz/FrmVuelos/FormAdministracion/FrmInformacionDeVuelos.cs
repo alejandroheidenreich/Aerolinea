@@ -30,25 +30,31 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 
         private void FrmInformacionDeVuelos_Load(object sender, EventArgs e)
         {
+            listaClientes = new List<Cliente>();
             TemaActual(temaActual);
+
             this.lbl_Origen.Text = $"Origen: {vuelo.Origen}";
             this.lbl_Destino.Text = $"Destino: {vuelo.Destino}";
             this.lbl_TipoDeVuelo.Text = vuelo.Tipo.ToString();
             this.lbl_Duracion.Text = $"Duracion: {vuelo.Duracion}";
             this.lbl_Partida.Text = $"Partida: {vuelo.Partida.ToString("HH:mm - dd/MM/yyyy")}";
             this.lbl_Aeronave.Text = this.vuelo.Aeronave.ToString();
-            this.lbl_DispoBodega.Text = $"Bodega Actual: {this.vuelo.EspacioDisponibleBodega()}/{this.vuelo.Aeronave.Bodega} KG.";
+            this.lbl_DispoBodega.Text = $"Bodega Actual: {this.vuelo.CalcularEspacioDisponibleBodega()}/{this.vuelo.Aeronave.Bodega} KG.";
             this.lbl_Premium.Text = $"Premium: {vuelo.Premium}/{vuelo.Aeronave.Premium}";
             this.lbl_Turista.Text = $"Tursita: {vuelo.Tursita}/{vuelo.Aeronave.Tursita}";
 
-            listaClientes = new List<Cliente>();
-            foreach (Pasaje item in this.vuelo.ListaDePasajeros)
-            {
-                listaClientes.Add(item.Cliente);
-            }
+            CargarListaDeClientesDelVuelo();
             this.dtg_ListaDePasajeros.DataSource = this.listaClientes;
             this.dtg_ListaDePasajeros.Columns["Email"].Visible = false;
             this.dtg_ListaDePasajeros.Columns["Antiguedad"].Visible = false;
+        }
+
+        private void CargarListaDeClientesDelVuelo()
+        {
+            foreach (Pasaje item in this.vuelo.ListaDePasajeros)
+            {
+                listaClientes!.Add(item.Cliente);
+            }
         }
 
         private void btn_ExaminarPasaje_Click(object sender, EventArgs e)

@@ -122,14 +122,14 @@ namespace Interfaz.FrmPasajeros
                 lbl_Error.Text = "El equipaje debe tener un Peso";
                 lbl_Error.Visible = true;
             }
-            else if (this.equipajesBodega.Count == this.pasajero.EquipajesMaximos)
+            else if (this.equipajesBodega!.Count == this.pasajero.EquipajesMaximos)
             {
                 lbl_Error.Text = $"Llego al maximo ({this.pasajero.EquipajesMaximos}) de equipajes en bodega";
                 lbl_Error.Visible = true;
             }
-            else if ((double)nud_PesoEquipaje.Value > this.vuelo.EspacioDisponibleBodega())
+            else if ((double)nud_PesoEquipaje.Value > this.vuelo.CalcularEspacioDisponibleBodega())
             {
-                lbl_Error.Text = $"La aeronave solo tiene {this.vuelo.EspacioDisponibleBodega()} disponible";
+                lbl_Error.Text = $"La aeronave solo tiene {this.vuelo.CalcularEspacioDisponibleBodega()} disponible";
                 lbl_Error.Visible = true;
             }
             else
@@ -144,7 +144,7 @@ namespace Interfaz.FrmPasajeros
         {
             lst_Equipajes.Items.Clear();
             OrdenarEquipaje();
-            foreach (double item in this.equipajesBodega)
+            foreach (double item in this.equipajesBodega!)
             {
                 lst_Equipajes.Items.Add($"Equipaje de Bodega ({item.ToString("0.000")}) KG.");
             }
@@ -158,7 +158,7 @@ namespace Interfaz.FrmPasajeros
         private void OrdenarEquipaje()
         {
             double aux;
-            for (int i = 0; i < this.equipajesBodega.Count; i++)
+            for (int i = 0; i < this.equipajesBodega!.Count; i++)
             {
                 for (int j = 0; j < this.equipajesBodega.Count; j++)
                 {
@@ -176,7 +176,7 @@ namespace Interfaz.FrmPasajeros
         {
             if (lst_Equipajes.SelectedIndex is not -1)
             {
-                this.equipajesBodega.RemoveAt(lst_Equipajes.SelectedIndex);
+                this.equipajesBodega!.RemoveAt(lst_Equipajes.SelectedIndex);
                 ActualizarListBox();
             }
             else

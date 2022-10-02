@@ -40,7 +40,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             ListarLosClientes(BaseDeDatos.clientes);
             tickets = new List<DataTicket>();
             nuevosPasajeros = new List<Pasaje>();
-            VerificarExiteData();
+            VerificarExiteDataTicket();
         }
         private void TemaActual(bool temaActual)
         {
@@ -53,7 +53,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 ActivarTemaClaro();
             }
         }
-
         private void ActivarTemaClaro()
         {
             this.BackColor = Color.SkyBlue;
@@ -89,9 +88,9 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         private void ListarLosClientes(List<Cliente> listaClientes)
         {
             lst_Clientes.Items.Clear();
-            foreach (Cliente item in listaClientes)
+            if (listaClientes.Count>0)
             {
-                if (true)
+                foreach (Cliente item in listaClientes)
                 {
                     lst_Clientes.Items.Add(item);
                 }
@@ -140,7 +139,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 Sistema.AltaDeCliente(altaCliente.NuevoCliente);
             }
         }
-
         private void btn_AgregarCompra_Click(object sender, EventArgs e)
         {
             if (this.lst_Clientes.SelectedItem is null)
@@ -154,8 +152,8 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 this.lbl_Error.Visible = false;
                 try
                 {
-                    Sistema.ValidadCompraDeClase(this.vuelo, pasajeAgregado, this.nuevosPasajeros);
-                    if (Sistema.VerificarPasajeComprar(this.vuelo, pasajeAgregado, this.nuevosPasajeros))
+                    Sistema.ValidarCompraDeClase(this.vuelo, pasajeAgregado, this.nuevosPasajeros);
+                    if (Sistema.VerificarCantidadDePasajesPorCliente(this.vuelo, pasajeAgregado, this.nuevosPasajeros))
                     {
                         AgregarVuelo(pasajeAgregado);
                     }
@@ -173,18 +171,16 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 }
             }
         }
-
         private void AgregarVuelo(Pasaje pasajeAgregado)
         {
             double precioFinal;
-            this.nuevosPasajeros.Add(pasajeAgregado);
-            this.vuelo.InformarConPrecioDelPasaje(pasajeAgregado, out precioFinal);
-            tickets.Add(new DataTicket(pasajeAgregado.IdRegistro, (Cliente)this.lst_Clientes.SelectedItem, VerificarPremium()));
+            this.nuevosPasajeros!.Add(pasajeAgregado);
+            this.vuelo.InformarTarifasYPrecioDelPasaje(pasajeAgregado, out precioFinal);
+            tickets!.Add(new DataTicket(pasajeAgregado.IdRegistro, (Cliente)this.lst_Clientes.SelectedItem, VerificarPremium()));
             ActualizarFacturacionActual();
-            VerificarExiteData();
+            VerificarExiteDataTicket();
             ActualizarDataGrid(this.dtg_CarritoDeCompra, tickets);
         }
-
         public void ActualizarFacturacionActual()
         {
             this.rtb_Facturacion.Clear();
@@ -192,9 +188,9 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             double precioFinal = 0;
             double precioDelPasaje;
 
-            foreach (Pasaje item in this.nuevosPasajeros)
+            foreach (Pasaje item in this.nuevosPasajeros!)
             {
-                sb.AppendLine(this.vuelo.InformarConPrecioDelPasaje(item, out precioDelPasaje));
+                sb.AppendLine(this.vuelo.InformarTarifasYPrecioDelPasaje(item, out precioDelPasaje));
                 precioFinal += precioDelPasaje;
             }
             sb.AppendLine("***********************************");
@@ -202,7 +198,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
 
             rtb_Facturacion.Text = sb.ToString();
         }
-
         private string GenerarRegsitro()
         {
             string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -215,7 +210,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             }
             return new String(matriculaArray);
         }
-
         public static void ActualizarDataGrid(DataGridView dtg, List<DataTicket> lista)
         {
             dtg.DataSource = null;
@@ -235,12 +229,11 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         {
             this.Close();
         }
-
         private void btn_Finalizar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (this.nuevosPasajeros.Count != 0)
+                if (this.nuevosPasajeros!.Count > 0)
                 {
                     GenerarTicket();
 
@@ -259,7 +252,6 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void GenerarTicket()
         {
             WorkBook archivo = WorkBook.Create(ExcelFileFormat.XLSX);
@@ -267,7 +259,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             string ticket = GenerarRegsitro();
             double precioFinal;
             double horasTotales = vuelo.CalcularHorasTotales();
-            double precioBase = vuelo.PrecioSegunTipoDeVuelo(horasTotales);
+            double precioBase = vuelo.CalcularPrecioSegunTipoDeVuelo(horasTotales);
             int fila = 1;
 
             hoja["A1"].Style.BottomBorder.Type = IronXL.Styles.BorderType.Double;
@@ -279,13 +271,12 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             AgregarFila(hoja, ref fila, $"Precio Fianl Neto (+IVA): $ {(precioFinal * 1.21).ToString("0.00")} USD");
             archivo.SaveAs($"Ticket {ticket}.xlsx");
         }
-
         private double CargarFilasDePasajeros(WorkSheet hoja, double precioBase, ref int fila)
         {
             double precioPremium;
             double precioPeso;
             double precioFinal = 0;
-            for (int i = 0; i < this.nuevosPasajeros.Count; i++)
+            for (int i = 0; i < this.nuevosPasajeros!.Count; i++)
             {
                 precioFinal += precioBase;
                 AgregarFila(hoja, ref fila, $"Registro: {this.nuevosPasajeros[i].IdRegistro}");
@@ -306,77 +297,71 @@ namespace Interfaz.FrmVuelos.FormAdministracion
             }
             return precioFinal;
         }
-
         private static void AgregarFila(WorkSheet hoja, ref int fila, string contenidoFila)
         {
             hoja[$"A{fila}"].Value = contenidoFila;
             fila++;
         }
-
         private void dtg_CarritoDeCompra_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dtg_CarritoDeCompra.Columns[e.ColumnIndex].Name == "Eliminar")
             {
-                EliminarPasajeroDeListaParcial(ObtenerSeleccionado().Registro);
-                tickets.Remove(ObtenerSeleccionado());
+                EliminarPasajeroPorIdDeListaParcial(ObtenerDataTicketSeleccionado().Registro);
+                tickets!.Remove(ObtenerDataTicketSeleccionado());
                 ActualizarDataGrid(this.dtg_CarritoDeCompra, tickets);
                 ActualizarFacturacionActual();
-                VerificarExiteData();
+                VerificarExiteDataTicket();
             }
         }
-
-        private void EliminarPasajeroDeListaParcial(string idRegistro)
+        private void EliminarPasajeroPorIdDeListaParcial(string idRegistro)
         {
-            Pasaje pasajeBorrar = EncontrarPasaje(idRegistro);
+            Pasaje pasajeBorrar = EncontrarPasajePorID(idRegistro);
             if (pasajeBorrar is not null)
             {
-                this.nuevosPasajeros.Remove(pasajeBorrar);
+                this.nuevosPasajeros!.Remove(pasajeBorrar);
             }
         }
-
-        private Pasaje EncontrarPasaje(string idRegistro)
+        private Pasaje EncontrarPasajePorID(string idRegistro)
         {
-            foreach (Pasaje item in this.nuevosPasajeros)
+            foreach (Pasaje item in this.nuevosPasajeros!)
             {
                 if (item.IdRegistro == idRegistro)
                 {
                     return item;
                 }
             }
-            return null;
+            return null!;
         }
-        private DataTicket ObtenerSeleccionado()
+        private DataTicket ObtenerDataTicketSeleccionado()
         {
             return (DataTicket)dtg_CarritoDeCompra.CurrentRow.DataBoundItem;
         }
-
-        private void VerificarExiteData()
+        private void VerificarExiteDataTicket()
         {
-            if (tickets.Count == 0)
+            if (tickets!.Count > 0)
+            {
+                dtg_CarritoDeCompra.Visible = true;
+                btn_Equipaje.Visible = true;
+            }
+            else
             {
                 dtg_CarritoDeCompra.Visible = false;
                 btn_Equipaje.Visible = false;
                 this.rtb_Facturacion.Clear();
             }
-            else
-            {
-                dtg_CarritoDeCompra.Visible = true;
-                btn_Equipaje.Visible = true;
-            }
         }
-
         private void btn_Equipaje_Click(object sender, EventArgs e)
         {
             if (dtg_CarritoDeCompra.Visible && dtg_CarritoDeCompra.CurrentRow.DataBoundItem is not null)
             {
-                Pasaje pasajeAgregarEquipaje = EncontrarPasaje(ObtenerSeleccionado().Registro);
+                Pasaje pasajeAgregarEquipaje = EncontrarPasajePorID(ObtenerDataTicketSeleccionado().Registro);
                 FrmAltaEquipaje frmEquipaje = new FrmAltaEquipaje(this.vuelo, this.tema, pasajeAgregarEquipaje);
                 DialogResult respuesta = frmEquipaje.ShowDialog();
 
                 if (respuesta == DialogResult.OK)
                 {
                     pasajeAgregarEquipaje.EquipajeDeMano = frmEquipaje.EquipajeDeMano;
-                    foreach (double item in frmEquipaje.EquipajesBodega)
+                    foreach (double item in frmEquipaje.EquipajesBodega!)
                     {
                         pasajeAgregarEquipaje.AgregarEquipaje(item);
                     }
@@ -389,14 +374,12 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 this.lbl_Error.Visible = true;
             }
         }
-
         private void pnl_Fondo_MouseDown(object sender, MouseEventArgs e)
         {
             this.mouseAccion = true;
             this.mousePosX = e.X;
             this.mousePosY = e.Y;
         }
-
         private void pnl_Fondo_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseAccion)
@@ -404,32 +387,26 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 this.SetDesktopLocation(MousePosition.X - mousePosX, MousePosition.Y - mousePosY);
             }
         }
-
         private void pnl_Fondo_MouseUp(object sender, MouseEventArgs e)
         {
             this.mouseAccion = false;
         }
-
         private void btn_AgregarCompra_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Agregar a Compra", this.btn_AgregarCompra);
         }
-
         private void btn_AgregarCliente_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Agregar Nuevo Cliente", this.btn_AgregarCliente);
         }
-
         private void btn_Finalizar_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Terminar Operacion", this.btn_Finalizar);
         }
-
         private void btn_Equipaje_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Añadir Equipaje al Pasajero", this.btn_Equipaje);
         }
-
         private void lst_Clientes_MouseHover(object sender, EventArgs e)
         {
             this.tt_Ayuda.Show("Seleccionar Cliente a Vender Pasaje", this.lst_Clientes);

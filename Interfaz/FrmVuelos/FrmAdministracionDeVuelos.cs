@@ -12,7 +12,7 @@ namespace Interfaz
     public partial class FrmAdministracionDeVuelos : Form
     {
         private bool temaActual;
-        private Vuelo vueloNuevo;
+        private Vuelo? vueloNuevo;
 
         public FrmAdministracionDeVuelos(bool temaActual)
         {

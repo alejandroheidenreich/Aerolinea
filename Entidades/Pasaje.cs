@@ -85,15 +85,15 @@ namespace Entidades
             double pesoValija;
             if (this.claseDePasajero == ClaseDePasajero.Tursita)
             {
-                pesoValija = CondicionarEquipaje(25, 1);
+                pesoValija = CondicionarPesoAdicionalDelEquipaje(25, 1);
             }
             else
             {
-                pesoValija = CondicionarEquipaje(21,2);
+                pesoValija = CondicionarPesoAdicionalDelEquipaje(21,2);
             }
             return pesoValija;
         }
-        private double CondicionarEquipaje(int peso, int cantidad)
+        private double CondicionarPesoAdicionalDelEquipaje(int peso, int cantidad)
         {
             double pesoAdicional = 0;
             for (int i = 0; i < this.equipajeDeBodega.Count; i++)

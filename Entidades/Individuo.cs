@@ -15,7 +15,7 @@ namespace Entidades
         {
             ValidarCampoString(nombre, out this.nombre);
             ValidarCampoString(apellido, out this.apellido);
-            ValidarDateTime(fechaDeNacimiento, out this.fechaDeNacimiento);
+            ValidarFechaDeNacimiento(fechaDeNacimiento, out this.fechaDeNacimiento);
             ValidarCampoDni(dni, out this.dni);
             ValidarCampoEmail(email, out this.email);
         }
@@ -90,7 +90,7 @@ namespace Entidades
             dniValidado = dni;
         }
 
-        private void ValidarDateTime(DateTime fecha, out DateTime fechaValidado)
+        private void ValidarFechaDeNacimiento(DateTime fecha, out DateTime fechaValidado)
         {
             fechaValidado = DateTime.MinValue;
             if (CalcularEdad(fecha) < 0)

@@ -29,7 +29,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         }
         public Vuelo VueloNuevo
         {
-            get => vueloNuevo;
+            get => vueloNuevo!;
             set => vueloNuevo = value;
         }
 
@@ -65,7 +65,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
         }
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
-            if (VerificarIngresos())
+            if (VerificarIngresosDeLosControles())
             {
                 Aeronave aeronave = Sistema.BuscarAeronavePorMatricula(cmb_Aeronave.Text);
                 if (aeronave is not null)
@@ -91,7 +91,7 @@ namespace Interfaz.FrmVuelos.FormAdministracion
                 }
             }
         }
-        private bool VerificarIngresos()
+        private bool VerificarIngresosDeLosControles()
         {
             lbl_MensajeError.Visible = false;
             if (String.IsNullOrEmpty(cmb_Origen.Text) || String.IsNullOrEmpty(cmb_Destino.Text) || String.IsNullOrEmpty(cmb_Aeronave.Text) || ! this.fechaCambio)

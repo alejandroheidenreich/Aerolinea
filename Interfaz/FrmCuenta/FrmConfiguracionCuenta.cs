@@ -15,7 +15,7 @@ namespace Interfaz.FrmCuenta
     public partial class FrmConfiguracionCuenta : Form
     {
         private bool temaActual;
-        private Usuario usuarioActual;
+        private Usuario? usuarioActual;
         private int usuario;
         public FrmConfiguracionCuenta(int usuario, bool temaActual)
         {
@@ -28,7 +28,6 @@ namespace Interfaz.FrmCuenta
             TemaActual(this.temaActual);
             ActualizarDatosDelUsuario();
         }
-
         private void ActualizarDatosDelUsuario()
         {
             this.usuarioActual = BaseDeDatos.usuarios[this.usuario];
@@ -71,7 +70,7 @@ namespace Interfaz.FrmCuenta
         private void btn_Editar_Click(object sender, EventArgs e)
         {
             pnl_EditarUsuario.Visible = true;
-            this.txt_UsuarioEditar.Text = this.usuarioActual.NombreDeUsuario;
+            this.txt_UsuarioEditar.Text = this.usuarioActual!.NombreDeUsuario;
             this.txt_NombreEditar.Text = this.usuarioActual.Nombre;
             this.txt_ApellidoEditar.Text = this.usuarioActual.Apellido;
             this.txt_EmailEditar.Text = this.usuarioActual.Email;
@@ -79,7 +78,7 @@ namespace Interfaz.FrmCuenta
 
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
-            if (!this.usuarioActual.VerificarContrasenia(txt_Contrasenia.Text))
+            if (!this.usuarioActual!.VerificarContrasenia(txt_Contrasenia.Text))
             {
 
                 lbl_Error.Text = "La contraseña es incorrecta";

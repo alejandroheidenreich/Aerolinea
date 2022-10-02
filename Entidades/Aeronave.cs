@@ -71,12 +71,12 @@ namespace Entidades
         }
         public void AgregarVueloAPlanDeVuelos(DateTime vueloFecha)
         {
-            if (ValidadNuevoPlanDeVuelo(vueloFecha))
+            if (VerificarQueNuevoPlanDeVueloNoExista(vueloFecha))
             {
                 this.planDeVuelos.Add(vueloFecha);
             }
         }
-        private bool ValidadNuevoPlanDeVuelo(DateTime vueloFecha)
+        private bool VerificarQueNuevoPlanDeVueloNoExista(DateTime vueloFecha)
         {
             foreach (DateTime item in this.planDeVuelos)
             {

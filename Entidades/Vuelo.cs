@@ -4,8 +4,6 @@ using System.Text;
 
 namespace Entidades
 {
-    
-
     public class Vuelo
     {
         private const double PRECIOPORHORANACIONAL = 50;
@@ -77,7 +75,7 @@ namespace Entidades
         {
             get
             {
-                return CargarDisponibilidad();
+                return ActualizarDisponibilidad();
             }
         }
         public Aeronave Aeronave
@@ -109,14 +107,14 @@ namespace Entidades
         {
             get
             {
-                return CantidadDeVuelosClase(ClaseDePasajero.Premium);
+                return CantidadDeVuelosPorClase(ClaseDePasajero.Premium);
             }
         }
         public int Tursita
         {
             get
             {
-                return CantidadDeVuelosClase(ClaseDePasajero.Tursita);
+                return CantidadDeVuelosPorClase(ClaseDePasajero.Tursita);
             }
         }
         public bool Wifii
@@ -187,9 +185,9 @@ namespace Entidades
             }
             menuValidado = menu;
         }
-        private string CargarDisponibilidad()
+        private string ActualizarDisponibilidad()
         {
-            string vuelo = EstadoDelVuelo();
+            string vuelo = ActualizarEstadoDelVuelo();
             if (!string.IsNullOrEmpty(vuelo))
             {
                 return vuelo;
@@ -229,7 +227,7 @@ namespace Entidades
             double precioPasaje;
             foreach (Pasaje item in this.listaDePasajeros)
             {
-                InformarConPrecioDelPasaje(item, out precioPasaje);
+                InformarTarifasYPrecioDelPasaje(item, out precioPasaje);
                 ganancia += precioPasaje;
             }
             return ganancia;
@@ -239,7 +237,7 @@ namespace Entidades
         {
             double gananciaCabotaje = 0;
             double horas = CalcularHorasTotales();
-            double precioBase = PrecioSegunTipoDeVuelo(horas);
+            double precioBase = CalcularPrecioSegunTipoDeVuelo(horas);
             foreach (Pasaje item in this.listaDePasajeros)
             {
                 gananciaCabotaje += item.PesoAdicional * precioBase * .01;
@@ -253,7 +251,7 @@ namespace Entidades
             if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Internacional)
             {
                 double horas = CalcularHorasTotales();
-                double precioBase = PrecioSegunTipoDeVuelo(horas);
+                double precioBase = CalcularPrecioSegunTipoDeVuelo(horas);
                 for (int i = 0; i < this.listaDePasajeros.Count; i++)
                 {
                     gananciaInternacional += precioBase;
@@ -262,10 +260,10 @@ namespace Entidades
             return gananciaInternacional;
         }
 
-        private string EstadoDelVuelo()
+        private string ActualizarEstadoDelVuelo()
         {
             string estado = string.Empty;
-            if (HorarioDeLlegada() > DateTime.Now && this.partida < DateTime.Now)
+            if (MedirHorarioDeLlegada() > DateTime.Now && this.partida < DateTime.Now)
             {
                 estado = "EN VUELO";
             }
@@ -275,7 +273,7 @@ namespace Entidades
             }
             return estado;
         }
-        private DateTime HorarioDeLlegada()
+        private DateTime MedirHorarioDeLlegada()
         {
             DateTime llegada;
 
@@ -285,7 +283,7 @@ namespace Entidades
             return llegada;
 
         }
-        private int CantidadDeVuelosClase(ClaseDePasajero clase)
+        private int CantidadDeVuelosPorClase(ClaseDePasajero clase)
         {
             int contador = 0;
             foreach (Pasaje item in this.listaDePasajeros)
@@ -297,10 +295,10 @@ namespace Entidades
             }
             return contador;
         }
-        public string InformarConPrecioDelPasaje(Pasaje pasaje, out double precioFinal)
+        public string InformarTarifasYPrecioDelPasaje(Pasaje pasaje, out double precioFinal)
         {
             StringBuilder sb = new StringBuilder();
-            double precioBase = PrecioSegunTipoDeVuelo(CalcularHorasTotales());
+            double precioBase = CalcularPrecioSegunTipoDeVuelo(CalcularHorasTotales());
             precioFinal = precioBase;
             sb.AppendLine($"Registro: {pasaje.IdRegistro}");
             sb.AppendLine($"Precio Bruto: {precioBase.ToString("0.00")} U$D");
@@ -333,7 +331,7 @@ namespace Entidades
         {
             return this.horaDelVuelo + ((double)this.minutosDelVuelo / 60);
         }
-        public double PrecioSegunTipoDeVuelo(double horasTotales)
+        public double CalcularPrecioSegunTipoDeVuelo(double horasTotales)
         {
             double precioFinal;
             if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Nacional)
@@ -348,7 +346,7 @@ namespace Entidades
             return precioFinal;
         }
 
-        public double EspacioDisponibleBodega()
+        public double CalcularEspacioDisponibleBodega()
         {
             double acumuladorBodega = 0;
             foreach (Pasaje item in this.listaDePasajeros)

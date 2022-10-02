@@ -226,8 +226,16 @@ Cerrara inmediatamente la aplicacion.
 
 * Polimorfismo y clases abstractas
 
-    - Clase Abstracta **Individuo** : esta clase tiene un metodo abstracto _public abstract int CalcularAntiguedad()_ que las clases hijas Cliente y Usuario deberan implementar. Todas las clases que no sean static tiene sobrecargas de ToString, algunas de Equals y GetHashCode 
+    - Clase Abstracta **Individuo** : esta clase tiene un metodo abstracto _public abstract int CalcularAntiguedad()_ que las clases hijas Cliente y Usuario deberan implementar. 
+    * Todas las clases que no sean static tiene sobrecargas de ToString, algunas de Equals y GetHashCode 
 
 ## Propuesta de valor agregado 
-En mi aplicacion propuse las siguientes funcionabilidades:
-* 
+En mi aplicacion propuse las siguientes funcionalidades:
+
+* El usuario puede acceder a su informacion y editar ciertos datos de ella. (_Configurar Cuenta_)
+* Eliminar Vuelos Activos, desde la administracion de vuelos
+* Al vender un pasaje, el pasajero puede llevar hasta 4 equipajes de bodega, si es _Tursita_ tiene 1 valija de hasta 25kg gratis, si esta valija sobrepasa el peso se le cobrara un 1% del precio base adicional por cada kilo sobrepasado, y asi con los demas valijas si es que las tiene.
+Y para el _Premium_ tiene hasta 2 valijas de 21 kg sin cargo, si algunas de estas valijas sobrepasa el peso tambien se le adicionara el 1% del precio base.
+* Cada ticket operacion de venta que se realiza se guardara un archivo excel en el bin, con los datos de la facturacion, tal cual se puede apreciar en la ventana de venta, esto se logra mediante el nuget _IronXL_
+* La aplicacion contiene una funcionalidad de cambio de tema, desde el menu principal
+

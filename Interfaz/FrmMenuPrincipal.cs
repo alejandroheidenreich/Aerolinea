@@ -10,9 +10,7 @@ namespace Interfaz
     {
         private int usuario;
         private Form? formActivo;
-        private bool mouseAccion;
-        private int mousePosX;
-        private int mousePosY;
+
         public FrmMenuPrincipal(int usuarioActual)
         {
             InitializeComponent();
@@ -133,26 +131,6 @@ namespace Interfaz
             BackColor = Color.WhiteSmoke;
             pnl_barraInfo.BackColor = Color.SkyBlue;
             mnu_menuPrincipal.BackColor = Color.SkyBlue;
-        }
-
-        private void mnu_menuPrincipal_MouseDown(object sender, MouseEventArgs e)
-        {
-            this.mouseAccion = true;
-            this.mousePosX = e.X;
-            this.mousePosY = e.Y;
-        }
-
-        private void mnu_menuPrincipal_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mouseAccion)
-            {
-                this.SetDesktopLocation(MousePosition.X - mousePosX, MousePosition.Y - mousePosY);
-            }
-        }
-
-        private void mnu_menuPrincipal_MouseUp(object sender, MouseEventArgs e)
-        {
-            this.mouseAccion = false;
         }
     }
 }

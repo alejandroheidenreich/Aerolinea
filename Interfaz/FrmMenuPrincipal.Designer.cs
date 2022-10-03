@@ -157,9 +157,6 @@
             this.mnu_menuPrincipal.Size = new System.Drawing.Size(1492, 56);
             this.mnu_menuPrincipal.TabIndex = 0;
             this.mnu_menuPrincipal.Text = "menuStrip1";
-            this.mnu_menuPrincipal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mnu_menuPrincipal_MouseDown);
-            this.mnu_menuPrincipal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mnu_menuPrincipal_MouseMove);
-            this.mnu_menuPrincipal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mnu_menuPrincipal_MouseUp);
             // 
             // clientesToolStripMenuItem1
             // 

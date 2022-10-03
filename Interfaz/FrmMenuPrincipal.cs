@@ -106,7 +106,7 @@ namespace Interfaz
         private void MensajeDeBarraDeInformacion(Usuario usuario)
         {
             DateTime fechaDeHoy = DateTime.Now;
-            lbl_InfoUsuarioFecha.Text = $"{usuario.Nombre} {usuario.Apellido} Fecha: {fechaDeHoy.ToString("dd/MM/yyyy")}";
+            lbl_InfoUsuarioFecha.Text = $"Usuario: {usuario.Nombre} {usuario.Apellido}   Fecha: {fechaDeHoy.ToString("dd/MM/yyyy")}";
         }
 
         private void btn_ToggleCambioDeTema_Checked(object sender, EventArgs e)

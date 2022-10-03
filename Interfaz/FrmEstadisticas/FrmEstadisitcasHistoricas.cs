@@ -27,9 +27,11 @@ namespace Interfaz
             InformarClientesPorCantidadDeVuelos(bs2);
             InformarAeronavesCantidadDeHorasVoladas(bs3);
             this.lbl_DestinoFavorito.Text = $"Destino Favorito: {Sistema.BuscarDestinoFavorito()}";
-            this.lbl_GananciasTotales.Text = $"Ganancias Totales: {Sistema.InformarGananciaTotalDeLosVuelos()}";
-            this.lbl_Cabotaje.Text = $"Ganancias Cabotajes: {Sistema.InformarGananciaCabotajeDeLosVuelos()}";
-            this.lbl_Internacional.Text = $"Ganancias Internacional: {Sistema.InformarGananciaInternacionalDeLosVuelos()}";
+            this.lbl_GananciasTotales.Text = $"Totales: {Sistema.InformarGananciaTotalDeLosVuelos()}";
+            this.lbl_Cabotaje.Text = $"Cabotajes: {Sistema.InformarGananciaCabotajeDeLosVuelos()}";
+            this.lbl_Internacional.Text = $"Internacional: {Sistema.InformarGananciaInternacionalDeLosVuelos()}";
+            this.lbl_PesoAdicional.Text = $"Peso Adicional: {Sistema.InformarGananciaPesoAdicionalDeLosVuelos()}";
+            this.lbl_Premium.Text = $"Premium: {Sistema.InformarGananciaPremiumAdicionalDeLosVuelos()}";
         }
 
         private void InformarHistorialDeVuelos()

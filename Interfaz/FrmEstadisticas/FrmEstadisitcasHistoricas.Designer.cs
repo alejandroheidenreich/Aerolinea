@@ -40,6 +40,8 @@
             this.lbl_EncabezaDestinosFacturados = new System.Windows.Forms.Label();
             this.lbl_EncabezaPasajerosFecuentes = new System.Windows.Forms.Label();
             this.gb_Ganacias = new System.Windows.Forms.GroupBox();
+            this.lbl_Premium = new System.Windows.Forms.Label();
+            this.lbl_PesoAdicional = new System.Windows.Forms.Label();
             this.lbl_Internacional = new System.Windows.Forms.Label();
             this.lbl_Cabotaje = new System.Windows.Forms.Label();
             this.lbl_GananciasTotales = new System.Windows.Forms.Label();
@@ -146,16 +148,38 @@
             // 
             // gb_Ganacias
             // 
+            this.gb_Ganacias.Controls.Add(this.lbl_Premium);
+            this.gb_Ganacias.Controls.Add(this.lbl_PesoAdicional);
             this.gb_Ganacias.Controls.Add(this.lbl_Internacional);
             this.gb_Ganacias.Controls.Add(this.lbl_Cabotaje);
             this.gb_Ganacias.Controls.Add(this.lbl_GananciasTotales);
             this.gb_Ganacias.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gb_Ganacias.Location = new System.Drawing.Point(1128, 229);
+            this.gb_Ganacias.Location = new System.Drawing.Point(1128, 197);
             this.gb_Ganacias.Name = "gb_Ganacias";
-            this.gb_Ganacias.Size = new System.Drawing.Size(323, 137);
+            this.gb_Ganacias.Size = new System.Drawing.Size(303, 184);
             this.gb_Ganacias.TabIndex = 5;
             this.gb_Ganacias.TabStop = false;
             this.gb_Ganacias.Text = "Ganacias";
+            // 
+            // lbl_Premium
+            // 
+            this.lbl_Premium.AutoSize = true;
+            this.lbl_Premium.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Premium.Location = new System.Drawing.Point(21, 146);
+            this.lbl_Premium.Name = "lbl_Premium";
+            this.lbl_Premium.Size = new System.Drawing.Size(69, 15);
+            this.lbl_Premium.TabIndex = 4;
+            this.lbl_Premium.Text = "Premium:";
+            // 
+            // lbl_PesoAdicional
+            // 
+            this.lbl_PesoAdicional.AutoSize = true;
+            this.lbl_PesoAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_PesoAdicional.Location = new System.Drawing.Point(21, 118);
+            this.lbl_PesoAdicional.Name = "lbl_PesoAdicional";
+            this.lbl_PesoAdicional.Size = new System.Drawing.Size(106, 15);
+            this.lbl_PesoAdicional.TabIndex = 3;
+            this.lbl_PesoAdicional.Text = "Peso Adicional:";
             // 
             // lbl_Internacional
             // 
@@ -171,7 +195,7 @@
             // 
             this.lbl_Cabotaje.AutoSize = true;
             this.lbl_Cabotaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Cabotaje.Location = new System.Drawing.Point(21, 63);
+            this.lbl_Cabotaje.Location = new System.Drawing.Point(21, 60);
             this.lbl_Cabotaje.Name = "lbl_Cabotaje";
             this.lbl_Cabotaje.Size = new System.Drawing.Size(68, 15);
             this.lbl_Cabotaje.TabIndex = 1;
@@ -334,5 +358,7 @@
         private System.Windows.Forms.DataGridView dtg_Aeronaves;
         private System.Windows.Forms.Label lbl_EncabezaAeronaves;
         private System.Windows.Forms.DataGridView dtg_HistorialDeVuelos;
+        private System.Windows.Forms.Label lbl_PesoAdicional;
+        private System.Windows.Forms.Label lbl_Premium;
     }
 }

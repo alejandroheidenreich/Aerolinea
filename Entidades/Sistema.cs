@@ -460,5 +460,25 @@ namespace Entidades
             }
             return $"$ {ganancia.ToString("0.00")} USD";
         }
+
+        public static string InformarGananciaPesoAdicionalDeLosVuelos()
+        {
+            double ganancia = 0;
+            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+            {
+                ganancia += item.GananciaPesoAdicional();
+            }
+            return $"$ {ganancia.ToString("0.00")} USD";
+        }
+
+        public static string InformarGananciaPremiumAdicionalDeLosVuelos()
+        {
+            double ganancia = 0;
+            foreach (Vuelo item in BaseDeDatos.vuelosHistorial)
+            {
+                ganancia += item.GananciaPremiumAdicional();
+            }
+            return $"$ {ganancia.ToString("0.00")} USD";
+        }
     }
 }

@@ -233,18 +233,48 @@ namespace Entidades
             return ganancia;
         }
 
-        public double GananciaCabotaje()
+        public double GananciaPesoAdicional()
         {
-            double gananciaCabotaje = 0;
+            double gananciaPesoAdicional = 0;
+
             double horas = CalcularHorasTotales();
             double precioBase = CalcularPrecioSegunTipoDeVuelo(horas);
             foreach (Pasaje item in this.listaDePasajeros)
             {
-                gananciaCabotaje += item.PesoAdicional * precioBase * .01;
+                gananciaPesoAdicional += item.PesoAdicional * precioBase * .01;
+            }
+            return gananciaPesoAdicional;
+        }
+        public double GananciaPremiumAdicional()
+        {
+            double gananciaPremiumAdicional = 0;
+
+            double horas = CalcularHorasTotales();
+            double precioBase = CalcularPrecioSegunTipoDeVuelo(horas);
+            foreach (Pasaje item in this.listaDePasajeros)
+            {
+                if (item.Clase == ClaseDePasajero.Premium)
+                {
+
+                    gananciaPremiumAdicional += precioBase * .15;
+                }
+            }
+            return gananciaPremiumAdicional;
+        }
+        public double GananciaCabotaje()
+        {
+            double gananciaCabotaje = 0;
+            if (DestinoEsInternacional(this.origen, this.destino) == TipoDeVuelo.Nacional)
+            {
+                double horas = CalcularHorasTotales();
+                double precioBase = CalcularPrecioSegunTipoDeVuelo(horas);
+                foreach (Pasaje item in this.listaDePasajeros)
+                {
+                    gananciaCabotaje += precioBase;
+                }
             }
             return gananciaCabotaje;
         }
-
         public double GananciaInternacional()
         {
             double gananciaInternacional = 0;

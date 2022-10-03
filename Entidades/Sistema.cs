@@ -290,7 +290,7 @@ namespace Entidades
             List<KeyValuePair<string, double>> lista;
 
             lista = dic.ToList();
-            lista.Sort(OrdenarDiccionarioStringDoublePorValorAscendente);
+            lista.Sort(OrdenarDiccionarioStringDoublePorValorDescendente);
             return ConvertirDiccionarioPasarDoubleAString(lista);
         }
         /// <summary>
@@ -309,7 +309,7 @@ namespace Entidades
             return diccionario;
         }
 
-        private static int OrdenarDiccionarioStringDoublePorValorAscendente(KeyValuePair<string, double> p1, KeyValuePair<string, double> p2)
+        private static int OrdenarDiccionarioStringDoublePorValorDescendente(KeyValuePair<string, double> p1, KeyValuePair<string, double> p2)
         {
             return (int)(p2.Value - p1.Value);
         }
@@ -345,7 +345,7 @@ namespace Entidades
             List<KeyValuePair<string, int>> lista;
 
             lista = clientesCantidadVuelos.ToList();
-            lista.Sort(OrdenarDiccionarioStringIntPorValorAscendente);
+            lista.Sort(OrdenarDiccionarioStringIntPorValorDescendente);
             return CargarDiccionarioStringInt(lista);
         }
         /// <summary>
@@ -363,7 +363,7 @@ namespace Entidades
             }
             return diccionario;
         }
-        private static int OrdenarDiccionarioStringIntPorValorAscendente(KeyValuePair<string, int> p1, KeyValuePair<string, int> p2)
+        private static int OrdenarDiccionarioStringIntPorValorDescendente(KeyValuePair<string, int> p1, KeyValuePair<string, int> p2)
         {
             return p2.Value - p1.Value;
         }

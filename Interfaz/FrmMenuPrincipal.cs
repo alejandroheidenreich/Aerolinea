@@ -15,10 +15,10 @@ namespace Interfaz
         {
             InitializeComponent();
             this.usuario = usuarioActual;
-            MensajeDeBarraDeInformacion(BaseDeDatos.usuarios[this.usuario]);
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
+            MensajeDeBarraDeInformacion(BaseDeDatos.usuarios[this.usuario]);
             ActivarTemaOscuro();
         }
         private void Reloj_Tick(object sender, EventArgs e)

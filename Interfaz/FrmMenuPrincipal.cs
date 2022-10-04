@@ -38,10 +38,6 @@ namespace Interfaz
             this.btn_ToggleTema.Visible = true;
             this.lbl_DarkTheme.Visible = true;
         }
-        private void InformacionToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
-        }
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ActivarForm(new FrmInformacionDeLosClientes(btn_ToggleTema.Checked));
